@@ -133,7 +133,7 @@ a.desc:after {
 }
 .navbar-blue .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: #0099FF;
+    /*background-color: #0099FF;*/
 }
 .navbar-blue .navbar-nav > li > a {
     color: #fff;

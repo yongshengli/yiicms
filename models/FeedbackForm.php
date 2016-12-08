@@ -16,32 +16,37 @@ class ContactForm extends Model
     public $body;
     public $verifyCode;
 
-
     /**
-     * @return array the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            // name, email, subject and body are required
             [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
+            [['subject'], 'string', 'max' => 125],
+            [['name'], 'string', 'max' => 100],
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
+            [['phone', 'email'], 'string', 'max' => 50],
+            [['body'], 'string', 'max' => 255],
             ['verifyCode', 'captcha'],
         ];
     }
 
     /**
-     * @return array customized attribute labels
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'id' => 'ID',
+            'subject' => '主题',
+            'name' => '名字',
+            'phone' => '电话',
+            'email' => 'Email',
+            'body' => '内容',
+            'verifyCode' => '验证码',
         ];
     }
-
     /**
      * Sends an email to the specified email address using the information collected by this model.
      * @param string $email the target email address
