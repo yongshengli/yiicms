@@ -36,7 +36,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => '产品管理', 'url' => ['/site/products']],
+            ['label' => '产品管理', 'url' => ['/backend/content/index']],
             ['label' => '新闻管理', 'url' => ['/backend/content/index']],
             ['label' => '网站配置', 'url' => ['/backend/config/index']],
         ],
