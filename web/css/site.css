@@ -126,14 +126,17 @@ a.desc:after {
 }
 .navbar-blue a {color:#FFF}
 .navbar {border-radius: 0;}
-.navbar-blue .nav > li > a:hover, .nav > li > a:hover,
-.navbar-blue .nav > li > a:hover, .nav > li > a:focus {background-color: #0099FF;}
-.navbar-blue .navbar-collapse, .navbar-inverse .navbar-form{
+.navbar-blue .nav > li > a:hover,
+.navbar-blue .nav > li > a:focus {background-color: #0099FF;}
+.navbar-blue .navbar-collapse,
+.navbar-blue .navbar-form{
     border-color:#0099FF;
 }
-.navbar-blue .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+.navbar-blue .navbar-nav > .active > a,
+.navbar-blue .navbar-nav > .active > a:hover,
+.navbar-blue .navbar-nav > .active > a:focus {
     color: #fff;
-    /*background-color: #0099FF;*/
+    background-color: #0099FF;
 }
 .navbar-blue .navbar-nav > li > a {
     color: #fff;
@@ -141,7 +144,8 @@ a.desc:after {
 .navbar-blue .navbar-toggle {
     border-color: #0099FF;
 }
-.navbar-blue .navbar-toggle:hover, .navbar-blue .navbar-toggle:focus {
+.navbar-blue .navbar-toggle:hover,
+.navbar-blue .navbar-toggle:focus {
     background-color: #0099FF;
 }
 .navbar-blue .navbar-brand {
