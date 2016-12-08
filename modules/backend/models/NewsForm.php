@@ -29,14 +29,14 @@ class ContentForm extends Model
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'type' => 'Type',
-            'image' => 'Image',
-            'description' => 'Description',
-            'status' => 'Status',
+            'title' => '标题',
+            'type' => '类型',
+            'image' => '图片',
+            'description' => '描述',
+            'status' => '状态',
             'admin_user_id' => 'Admin User ID',
-            'create_at' => 'Create At',
-            'update_at' => 'Update At',
+            'create_at' => '添加时间',
+            'update_at' => '最后修改',
         ];
     }
 }
