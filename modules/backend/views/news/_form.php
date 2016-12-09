@@ -13,18 +13,14 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
-
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'admin_user_id')->textInput() ?>
+    <?= $form->field($model, 'detail')->textarea() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton('提交', ['class' =>'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

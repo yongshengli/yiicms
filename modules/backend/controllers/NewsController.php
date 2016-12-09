@@ -3,6 +3,7 @@
 namespace app\modules\backend\controllers;
 
 use Yii;
+use app\modules\backend\models\NewsForm;
 use app\models\News;
 use app\modules\backend\models\NewsSearch;
 use app\modules\backend\components\BackendController;
@@ -63,9 +64,9 @@ class NewsController extends BackendController
      */
     public function actionCreate()
     {
-        $model = new News();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = new NewsForm();
+        if ($model->load(Yii::$app->request->post()) && $model->create()) {
+            die('sssss');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

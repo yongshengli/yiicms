@@ -8,18 +8,25 @@
  */
 namespace app\modules\backend\models;
 use yii\base\Model;
+use app\models\News;
 
-class ContentForm extends Model
+class NewsForm extends Model
 {
+
+    public $title;
+    public $description;
+    public $status;
+    public $detail;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['title'], 'required'],
-            [['type', 'status', 'admin_user_id', 'create_at', 'update_at'], 'integer'],
-            [['title', 'image', 'description'], 'string', 'max' => 255],
+            [['title', 'detail'], 'required'],
+            [['status'], 'integer'],
+            [['title', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -31,14 +38,24 @@ class ContentForm extends Model
         return [
             'id' => 'ID',
             'title' => '标题',
-            'type' => '类型',
             'image' => '图片',
             'description' => '描述',
             'status' => '状态',
-            'admin_user_id' => 'Admin User ID',
-            'create_at' => '添加时间',
-            'update_at' => '最后修改',
+            'detail' => '内容',
         ];
     }
 
+    public function create()
+    {
+        if($this->validate()){
+            $news = new News();
+            $news->title = $this->title;
+            $news->description = $this->description;
+            $news->status = $this->status;
+            if($news->save()){
+
+                $news->id;
+            }
+        }
+    }
 }
