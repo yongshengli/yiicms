@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'detail')->textarea() ?>
+    <?= $form->field($model->detail, 'detail')->textarea() ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' =>'btn btn-success']) ?>

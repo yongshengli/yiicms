@@ -44,14 +44,5 @@ class Content extends AppActiveRecord
             [['title', 'image', 'description'], 'string', 'max' => 255],
         ];
     }
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function insert($runValidation = true, $attributeNames = null)
-    {
-        $this->admin_user_id = Yii::$app->user->id;
-        return parent::insert($runValidation, $attributeNames);
-    }
+
 }

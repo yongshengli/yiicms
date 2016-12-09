@@ -30,20 +30,7 @@ class NewsForm extends Model
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => '标题',
-            'image' => '图片',
-            'description' => '描述',
-            'status' => '状态',
-            'detail' => '内容',
-        ];
-    }
+
 
     public function create()
     {

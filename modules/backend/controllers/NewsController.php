@@ -2,6 +2,7 @@
 
 namespace app\modules\backend\controllers;
 
+use app\models\ContentDetail;
 use Yii;
 use app\modules\backend\models\NewsForm;
 use app\models\News;
@@ -64,10 +65,17 @@ class NewsController extends BackendController
      */
     public function actionCreate()
     {
-        $model = new NewsForm();
-        if ($model->load(Yii::$app->request->post()) && $model->create()) {
-            die('sssss');
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new News();
+        $data = Yii::$app->request->post();
+        if ($data) {
+            $detailModel = $model->detail;
+            $data[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
+            if ($model->load($data) && $model->save()) {
+                $data[$detailModel->formName()]['content_id'] = $model->id;
+                if($detailModel->load($data) && $detailModel->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -84,9 +92,10 @@ class NewsController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if($model->detail->load(Yii::$app->request->post()) && $model->detail->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -11,6 +11,18 @@ namespace app\models;
 
 class News extends Content
 {
+
+    /**
+     * @return \yii\db\ActiveQuery | \app\models\ContentDetail
+     */
+    public function getDetail()
+    {
+        if($this->isNewRecord){
+            return new ContentDetail();
+        }else{
+            return $this->hasOne(ContentDetail::class, ['content_id'=>'id']);
+        }
+    }
     /**
      * @param bool $runValidation
      * @param null $attributeNames
@@ -20,5 +32,18 @@ class News extends Content
     {
         $this->type = static::TYPE_NEWS;
         return parent::insert($runValidation, $attributeNames);
+    }
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => '标题',
+            'image' => '图片',
+            'description' => '描述',
+            'status' => '状态',
+        ];
     }
 }

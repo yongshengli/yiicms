@@ -20,5 +20,23 @@ class ContentDetail extends AppActiveRecord
     {
         return 'content_detail';
     }
-
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['detail'], 'required'],
+        ];
+    }
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'detail' => '内容',
+        ];
+    }
 }
