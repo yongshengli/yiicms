@@ -15,7 +15,9 @@ use Yii;
 class EditPasswordForm extends Model
 {
     public $password;
-    public $password_repeat;
+    public $newPassword;
+    public $passwordRepeat;
+
     /** @var  AdminUser */
     public $user;
 
@@ -26,8 +28,8 @@ class EditPasswordForm extends Model
     {
         return [
             // username and password are both required
-            [['password','password_repeat'], 'required'],
-            ['password_repeat', 'compare', 'compareAttribute'=>'password'],
+            [['password','newPassword','passwordRepeat'], 'required'],
+            ['passwordRepeat', 'compare', 'compareAttribute'=>'newPassword'],
             // rememberMe must be a boolean value
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
@@ -62,7 +64,7 @@ class EditPasswordForm extends Model
             return false;
         }
         if($this->validate()){
-            $this->user->password =$this->password;
+            $this->user->password =$this->newPassword;
             return $this->user->save();
         }
         return false;
@@ -73,8 +75,9 @@ class EditPasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'password_repeat' => '重复密码',
+            'passwordRepeat' => '重复密码',
             'password' => '密码',
+            'newPassword' => '新密码',
         ];
     }
 }

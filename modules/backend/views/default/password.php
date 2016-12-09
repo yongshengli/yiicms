@@ -31,7 +31,8 @@ $this->title = '修改密码';
     ]); ?>
 
     <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
-    <?= $form->field($model, 'password_repeat')->passwordInput() ?>
+    <?= $form->field($model, 'newPassword')->passwordInput() ?>
+    <?= $form->field($model, 'passwordRepeat')->passwordInput() ?>
 
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">

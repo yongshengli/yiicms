@@ -60,9 +60,9 @@ class DefaultController extends BackendController
             $this->addMessage('用户不存在或者已删除');
         }
         if($model->load(Yii::$app->request->post()) && $model->saveEdit()){
-            return $this->showMessage('修改成功');
+            return $this->showMessage('修改成功', 'success');
         }
-        return $this->render('editPassword',[
+        return $this->render('password',[
             'model'=>$model
         ]);
     }

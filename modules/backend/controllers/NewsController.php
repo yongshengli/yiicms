@@ -77,12 +77,10 @@ class NewsController extends BackendController
                     return $this->showMessage('添加新闻详情失败');
                 }
             }
-            return $this->showMessage('添加新闻失败');
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -115,9 +113,10 @@ class NewsController extends BackendController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        if($this->findModel($id)->delete()){
+            return $this->showMessage('删除成功','success',['index']);
+        }
+        return $this->showMessage('删除失败');
     }
 
     /**
