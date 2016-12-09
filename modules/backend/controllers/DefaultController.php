@@ -2,6 +2,8 @@
 
 namespace app\modules\backend\controllers;
 use app\modules\backend\components\BackendController;
+use app\modules\backend\models\AdminUser;
+use app\modules\backend\models\EditPasswordForm;
 use Yii;
 use app\modules\backend\models\LoginForm;
 use yii\filters\VerbFilter;
@@ -45,6 +47,24 @@ class DefaultController extends BackendController
     {
         Yii::$app->user->logout();
         return $this->redirect(['/backend/default/login']);
+    }
+
+    /**
+     * @return \yii\web\Response
+     */
+    public function actionPassword()
+    {
+        $model = new EditPasswordForm();
+        $model->user = AdminUser::findOne(Yii::$app->user->id);
+        if(empty($model->user) || !($model->user instanceof AdminUser)){
+            $this->addMessage('用户不存在或者已删除');
+        }
+        if($model->load(Yii::$app->request->post()) && $model->saveEdit()){
+            return $this->showMessage('修改成功');
+        }
+        return $this->render('editPassword',[
+            'model'=>$model
+        ]);
     }
     /**
      * @inheritdoc

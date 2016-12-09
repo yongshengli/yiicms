@@ -1,23 +1,23 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: david
+ * Date: 2016/12/9
+ * Time: 17:19
+ * Email:liyongsheng@meicai.cn
+ */
 
 namespace app\modules\backend\models;
 
-use Yii;
 use yii\base\Model;
+use Yii;
 
-/**
- * LoginForm is the model behind the login form.
- *
- * @property AdminUser|null $user This property is read-only.
- *
- */
-class LoginForm extends Model
+class EditPasswordForm extends Model
 {
-    public $username;
     public $password;
-    public $rememberMe = true;
-
-    private $_user = false;
+    public $password_repeat;
+    /** @var  AdminUser */
+    public $user;
 
     /**
      * @return array the validation rules.
@@ -26,9 +26,9 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
+            [['password','password_repeat'], 'required'],
+            ['password_repeat', 'compare', 'compareAttribute'=>'password'],
             // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
@@ -44,10 +44,9 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $user = $this->getUser();
-
+            $user = $this->user;
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, '密码错误');
             }
         }
     }
@@ -56,25 +55,17 @@ class LoginForm extends Model
      * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully
      */
-    public function login()
+    public function saveEdit()
     {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+        if(!($this->user instanceof AdminUser)){
+            $this->addError('未设置user model');
+            return false;
+        }
+        if($this->validate()){
+            $this->user->password =$this->password;
+            return $this->user->save();
         }
         return false;
-    }
-
-    /**
-     * Finds user by [[username]]
-     *
-     * @return AdminUser|null
-     */
-    public function getUser()
-    {
-        if ($this->_user === false) {
-            $this->_user = AdminUser::findByUsername($this->username);
-        }
-        return $this->_user;
     }
     /**
      * @inheritdoc
@@ -82,7 +73,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => '用户名',
+            'password_repeat' => '重复密码',
             'password' => '密码',
         ];
     }

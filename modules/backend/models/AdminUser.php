@@ -24,7 +24,7 @@ class AdminUser extends AppActiveRecord implements IdentityInterface
         if(empty($id)){
             return null;
         }
-        return self::find()->where(['id'=>$id])->one();
+        return self::findOne($id);
     }
 
     /**

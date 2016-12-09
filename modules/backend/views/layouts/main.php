@@ -44,18 +44,21 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/backend/default/logout'], 'post')
-                . Html::submitButton(
-                    Yii::$app->user->identity->username,
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            [
+                'label'=>Yii::$app->user->identity->username,
+                'items' => [
+                    ['label' => '修改密码', 'url' => ['/backend/default/editPassword']],
+                    '<li><a>'
+                    . Html::beginForm(['/backend/default/logout'], 'post')
+                    . Html::submitButton(
+                        '退出',
+                        ['class' => 'btn-link']
+                    )
+                    . Html::endForm()
+                    .'</a></li>'
+                ]
+            ],
+
         ],
     ]);
     NavBar::end();
@@ -70,13 +73,13 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
 
-        <?php if(isset($this->params['showMessage'])):?>
-        <div class="alert alert-<?=$this->params['showMessage']['type']?>" role="alert">
+        <?php if(isset($this->params['showMessage'])):foreach($this->params['showMessage'] as $item):?>
+        <div class="alert alert-<?=$item['type']?>" role="alert">
             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <?=$this->params['showMessage']['message']?>
+            <?=$item['message']?>
         </div>
 
-        <?php endif;?>
+        <?php endforeach;endif;?>
         <?= $content ?>
     </div>
 </div>

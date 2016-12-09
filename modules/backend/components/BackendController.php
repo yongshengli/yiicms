@@ -40,13 +40,29 @@ class BackendController extends Controller
      */
     protected function showMessage($message, $type='danger', $url=null)
     {
-        Yii::$app->session->set('showMessage', [
-            'type'=>$type,
-            'message'=>$message
-        ]);
+        $this->addMessage($message, $type, true);
         if($url==null){
             return $this->refresh();
         }
         return $this->redirect($url);
+    }
+
+    /**
+     * 添加页面提示信息
+     * @param string|array $message
+     * @param string $type
+     * @param bool $addSession
+     */
+    protected function addMessage($message, $type='danger', $addSession=false)
+    {
+        if(is_array($message)){
+            $message = implode(',', $message);
+        }
+        $this->view->params['showMessage'][] = [
+            'type' => $type,
+            'message' => $message
+        ];
+
+        $addSession && Yii::$app->session->set('showMessage', $this->view->params['showMessage']);
     }
 }
