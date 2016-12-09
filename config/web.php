@@ -46,6 +46,13 @@ $config = [
             'rules' => [
             ],
         ],
+        'formatter'=>[
+            'class'=>'yii\i18n\Formatter',
+            'defaultTimeZone'=>'Asia/Shanghai',
+            'dateFormat'=>'php:Y-m-d',
+            'timeFormat'=>'php:H:i:s',
+            'datetimeFormat'=>'php:Y-m-d H:i:s'
+        ]
     ],
     'params' => $params,
     'language'=>'zh-CN',

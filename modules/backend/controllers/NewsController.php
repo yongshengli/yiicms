@@ -4,7 +4,6 @@ namespace app\modules\backend\controllers;
 
 use app\models\ContentDetail;
 use Yii;
-use app\modules\backend\models\NewsForm;
 use app\models\News;
 use app\modules\backend\models\NewsSearch;
 use app\modules\backend\components\BackendController;
@@ -66,16 +65,19 @@ class NewsController extends BackendController
     public function actionCreate()
     {
         $model = new News();
-        $data = Yii::$app->request->post();
-        if ($data) {
+        $post = Yii::$app->request->post();
+        if ($post) {
             $detailModel = $model->detail;
-            $data[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
-            if ($model->load($data) && $model->save()) {
-                $data[$detailModel->formName()]['content_id'] = $model->id;
-                if($detailModel->load($data) && $detailModel->save()){
-                    return $this->redirect(['view', 'id' => $model->id]);
+            $post[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
+            if ($model->load($post) && $model->save()) {
+                $post[$detailModel->formName()]['content_id'] = $model->id;
+                if($detailModel->load($post) && $detailModel->save()){
+                    return $this->showMessage('添加成功','success');
+                }else{
+                    return $this->showMessage('添加新闻详情失败');
                 }
             }
+            return $this->showMessage('添加新闻失败');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -94,7 +96,9 @@ class NewsController extends BackendController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if($model->detail->load(Yii::$app->request->post()) && $model->detail->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->showMessage('修改新闻成功','success');
+            }else{
+                return $this->showMessage('修改新闻详情失败');
             }
         } else {
             return $this->render('update', [

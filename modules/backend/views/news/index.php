@@ -7,13 +7,13 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\backend\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Contents';
+$this->title = '新闻管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
-        <?= Html::a('添加内容', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加新闻', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,12 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'image',
             'description',
-            // 'status',
+             'status',
             // 'admin_user_id',
             // 'create_at',
             // 'update_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
         ],
     ]); ?>
 </div>

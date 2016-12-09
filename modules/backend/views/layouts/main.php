@@ -50,7 +50,7 @@ AppAsset::register($this);
                 '<li>'
                 . Html::beginForm(['/backend/default/logout'], 'post')
                 . Html::submitButton(
-                    '退出 (' . Yii::$app->user->identity->username .')',
+                    Yii::$app->user->identity->username,
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -69,6 +69,14 @@ AppAsset::register($this);
             ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?php if(isset($this->params['showMessage'])):?>
+        <div class="alert alert-<?=$this->params['showMessage']['type']?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <?=$this->params['showMessage']['message']?>
+        </div>
+
+        <?php endif;?>
         <?= $content ?>
     </div>
 </div>

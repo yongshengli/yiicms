@@ -26,7 +26,7 @@ class ContentDetail extends AppActiveRecord
     public function rules()
     {
         return [
-            [['detail'], 'required'],
+            [['content_id', 'detail'], 'required'],
         ];
     }
     /**
@@ -36,6 +36,7 @@ class ContentDetail extends AppActiveRecord
     {
         return [
             'id' => 'ID',
+            'content_id'=>'主表ID不能为空',
             'detail' => '内容',
         ];
     }
