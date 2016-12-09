@@ -5,12 +5,12 @@ namespace app\modules\backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Content;
+use app\models\News;
 
 /**
  * ContentSearch represents the model behind the search form about `app\models\Content`.
  */
-class ContentSearch extends Content
+class NewsSearch extends News
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class ContentSearch extends Content
      */
     public function search($params)
     {
-        $query = Content::find();
+        $query = News::find();
 
         // add conditions that should always apply here
 
@@ -60,7 +60,7 @@ class ContentSearch extends Content
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => $this->type,
+            'type' => News::TYPE_NEWS,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
             'create_at' => $this->create_at,

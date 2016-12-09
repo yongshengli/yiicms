@@ -3,8 +3,8 @@
 namespace app\modules\backend\controllers;
 
 use Yii;
-use app\models\Content;
-use app\modules\backend\models\ContentSearch;
+use app\models\News;
+use app\modules\backend\models\NewsSearch;
 use app\modules\backend\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ContentController implements the CRUD actions for Content model.
  */
-class ContentController extends BackendController
+class NewsController extends BackendController
 {
     /**
      * @inheritdoc
@@ -35,7 +35,7 @@ class ContentController extends BackendController
      */
     public function actionIndex()
     {
-        $searchModel = new ContentSearch();
+        $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +63,7 @@ class ContentController extends BackendController
      */
     public function actionCreate()
     {
-        $model = new Content();
+        $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -110,12 +110,12 @@ class ContentController extends BackendController
      * Finds the Content model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Content the loaded model
+     * @return News the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Content::findOne($id)) !== null) {
+        if (($model = News::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -17,6 +17,7 @@ class ContentForm extends Model
     public function rules()
     {
         return [
+            [['title'], 'required'],
             [['type', 'status', 'admin_user_id', 'create_at', 'update_at'], 'integer'],
             [['title', 'image', 'description'], 'string', 'max' => 255],
         ];
@@ -39,4 +40,5 @@ class ContentForm extends Model
             'update_at' => '最后修改',
         ];
     }
+
 }
