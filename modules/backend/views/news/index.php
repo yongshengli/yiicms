@@ -16,16 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
     <div class="row">
-        <div class="col-lg-2">
-            <?= Menu::widget([
-//                'template' => "\n<div>\n{items}\n</div>\n",
-                'options' => ['class' => 'list-group'],
-                'items' => [
-                    ['label' => '新闻管理', 'url' => ['/backend/news/index'], 'options' => ['class' => 'list-group-item']],
-                    ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_NEWS], 'options' => ['class' => 'list-group-item']],
-                ]
-            ]) ?>
-        </div>
         <div class="col-lg-10">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <p>
@@ -59,6 +49,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
                 ],
             ]); ?>
+        </div>
+        <div class="col-lg-2">
+            <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+                <?= Menu::widget([
+//                'template' => "\n<div>\n{items}\n</div>\n",
+                    'options' => ['class' => 'nav bs-docs-sidenav'],
+                    'submenuTemplate'=>"\n<ul class='nav'>\n{items}\n</ul>\n",
+                    'items' => [
+                        [
+                            'label' => '新闻管理', 'url' => ['/backend/news/index'],
+                            'items'=>[
+                                ['label'=>'添加新闻','url'=>['/backend/news/create']]
+                            ]
+                        ],
+                        ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_NEWS]],
+                    ]
+                ]) ?>
+            </div>
         </div>
     </div>
 </div>
