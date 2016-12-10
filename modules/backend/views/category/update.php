@@ -6,8 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Category */
 
 $this->title = '修改分类: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => '分类管理', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => '分类管理', 'url' => ['index','type'=>$model->type]];
 $this->params['breadcrumbs'][] = '修改';
 ?>
 <div class="category-update">
