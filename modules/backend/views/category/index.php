@@ -23,15 +23,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'attribute'=>'id',
+                'options'=>['style'=>'width:50px']
+            ],
             'name',
-            'pid',
-            'type',
-            'create_at',
+            [
+                'attribute'=>'pid',
+                'value'=>'parent.name',
+                'options'=>['style'=>'width:100px']
+            ],
+            [
+                'attribute'=>'type',
+                'value'=>'typeText',
+                'options'=>['style'=>'width:100px']
+            ],
+            [
+                'attribute'=>'create_at',
+                'format'=>'datetime',
+                'options'=>['style'=>'width:150px']
+            ],
             // 'update_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'options'=>['style'=>'width:120px']
+            ],
         ],
     ]); ?>
 </div>

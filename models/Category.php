@@ -30,15 +30,36 @@ class Category extends AppActiveRecord
     {
         return 'category';
     }
-
+    /**
+     * 顶级分类信息
+     * @var array
+     */
+    static public $topCategory = [
+        'id'=>0,
+        'name'=>'顶级分类',
+        'pid'=>null,
+    ];
+    /**
+     * 获取可能的全部父类
+     */
+    public function getPossibleParents()
+    {
+        $list = self::find()
+            ->where(['type'=>$this->type])
+            ->andWhere(['<>', 'id', $this->id])
+            ->all();
+        array_unshift($list, self::$topCategory);
+//        print_r($list);
+        return $list;
+    }
     /**
      * 获取父类
-     * @return null|static
+     * @return static|array
      */
     public function getParent()
     {
         if(empty($this->pid)){
-            return null;
+            return self::$topCategory;
         }
         return self::findOne($this->pid);
     }
