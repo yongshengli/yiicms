@@ -2,10 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $pagination yii\data\Pagination */
 
 $this->title = '新闻管理';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,15 +22,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id',
+            [
+                'attribute'=>'id',
+                'options'=>['style'=>'width:50px']
+            ],
             'title',
-            'image',
+//            'image',
             'description',
-             'status',
+             [
+                 'attribute'=>'status',
+                 'options'=>['style'=>'width:60px'],
+                 'format'=>'text',
+                 'value'=>'statusText'
+             ],
             // 'admin_user_id',
-            // 'create_at',
-            // 'update_at',
-
+             [
+                 'attribute'=>'create_at',
+                 'format'=>'datetime',
+                 'options'=>['style'=>'width:160px']
+             ],
+//             'update_at:datetime',
             ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
         ],
     ]); ?>

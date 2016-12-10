@@ -7,6 +7,7 @@ use Yii;
 use app\models\News;
 use app\modules\backend\models\NewsSearch;
 use app\modules\backend\components\BackendController;
+use yii\data\Pagination;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -37,11 +38,12 @@ class NewsController extends BackendController
     public function actionIndex()
     {
         $searchModel = new NewsSearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider
         ]);
     }
 

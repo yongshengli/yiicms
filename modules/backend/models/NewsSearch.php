@@ -12,14 +12,15 @@ use app\models\News;
  */
 class NewsSearch extends News
 {
+    const PAGE_SIZE = 20;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'type', 'status', 'admin_user_id', 'create_at', 'update_at'], 'integer'],
-            [['title', 'image', 'description'], 'safe'],
+            [['id', 'type','admin_user_id'], 'integer'],
+            [['title', 'image', 'description', 'create_at'], 'safe'],
         ];
     }
 
@@ -33,6 +34,21 @@ class NewsSearch extends News
     }
 
     /**
+     * 创建时间
+     * @return array|false|int
+     */
+    public function getCreateAt()
+    {
+        if(empty($this->create_at)){
+            return null;
+        }
+        $createAt = is_string($this->create_at)?strtotime($this->create_at):$this->create_at;
+        if(date('H:i:s', $createAt)=='00:00:00'){
+            return [$createAt, $createAt+3600*24];
+        }
+        return $createAt;
+    }
+    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
@@ -44,13 +60,12 @@ class NewsSearch extends News
         $query = News::find();
 
         // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>self::PAGE_SIZE]
         ]);
 
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -63,13 +78,20 @@ class NewsSearch extends News
             'type' => News::TYPE_NEWS,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
-            'create_at' => $this->create_at,
             'update_at' => $this->update_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'description', $this->description]);
+        $createAt = $this->getCreateAt();
+        if(is_array($createAt)) {
+
+            $query->andFilterWhere(['>=','create_at', $createAt[0]])
+                ->andFilterWhere(['<=','create_at', $createAt[1]]);
+        }else{
+            $query->andFilterWhere(['create_at'=>$createAt]);
+
+        }
 
         return $dataProvider;
     }

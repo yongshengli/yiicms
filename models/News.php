@@ -33,17 +33,4 @@ class News extends Content
         $this->type = static::TYPE_NEWS;
         return parent::insert($runValidation, $attributeNames);
     }
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => '标题',
-            'image' => '图片',
-            'description' => '描述',
-            'status' => '状态',
-        ];
-    }
 }
