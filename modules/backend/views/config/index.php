@@ -25,19 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'value',
             [
                 'attribute' => 'create_at',
-                'format' => 'text',
-                'value' => function ($data) {
-                    return date("Y-m-d H:i:s", ($data->create_at));
-                },
+                'format' => 'datetime',
+                'options' => ['style'=>'width:150px'],
             ],
             [
                 'attribute' => 'update_at',
-                'format' => 'text',
-                'value' => function ($data) {
-                    return date("Y-m-d H:i:s", ($data->update_at));
-                },
+                'format' => 'datetime',
+                'options' => ['style'=>'width:150px'],
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','options'=>['style'=>'width:100px']],
         ],
     ]); ?>
 </div>

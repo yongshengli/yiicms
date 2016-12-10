@@ -56,7 +56,7 @@ class Content extends AppActiveRecord
     public function rules()
     {
         return [
-            [['title', 'type'], 'required'],
+            [['title', 'type', 'status'], 'required'],
             [['type', 'status', 'admin_user_id', 'create_at', 'update_at'], 'integer'],
             [['title', 'image', 'description'], 'string', 'max' => 255],
         ];
