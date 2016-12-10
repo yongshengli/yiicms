@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model->detail, 'detail')->textarea(['rows'=>15]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('提交', ['class' =>'btn btn-success']) ?>
+        <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
