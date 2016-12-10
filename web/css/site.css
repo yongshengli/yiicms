@@ -151,3 +151,16 @@ a.desc:after {
 .navbar-blue .navbar-brand {
     color: #fff;
 }
+.table-simple{
+    width:100%
+}
+.table-simple > tbody > tr > th,
+.table-simple > tfoot > tr > th,
+.table-simple > thead > tr > td,
+.table-simple > tbody > tr > td,
+.table-simple > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-bottom: 1px dashed #ddd;
+}

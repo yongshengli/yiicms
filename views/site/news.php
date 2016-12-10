@@ -8,6 +8,8 @@
  */
 
 /* @var $this yii\web\View */
+/** @var $dataProvider \yii\data\ActiveDataProvider */
+use yii\grid\GridView;
 
 $this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
@@ -48,37 +50,24 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Heading</div>
+                    <div class="panel-heading">新闻</div>
                 </div>
                 <div>
-                    <table class="table">
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                        <tr><td>Apple software, retail chiefs out in sweeping overhaul</td><td>2016-12-6</td></tr>
-                    </table>
-                    <nav>
-                        <ul class="pagination" style="float: right">
-                            <li class="disabled"><a href="#">&laquo;</a></li>
-                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </nav>
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'tableOptions'=>['class'=>'table-simple'],
+                        'showHeader'=>false,
+                        'layout' => "{items}\n{pager}",
+                        'columns' => [
+                            'title',
+                            [
+                                'attribute'=>'create_at',
+                                'format'=>'date',
+                                'options'=>['style'=>'width:160px']
+                            ],
+                        ],
+//                        'LinkPager'=>['options'=>['class'=>'pagination pagination-right']]
+                    ]); ?>
                 </div>
             </div>
 

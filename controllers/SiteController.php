@@ -5,9 +5,12 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\FeedbackForm;
+use app\models\News;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
+    const PAGE_SIZE = 10;
     /**
      * @inheritdoc
      */
@@ -69,7 +72,17 @@ class SiteController extends Controller
      */
     public function actionNews()
     {
-        return $this->render('news');
+        $query = News::find();
+        // add conditions that should always apply here
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize'=>self::PAGE_SIZE]
+        ]);
+
+        return $this->render('news', [
+            'searchModel' => new News(),
+            'dataProvider' => $dataProvider
+        ]);
     }
     /**
      * Displays products page
