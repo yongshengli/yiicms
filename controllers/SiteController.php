@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\FeedbackForm;
-use app\models\News;
+use app\models\Config;
 use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
@@ -61,7 +61,10 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $model = Config::find()->where(['name'=>'about_us'])->one();
+        return $this->render('about',[
+            'model'=>$model
+        ]);
     }
     /**
      * Displays products page
