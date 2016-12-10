@@ -57,7 +57,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => '产品', 'url' => ['/site/products']],
-            ['label' => '新闻', 'url' => ['/site/news']],
+            ['label' => '新闻', 'url' => ['/news/list']],
             ['label' => '关于我们', 'url' => ['/site/about']],
             ['label' => '联系我们', 'url' => ['/site/contact']],
         ],

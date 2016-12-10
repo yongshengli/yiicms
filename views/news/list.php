@@ -10,8 +10,9 @@
 /* @var $this yii\web\View */
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 use yii\grid\GridView;
+use yii\bootstrap\Html;
 
-$this->title = 'Products';
+$this->title = '新闻';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
@@ -59,14 +60,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         'showHeader'=>false,
                         'layout' => "{items}\n{pager}",
                         'columns' => [
-                            'title',
+                            [
+                                'attribute'=>'title',
+                                'format'=>'raw',
+                                'value'=>function($item){
+                                    return Html::a($item->title, ['/news/', 'id'=>$item->id]);
+                                }
+                            ],
                             [
                                 'attribute'=>'create_at',
                                 'format'=>'date',
-                                'options'=>['style'=>'width:160px']
+                                'options'=>['class'=>'text-right','style'=>'width:100px']
                             ],
                         ],
-//                        'LinkPager'=>['options'=>['class'=>'pagination pagination-right']]
                     ]); ?>
                 </div>
             </div>
