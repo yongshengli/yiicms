@@ -18,6 +18,7 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
+            [['type'], 'required'],
             [['id', 'pid', 'type', 'create_at', 'update_at'], 'integer'],
             [['name'], 'safe'],
         ];
@@ -48,7 +49,6 @@ class CategorySearch extends Category
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
         $this->load($params);
 
         if (!$this->validate()) {

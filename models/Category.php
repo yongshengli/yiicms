@@ -45,8 +45,8 @@ class Category extends AppActiveRecord
     public function getPossibleParents()
     {
         $list = self::find()
-            ->where(['type'=>$this->type])
-            ->andWhere(['<>', 'id', $this->id])
+            ->where(['type'=>$this->type, 'pid'=>0])
+            ->andFilterWhere(['<>', 'id', $this->id])
             ->all();
         array_unshift($list, self::$topCategory);
 //        print_r($list);
@@ -70,8 +70,8 @@ class Category extends AppActiveRecord
     public function rules()
     {
         return [
-            [['pid', 'type', 'create_at', 'update_at'], 'required'],
-            [['pid', 'type', 'create_at', 'update_at'], 'integer'],
+            [['name','pid', 'type'], 'required'],
+            [['pid', 'type'], 'integer'],
             [['name'], 'string', 'max' => 50],
         ];
     }

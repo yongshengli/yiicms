@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('新建分类', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建分类', ['create', 'type'=>$searchModel->type], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -31,11 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'pid',
                 'value'=>'parent.name',
-                'options'=>['style'=>'width:100px']
-            ],
-            [
-                'attribute'=>'type',
-                'value'=>'typeText',
                 'options'=>['style'=>'width:100px']
             ],
             [

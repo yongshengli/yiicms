@@ -31,12 +31,16 @@ class CategoryController extends BackendController
 
     /**
      * Lists all Category models.
+     * @param int $type
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($type)
     {
         $searchModel = new CategorySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $params = Yii::$app->request->queryParams;
+        $params[$searchModel->formName()]['type'] = $type;
+
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -59,12 +63,14 @@ class CategoryController extends BackendController
     /**
      * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param int $type
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($type)
     {
         $model = new Category();
-
+        $model->type = $type;
+        print_r($model->possibleParents);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->showMessage('添加分类成功','success');
         } else {
