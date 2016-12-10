@@ -42,11 +42,12 @@ class Category extends AppActiveRecord
     /**
      * 获取可能的全部父类
      */
-    public function getPossibleParents()
+    public function getPossibleParentArr()
     {
         $list = self::find()
             ->where(['type'=>$this->type, 'pid'=>0])
             ->andFilterWhere(['<>', 'id', $this->id])
+            ->asArray()
             ->all();
         array_unshift($list, self::$topCategory);
 //        print_r($list);

@@ -70,7 +70,6 @@ class CategoryController extends BackendController
     {
         $model = new Category();
         $model->type = $type;
-        print_r($model->possibleParents);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->showMessage('添加分类成功','success');
         } else {
@@ -110,6 +109,7 @@ class CategoryController extends BackendController
         if($this->findModel($id)->delete()){
             return $this->showMessage('删除成功','success',['index']);
         }
+        return $this->showMessage('删除失败');
     }
 
     /**

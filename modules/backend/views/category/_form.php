@@ -12,12 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'pid')->dropDownList(array_column($model->possibleParentArr,'name', 'id'),[]) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'type')->dropDownList($model->types) ?>
-
-    <?= $form->field($model, 'pid')->dropDownList(array_column($model->possibleParents,'name', 'id'),[]) ?>
-
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '提交' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
