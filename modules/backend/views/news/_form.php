@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
 
     <?= $form->field($model->detail, 'detail')->textarea(['rows'=>15]) ?>
 

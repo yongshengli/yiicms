@@ -38,7 +38,7 @@ class Content extends AppActiveRecord
     const STATUS_ENABLE = 1;
 
     /** @var array  */
-    static public $status = [
+    static public $statusList = [
         self::STATUS_DISABLE=>'不显示',
         self::STATUS_ENABLE=>'显示',
     ];
@@ -77,7 +77,7 @@ class Content extends AppActiveRecord
      */
     public function getStatusText()
     {
-        return isset(self::$status[$this->status])?self::$status[$this->status]:null;
+        return isset(self::$statusList[$this->status])?self::$statusList[$this->status]:null;
     }
     /**
      * @inheritdoc
