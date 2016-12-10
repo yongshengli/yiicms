@@ -47,7 +47,7 @@ AppAsset::register($this);
             [
                 'label'=>Yii::$app->user->identity->username,
                 'items' => [
-                    ['label' => '修改密码', 'url' => ['/backend/default/editPassword']],
+                    ['label' => '修改密码', 'url' => ['/backend/default/password']],
                     '<li><a>'
                     . Html::beginForm(['/backend/default/logout'], 'post')
                     . Html::submitButton(
