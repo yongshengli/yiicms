@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ['label' => '添加新闻', 'url' => ['/backend/news/create']]
                             ]
                         ],
-                        ['label' => '分类管理', 'url' => ['/backend/category/index', 'type' => app\models\Content::TYPE_NEWS], 'active' => true,
+                        ['label' => '分类管理', 'url' => ['/backend/category/index', 'type' => $model->type], 'active' => true,
                             'items' => [
-                                ['label' => '新建分类', 'url' => ['/backend/category/create','type' => app\models\Content::TYPE_NEWS]]
+                                ['label' => '新建分类', 'url' => ['/backend/category/create','type' => $model->type]]
                             ]
                         ],
                     ]
