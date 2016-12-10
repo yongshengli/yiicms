@@ -23,6 +23,15 @@ class News extends Content
             return $this->hasOne(ContentDetail::class, ['content_id'=>'id']);
         }
     }
+
+    /**
+     * 获取全部的新闻分类
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getCategorys()
+    {
+        return Category::find()->where(['type'=>self::TYPE_NEWS])->all();
+    }
     /**
      * @param bool $runValidation
      * @param null $attributeNames

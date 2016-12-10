@@ -88,6 +88,7 @@ class Content extends AppActiveRecord
             'id' => 'ID',
             'title' => '标题',
             'typeText'=>'类型',
+            'category_id'=>'分类',
             'image' => '图片',
             'description' => '描述',
             'status' => '状态',
