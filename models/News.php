@@ -12,6 +12,12 @@ namespace app\models;
 class News extends Content
 {
 
+    public function init()
+    {
+        $this->setAttribute('type', static::TYPE_NEWS);
+        parent::init();
+    }
+
     /**
      * @return \yii\db\ActiveQuery | \app\models\ContentDetail
      */
@@ -31,15 +37,5 @@ class News extends Content
     public function getCategorys()
     {
         return Category::find()->where(['type'=>self::TYPE_NEWS])->all();
-    }
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function insert($runValidation = true, $attributeNames = null)
-    {
-        $this->type = static::TYPE_NEWS;
-        return parent::insert($runValidation, $attributeNames);
     }
 }

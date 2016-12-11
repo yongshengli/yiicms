@@ -16,6 +16,11 @@ use Yii;
 class Products extends Content
 {
 
+    public function init()
+    {
+        $this->setAttribute('type', self::TYPE_PRODUCTS);
+        parent::init();
+    }
     public $imageFile;
     /**
      * @inheritdoc
@@ -49,32 +54,10 @@ class Products extends Content
     {
         return Category::find()->where(['type'=>self::TYPE_PRODUCTS])->all();
     }
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function insert($runValidation = true, $attributeNames = null)
+
+    public function beforeSave($runValidation = true)
     {
-        $this->type = static::TYPE_PRODUCTS;
-        if ($runValidation && !$this->validate($attributeNames)) {
-            Yii::info('Model not inserted due to validation error.', __METHOD__);
-            return false;
-        }
-        $file = $this->uploadFile();
-        if($file){
-            $this->image = $file;
-        }
-        return parent::insert(false, $attributeNames);
-    }
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function update($runValidation = true, $attributeNames = null)
-    {
-        if ($runValidation && !$this->validate($attributeNames)) {
+        if ($runValidation && !$this->validate()) {
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
@@ -82,7 +65,7 @@ class Products extends Content
         if($file){
             $this->image = $file;
         }
-        return parent::update(false, $attributeNames);
+        return true;
     }
 
     public function uploadFile()
