@@ -9,9 +9,24 @@
 
 namespace app\models;
 
+use yii\web\UploadedFile;
+
 class Products extends Content
 {
 
+    public $imageFile;
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['title', 'type', 'status','category_id'], 'required'],
+            [['imageFile'], 'file', 'extensions' => 'gif, jpg, png, jpeg','mimeTypes' => 'image/jpeg, image/png',],
+            [['type', 'status', 'admin_user_id', 'category_id','create_at', 'update_at'], 'integer'],
+            [['title', 'image', 'description'], 'string', 'max' => 255],
+        ];
+    }
     /**
      * @return \yii\db\ActiveQuery | \app\models\ContentDetail
      */
@@ -39,7 +54,42 @@ class Products extends Content
      */
     public function insert($runValidation = true, $attributeNames = null)
     {
+        $this->image = $this->uploadFile();
         $this->type = static::TYPE_PRODUCTS;
         return parent::insert($runValidation, $attributeNames);
+    }
+
+    public function uploadFile()
+    {
+        /** @var UploadedFile imageFile */
+        $this->imageFile = UploadedFile::getInstances($this, 'imageFile');
+        echo $fileName = $this->createUploadFilePath(). $this->imageFile->extension;die;
+
+        if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
+            return $fileName;
+        }
+    }
+
+    public function createUploadFilePath()
+    {
+        return '/upload/'.uniqid().'/';
+    }
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => '标题',
+            'typeText'=>'类型',
+            'category_id'=>'分类',
+            'image' => '图片',
+            'imageFile' => '图片',
+            'description' => '描述',
+            'status' => '状态',
+            'statusText' => '状态',
+            'create_at'=>'创建时间'
+        ];
     }
 }

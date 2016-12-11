@@ -10,9 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="content-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
+    <?= $form->field($model, 'imageFile')->fileInput()?>
+    <?php if($model->image):?>
+    <div><image src="<?=$this->image?>"/></div>
+    <?php endif?>
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
     <div class="row">
         <div class="col-sm-6">

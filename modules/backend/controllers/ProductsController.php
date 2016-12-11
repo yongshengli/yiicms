@@ -78,7 +78,7 @@ class ProductsController extends BackendController
                 if($detailModel->load($post) && $detailModel->save()){
                     return $this->showMessage('添加成功','success');
                 }else{
-                    return $this->showMessage('添加新闻详情失败');
+                    return $this->showMessage('添加产品详情失败');
                 }
             }
         }
@@ -98,9 +98,9 @@ class ProductsController extends BackendController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if($model->detail->load(Yii::$app->request->post()) && $model->detail->save()){
-                return $this->showMessage('修改新闻成功','success');
+                return $this->showMessage('修改产品成功','success');
             }else{
-                return $this->showMessage('修改新闻详情失败');
+                return $this->showMessage('修改产品详情失败');
             }
         } else {
             return $this->render('update', [
