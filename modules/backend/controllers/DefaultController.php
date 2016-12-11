@@ -48,11 +48,10 @@ class DefaultController extends BackendController
         Yii::$app->user->logout();
         return $this->redirect(['/backend/default/login']);
     }
-
     /**
      * @return \yii\web\Response
      */
-    public function actionPassword()
+    public function actionEditPassword()
     {
         $model = new EditPasswordForm();
         $model->user = AdminUser::findOne(Yii::$app->user->id);
@@ -62,7 +61,7 @@ class DefaultController extends BackendController
         if($model->load(Yii::$app->request->post()) && $model->saveEdit()){
             return $this->showMessage('修改成功', 'success');
         }
-        return $this->render('password',[
+        return $this->render('edit-password',[
             'model'=>$model
         ]);
     }

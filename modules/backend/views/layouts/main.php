@@ -39,6 +39,7 @@ AppAsset::register($this);
             ['label' => '产品管理', 'url' => ['/backend/content/index']],
             ['label' => '新闻管理', 'url' => ['/backend/news/index']],
             ['label' => '网站配置', 'url' => ['/backend/config/index']],
+            ['label' => '管理员管理', 'url' => ['/backend/admin-user/index']],
         ],
     ]);
     echo Nav::widget([
@@ -47,7 +48,7 @@ AppAsset::register($this);
             [
                 'label'=>Yii::$app->user->identity->username,
                 'items' => [
-                    ['label' => '修改密码', 'url' => ['/backend/default/password']],
+                    ['label' => '修改密码', 'url' => ['/backend/default/edit-password']],
                     '<li><a>'
                     . Html::beginForm(['/backend/default/logout'], 'post')
                     . Html::submitButton(

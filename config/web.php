@@ -13,7 +13,7 @@ $config = [
         ],
         'user' => [
             'class'=>'yii\web\User',
-            'identityClass' => 'app\modules\backend\models\AdminUser',
+            'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
             'enableAutoLogin' => true,
             'loginUrl'=>['backend\default\login']
         ],

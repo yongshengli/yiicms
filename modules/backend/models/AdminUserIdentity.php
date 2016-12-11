@@ -9,7 +9,7 @@ use yii\web\IdentityInterface;
  * Class AdminUser
  * @package app\modules\backend\models
  */
-class AdminUser extends AppActiveRecord implements IdentityInterface
+class AdminUserIdentity extends AppActiveRecord implements IdentityInterface
 {
 
     static function tableName(){
@@ -81,6 +81,6 @@ class AdminUser extends AppActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return AdminUser::validatePassword($password, $this->password);
     }
 }

@@ -16,7 +16,7 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
-
+    /** @var bool AdminUserIdentity */
     private $_user = false;
 
     /**
@@ -67,12 +67,12 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return AdminUser|null
+     * @return AdminUserIdentity|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = AdminUser::findByUsername($this->username);
+            $this->_user = AdminUserIdentity::findByUsername($this->username);
         }
         return $this->_user;
     }
