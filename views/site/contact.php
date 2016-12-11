@@ -2,13 +2,13 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
+/* @var $model app\models\Feedback */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = '联系我们';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
                 <div class="alert alert-success">
-                    Thank you for contacting us. We will respond to you as soon as possible.
+                    感谢你联系我们. 我们将尽快给你回复.
                 </div>
 
                 <p>
@@ -42,8 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php else: ?>
 
                 <p>
-                    If you have business inquiries or other questions, please fill out the following form to contact us.
-                    Thank you.
+                    如果你有什么问题, 请填写下面的表单联系我们.
+                    谢谢.
                 </p>
 
                 <div class="row">
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                            <?= Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                         </div>
 
                         <?php ActiveForm::end(); ?>

@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\FeedbackForm;
+use app\models\Feedback;
 use app\models\Config;
 use yii\data\ActiveDataProvider;
 
@@ -43,10 +43,12 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new FeedbackForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+        $model = new Feedback();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if(isset(Yii::$app->params['adminEmail'])) {
+                $model->sendEmail(Yii::$app->params['adminEmail']);
+                Yii::$app->session->setFlash('contactFormSubmitted');
+            }
             return $this->refresh();
         }
         return $this->render('contact', [
