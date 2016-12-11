@@ -24,19 +24,7 @@ $this->params['breadcrumbs'][] = '修改';
 //                'template' => "\n<div>\n{items}\n</div>\n",
                     'options' => ['class' => 'nav bs-docs-sidenav'],
                     'submenuTemplate' => "\n<ul class='nav'>\n{items}\n</ul>\n",
-                    'items' => [
-                        ['label' => '新闻管理', 'url' => ['/backend/news/index'],
-                            'items' => [
-                                ['label' => '添加新闻', 'url' => ['/backend/news/create']]
-                            ]
-                        ],
-                        ['label' => '分类管理', 'url' => ['/backend/category/index', 'type' => $model->type],
-                            'active'=>true,
-                            'items' => [
-                                ['label' => '新建分类', 'url' => ['/backend/category/create', 'type' => $model->type]]
-                            ]
-                        ],
-                    ]
+                    'items' => \app\models\Category::getMenuItems($model->type),
                 ]) ?>
             </div>
         </div>

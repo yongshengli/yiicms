@@ -110,4 +110,32 @@ class Category extends AppActiveRecord
         $types =  self::getTypes();
         return isset($types[$this->type])?$types[$this->type]:null;
     }
+
+    /**
+     * @param int $type
+     * @return array
+     */
+    public static function getMenuItems($type)
+    {
+        if($type == Content::TYPE_NEWS) {
+            $menu[] = ['label' => '新闻管理', 'url' => ['/backend/news/index'],
+                'items' => [
+                    ['label' => '添加新闻', 'url' => ['/backend/news/create']]
+                ]
+            ];
+        }else{
+            $menu[] = ['label' => '产品管理', 'url' => ['/backend/products/index'],
+                'items' => [
+                    ['label' => '添加产品', 'url' => ['/backend/products/create']]
+                ]
+            ];
+        }
+        $menu[] =[
+            'label' => '分类管理', 'url' => ['/backend/category/index', 'type' => $type], 'active' => true,
+            'items' => [
+                ['label' => '新建分类', 'url' => ['/backend/category/create','type' => $type]]
+            ]
+        ];
+        return $menu;
+    }
 }
