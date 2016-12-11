@@ -38,6 +38,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => '产品管理', 'url' => ['/backend/content/index']],
             ['label' => '新闻管理', 'url' => ['/backend/news/index']],
+            ['label' => '用户反馈', 'url' => ['/backend/feedback/index']],
             ['label' => '网站配置', 'url' => ['/backend/config/index']],
             ['label' => '管理员管理', 'url' => ['/backend/admin-user/index']],
         ],
