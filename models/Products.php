@@ -13,6 +13,7 @@ use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use Yii;
 use yii\db\ActiveQuery;
+use yii\db\Expression;
 
 class Products extends Content
 {
