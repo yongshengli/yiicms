@@ -59,6 +59,7 @@ class Feedback extends AppActiveRecord
             'phone' => '电话',
             'email' => 'Email',
             'body' => '内容',
+            'create_at' => '创建时间',
             'verifyCode' => '验证码',
         ];
     }

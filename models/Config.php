@@ -46,7 +46,7 @@ class Config extends AppActiveRecord
             'label' => '配置字段名',
             'value' => '配置值',
             'create_at' => '创建时间',
-            'update_at' => '上次修改时间',
+            'update_at' => '最后修改',
         ];
     }
 }

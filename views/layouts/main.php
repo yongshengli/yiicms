@@ -39,7 +39,7 @@ AppAsset::register($this);
                 <div class="input-group input-group-lg">
                     <input type="text" class="form-control" placeholder="输入关键字搜索" name="keyword">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">搜索</button>
+                        <button class="btn btn-primary" type="button">搜索</button>
                     </span>
                 </div>
             </div>

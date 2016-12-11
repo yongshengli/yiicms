@@ -4,18 +4,17 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Config */
+/* @var $model app\models\News */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => '网站配置', 'url' => ['index']];
+$this->title = $model->subject;
+$this->params['breadcrumbs'][] = ['label' => '用户反馈', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="config-view">
+<div class="content-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('修改', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -27,15 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= DetailView::widget([
         'model' => $model,
+        'options'=>['class'=>'table table-striped'],
         'attributes' => [
             [
-                'attribute'=>'name',
+                'attribute'=>'subject',
                 'captionOptions'=>['style'=>'width:100px'],
             ],
-            'label',
-            'value',
+            'name',
+            'email',
+            'phone',
+            'body',
             'create_at:datetime',
-            'update_at:datetime',
         ],
     ]) ?>
 

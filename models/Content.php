@@ -93,7 +93,7 @@ class Content extends AppActiveRecord
             'description' => '描述',
             'status' => '状态',
             'statusText' => '状态',
-            'create_at'=>'添加时间'
+            'create_at'=>'创建时间'
         ];
     }
 }
