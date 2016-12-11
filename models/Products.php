@@ -9,7 +9,9 @@
 
 namespace app\models;
 
+use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
+use Yii;
 
 class Products extends Content
 {
@@ -54,25 +56,45 @@ class Products extends Content
      */
     public function insert($runValidation = true, $attributeNames = null)
     {
+        if ($runValidation && !$this->validate($attributeNames)) {
+            Yii::info('Model not updated due to validation error.', __METHOD__);
+            return false;
+        }
         $this->image = $this->uploadFile();
         $this->type = static::TYPE_PRODUCTS;
-        return parent::insert($runValidation, $attributeNames);
+        return parent::insert(false, $attributeNames);
+    }
+
+    public function update($runValidation = true, $attributeNames = null)
+    {
+        if ($runValidation && !$this->validate($attributeNames)) {
+            Yii::info('Model not updated due to validation error.', __METHOD__);
+            return false;
+        }
+        $this->image = $this->uploadFile();
+        return parent::update(false, $attributeNames);
     }
 
     public function uploadFile()
     {
         /** @var UploadedFile imageFile */
-        $this->imageFile = UploadedFile::getInstances($this, 'imageFile');
-        echo $fileName = $this->createUploadFilePath(). $this->imageFile->extension;die;
+        $this->imageFile = current(UploadedFile::getInstances($this, 'imageFile'));
+        $fileName = $this->createUploadFilePath().uniqid('img_').'.'. $this->imageFile->extension;
 
         if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
             return $fileName;
         }
+        return '';
     }
 
     public function createUploadFilePath()
     {
-        return '/upload/'.uniqid().'/';
+        $rootPath = \Yii::getAlias('@webroot');
+        $path = '/upload/products-img/';
+        if(!is_dir($rootPath.$path)){
+            FileHelper::createDirectory($rootPath.$path);
+        }
+        return $path;
     }
     /**
      * @inheritdoc
