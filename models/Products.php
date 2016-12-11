@@ -12,6 +12,7 @@ namespace app\models;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use Yii;
+use yii\db\ActiveQuery;
 
 class Products extends Content
 {
@@ -94,6 +95,14 @@ class Products extends Content
     }
     /**
      * @inheritdoc
+     * @return \yii\db\ActiveQuery the newly created [[ActiveQuery]] instance.
+     */
+    public static function find()
+    {
+        return Yii::createObject(ProductQuery::className(), [get_called_class()]);
+    }
+    /**
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -109,5 +118,36 @@ class Products extends Content
             'statusText' => '状态',
             'create_at'=>'创建时间'
         ];
+    }
+}
+
+class ProductQuery extends ActiveQuery
+{
+    public function init()
+    {
+        $this->andWhere(['type'=>Content::TYPE_PRODUCTS]);
+        return $this;
+    }
+    /**
+     * Sets the WHERE part of the query.
+     *
+     * The method requires a `$condition` parameter, and optionally a `$params` parameter
+     * specifying the values to be bound to the query.
+     *
+     * The `$condition` parameter should be either a string (e.g. `'id=1'`) or an array.
+     *
+     * @inheritdoc
+     *
+     * @param string|array|Expression $condition the conditions that should be put in the WHERE part.
+     * @param array $params the parameters (name => value) to be bound to the query.
+     * @return $this the query object itself
+     * @see andWhere()
+     * @see orWhere()
+     * @see QueryInterface::where()
+     */
+    public function where($condition, $params = [])
+    {
+        parent::andWhere($condition, $params);
+        return $this;
     }
 }
