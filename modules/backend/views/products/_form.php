@@ -14,7 +14,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'imageFile')->fileInput()?>
     <?php if($model->image):?>
-    <div><image src="<?=$model->image?>" class="img-responsive img-thumbnail" style="max-height: 200px;" alt="Responsive image"/></div>
+        <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
+        <div><image src="<?=$model->image?>" class="img-responsive img-thumbnail" style="max-height: 200px;" alt="Responsive image"/></div>
     <?php endif?>
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
     <div class="row">

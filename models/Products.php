@@ -56,22 +56,32 @@ class Products extends Content
      */
     public function insert($runValidation = true, $attributeNames = null)
     {
+        $this->type = static::TYPE_PRODUCTS;
         if ($runValidation && !$this->validate($attributeNames)) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
+            Yii::info('Model not inserted due to validation error.', __METHOD__);
             return false;
         }
-        $this->image = $this->uploadFile();
-        $this->type = static::TYPE_PRODUCTS;
+        $file = $this->uploadFile();
+        if($file){
+            $this->image = $file;
+        }
         return parent::insert(false, $attributeNames);
     }
-
+    /**
+     * @param bool $runValidation
+     * @param null $attributeNames
+     * @return bool
+     */
     public function update($runValidation = true, $attributeNames = null)
     {
         if ($runValidation && !$this->validate($attributeNames)) {
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $this->image = $this->uploadFile();
+        $file = $this->uploadFile();
+        if($file){
+            $this->image = $file;
+        }
         return parent::update(false, $attributeNames);
     }
 
@@ -79,6 +89,9 @@ class Products extends Content
     {
         /** @var UploadedFile imageFile */
         $this->imageFile = current(UploadedFile::getInstances($this, 'imageFile'));
+        if(empty($this->imageFile)){
+            return '';
+        }
         $fileName = $this->createUploadFilePath().uniqid('img_').'.'. $this->imageFile->extension;
 
         if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
