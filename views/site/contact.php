@@ -13,12 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS])?>
             <?=\app\widgets\LastNews::widget()?>
             <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us'])?>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-9">
             <h1><?= Html::encode($this->title) ?></h1>
 
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
