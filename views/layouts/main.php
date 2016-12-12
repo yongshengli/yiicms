@@ -51,7 +51,7 @@ AppAsset::register($this);
         'brandLabel' => '首页',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-blue bs-docs-nav',
+            'class' => 'navbar-inverse navbar-blue',
         ],
     ]);
     echo Nav::widget([
