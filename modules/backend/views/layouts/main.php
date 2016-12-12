@@ -4,7 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
+use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
@@ -36,11 +36,41 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => '产品管理', 'url' => ['/backend/products/index']],
-            ['label' => '新闻管理', 'url' => ['/backend/news/index']],
-            ['label' => '用户反馈', 'url' => ['/backend/feedback/index']],
-            ['label' => '网站配置', 'url' => ['/backend/config/index']],
-            ['label' => '管理员管理', 'url' => ['/backend/admin-user/index']],
+            ['label' => '产品管理', 'url' => ['/backend/products/index'],
+                'active' => function () {
+                    if(Yii::$app->controller->id=='products'){
+                        return true;
+                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_PRODUCTS){
+                        return true;
+                    }
+                    return false;
+                }
+            ],
+            ['label' => '新闻管理', 'url' => ['/backend/news/index'],
+                'active' => function () {
+                    if(Yii::$app->controller->id=='news'){
+                        return true;
+                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_NEWS){
+                        return true;
+                    }
+                    return false;
+                }
+            ],
+            ['label' => '用户反馈', 'url' => ['/backend/feedback/index'],
+                'active' => function () {
+                    return Yii::$app->controller->id=='feedback';
+                }
+            ],
+            ['label' => '网站配置', 'url' => ['/backend/config/index'],
+                'active' => function () {
+                    return Yii::$app->controller->id=='config';
+                }
+            ],
+            ['label' => '管理员管理', 'url' => ['/backend/admin-user/index'],
+                'active' => function () {
+                    return Yii::$app->controller->id=='admin-user';
+                }
+            ],
         ],
     ]);
     echo Nav::widget([
