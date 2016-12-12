@@ -28,7 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="<?=$model->image?>" alt="<?=$model->title?>" class="img-thumbnail" style="height: 280px">
+                        <div class="img-thumbnail" style="height: 290px;width:100%; text-align: center;vertical-align: middle;">
+                            <img src="<?=$model->image?>" alt="<?=$model->title?>" style="max-width:100%;max-height: 280px;">
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div><?=$model->title?></div>
