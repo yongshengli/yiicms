@@ -15,6 +15,12 @@ use yii\bootstrap\Html;
 $this->title = '产品';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+    .image-box{
+        height: 210px;width:100%; text-align: center;vertical-align: middle;
+    }
+    .image{max-width:100%;max-height:200px;vertical-align:middle}
+</style>
 <div class="site-index">
     <div class="body-content">
         <div class="row">

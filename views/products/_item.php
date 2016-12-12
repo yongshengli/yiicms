@@ -6,21 +6,25 @@
  * Time: 21:43
  * Email:liyongsheng@meicai.cn
  */
+/** @var $model app\models\Products */
 use yii\helpers\Url;
+use app\helpers\StringHelper;
 ?>
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-        <div>
-        <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>">
-            <img data-src="holder.js/300x300" alt="<?=$model->title?>" src="<?=$model->image?>" style="width:242px;height:200px">
-        </a>
+        <div class="image-box">
+            <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>">
+                <img alt="<?=$model->title?>" src="<?=$model->image?>" class="image">
+            </a>
         </div>
         <div class="caption">
             <h5>
-                <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>"><?=$model->title?></a>
+                <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>" title="<?=$model->title?>">
+                    <?=StringHelper::truncateUtf8String($model->title, 13, false)?>
+                </a>
             </h5>
-            <div>
-                <p><?=$model->description?></p>
+            <div style="height: 40px;overflow: hidden;">
+                <?=$model->description?>
             </div>
         </div>
     </div>
