@@ -46,14 +46,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
 
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
 
                         <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                        <?= $form->field($model, 'email') ?>
-
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                            </div>
+                            <div class="col-sm-6">
+                                <?= $form->field($model, 'email') ?>
+                            </div>
+                        </div>
                         <?= $form->field($model, 'subject') ?>
 
                         <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
