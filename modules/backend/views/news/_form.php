@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
-    <?= $form->field($model->detail, 'detail')->textarea(['rows'=>15]) ?>
+    <?= $form->field($model->detail, 'detail')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

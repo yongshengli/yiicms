@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'value')->textarea(['maxlength' => true,'rows'=>20]) ?>
+    <?= $form->field($model, 'value')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '提交' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

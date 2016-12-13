@@ -88,7 +88,7 @@ class Products extends Content
     public function createUploadFilePath()
     {
         $rootPath = \Yii::getAlias('@webroot');
-        $path = '/upload/products-img/';
+        $path = '/uploads/products-img/';
         if(!is_dir($rootPath.$path)){
             FileHelper::createDirectory($rootPath.$path);
         }

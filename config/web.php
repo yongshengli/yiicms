@@ -61,6 +61,12 @@ $config = [
             'class' => 'app\modules\backend\Module',
             // ... 模块其他配置 ...
         ],
+        'redactor' => [
+            'class' => 'yii\redactor\RedactorModule',
+            'uploadDir' => '@webroot/uploads/to/redactor',
+            'uploadUrl' => '@web/uploads/redactor',
+            'imageAllowExtensions' => ['jpg', 'png', 'gif','jpeg']
+        ]
     ],
 ];
 
