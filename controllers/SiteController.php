@@ -7,6 +7,7 @@ use yii\web\Controller;
 use app\models\Feedback;
 use app\models\Config;
 use yii\data\ActiveDataProvider;
+use app\models\Products;
 
 class SiteController extends Controller
 {
@@ -33,7 +34,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Products::find()->where(['status'=>Products::STATUS_ENABLE]);
+        // add conditions that should always apply here
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
+        ]);
+
+        return $this->render('index', [
+            'searchModel' => new Products(),
+            'dataProvider' => $dataProvider
+        ]);
     }
 
     /**
