@@ -2,12 +2,19 @@
 
 /* @var $this yii\web\View */
 /* @var $dataProvider \yii\data\ActiveDataProvider*/
-
+/* @var $adList array*/
 $this->title = 'My Yii Application';
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
 use yii\bootstrap\Carousel;
+$carouselItems = [];
+foreach($adList as $item){
+    $carouselItems[]=[
+        'content'=>'<img src="'.$item['image'].'" style="width:100%;max-height:300px"/>',
+        'caption'=>'<h4>'.$item['title'].'</h4>',
+    ];
+}
 ?>
 <style>
     .image-box{
@@ -18,13 +25,8 @@ use yii\bootstrap\Carousel;
 <div class="site-index">
     <div class="body-content" style="margin-bottom: 20px">
         <?= Carousel::widget([
-            'items' => [
-                [
-                    'content' => '<img src="http://twitter.github.io/bootstrap/assets/img/bootstrap-mdo-sfmoma-03.jpg"/>',
-                    'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
-                    'options' => [],
-                ],
-            ]
+            'options'=>['style'=>'height:300px;line-height:300px'],
+            'items' => $carouselItems
         ])?>
     </div>
     <div class="body-content">

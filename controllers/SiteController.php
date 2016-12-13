@@ -8,6 +8,7 @@ use app\models\Feedback;
 use app\models\Config;
 use yii\data\ActiveDataProvider;
 use app\models\Products;
+use app\models\Ad;
 
 class SiteController extends Controller
 {
@@ -34,6 +35,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $asList = Ad::find()->asArray()->all();
         $query = Products::find()->where(['status'=>Products::STATUS_ENABLE]);
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -43,7 +45,8 @@ class SiteController extends Controller
 
         return $this->render('index', [
             'searchModel' => new Products(),
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'adList'=>$asList
         ]);
     }
 
