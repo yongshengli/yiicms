@@ -67,6 +67,11 @@ AppAsset::register($this);
                     return Yii::$app->controller->id=='config';
                 }
             ],
+            ['label' => '轮播图管理', 'url' => ['/backend/ad/index'],
+                'active' => function () {
+                    return Yii::$app->controller->id=='ad';
+                }
+            ],
             ['label' => '管理员管理', 'url' => ['/backend/admin-user/index'],
                 'active' => function () {
                     return Yii::$app->controller->id=='admin-user';
