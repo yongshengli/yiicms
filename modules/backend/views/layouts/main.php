@@ -8,6 +8,7 @@ use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\bootstrap\Alert;
 
 AppAsset::register($this);
 ?>
@@ -106,11 +107,7 @@ AppAsset::register($this);
         ]) ?>
 
         <?php if(isset($this->params['showMessage'])):foreach($this->params['showMessage'] as $item):?>
-        <div class="alert alert-<?=$item['type']?>" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <?=$item['message']?>
-        </div>
-
+            <?=Alert::widget(['body'=>$item['message'],'options'=>['class'=>'alert alert-'.$item['type']]])?>
         <?php endforeach;endif;?>
         <?= $content ?>
     </div>
