@@ -78,7 +78,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             [
-                'label'=>Yii::$app->user->identity->username,
+                'label'=>isset(Yii::$app->user->identity->username)?Yii::$app->user->identity->username:'',
                 'items' => [
                     ['label' => '修改密码', 'url' => ['/backend/default/edit-password']],
                     '<li><a>'
