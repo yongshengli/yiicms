@@ -12,7 +12,7 @@ $carouselItems = [];
 foreach($adList as $item){
     $carouselItems[]=[
         'content'=>'<img src="'.$item['image'].'" style="width:100%;max-height:300px"/>',
-        'caption'=>'<h4>'.$item['title'].'</h4>',
+//        'caption'=>'<h4>'.$item['title'].'</h4>',
     ];
 }
 ?>
@@ -25,7 +25,7 @@ foreach($adList as $item){
 <div class="site-index">
     <div class="body-content" style="margin-bottom: 20px">
         <?= Carousel::widget([
-            'options'=>['style'=>'height:300px;line-height:300px'],
+            'options'=>['class'=>'carousel slide','style'=>'height:300px;'],
             'items' => $carouselItems
         ])?>
     </div>
