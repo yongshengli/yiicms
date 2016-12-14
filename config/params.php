@@ -2,5 +2,5 @@
 
 return [
     'adminEmail' => '739800600@qq.com',
-    'pageSize' =>10,
+    'pageSize' =>20,
 ];

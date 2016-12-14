@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Content;
 use Yii;
 use yii\web\Controller;
 use app\models\Feedback;
@@ -87,8 +88,22 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionProducts()
+    public function actionSearch()
     {
-        return $this->render('products');
+        $keyword = Yii::$app->request->get('keyword');
+
+        $query = Content::find()
+            ->andFilterWhere(['like', 'title', $keyword])
+            ->andFilterWhere(['status'=>Content::STATUS_ENABLE]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
+        ]);
+        $this->view->params['keyword'] = $keyword;
+        return $this->render('search', [
+            'searchModel' => new Content(),
+            'dataProvider' => $dataProvider
+        ]);
     }
 }

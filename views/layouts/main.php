@@ -9,7 +9,7 @@ use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
+use yii\widgets\ActiveForm;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -37,12 +37,14 @@ AppAsset::register($this);
             <div class="col-lg-3"></div>
             <div class="col-lg-2"></div>
             <div class="col-lg-4">
+                <?php $form = ActiveForm::begin(['method'=>'get', 'action'=>['site/search']]); ?>
                 <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" placeholder="输入关键字搜索" name="keyword">
+                    <input type="text" class="form-control" value="<?=isset($this->params['keyword'])?$this->params['keyword']:''?>" placeholder="输入关键字搜索" name="keyword">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">搜索</button>
+                        <button type="submit" class="btn btn-primary">搜索</button>
                     </span>
                 </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
