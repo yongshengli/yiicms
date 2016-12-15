@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'adminEmail' => '739800600@qq.com',
+    'appName'=>'YiiCms企业管理系统',
+//    'adminEmail' => '739800600@qq.com',
     'pageSize' =>20,
     'logo'=>'@web/images/logo.png',
     'nav'=>[

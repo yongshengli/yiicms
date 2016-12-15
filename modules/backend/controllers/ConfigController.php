@@ -2,6 +2,7 @@
 
 namespace app\modules\backend\controllers;
 
+use app\models\BaseConfig;
 use Yii;
 use app\models\Config;
 use app\modules\backend\models\ConfigForm;
@@ -107,6 +108,18 @@ class ConfigController extends BackendController
         return $this->showMessage('删除失败');
     }
 
+    /**
+     * 基础配置
+     */
+    public function actionBaseConfig()
+    {
+        $model = new BaseConfig();
+//        echo $model->getNav();
+//        $configs = $model->getAttributes();
+        return $this->render('base-config',[
+            'model'=>$model
+        ]);
+    }
     /**
      * Finds the Config model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -83,4 +83,7 @@ if (YII_ENV_DEV) {
     ];
 }
 
+if(isset($params['appName'])){
+    $config['name'] = $params['appName'];
+}
 return $config;
