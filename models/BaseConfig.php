@@ -44,14 +44,11 @@ class BaseConfig extends Model
     }
     public function getNav()
     {
-        return print_r($this->_config['nav'],true);
+        return var_export($this->_config['nav'],true);
     }
 
     public function setNav($value)
     {
-        if(is_string($value)){
-            $value = var_export($value, true);
-        }
         $this->_config['nav'] = $value;
     }
     public function attributes()

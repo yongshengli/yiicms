@@ -30,8 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'pageSize')->textInput() ?>
+        
         <?= $form->field($model, 'nav')->textarea() ?>
-        <?=$model->getNav()?>
+
         <div class="form-group">
             <?= Html::submitButton('提交', ['class'=>'btn btn-primary']) ?>
         </div>
