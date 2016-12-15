@@ -22,12 +22,31 @@ class BaseConfig extends Model
      */
     public function init(){
         $configs = Yii::$app->params;
-//        print_r($configs);
         if(!empty($configs)){
             $this->setAttributes($configs, false);
         }
     }
+    public function save()
+    {
+        $phpCode  = "<?php \n return ".var_export($this->_config,true).";\n";
+        return file_put_contents(Yii::getAlias('@app/config/params.php'),$phpCode);
+    }
 
+    public function load($data, $formName = null)
+    {
+        $scope = $formName === null ? $this->formName() : $formName;
+        if ($scope === '' && !empty($data)) {
+            $this->setAttributes($data, false);
+
+            return true;
+        } elseif (isset($data[$scope])) {
+            $this->setAttributes($data[$scope], false);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * 属性label
      * @return array
@@ -44,12 +63,16 @@ class BaseConfig extends Model
     }
     public function getNav()
     {
-        return var_export($this->_config['nav'],true);
+        return json_encode($this->_config['nav'], JSON_UNESCAPED_UNICODE);
     }
 
     public function setNav($value)
     {
+        if(is_string($value)){
+            $value = json_decode($value, true);
+        }
         $this->_config['nav'] = $value;
+        return;
     }
     public function attributes()
     {
@@ -60,12 +83,14 @@ class BaseConfig extends Model
 
     public function __get($name){
         try{
-            parent::__get($name);
+            $value = parent::__get($name);
+            return $value;
         }catch (UnknownPropertyException $e){
             if(isset($this->_config[$name])){
                 return $this->_config[$name];
+            }else {
+                throw $e;
             }
-            throw $e;
         }
     }
 

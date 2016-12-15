@@ -114,8 +114,9 @@ class ConfigController extends BackendController
     public function actionBaseConfig()
     {
         $model = new BaseConfig();
-//        echo $model->getNav();
-//        $configs = $model->getAttributes();
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            return $this->showMessage('操作成功', 'success');
+        }
         return $this->render('base-config',[
             'model'=>$model
         ]);
