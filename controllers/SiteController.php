@@ -91,8 +91,11 @@ class SiteController extends Controller
     public function actionSearch()
     {
         $keyword = Yii::$app->request->get('keyword');
-
+        if(empty($keyword)){
+//            $this->;
+        }
         $query = Content::find()
+            ->andFilterWhere(['in', 'type', [Content::TYPE_NEWS,Content::TYPE_PRODUCTS]])
             ->andFilterWhere(['like', 'title', $keyword])
             ->andFilterWhere(['status'=>Content::STATUS_ENABLE]);
 

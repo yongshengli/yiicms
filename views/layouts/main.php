@@ -33,7 +33,7 @@ AppAsset::register($this);
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png" style="max-width:200px;max-height: 80px"/></div>
+            <div class="col-lg-3"><img src="<?=Yii::getAlias(Yii::$app->params['logo'])?>" style="max-width:200px;max-height: 80px"/></div>
             <div class="col-lg-3"></div>
             <div class="col-lg-2"></div>
             <div class="col-lg-4">
@@ -80,7 +80,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">技术支持<a href="http://yiicms.co">YiiCms</a></p>
     </div>
 </footer>
 
