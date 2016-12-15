@@ -17,7 +17,6 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
         <div><image src="<?=$model->image?>" class="img-responsive img-thumbnail" style="max-height: 200px;" alt="Responsive image"/></div>
     <?php endif?>
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
     <div class="row">
         <div class="col-sm-6">
             <?= $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map($model->categorys,'id', 'name')) ?>
@@ -26,6 +25,8 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
+    <?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className()) ?>
+
     <?= $form->field($model->detail, 'detail')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
     <div class="form-group">
