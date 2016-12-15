@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider \yii\data\ActiveDataProvider*/
 /* @var $adList array*/
-$this->title = 'My Yii Application';
+$this->title = 'YiiCMS企业站管理系统';
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
