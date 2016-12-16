@@ -12,11 +12,23 @@ namespace app\models;
 
 use yii\base\Model;
 use Yii;
-use yii\base\UnknownPropertyException;
 
 class BaseConfig extends Model
 {
-    private $nav;
+    /**
+     * @var string 网站名称
+     */
+    public $appName;
+
+    public $logo;
+    public $keywords;
+    public $description;
+    /** @var int 每页显示元素个数 */
+    public $pageSize =20;
+    /**
+     * @var array 导航
+     */
+    private $_nav;
     /**
      * 初始化model
      */
@@ -28,24 +40,17 @@ class BaseConfig extends Model
     }
     public function save()
     {
-        $phpCode  = "<?php \n return ".var_export($this->_config,true).";\n";
+        $phpCode  = "<?php \n return ".var_export($this->getAttributes(),true).";\n";
         return file_put_contents(Yii::getAlias('@app/config/params.php'),$phpCode);
     }
-
-    public function load($data, $formName = null)
+    public function rules()
     {
-        $scope = $formName === null ? $this->formName() : $formName;
-        if ($scope === '' && !empty($data)) {
-            $this->setAttributes($data, false);
-
-            return true;
-        } elseif (isset($data[$scope])) {
-            $this->setAttributes($data[$scope], false);
-
-            return true;
-        } else {
-            return false;
-        }
+        return [
+            [['appName', 'logo', 'pageSize', 'nav'], 'required'],
+            [['appName'], 'string', 'max' => 100],
+            [['keywords'], 'string', 'max' => 300],
+            [['description'], 'string', 'max' => 500],
+        ];
     }
     /**
      * 属性label
@@ -55,6 +60,8 @@ class BaseConfig extends Model
     {
         return [
             'appName'=>'网站名称',
+            'keywords'=>'网站关键字',
+            'description'=>'网站描述',
             'adminEmail'=>'管理员邮箱',
             'pageSize'=>'每页显示元素数',
             'logo'=>'网站logo路径',
@@ -63,7 +70,7 @@ class BaseConfig extends Model
     }
     public function getNav()
     {
-        return json_encode($this->_config['nav'], JSON_UNESCAPED_UNICODE);
+        return json_encode($this->_nav, JSON_UNESCAPED_UNICODE);
     }
 
     public function setNav($value)
@@ -71,34 +78,11 @@ class BaseConfig extends Model
         if(is_string($value)){
             $value = json_decode($value, true);
         }
-        $this->_config['nav'] = $value;
+        $this->_nav = $value;
         return;
     }
     public function attributes()
     {
         return array_keys(Yii::$app->params);
-    }
-
-    private $_config = [];
-
-    public function __get($name){
-        try{
-            $value = parent::__get($name);
-            return $value;
-        }catch (UnknownPropertyException $e){
-            if(isset($this->_config[$name])){
-                return $this->_config[$name];
-            }else {
-                throw $e;
-            }
-        }
-    }
-
-    public function __set($name, $value){
-        try {
-            parent::__set($name, $value);
-        }catch(UnknownPropertyException $e){
-            $this->_config[$name] = $value;
-        }
     }
 }

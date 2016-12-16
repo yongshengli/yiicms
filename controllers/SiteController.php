@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\Content;
 use Yii;
-use yii\web\Controller;
+use app\components\AppController as Controller;
 use app\models\Feedback;
 use app\models\Config;
 use yii\data\ActiveDataProvider;

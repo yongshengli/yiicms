@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
 
+                <?= $form->field($model, 'keywords')->textarea() ?>
+                <?= $form->field($model, 'description')->textarea() ?>
                 <?= $form->field($model, 'pageSize')->textInput() ?>
 
                 <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>

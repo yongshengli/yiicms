@@ -11,7 +11,7 @@ namespace app\controllers;
 
 use yii\web\NotFoundHttpException;
 use app\models\Products;
-use yii\web\Controller;
+use app\components\AppController as Controller;
 use yii\data\ActiveDataProvider;
 use Yii;
 

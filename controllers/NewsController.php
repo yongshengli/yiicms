@@ -10,11 +10,11 @@
 namespace app\controllers;
 
 
-use yii\web\Controller;
 use app\models\News;
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\web\NotFoundHttpException;
+use app\components\AppController as Controller;
 
 class NewsController extends Controller
 {
