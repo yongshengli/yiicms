@@ -32,7 +32,7 @@ AppAsset::register($this);
             'brandLabel' => 'YiiCms',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar navbar-static-top navbar-'. ArrayHelper::getValue(Yii::$app->params, 'themeColor', 'blue'),
+                'class' => 'navbar navbar-inverse navbar-static-top navbar-'. ArrayHelper::getValue(Yii::$app->params, 'themeColor', 'blue'),
             ],
         ]);
         echo Nav::widget(json_decode(Yii::$app->params['nav'], true));

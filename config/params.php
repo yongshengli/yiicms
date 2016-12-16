@@ -48,5 +48,5 @@
         }
     ]
 }',
-  'themeColor' => 'red',
+  'themeColor' => 'blue',
 );
