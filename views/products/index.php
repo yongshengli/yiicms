@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
-                <div class="panel panel-default" style="margin-top: 20px">
+                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')?>" style="margin-top: 20px">
                     <div class="panel-heading">产品详情</div>
                 </div>
                 <div>
