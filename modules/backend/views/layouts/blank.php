@@ -4,7 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use dmstr\web\AdminLteAsset as AppAsset;
+use app\assets\AppAsset;
 
 AppAsset::register($this);
 ?>
@@ -18,7 +18,7 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body>
+    <body style="background-color: #aaadb1;color:#FFF">
     <?php $this->beginBody() ?>
 
     <div class="wrap">
@@ -26,15 +26,6 @@ AppAsset::register($this);
             <?= $content ?>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-            <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
-
     <?php $this->endBody() ?>
     </body>
     </html>
