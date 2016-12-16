@@ -2,10 +2,9 @@
 
 namespace app\modules\backend\controllers;
 
-use app\models\BaseConfig;
+use app\modules\backend\models\BaseConfig;
 use Yii;
 use app\models\Config;
-use app\modules\backend\models\ConfigForm;
 use app\modules\backend\models\ConfigSearch;
 use app\modules\backend\components\BackendController;
 use yii\web\NotFoundHttpException;

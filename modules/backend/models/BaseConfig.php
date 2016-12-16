@@ -7,7 +7,7 @@
  * Email:liyongsheng@meicai.cn
  */
 
-namespace app\models;
+namespace app\modules\backend\models;
 
 
 use yii\base\Model;
