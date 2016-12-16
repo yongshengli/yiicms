@@ -120,37 +120,168 @@ a.desc:after {
 }
 
 /* 自定义样式*/
+
+/** 蓝色主题0099FF*/
 .navbar-blue{
-    background-color: #377bb5;
+    background-color: #408eba;
     border: none;
 }
 .navbar-blue a {color:#FFF}
 .navbar {border-radius: 0;}
 .navbar-blue .nav > li > a:hover,
-.navbar-blue .nav > li > a:focus {background-color: #0099FF;}
+.navbar-blue .nav > li > a:focus {background-color: #3a80a7;}
 .navbar-blue .navbar-collapse,
 .navbar-blue .navbar-form{
-    border-color:#0099FF;
+    border-color:#3a80a7;
 }
 .navbar-blue .navbar-nav > .active > a,
 .navbar-blue .navbar-nav > .active > a:hover,
 .navbar-blue .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: #0099FF;
+    background-color: #3a80a7;
 }
 .navbar-blue .navbar-nav > li > a {
     color: #fff;
 }
 .navbar-blue .navbar-toggle {
-    border-color: #0099FF;
+    border-color: #3a80a7;
 }
 .navbar-blue .navbar-toggle:hover,
 .navbar-blue .navbar-toggle:focus {
-    background-color: #0099FF;
+    background-color: #3a80a7;
 }
 .navbar-blue .navbar-brand {
     color: #fff;
 }
+/* 红色主题*/
+.navbar-red{
+    background-color: #db4c3f;
+    border: none;
+}
+.navbar-red a {color:#FFF}
+.navbar {border-radius: 0;}
+.navbar-red .nav > li > a:hover,
+.navbar-red .nav > li > a:focus {background-color: #d53b2d;}
+.navbar-red .navbar-collapse,
+.navbar-red .navbar-form{
+    border-color:#d53b2d;
+}
+.navbar-red .navbar-nav > .active > a,
+.navbar-red .navbar-nav > .active > a:hover,
+.navbar-red .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #d53b2d;
+}
+.navbar-red .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-red .navbar-toggle {
+    border-color: #d53b2d;
+}
+.navbar-red .navbar-toggle:hover,
+.navbar-red .navbar-toggle:focus {
+    background-color: #d53b2d;
+}
+.navbar-red .navbar-brand {
+    color: #fff;
+}
+/* 黄色主题*/
+.navbar-yellow{
+    background-color: #f3ad59;
+    border: none;
+}
+.navbar-yellow a {color:#FFF}
+.navbar {border-radius: 0;}
+.navbar-yellow .nav > li > a:hover,
+.navbar-yellow .nav > li > a:focus {background-color: #e78d2d;}
+.navbar-yellow .navbar-collapse,
+.navbar-yellow .navbar-form{
+    border-color:#e78d2d;
+}
+.navbar-yellow .navbar-nav > .active > a,
+.navbar-yellow .navbar-nav > .active > a:hover,
+.navbar-yellow .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #e78d2d;
+}
+.navbar-yellow .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-yellow .navbar-toggle {
+    border-color: #e78d2d;
+}
+.navbar-yellow .navbar-toggle:hover,
+.navbar-yellow .navbar-toggle:focus {
+    background-color: #e78d2d;
+}
+.navbar-yellow .navbar-brand {
+    color: #fff;
+}
+/* 绿色主题*/
+.navbar-green{
+    background-color: #18a55d;
+    border: none;
+}
+.navbar-green a {color:#FFF}
+.navbar {border-radius: 0;}
+.navbar-green .nav > li > a:hover,
+.navbar-green .nav > li > a:focus {background-color: #128c4e;}
+.navbar-green .navbar-collapse,
+.navbar-green .navbar-form{
+    border-color:#128c4e;
+}
+.navbar-green .navbar-nav > .active > a,
+.navbar-green .navbar-nav > .active > a:hover,
+.navbar-green .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #128c4e;
+}
+.navbar-green .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-green .navbar-toggle {
+    border-color: #128c4e;
+}
+.navbar-green .navbar-toggle:hover,
+.navbar-green .navbar-toggle:focus {
+    background-color: #128c4e;
+}
+.navbar-green .navbar-brand {
+    color: #fff;
+}
+/* 紫色主题*/
+.navbar-purple{
+    background-color: #605ea6;
+    border: none;
+}
+.navbar-purple a {color:#FFF}
+.navbar {border-radius: 0;}
+.navbar-purple .nav > li > a:hover,
+.navbar-purple .nav > li > a:focus {background-color: #555497;}
+.navbar-purple .navbar-collapse,
+.navbar-purple .navbar-form{
+    border-color:#555497;
+}
+.navbar-purple .navbar-nav > .active > a,
+.navbar-purple .navbar-nav > .active > a:hover,
+.navbar-purple .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #555497;
+}
+.navbar-purple .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-purple .navbar-toggle {
+    border-color: #555497;
+}
+.navbar-purple .navbar-toggle:hover,
+.navbar-purple .navbar-toggle:focus {
+    background-color: #555497;
+}
+.navbar-purple .navbar-brand {
+    color: #fff;
+}
+/** 其他样式*/
 .table-simple{
     width:100%
 }
@@ -280,3 +411,8 @@ a.desc:after {
         width: 263px
     }
 }
+.panel-yellow{border-top: 3px solid #f19b2c;}
+.panel-blue{border-top: 3px solid #408eba;}
+.panel-red{border-top: 3px solid #db4c3f;}
+.panel-green{border-top: 3px solid #18a55d;}
+.panel-purple{border-top: 3px solid #605ea6;}

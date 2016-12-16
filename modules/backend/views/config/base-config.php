@@ -36,6 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
 
+                <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
+
                 <div class="form-group">
                     <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
                 </div>
