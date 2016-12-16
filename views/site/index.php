@@ -25,7 +25,7 @@ foreach($adList as $item){
 <div class="site-index">
     <div class="body-content" style="margin-bottom: 20px">
         <?= Carousel::widget([
-            'options'=>['class'=>'carousel slide','style'=>'height:300px;'],
+            'options'=>['class'=>'carousel slide'],
             'items' => $carouselItems
         ])?>
     </div>

@@ -37,7 +37,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $asList = Ad::find()->asArray()->all();
-        $query = Products::find()->where(['status'=>Products::STATUS_ENABLE]);
+        $query = Products::find()->where(['status'=>Products::STATUS_ENABLE])->limit(12);
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
