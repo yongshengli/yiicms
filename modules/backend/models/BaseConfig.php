@@ -31,7 +31,7 @@ class BaseConfig extends Model
     public $nav;
 
     /** @var string  */
-    public $themeColor = 'purple';
+    public $themeColor = 'blue';
 
     /**
      * 初始化model
