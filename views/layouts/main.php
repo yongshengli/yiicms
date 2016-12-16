@@ -56,7 +56,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-blue',
         ],
     ]);
-    echo Nav::widget(Yii::$app->params['nav']);
+    echo Nav::widget(json_decode(Yii::$app->params['nav'], true));
     NavBar::end();
     ?>
     <div class="container">

@@ -26,9 +26,9 @@ class BaseConfig extends Model
     /** @var int 每页显示元素个数 */
     public $pageSize =20;
     /**
-     * @var array 导航
+     * @var string json 导航
      */
-    private $_nav;
+    public $nav;
     /**
      * 初始化model
      */
@@ -67,19 +67,6 @@ class BaseConfig extends Model
             'logo'=>'网站logo路径',
             'nav'=>'导航内容',
         ];
-    }
-    public function getNav()
-    {
-        return json_encode($this->_nav, JSON_UNESCAPED_UNICODE);
-    }
-
-    public function setNav($value)
-    {
-        if(is_string($value)){
-            $value = json_decode($value, true);
-        }
-        $this->_nav = $value;
-        return;
     }
     public function attributes()
     {
