@@ -3,6 +3,8 @@ return array(
     'appName' => 'YiiCms企业管理系统',
     'pageSize' => '20',
     'logo' => '@web/images/logo.png',
+    'keyword'=>'',
+    'description'=>'',
     'nav' =>
         array(
             'options' =>
