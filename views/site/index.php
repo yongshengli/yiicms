@@ -11,7 +11,7 @@ use yii\bootstrap\Carousel;
 $carouselItems = [];
 foreach($adList as $item){
     $carouselItems[]=[
-        'content'=>'<img src="'.$item['image'].'" style="width:100%;max-height:300px"/>',
+        'content'=>'<a href="'.$item['link'].'" target="_black"><img src="'.$item['image'].'" style="width:100%;max-height:300px"/></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
     ];
 }
