@@ -36,18 +36,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $asList = Ad::find()->asArray()->all();
-        $query = Products::find()->where(['status'=>Products::STATUS_ENABLE])->limit(12);
-        // add conditions that should always apply here
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
-        ]);
+        $products = Products::find()->where(['status'=>Products::STATUS_ENABLE])->limit(4)->all();
 
         return $this->render('index', [
-            'searchModel' => new Products(),
-            'dataProvider' => $dataProvider,
-            'adList'=>$asList
+            'products' => $products,
         ]);
     }
 

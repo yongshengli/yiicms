@@ -4,15 +4,25 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-//use yii\bootstrap\Nav;
 use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use yii\bootstrap\Carousel;
 
 AppAsset::register($this);
+if (isset($this->params['adList'])) {
+    foreach ($this->params['adList'] as $item) {
+        $carouselItems[] = [
+            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%;max-height:300px"/></a>',
+//        'caption'=>'<h4>'.$item['title'].'</h4>',
+        ];
+    }
+}else{
+    $carouselItems = [];
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -47,6 +57,12 @@ AppAsset::register($this);
         </div>
         <?php ActiveForm::end(); ?>
         <?php NavBar::end(); ?>
+    </div>
+    <div class="body-content" style="margin-bottom: 20px;margin-top: -20px">
+        <?= Carousel::widget([
+            'options'=>['class'=>'carousel slide'],
+            'items' => $carouselItems
+        ])?>
     </div>
     <div class="container">
         <?= Breadcrumbs::widget([

@@ -12,6 +12,7 @@ namespace app\components;
 
 use yii\web\Controller;
 use Yii;
+use app\models\Ad;
 
 class AppController extends Controller
 {
@@ -23,5 +24,6 @@ class AppController extends Controller
         if(isset(Yii::$app->params['description'])){
             $this->view->registerMetaTag(['name'=>'description', 'content'=>Yii::$app->params['description']]);
         }
+        $this->view->params['adList'] = Ad::find()->asArray()->all();
     }
 }

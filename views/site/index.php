@@ -8,13 +8,9 @@ use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
 use yii\bootstrap\Carousel;
+use yii\helpers\Url;
+use app\helpers\StringHelper;
 $carouselItems = [];
-foreach($adList as $item){
-    $carouselItems[]=[
-        'content'=>'<a href="'.$item['link'].'" target="_black"><img src="'.$item['image'].'" style="width:100%;max-height:300px"/></a>',
-//        'caption'=>'<h4>'.$item['title'].'</h4>',
-    ];
-}
 ?>
 <style>
     .image-box{
@@ -23,37 +19,52 @@ foreach($adList as $item){
     .image{max-width:100%;max-height:200px;vertical-align:middle}
 </style>
 <div class="site-index">
-    <div class="body-content" style="margin-bottom: 20px">
-        <?= Carousel::widget([
-            'options'=>['class'=>'carousel slide'],
-            'items' => $carouselItems
-        ])?>
-    </div>
-    <div class="body-content">
+    <div class="container">
+        <h4>关于我们</h4>
         <div class="row">
-            <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
-                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
-                ])?>
-                <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
-                ])?>
-                <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us',
-                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
-                ])?>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <h4>产品展示</h4>
+        <div class="row">
+            <?php if(!empty($products)):foreach($products as $model):?>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <div class="image-box">
+                            <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>">
+                                <img alt="<?=$model->title?>" src="<?=$model->image?>" class="image">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5>
+                                <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>" title="<?=$model->title?>">
+                                    <?=StringHelper::truncateUtf8String($model->title, 13, false)?>
+                                </a>
+                            </h5>
+                            <div style="height: 40px;overflow: hidden;">
+                                <?=$model->description?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach;endif;?>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <?= \app\widgets\LastNews::widget([
+                    'showDate'=>true,
+                    'options' => ['class' => 'panel panel-default panel-' . \yii\helpers\ArrayHelper::getValue(Yii::$app->params, 'themeColor')]
+                ]) ?>
             </div>
-            <div class="col-lg-9">
-                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')?>">
-                    <div class="panel-heading">产品</div>
-                </div>
-                <div>
-                    <?= ListView::widget([
-                        'dataProvider' => $dataProvider,
-                        'layout' => "{items}\n{pager}",
-                        'itemView'=>'@app/views/products/_item'
-                    ]); ?>
-                </div>
+            <div class="col-lg-4">
+                <?= \app\widgets\ConfigPanel::widget(['configName' => 'contact_us',
+                    'options' => ['class' => 'panel panel-default panel-' . \yii\helpers\ArrayHelper::getValue(Yii::$app->params, 'themeColor')]
+                ]) ?>
             </div>
         </div>
-
     </div>
 </div>
