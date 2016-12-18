@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')?>">
-                    <div class="panel-heading"><?=$model->title?></div>
+                    <div class="panel-heading"><h3 class="panel-title"><?=$model->title?></h3></div>
                 </div>
-                <div>
+                <div class="row">
                     <?=$model->detail->detail?>
                 </div>
             </div>

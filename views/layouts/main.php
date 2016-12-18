@@ -58,7 +58,7 @@ if (isset($this->params['adList'])) {
         <?php ActiveForm::end(); ?>
         <?php NavBar::end(); ?>
     </div>
-    <div class="body-content" style="margin-bottom: 20px;margin-top: -20px">
+    <div class="container">
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide'],
             'items' => $carouselItems
