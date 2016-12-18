@@ -42,7 +42,7 @@ class NewsController extends Controller
      */
     public function actionList()
     {
-        $query = News::find()->where(['status'=>News::STATUS_ENABLE]);
+        $query = News::find()->where(['status'=>News::STATUS_ENABLE])->orderBy('id desc');
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

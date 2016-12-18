@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="content-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
@@ -15,7 +14,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'imageFile')->fileInput()?>
     <?php if($model->image):?>
         <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
-        <div><image src="<?=$model->image?>" class="img-responsive img-thumbnail" style="max-height: 200px;" alt="Responsive image"/></div>
+        <div style="position: relative;">
+            <image src="<?= $model->image ?>" class="img-responsive img-thumbnail"
+                   style="max-height: 200px;" alt="Responsive image" />
+            <div id="source-button"><a onclick="removeImage(this)onclick="removeImage(this)"><span class="glyphicon glyphicon-trash"></span></a></div>
+        </div>
     <?php endif?>
     <div class="row">
         <div class="col-sm-6">
@@ -36,3 +39,11 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<script>
+    function removeImage(){
+        if(window.confirm('确认要删除图片吗？')) {
+            $(this).parent().parent().empty();
+            $('#products-image').val('');
+        }
+    }
+</script>

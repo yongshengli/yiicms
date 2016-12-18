@@ -411,6 +411,14 @@ a.desc:after {
         width: 263px
     }
 }
+#source-button {
+    position: absolute;
+    top: 0;
+    /*right: 0;*/
+    z-index: 100;
+    font-weight: 700;
+    display: block;
+}
 .panel-yellow{border-top: 3px solid #f19b2c;}
 .panel-blue{border-top: 3px solid #408eba;}
 .panel-red{border-top: 3px solid #db4c3f;}
