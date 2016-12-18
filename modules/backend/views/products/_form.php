@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
         <div style="position: relative;">
             <image src="<?= $model->image ?>" class="img-responsive img-thumbnail"
                    style="max-height: 200px;" alt="Responsive image" />
-            <div id="source-button"><a onclick="removeImage(this)onclick="removeImage(this)"><span class="glyphicon glyphicon-trash"></span></a></div>
+            <div id="source-button"><a onclick="removeImage(this)"><span class="glyphicon glyphicon-trash"></span></a></div>
         </div>
     <?php endif?>
     <div class="row">
@@ -40,10 +40,10 @@ use yii\widgets\ActiveForm;
 
 </div>
 <script>
-    function removeImage(){
+    function removeImage(obj){
         if(window.confirm('确认要删除图片吗？')) {
-            $(this).parent().parent().empty();
             $('#products-image').val('');
+            $(obj).parent().parent().remove();
         }
     }
 </script>
