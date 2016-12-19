@@ -62,6 +62,7 @@ class NewsSearch extends News
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
             'pagination' => ['pageSize'=>self::PAGE_SIZE]
         ]);
 

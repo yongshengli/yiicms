@@ -46,6 +46,7 @@ class NewsController extends Controller
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
             'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
         ]);
 
