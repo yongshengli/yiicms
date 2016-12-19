@@ -13,12 +13,20 @@ use app\components\AppActiveRecord;
  */
 class ContentDetail extends AppActiveRecord
 {
+    const SCENARIO_DOWNLOAD = 'download';
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
         return 'content_detail';
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios [self::SCENARIO_DOWNLOAD] = ['file_url'];
+        return $scenarios;
     }
     /**
      * @inheritdoc
@@ -27,6 +35,7 @@ class ContentDetail extends AppActiveRecord
     {
         return [
             [['content_id', 'detail'], 'required'],
+            [['file_url'], 'required', 'on'=>self::SCENARIO_DOWNLOAD],
         ];
     }
     /**
@@ -38,6 +47,7 @@ class ContentDetail extends AppActiveRecord
             'id' => 'ID',
             'content_id'=>'主表ID不能为空',
             'detail' => '内容',
+            'file_url' => '文件路径',
         ];
     }
 }

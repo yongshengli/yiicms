@@ -7,7 +7,6 @@ use yii\helpers\Html;
 
 $this->title = '修改轮播图: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => '轮播图管理', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = '修改';
 ?>
 <div class="ad-update">

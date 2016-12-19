@@ -57,6 +57,16 @@ BackendAsset::register($this);
                     return false;
                 }
             ],
+            ['label' => '下载管理', 'url' => ['/backend/downloads/index'],
+                'active' => function () {
+                    if(Yii::$app->controller->id=='downloads'){
+                        return true;
+                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_DOWNLOADS){
+                        return true;
+                    }
+                    return false;
+                }
+            ],
             ['label' => '用户反馈', 'url' => ['/backend/feedback/index'],
                 'active' => function () {
                     return Yii::$app->controller->id=='feedback';

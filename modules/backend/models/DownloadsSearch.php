@@ -1,16 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: david
+ * Date: 2016/12/19
+ * Time: 21:17
+ * Email:liyongsheng@meicai.cn
+ */
 
 namespace app\modules\backend\models;
 
-use app\models\Products;
+
+use app\models\Downloads;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-/**
- * ContentSearch represents the model behind the search form about `app\models\Content`.
- */
-class ProductsSearch extends Products
+class DownloadsSearch extends Downloads
 {
     /**
      * @inheritdoc
@@ -56,7 +61,7 @@ class ProductsSearch extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
+        $query = Downloads::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -75,7 +80,7 @@ class ProductsSearch extends Products
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => Products::TYPE_PRODUCTS,
+            'type' => Downloads::TYPE_DOWNLOADS,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
             'update_at' => $this->update_at,

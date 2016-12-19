@@ -11,6 +11,6 @@ return [
         // list of component configurations
     ],
     'params' => [
-        // list of parameters
+        'pageSize' => '20',
     ],
 ];

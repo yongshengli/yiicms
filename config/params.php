@@ -35,6 +35,15 @@
             ]
         },
         {
+            "label": "下载",
+            "url": [
+                "/downloads/list"
+            ],
+            "activeUrls": [
+                "/downloads/index"
+            ]
+        },
+        {
             "label": "关于我们",
             "url": [
                 "/site/about"

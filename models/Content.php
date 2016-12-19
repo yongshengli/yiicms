@@ -24,13 +24,13 @@ class Content extends AppActiveRecord
     const TYPE_NEWS = 1;
     /** 产品 */
     const TYPE_PRODUCTS =2;
-    /** 照片 */
-    const TYPE_PHOTO =3;
+    /** 下载 */
+    const TYPE_DOWNLOADS =3;
     /** @var array  */
     static public $types = [
         self::TYPE_NEWS=>'新闻',
         self::TYPE_PRODUCTS=>'产品',
-        self::TYPE_PHOTO=>'照片',
+        self::TYPE_DOWNLOADS=>'下载',
     ];
     /** 前台不显示 */
     const STATUS_DISABLE = 0;

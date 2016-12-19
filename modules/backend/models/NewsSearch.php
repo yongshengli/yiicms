@@ -12,7 +12,6 @@ use app\models\News;
  */
 class NewsSearch extends News
 {
-    const PAGE_SIZE = 20;
     /**
      * @inheritdoc
      */
@@ -63,7 +62,7 @@ class NewsSearch extends News
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
-            'pagination' => ['pageSize'=>self::PAGE_SIZE]
+            'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
         ]);
 
         $this->load($params);
