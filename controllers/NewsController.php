@@ -55,7 +55,11 @@ class NewsController extends Controller
      */
     public function actionList()
     {
-        $query = News::find()->where(['status'=>News::STATUS_ENABLE])->orderBy('id desc');
+        $categoryId = Yii::$app->request->get('category-id');
+        $query = News::find()->where(['status'=>News::STATUS_ENABLE]);
+        if($categoryId){
+            $query->andWhere(['category_id'=>$categoryId]);
+        }
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
