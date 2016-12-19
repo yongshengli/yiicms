@@ -10,7 +10,7 @@
         "class": "nav navbar-nav"
     },
     "items": [
- {
+        {
             "label": "首页",
             "url": [
                 "/site/index"
@@ -38,6 +38,14 @@
             "label": "关于我们",
             "url": [
                 "/site/about"
+            ],
+            "items": [
+                {
+                    "label": "企业荣誉",
+                    "url": {
+                        "0":"/site/page/honor", "id":"honor"
+                    }
+                }
             ]
         },
         {

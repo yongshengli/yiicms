@@ -10,6 +10,7 @@ use app\models\Config;
 use yii\data\ActiveDataProvider;
 use app\models\Products;
 use app\models\Ad;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -84,10 +85,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        $model = Config::find()->where(['name'=>'about_us'])->one();
-        return $this->render('about',[
-            'model'=>$model
-        ]);
+        return $this->actionPage('about_us');
     }
     /**
      * Displays products page
@@ -97,9 +95,7 @@ class SiteController extends Controller
     public function actionSearch()
     {
         $keyword = Yii::$app->request->get('keyword');
-//        if(empty($keyword)){
-////            $this->;
-//        }
+
         $query = Content::find()
             ->andFilterWhere(['in', 'type', [Content::TYPE_NEWS,Content::TYPE_PRODUCTS]])
             ->andFilterWhere(['like', 'title', $keyword])
@@ -113,6 +109,23 @@ class SiteController extends Controller
         return $this->render('search', [
             'searchModel' => new Content(),
             'dataProvider' => $dataProvider
+        ]);
+    }
+
+    /**
+     * config 页面
+     * @param string $id
+     * @throws NotFoundHttpException
+     * @return string
+     */
+    public function actionPage($id)
+    {
+        $model = Config::find()->where(['name'=>$id])->one();
+        if(empty($model)){
+            throw new NotFoundHttpException('页面不存在');
+        }
+        return $this->render('page',[
+            'model'=>$model
         ]);
     }
 
