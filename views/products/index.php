@@ -17,6 +17,15 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>'产品', 'url'=>['/products/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+    .img-box{
+        height: 290px;width:100%; text-align: center;vertical-align: middle;
+    }
+    .img-box img{
+        display: inline;
+        max-width:100%;max-height: 280px;
+    }
+</style>
 <div class="site-index">
     <div class="body-content">
         <div class="row">
@@ -33,8 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="img-thumbnail" style="height: 290px;width:100%; text-align: center;vertical-align: middle;">
-                            <img src="<?=$model->image?>" alt="<?=$model->title?>" style="max-width:100%;max-height: 280px;">
+                        <div class="img-thumbnail img-box">
+                            <img src="<?=$model->image?>" alt="<?=$model->title?>">
                         </div>
                     </div>
                     <div class="col-lg-6">
