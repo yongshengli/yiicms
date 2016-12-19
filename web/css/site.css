@@ -153,6 +153,12 @@ a.desc:after {
 .navbar-blue .navbar-brand {
     color: #fff;
 }
+.navbar-blue .navbar-nav > .open > a,
+.navbar-blue .navbar-nav > .open > a:hover,
+.navbar-blue .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #3a80a7;
+}
 /* 红色主题*/
 .navbar-red{
     background-color: #db4c3f;
@@ -184,6 +190,12 @@ a.desc:after {
 }
 .navbar-red .navbar-brand {
     color: #fff;
+}
+.navbar-red .navbar-nav > .open > a,
+.navbar-red .navbar-nav > .open > a:hover,
+.navbar-red .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #d53b2d;
 }
 /* 黄色主题*/
 .navbar-yellow{
@@ -217,6 +229,12 @@ a.desc:after {
 .navbar-yellow .navbar-brand {
     color: #fff;
 }
+.navbar-yellow .navbar-nav > .open > a,
+.navbar-yellow .navbar-nav > .open > a:hover,
+.navbar-yellow .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #e78d2d;
+}
 /* 绿色主题*/
 .navbar-green{
     background-color: #18a55d;
@@ -249,6 +267,12 @@ a.desc:after {
 .navbar-green .navbar-brand {
     color: #fff;
 }
+.navbar-green .navbar-nav > .open > a,
+.navbar-green .navbar-nav > .open > a:hover,
+.navbar-green .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #128c4e;
+}
 /* 紫色主题*/
 .navbar-purple{
     background-color: #605ea6;
@@ -280,6 +304,12 @@ a.desc:after {
 }
 .navbar-purple .navbar-brand {
     color: #fff;
+}
+.navbar-purple .navbar-nav > .open > a,
+.navbar-purple .navbar-nav > .open > a:hover,
+.navbar-purple .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #555497;
 }
 /** 其他样式*/
 .table-simple{
