@@ -167,6 +167,14 @@ a.desc:after {
     background-color: #3a80a7;
     outline: 0;
 }
+@media (max-width: 767px) {
+    .navbar-blue .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-blue .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-blue .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #3a80a7;
+    }
+}
 /* 红色主题*/
 .navbar-red{
     background-color: #db4c3f;
@@ -212,6 +220,14 @@ a.desc:after {
     text-decoration: none;
     background-color: #d53b2d;
     outline: 0;
+}
+@media (max-width: 767px) {
+    .navbar-red .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-red .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-red .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #d53b2d;
+    }
 }
 /* 黄色主题*/
 .navbar-yellow{
@@ -259,6 +275,14 @@ a.desc:after {
     background-color: #e78d2d;
     outline: 0;
 }
+@media (max-width: 767px) {
+    .navbar-yellow .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-yellow .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-yellow .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #e78d2d;
+    }
+}
 /* 绿色主题*/
 .navbar-green{
     background-color: #18a55d;
@@ -305,6 +329,14 @@ a.desc:after {
     background-color: #128c4e;
     outline: 0;
 }
+@media (max-width: 767px) {
+    .navbar-green .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-green .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-green .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #128c4e;
+    }
+}
 /* 紫色主题*/
 .navbar-purple{
     background-color: #605ea6;
@@ -350,6 +382,14 @@ a.desc:after {
     text-decoration: none;
     background-color: #555497;
     outline: 0;
+}
+@media (max-width: 767px) {
+    .navbar-purple .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-purple .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-purple .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #555497;
+    }
 }
 /** 其他样式*/
 .table-simple{
