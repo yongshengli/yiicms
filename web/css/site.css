@@ -419,6 +419,11 @@ a.desc:after {
     font-weight: 700;
     display: block;
 }
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 .panel-yellow{border-top: 3px solid #f19b2c;}
 .panel-blue{border-top: 3px solid #408eba;}
 .panel-red{border-top: 3px solid #db4c3f;}
