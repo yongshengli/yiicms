@@ -22,11 +22,10 @@ class ProductsController extends Controller
         return [
             [
                 'class' => 'yii\filters\PageCache',
-                'only'=>['index'],
                 'duration' => 60,
                 'variations' => [
                     Yii::$app->language,
-                    Yii::$app->request->get('id')
+                    Yii::$app->request->get()
                 ],
             ],
         ];
