@@ -13,6 +13,18 @@ use app\models\Ad;
 
 class SiteController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\filters\PageCache',
+                'duration' => 60,
+                'variations' => [
+                    \Yii::$app->language,
+                ]
+            ],
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -102,4 +114,5 @@ class SiteController extends Controller
             'dataProvider' => $dataProvider
         ]);
     }
+
 }

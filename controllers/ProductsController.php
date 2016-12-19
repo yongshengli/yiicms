@@ -17,6 +17,18 @@ use Yii;
 
 class ProductsController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\filters\PageCache',
+                'duration' => 60,
+                'variations' => [
+                    \Yii::$app->language,
+                ]
+            ],
+        ];
+    }
     /**
      * 新闻详情页
      * @param $id
