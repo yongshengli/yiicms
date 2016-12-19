@@ -159,6 +159,14 @@ a.desc:after {
     color: #fff;
     background-color: #3a80a7;
 }
+.navbar-blue .dropdown-menu > .active > a,
+.navbar-blue .dropdown-menu > .active > a:hover,
+.navbar-blue .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #3a80a7;
+    outline: 0;
+}
 /* 红色主题*/
 .navbar-red{
     background-color: #db4c3f;
@@ -196,6 +204,14 @@ a.desc:after {
 .navbar-red .navbar-nav > .open > a:focus {
     color: #fff;
     background-color: #d53b2d;
+}
+.navbar-red .dropdown-menu > .active > a,
+.navbar-red .dropdown-menu > .active > a:hover,
+.navbar-red .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #d53b2d;
+    outline: 0;
 }
 /* 黄色主题*/
 .navbar-yellow{
@@ -235,6 +251,14 @@ a.desc:after {
     color: #fff;
     background-color: #e78d2d;
 }
+.navbar-yellow .dropdown-menu > .active > a,
+.navbar-yellow .dropdown-menu > .active > a:hover,
+.navbar-yellow .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #e78d2d;
+    outline: 0;
+}
 /* 绿色主题*/
 .navbar-green{
     background-color: #18a55d;
@@ -273,6 +297,14 @@ a.desc:after {
     color: #fff;
     background-color: #128c4e;
 }
+.navbar-green .dropdown-menu > .active > a,
+.navbar-green .dropdown-menu > .active > a:hover,
+.navbar-green .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #128c4e;
+    outline: 0;
+}
 /* 紫色主题*/
 .navbar-purple{
     background-color: #605ea6;
@@ -310,6 +342,14 @@ a.desc:after {
 .navbar-purple .navbar-nav > .open > a:focus {
     color: #fff;
     background-color: #555497;
+}
+.navbar-purple .dropdown-menu > .active > a,
+.navbar-purple .dropdown-menu > .active > a:hover,
+.navbar-purple .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #555497;
+    outline: 0;
 }
 /** 其他样式*/
 .table-simple{
