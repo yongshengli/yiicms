@@ -36,7 +36,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = Products::find()->where(['status'=>Products::STATUS_ENABLE])->limit(12)->all();
+        $products = Products::find()->where(['status'=>Products::STATUS_ENABLE])->orderBy('id desc')->limit(12)->all();
         $aboutUs = Config::find()->where(['name'=>'about_us'])->one();
         return $this->render('index', [
             'aboutUs'=>$aboutUs,
