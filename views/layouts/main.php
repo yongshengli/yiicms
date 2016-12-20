@@ -33,6 +33,15 @@ if (isset($this->params['adList'])) {
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) . '-' . Yii::$app->name ?></title>
     <?php $this->head() ?>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?baf532329283c0cae060310499633101";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body  class="skin-blue fixed">
 <?php $this->beginBody() ?>
