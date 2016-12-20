@@ -72,15 +72,9 @@ class DownloadsController extends BackendController
         $model = new Downloads();
         $post = Yii::$app->request->post();
         if ($post) {
-            $detailModel = $model->detail;
             $post[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
             if ($model->load($post) && $model->save()) {
-                $post[$detailModel->formName()]['content_id'] = $model->id;
-                if($detailModel->load($post) && $detailModel->save()){
-                    return $this->showMessage('添加成功','success');
-                }else{
-                    return $this->showMessage('添加新闻详情失败');
-                }
+                return $this->showMessage('添加成功','success');
             }
         }
         return $this->render('create', [
@@ -98,11 +92,8 @@ class DownloadsController extends BackendController
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if($model->detail->load(Yii::$app->request->post()) && $model->detail->save()){
-                return $this->showMessage('修改新闻成功','success');
-            }else{
-                return $this->showMessage('修改新闻详情失败');
-            }
+
+            return $this->showMessage('修改下载成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,

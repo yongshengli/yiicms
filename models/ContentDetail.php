@@ -14,6 +14,7 @@ use app\components\AppActiveRecord;
 class ContentDetail extends AppActiveRecord
 {
     const SCENARIO_DOWNLOAD = 'download';
+
     /**
      * @inheritdoc
      */

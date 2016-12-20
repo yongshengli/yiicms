@@ -23,7 +23,6 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
-    <?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
     <?= $form->field($model->detail, 'detail')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
