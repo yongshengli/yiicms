@@ -27,7 +27,7 @@ class Downloads extends Content
     }
 
     public function load($data, $formName = null){
-        $res = parent::load($data, $formName = null);
+        $res = parent::load($data, $formName);
         if($res){
             return $this->getDetail()->load($data);
         }
