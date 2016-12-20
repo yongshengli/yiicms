@@ -23,6 +23,10 @@ if (isset($this->params['adList'])) {
 }else{
     $carouselItems = [];
 }
+$brandLabel = Yii::$app->name;
+if(isset(Yii::$app->params['logo'])){
+    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'" width="58" height="24"/>';
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -48,7 +52,7 @@ if (isset($this->params['adList'])) {
 <div class="wrap">
     <div class="main-header">
         <?php NavBar::begin([
-            'brandLabel' => 'YiiCms',
+            'brandLabel' => $brandLabel,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar navbar-inverse navbar-static-top navbar-'. ArrayHelper::getValue(Yii::$app->params, 'themeColor', 'blue'),
