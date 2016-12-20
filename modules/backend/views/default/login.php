@@ -49,7 +49,7 @@ $this->title = '后台登录';
             <?php ActiveForm::end(); ?>
 
             <div class="col-lg-offset-1" style="color:#FFF;">
-                You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
+                You may login with <strong>demo/demo</strong>.<br>
                 To modify the username/password, please check out the code.
             </div>
         </div>
