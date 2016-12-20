@@ -61,7 +61,7 @@ class BaseConfig extends Model
     public function rules()
     {
         return [
-            [['appName', 'logo', 'pageSize', 'nav', 'themeColor'], 'required'],
+            [['appName', 'pageSize', 'nav', 'themeColor'], 'required'],
             [['appName'], 'string', 'max' => 100],
             [['themeColor'], 'string', 'max' => 20],
             [['keywords'], 'string', 'max' => 300],

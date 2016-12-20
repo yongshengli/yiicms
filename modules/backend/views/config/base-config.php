@@ -28,7 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'logo')->textInput(['maxlength' => true])
+                    ->label($model->getAttributeLabel('logo').'<code>如：@web/images/logo.png</code>')
+                ?>
 
                 <?= $form->field($model, 'keywords')->textarea() ?>
                 <?= $form->field($model, 'description')->textarea() ?>
