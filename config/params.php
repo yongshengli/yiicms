@@ -1,7 +1,7 @@
 <?php 
  return array (
   'appName' => 'YiiCms企业管理系统',
-  'logo' => NULL,
+  'logo' => '@web/images/logo.png',
   'keywords' => '',
   'description' => '',
   'pageSize' => '20',

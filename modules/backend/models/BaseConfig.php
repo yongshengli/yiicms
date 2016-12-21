@@ -65,7 +65,7 @@ class BaseConfig extends Model
             [['appName'], 'string', 'max' => 100],
             [['themeColor'], 'string', 'max' => 20],
             [['keywords'], 'string', 'max' => 300],
-            [['description'], 'string', 'max' => 500],
+            [['description','logo'], 'string', 'max' => 500],
         ];
     }
     /**
