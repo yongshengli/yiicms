@@ -36,9 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'description')->textarea() ?>
 
-                <?= $form->field($model, 'pageSize')->textInput() ?>
+                <?= $form->field($model, 'pageSize', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">条</span></div>'])
+                    ->textInput() ?>
 
-                <?= $form->field($model, 'cacheDuration')->textInput() ?>
+                <?= $form->field($model, 'cacheDuration',['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">秒</span></div>'])
+                    ->textInput() ?>
 
                 <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
 
