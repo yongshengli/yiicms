@@ -99,6 +99,28 @@ class Content extends AppActiveRecord
     {
         return Category::find()->where(['type'=>static::CURRENT_TYPE])->all();
     }
+
+    /**
+     * 下一个
+     */
+    public function next()
+    {
+        return static::find()->where(['status'=>static::STATUS_ENABLE])->andWhere(['>','id', $this->id])
+            ->orderBy('id asc')
+            ->limit(1)
+            ->one();
+    }
+
+    /**
+     * 上一个
+     */
+    public function previous()
+    {
+        return static::find()->where(['status'=>static::STATUS_ENABLE])->andWhere(['<','id', $this->id])
+            ->orderBy('id desc')
+            ->limit(1)
+            ->one();
+    }
     /**
      * 更新 detail 表中的 contend_id
      * @param bool $insert

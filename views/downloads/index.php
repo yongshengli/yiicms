@@ -39,6 +39,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <a href="<?=$model->detail->file_url?>" class="btn btn-primary">下载</a>
                 </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <?=$this->render('@app/views/news/_share')?>
+                        </div>
+                        <div class="col-lg-9 text-right">
+                            <?php if($previous = $model->previous()):?>
+                                上一条 <?=Html::a($previous->title, ['/downloads/index', 'id'=>$previous->id])?>
+                            <?php endif;?>
+                            <?php if($next = $model->next()):?>
+                                下一条 <?=Html::a($next->title, ['/downloads/index', 'id'=>$next->id])?>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
