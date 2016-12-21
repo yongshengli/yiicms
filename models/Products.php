@@ -93,7 +93,8 @@ class Products extends Content
             'category_id'=>'分类',
             'image' => '图片',
             'imageFile' => '图片',
-            'description' => '描述',
+            'keywords' => 'Keywords',
+            'description' => 'Description',
             'status' => '状态',
             'statusText' => '状态',
             'create_at'=>'创建时间'

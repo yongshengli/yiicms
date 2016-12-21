@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
     <div class="row">
         <div class="col-sm-6">
