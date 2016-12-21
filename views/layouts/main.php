@@ -44,6 +44,10 @@ if(!empty(Yii::$app->params['logo'])){
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+        (function(){
+            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?44fe98c387976b344e710998b9ca68bb":"https://jspassport.ssl.qhimg.com/11.0.1.js?44fe98c387976b344e710998b9ca68bb";
+            document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
     </script>
 </head>
 <body  class="skin-blue fixed">
