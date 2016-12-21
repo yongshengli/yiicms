@@ -19,7 +19,7 @@ class SiteController extends Controller
         return [
             [
                 'class' => 'yii\filters\PageCache',
-                'duration' => 60,
+                'duration' => Yii::$app->params['cacheDuration'],
                 'only'=>['index', 'about'],
                 'variations' => [
                     \Yii::$app->language,

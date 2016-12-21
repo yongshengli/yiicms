@@ -13,6 +13,7 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
 
 AppAsset::register($this);
+$carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
@@ -20,8 +21,6 @@ if (isset($this->params['adList'])) {
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
     }
-}else{
-    $carouselItems = [];
 }
 $brandLabel = Yii::$app->name;
 if(isset(Yii::$app->params['logo'])){

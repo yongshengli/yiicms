@@ -23,6 +23,10 @@ class BaseConfig extends Model
     public $logo;
     public $keywords;
     public $description;
+
+    /** @var int 页面缓存时长 秒 */
+    public $cacheDuration = 60;
+
     /** @var int 每页显示元素个数 */
     public $pageSize =20;
     /**
@@ -65,6 +69,7 @@ class BaseConfig extends Model
             [['appName'], 'string', 'max' => 100],
             [['themeColor'], 'string', 'max' => 20],
             [['keywords'], 'string', 'max' => 300],
+            [['cacheDuration'], 'integer'],
             [['description','logo'], 'string', 'max' => 500],
         ];
     }
@@ -80,6 +85,7 @@ class BaseConfig extends Model
             'description'=>'网站描述',
             'adminEmail'=>'管理员邮箱',
             'pageSize'=>'每页显示元素数',
+            'cacheDuration'=>'页面缓存时长',
             'logo'=>'网站logo路径',
             'nav'=>'导航内容',
             'themeColor'=>'主题颜色',

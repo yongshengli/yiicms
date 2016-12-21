@@ -26,4 +26,18 @@ class AppController extends Controller
         }
         $this->view->params['adList'] = Ad::find()->asArray()->all();
     }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'yii\filters\PageCache',
+                'duration' => Yii::$app->params['cacheDuration'],
+                'variations' => [
+                    \Yii::$app->language,
+                    Yii::$app->request->get()
+                ]
+            ],
+        ];
+    }
 }

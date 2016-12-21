@@ -33,8 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
 
                 <?= $form->field($model, 'keywords')->textarea() ?>
+
                 <?= $form->field($model, 'description')->textarea() ?>
+
                 <?= $form->field($model, 'pageSize')->textInput() ?>
+
+                <?= $form->field($model, 'cacheDuration')->textInput() ?>
 
                 <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
 
