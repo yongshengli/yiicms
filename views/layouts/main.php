@@ -24,7 +24,7 @@ if (isset($this->params['adList'])) {
 }
 $brandLabel = Yii::$app->name;
 if(!empty(Yii::$app->params['logo'])){
-    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'" width="120" height="45"/>';
+    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'"/>';
 }
 ?>
 <?php $this->beginPage() ?>
