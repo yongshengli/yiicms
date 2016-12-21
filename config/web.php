@@ -66,6 +66,10 @@ $config = [
             'uploadDir' => '@webroot/uploads/redactor-img',
             'uploadUrl' => '@web/uploads/redactor-img',
             'imageAllowExtensions' => 'gif, jpg, png, jpeg',
+            'widgetClientOptions' => [
+                'lang' => 'zh_cn',
+                'plugins' =>['fontcolor', 'table']
+            ]
         ]
     ],
 ];
