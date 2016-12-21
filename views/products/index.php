@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-lg-6">
                         <h4><?=$model->title?></h4>
-                        <div><?=$model->description?></div>
+                        <div><?=$model->detail->params?></div>
                     </div>
                 </div>
 

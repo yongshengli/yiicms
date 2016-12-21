@@ -19,10 +19,10 @@ class AppController extends Controller
     public function init(){
         parent::init();
         if(isset(Yii::$app->params['keywords'])){
-            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>Yii::$app->params['keywords']]);
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>Yii::$app->params['keywords']], 'keywords');
         }
         if(isset(Yii::$app->params['description'])){
-            $this->view->registerMetaTag(['name'=>'description', 'content'=>Yii::$app->params['description']]);
+            $this->view->registerMetaTag(['name'=>'description', 'content'=>Yii::$app->params['description']], 'description');
         }
         $this->view->params['adList'] = Ad::find()->asArray()->all();
     }
