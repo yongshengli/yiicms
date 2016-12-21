@@ -19,11 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
     .img-box{
-        height: 290px;width:100%; text-align: center;vertical-align: middle;
+        height: 400px;width:400px; text-align: center;vertical-align: middle;display: table-cell;
     }
     .img-box img{
         display: inline;
-        max-width:100%;max-height: 280px;
+        max-width:400px;max-height: 400px;
     }
 </style>
 <div class="site-index">
@@ -42,8 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="img-thumbnail img-box">
-                            <img src="<?=$model->image?>" alt="<?=$model->title?>">
+                        <div class="img-thumbnail">
+                            <div class="img-box">
+                                <img src="<?=$model->image?>" alt="<?=$model->title?>">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
