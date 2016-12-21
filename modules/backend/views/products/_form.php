@@ -11,6 +11,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea() ?>
+
     <?= $form->field($model, 'imageFile')->fileInput()?>
     <?php if($model->image):?>
         <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
@@ -28,8 +31,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
-    <?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className()) ?>
-
+    <?= $form->field($model->detail, 'params')->widget(\yii\redactor\widgets\Redactor::className()) ?>
     <?= $form->field($model->detail, 'detail')->widget(\yii\redactor\widgets\Redactor::className()) ?>
 
     <div class="form-group">

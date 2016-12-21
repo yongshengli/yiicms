@@ -13,7 +13,9 @@ use app\components\AppActiveRecord;
  */
 class ContentDetail extends AppActiveRecord
 {
-    const SCENARIO_DOWNLOAD = 'download';
+    const SCENARIO_DOWNLOADS = 'download';
+
+    const SCENARIO_PRODUCTS = 'product';
 
     /**
      * @inheritdoc
@@ -26,7 +28,8 @@ class ContentDetail extends AppActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios [self::SCENARIO_DOWNLOAD] = ['content_id','detail', 'file_url'];
+        $scenarios[self::SCENARIO_DOWNLOADS] = ['content_id','detail', 'file_url'];
+        $scenarios[self::SCENARIO_PRODUCTS] = ['content_id','detail', 'params'];
         return $scenarios;
     }
     /**
@@ -36,7 +39,8 @@ class ContentDetail extends AppActiveRecord
     {
         return [
             [['content_id', 'detail'], 'required'],
-            [['file_url'], 'required', 'on'=>self::SCENARIO_DOWNLOAD],
+            [['content_id', 'detail','file_url'], 'required', 'on'=>self::SCENARIO_DOWNLOADS],
+            [['content_id', 'detail','params'], 'required', 'on'=>self::SCENARIO_PRODUCTS],
         ];
     }
     /**
@@ -49,6 +53,7 @@ class ContentDetail extends AppActiveRecord
             'content_id'=>'主表ID不能为空',
             'detail' => '内容',
             'file_url' => '文件路径',
+            'params' => '参数',
         ];
     }
 }
