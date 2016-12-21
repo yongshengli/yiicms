@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="body-content">
         <div class="row">
             <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
+                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_NEWS,'title'=>'新闻分类',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]

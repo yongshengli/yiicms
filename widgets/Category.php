@@ -28,7 +28,7 @@ class Category extends Panel
             return null;
         }
         $newsList = Model::find()
-            ->where(['type'=>Content::TYPE_PRODUCTS])
+            ->where(['type'=>$this->type])
             ->limit($this->limit)
             ->orderBy('id asc')
             ->all();

@@ -138,6 +138,11 @@ a.desc:after {
     line-height: 30px;
 }
 /* 自定义样式*/
+.page-header {
+    padding-bottom: 9px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #eee;
+}
 
 /** 蓝色主题0099FF*/
 .navbar-blue{
