@@ -16,7 +16,7 @@ AppAsset::register($this);
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
-            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%;max-height:300px"/></a>',
+            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%;max-height:360px"/></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
     }
@@ -25,7 +25,7 @@ if (isset($this->params['adList'])) {
 }
 $brandLabel = Yii::$app->name;
 if(isset(Yii::$app->params['logo'])){
-    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'" width="58" height="24"/>';
+    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'" width="58" height="34"/>';
 }
 ?>
 <?php $this->beginPage() ?>
@@ -61,13 +61,11 @@ if(isset(Yii::$app->params['logo'])){
         echo Nav::widget(json_decode(Yii::$app->params['nav'], true));
         ?>
         <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
-        <div class="form-group">
-            <input type="text" class="form-control" id="navbar-search-input"
-                   value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
-                   placeholder="输入关键字搜索"
-                   name="keyword"
-            />
-        </div>
+        <input type="text" class="form-control input-lg" id="navbar-search-input"
+               value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
+               placeholder="输入关键字搜索"
+               name="keyword"
+        />
         <?php ActiveForm::end(); ?>
         <?php NavBar::end(); ?>
     </div>

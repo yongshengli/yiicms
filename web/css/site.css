@@ -118,7 +118,25 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
+.navbar-brand {
+    float: left;
+    padding: 10px 15px;
+    font-size: 28px;
+    line-height: 45px;
+}
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 45px;
+    font-size: 16px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: inherit;
+    line-height: 30px;
+}
 /* 自定义样式*/
 
 /** 蓝色主题0099FF*/
@@ -397,11 +415,12 @@ a.desc:after {
     }
 }
 /** 其他样式*/
-.panel-yellow{border-top: 3px solid #f19b2c;}
-.panel-blue{border-top: 3px solid #408eba;}
-.panel-red{border-top: 3px solid #db4c3f;}
-.panel-green{border-top: 3px solid #18a55d;}
-.panel-purple{border-top: 3px solid #605ea6;}
+.panel-default{border-top: 5px solid}
+.panel-yellow{border-top-color:#f19b2c;}
+.panel-blue{border-top-color: #408eba;}
+.panel-red{border-top-color: #db4c3f;}
+.panel-green{border-top-color: #18a55d;}
+.panel-purple{border-top-color: #605ea6;}
 
 .table-simple{
     width:100%

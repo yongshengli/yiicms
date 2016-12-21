@@ -1,13 +1,13 @@
 <?php 
  return array (
   'appName' => 'YiiCms企业管理系统',
-  'logo' => '@web/images/logo.png',
+  'logo' => NULL,
   'keywords' => '',
   'description' => '',
   'pageSize' => '20',
   'nav' => '{
     "options": {
-        "class": "nav navbar-nav"
+        "class": "nav navbar-nav navbar-right"
     },
     "items": [
         {
