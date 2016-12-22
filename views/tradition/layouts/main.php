@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
 
-AppAsset::register($this)->css = ['themes/default/css/site.css',];
+AppAsset::register($this)->css = [Yii::getAlias('/themes/tradition/css/site.css'),];
 $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
@@ -53,9 +53,17 @@ if(!empty(Yii::$app->params['logo'])){
 <body  class="skin-blue fixed">
 <?php $this->beginBody() ?>
 <div class="wrap">
-    <div class="main-header">
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">营销-SEO-头部优化文字</div>
+                <div class="col-lg-9"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 0">
         <?php NavBar::begin([
-            'brandLabel' => '',
+            'brandLabel' => $brandLabel,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar navbar-'. ArrayHelper::getValue(Yii::$app->params, 'themeColor', 'blue'),

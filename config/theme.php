@@ -9,5 +9,5 @@
 
 return [
     'pathMap' => ['@app/views'=>'@app/views/tradition'],
-    'baseUrl' => '@web/views/default',
+//    'baseUrl' => '@web',
 ];
