@@ -66,5 +66,5 @@
         }
     ]
 }',
-  'themeColor' => 'blue',
+  'themeColor' => 'red',
 );

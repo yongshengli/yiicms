@@ -133,7 +133,15 @@ a.desc:after {
         /*line-height: 45px;*/
         font-size: 16px;
     }
-
+    .navbar-brand {
+        padding: 15px 0;
+    }
+    .navbar-nav > li > .dropdown-menu {
+        margin-top: -20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-right: 10px;
+    }
     .panel-title {
         margin-top: 0;
         margin-bottom: 0;
@@ -158,12 +166,13 @@ a.desc:after {
     margin: 0 0 20px;
     border-bottom: 1px solid #eee;
 }
-
+.navbar-nav > li > a {
+    color: #000;
+}
 /** 蓝色主题0099FF*/
 .navbar-blue{
     border: none;
 }
-/*.navbar-blue a {color:#000}*/
 .navbar {border-radius: 0;margin-bottom:0}
 .navbar-blue .nav > li > a:hover,
 .navbar-blue .nav > li > a:focus {background-color: #3a80a7;color:#fff}
@@ -176,9 +185,6 @@ a.desc:after {
 .navbar-blue .navbar-nav > .active > a:focus {
     color: #fff;
     background-color: #3a80a7;
-}
-.navbar-nav > li > a {
-    color: #000;
 }
 .navbar-blue .navbar-toggle {
     border-color: #3a80a7;
@@ -214,13 +220,11 @@ a.desc:after {
 }
 /* 红色主题*/
 .navbar-red{
-    background-color: #db4c3f;
     border: none;
 }
-.navbar-red a {color:#FFF}
 .navbar {border-radius: 0;}
 .navbar-red .nav > li > a:hover,
-.navbar-red .nav > li > a:focus {background-color: #d53b2d;}
+.navbar-red .nav > li > a:focus {background-color: #d53b2d;color:#fff}
 .navbar-red .navbar-collapse,
 .navbar-red .navbar-form{
     border-color:#d53b2d;
@@ -231,9 +235,7 @@ a.desc:after {
     color: #fff;
     background-color: #d53b2d;
 }
-.navbar-red .navbar-nav > li > a {
-    color: #fff;
-}
+
 .navbar-red .navbar-toggle {
     border-color: #d53b2d;
 }
@@ -268,13 +270,11 @@ a.desc:after {
 }
 /* 黄色主题*/
 .navbar-yellow{
-    background-color: #f3ad59;
     border: none;
 }
-.navbar-yellow a {color:#FFF}
 .navbar {border-radius: 0;}
 .navbar-yellow .nav > li > a:hover,
-.navbar-yellow .nav > li > a:focus {background-color: #e78d2d;}
+.navbar-yellow .nav > li > a:focus {background-color: #e78d2d;color:#fff}
 .navbar-yellow .navbar-collapse,
 .navbar-yellow .navbar-form{
     border-color:#e78d2d;
@@ -284,9 +284,6 @@ a.desc:after {
 .navbar-yellow .navbar-nav > .active > a:focus {
     color: #fff;
     background-color: #e78d2d;
-}
-.navbar-yellow .navbar-nav > li > a {
-    color: #fff;
 }
 .navbar-yellow .navbar-toggle {
     border-color: #e78d2d;
@@ -322,13 +319,11 @@ a.desc:after {
 }
 /* 绿色主题*/
 .navbar-green{
-    background-color: #18a55d;
     border: none;
 }
-.navbar-green a {color:#FFF}
 .navbar {border-radius: 0;}
 .navbar-green .nav > li > a:hover,
-.navbar-green .nav > li > a:focus {background-color: #128c4e;}
+.navbar-green .nav > li > a:focus {background-color: #128c4e;color:#fff}
 .navbar-green .navbar-collapse,
 .navbar-green .navbar-form{
     border-color:#128c4e;
@@ -338,9 +333,6 @@ a.desc:after {
 .navbar-green .navbar-nav > .active > a:focus {
     color: #fff;
     background-color: #128c4e;
-}
-.navbar-green .navbar-nav > li > a {
-    color: #fff;
 }
 .navbar-green .navbar-toggle {
     border-color: #128c4e;
@@ -376,13 +368,11 @@ a.desc:after {
 }
 /* 紫色主题*/
 .navbar-purple{
-    background-color: #605ea6;
     border: none;
 }
-.navbar-purple a {color:#FFF}
 .navbar {border-radius: 0;}
 .navbar-purple .nav > li > a:hover,
-.navbar-purple .nav > li > a:focus {background-color: #555497;}
+.navbar-purple .nav > li > a:focus {background-color: #555497;color:#fff}
 .navbar-purple .navbar-collapse,
 .navbar-purple .navbar-form{
     border-color:#555497;
@@ -392,9 +382,6 @@ a.desc:after {
 .navbar-purple .navbar-nav > .active > a:focus {
     color: #fff;
     background-color: #555497;
-}
-.navbar-purple .navbar-nav > li > a {
-    color: #fff;
 }
 .navbar-purple .navbar-toggle {
     border-color: #555497;
