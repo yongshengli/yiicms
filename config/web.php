@@ -1,6 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
+$theme = require(__DIR__ . '/theme.php');
 
 $config = [
     'id' => 'basic',
@@ -52,9 +53,12 @@ $config = [
             'dateFormat'=>'php:Y-m-d',
             'timeFormat'=>'php:H:i:s',
             'datetimeFormat'=>'php:Y-m-d H:i:s'
-        ]
+        ],
+        'view' => [
+            'theme'=>&$theme
+        ],
     ],
-    'params' => $params,
+    'params' => &$params,
     'language'=>'zh-CN',
     'modules' => [
         'backend' => [

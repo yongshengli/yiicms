@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
 
-AppAsset::register($this);
+AppAsset::register($this)->css = ['themes/default/css/site.css',];
 $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
