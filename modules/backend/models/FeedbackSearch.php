@@ -15,7 +15,6 @@ use yii\data\ActiveDataProvider;
 
 class FeedbackSearch extends Feedback
 {
-    const PAGE_SIZE = 20;
     /**
      * @inheritdoc
      */
