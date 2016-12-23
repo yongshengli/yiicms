@@ -426,7 +426,6 @@ a.desc:after {
     border-bottom: 1px dashed #ddd;
 }
 img{
-    display: block;
     max-width: 100%;
     height: auto;
 }

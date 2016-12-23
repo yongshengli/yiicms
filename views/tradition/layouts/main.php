@@ -61,7 +61,7 @@ if(!empty(Yii::$app->params['logo'])){
             </div>
         </div>
     </div>
-    <div class="container" style="margin-bottom: 0">
+    <div class="container" style="margin-bottom: -20px">
         <?php NavBar::begin([
             'brandLabel' => $brandLabel,
             'brandUrl' => Yii::$app->homeUrl,
