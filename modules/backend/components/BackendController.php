@@ -65,4 +65,10 @@ class BackendController extends Controller
 
         $addSession && Yii::$app->session->set('showMessage', $this->view->params['showMessage']);
     }
+    public function actions()
+    {
+        return [
+            'upload' => $this->module->components['UEditorAction']
+        ];
+    }
 }

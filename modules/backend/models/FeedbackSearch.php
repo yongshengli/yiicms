@@ -55,17 +55,17 @@ class FeedbackSearch extends Feedback
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $pageSize
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $pageSize=20)
     {
         $query = Feedback::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => ['pageSize'=>self::PAGE_SIZE]
+            'pagination' => ['pageSize'=>$pageSize]
         ]);
 
         $this->load($params);

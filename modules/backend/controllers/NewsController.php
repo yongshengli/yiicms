@@ -38,8 +38,7 @@ class NewsController extends BackendController
     public function actionIndex()
     {
         $searchModel = new NewsSearch();
-
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $this->module->params['pageSize']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

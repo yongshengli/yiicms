@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="content-form">
@@ -22,7 +23,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
-    <?= $form->field($model->detail, 'detail')->widget(\yii\redactor\widgets\Redactor::className()) ?>
+    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

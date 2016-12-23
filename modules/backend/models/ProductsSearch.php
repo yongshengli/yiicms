@@ -51,10 +51,10 @@ class ProductsSearch extends Products
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $pageSize
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $pageSize=20)
     {
         $query = Products::find();
 
@@ -62,7 +62,7 @@ class ProductsSearch extends Products
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
-            'pagination' => ['pageSize'=>Yii::$app->params['pageSize']]
+            'pagination' => ['pageSize'=>$pageSize]
         ]);
 
         $this->load($params);
