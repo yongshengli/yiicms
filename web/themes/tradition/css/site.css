@@ -142,19 +142,17 @@ a.desc:after {
         border-top-right-radius: 0;
         margin-right: 10px;
     }
-    .panel-title {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 18px;
-        color: inherit;
-        line-height: 30px;
-    }
-    .panel-heading{border-bottom: 3px solid}
 }
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: inherit;
+    line-height: 30px;
+}
+.panel-heading{border-bottom: 3px solid}
+
 @media (max-width: 767px) {
-    .panel-default {
-        border-top: 3px solid
-    }
     .navbar-brand img{
         max-width: 120px;
         max-height: 24px;
@@ -191,11 +189,7 @@ a.desc:after {
     color: #fff;
     background-color: #3a80a7;
 }
-.navbar-blue .navbar-toggle {
-    border-color: #3a80a7;
-}
-.navbar-blue .navbar-toggle:hover,
-.navbar-blue .navbar-toggle:focus {
+.navbar-blue .navbar-toggle .icon-bar{
     background-color: #3a80a7;
 }
 .navbar-blue .navbar-brand {
@@ -241,11 +235,7 @@ a.desc:after {
     background-color: #d53b2d;
 }
 
-.navbar-red .navbar-toggle {
-    border-color: #d53b2d;
-}
-.navbar-red .navbar-toggle:hover,
-.navbar-red .navbar-toggle:focus {
+.navbar-red .navbar-toggle .icon-bar{
     background-color: #d53b2d;
 }
 .navbar-red .navbar-brand {
@@ -290,13 +280,11 @@ a.desc:after {
     color: #fff;
     background-color: #e78d2d;
 }
-.navbar-yellow .navbar-toggle {
-    border-color: #e78d2d;
-}
-.navbar-yellow .navbar-toggle:hover,
-.navbar-yellow .navbar-toggle:focus {
+
+.navbar-yellow .navbar-toggle .icon-bar{
     background-color: #e78d2d;
 }
+
 .navbar-yellow .navbar-brand {
     color: #fff;
 }
@@ -339,11 +327,7 @@ a.desc:after {
     color: #fff;
     background-color: #128c4e;
 }
-.navbar-green .navbar-toggle {
-    border-color: #128c4e;
-}
-.navbar-green .navbar-toggle:hover,
-.navbar-green .navbar-toggle:focus {
+.navbar-green .navbar-toggle .icon-bar{
     background-color: #128c4e;
 }
 .navbar-green .navbar-brand {
@@ -388,11 +372,7 @@ a.desc:after {
     color: #fff;
     background-color: #555497;
 }
-.navbar-purple .navbar-toggle {
-    border-color: #555497;
-}
-.navbar-purple .navbar-toggle:hover,
-.navbar-purple .navbar-toggle:focus {
+.navbar-purple .navbar-toggle .icon-bar{
     background-color: #555497;
 }
 .navbar-purple .navbar-brand {
