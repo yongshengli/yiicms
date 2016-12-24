@@ -43,11 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'title',
                                 'format'=>'raw',
                                 'value'=>function($item){
+                                    $title = str_replace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title);
                                     if($item->type==\app\models\Content::TYPE_NEWS) {
-                                        return Html::a($item->title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
                                     }else{
-                                        return Html::a($item->title, ['/products', 'id'=>$item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/products', 'id'=>$item->id],['target'=>'_blank']);
                                     }
+                                    $html .='<p>'.str_replace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</b>',$item->description).'</p>';
+                                    return $html;
                                 }
                             ],
                             [

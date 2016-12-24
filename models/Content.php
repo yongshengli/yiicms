@@ -37,10 +37,11 @@ class Content extends AppActiveRecord
     /**
      * 当前的类型
      */
-    const CURRENT_TYPE = self::TYPE_NEWS;
+    static $currentType = self::TYPE_NEWS;
 
     /** 前台不显示 */
     const STATUS_DISABLE = 0;
+
     /** 前台显示 */
     const STATUS_ENABLE = 1;
 
@@ -63,7 +64,7 @@ class Content extends AppActiveRecord
     public function init()
     {
         parent::init();
-        $this->setAttribute('type', static::CURRENT_TYPE);
+        $this->setAttribute('type', static::$currentType);
     }
     public function load($data, $formName = null){
         $res = parent::load($data, $formName);
@@ -97,7 +98,7 @@ class Content extends AppActiveRecord
      */
     public function getCategorys()
     {
-        return Category::find()->where(['type'=>static::CURRENT_TYPE])->all();
+        return Category::find()->where(['type'=>static::$currentType])->all();
     }
 
     /**
@@ -196,7 +197,7 @@ class Content extends AppActiveRecord
      */
     public static function find()
     {
-        ContentQuery::$type = static::CURRENT_TYPE;
+        ContentQuery::$type = static::$currentType;
         return Yii::createObject(ContentQuery::class, [get_called_class()]);
     }
 }
@@ -207,7 +208,9 @@ class ContentQuery extends ActiveQuery
 
     public function init()
     {
-        $this->andWhere(['type'=>self::$type]);
+        if(self::$type) {
+            $this->andWhere(['type' => self::$type]);
+        }
         return $this;
     }
     /**

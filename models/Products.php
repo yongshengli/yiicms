@@ -15,7 +15,7 @@ use Yii;
 
 class Products extends Content
 {
-    const CURRENT_TYPE = Parent::TYPE_PRODUCTS;
+    static $currentType = Parent::TYPE_PRODUCTS;
 
     public $imageFile;
     /**

@@ -17,7 +17,7 @@ use yii\helpers\FileHelper;
 
 class Downloads extends Content
 {
-    const CURRENT_TYPE = Parent::TYPE_DOWNLOADS;
+    static $currentType = Parent::TYPE_DOWNLOADS;
 
     /**
      * @return \app\models\ContentDetail

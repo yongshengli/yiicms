@@ -5,7 +5,7 @@
   'keywords' => '',
   'description' => '',
   'cacheDuration' => '0',
-  'pageSize' => '20',
+  'pageSize' => '2',
   'nav' => '{
     "options": {
         "class": "nav navbar-nav navbar-right"
