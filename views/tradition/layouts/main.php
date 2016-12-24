@@ -17,7 +17,7 @@ $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
-            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" /></a>',
+            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%"/></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
     }

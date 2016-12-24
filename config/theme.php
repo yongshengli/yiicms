@@ -8,6 +8,6 @@
  */
 
 return [
-    'pathMap' => ['@app/views'=>'@app/views/tradition'],
+    'pathMap' => ['@app/views'=>'@app/views/default'],
 //    'baseUrl' => '@web',
 ];
