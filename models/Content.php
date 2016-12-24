@@ -27,6 +27,9 @@ class Content extends AppActiveRecord
     const TYPE_PRODUCTS =2;
     /** 下载 */
     const TYPE_DOWNLOADS =3;
+    /** 照片相册 */
+    const TYPE_PHOTOS =4;
+
     /** @var array  */
     static public $types = [
         self::TYPE_NEWS=>'新闻',

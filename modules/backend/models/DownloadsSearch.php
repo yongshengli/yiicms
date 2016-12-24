@@ -61,7 +61,7 @@ class DownloadsSearch extends Downloads
      */
     public function search($params, $pageSize=20)
     {
-        $query = Downloads::find();
+        $query = static::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -80,7 +80,6 @@ class DownloadsSearch extends Downloads
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => Downloads::TYPE_DOWNLOADS,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
             'update_at' => $this->update_at,

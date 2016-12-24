@@ -17,6 +17,8 @@ class ContentDetail extends AppActiveRecord
 
     const SCENARIO_PRODUCTS = 'product';
 
+    const SCENARIO_PHOTOS = 'photos';
+
     /**
      * @inheritdoc
      */
@@ -39,7 +41,7 @@ class ContentDetail extends AppActiveRecord
     {
         return [
             [['content_id', 'detail'], 'required'],
-            [['content_id', 'detail','file_url'], 'required', 'on'=>self::SCENARIO_DOWNLOADS],
+            [['content_id', 'detail','file_url'], 'required', 'on'=>[self::SCENARIO_DOWNLOADS,self::SCENARIO_PHOTOS]],
             [['content_id', 'detail','params'], 'required', 'on'=>self::SCENARIO_PRODUCTS],
         ];
     }

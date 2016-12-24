@@ -56,7 +56,7 @@ class ProductsSearch extends Products
      */
     public function search($params, $pageSize=20)
     {
-        $query = Products::find();
+        $query = static::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -75,7 +75,6 @@ class ProductsSearch extends Products
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => Products::TYPE_PRODUCTS,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
             'update_at' => $this->update_at,

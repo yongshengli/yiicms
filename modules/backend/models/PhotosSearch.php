@@ -1,16 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: david
+ * Date: 2016/12/24
+ * Time: 13:58
+ * Email:liyongsheng@meicai.cn
+ */
 
 namespace app\modules\backend\models;
 
-use Yii;
+
+use app\models\Photos;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\News;
 
-/**
- * ContentSearch represents the model behind the search form about `app\models\Content`.
- */
-class NewsSearch extends News
+class PhotosSearch extends Photos
 {
     /**
      * @inheritdoc
@@ -92,7 +96,7 @@ class NewsSearch extends News
             $query->andFilterWhere(['create_at'=>$createAt]);
 
         }
-
+        echo $query->createCommand()->getRawSql();
         return $dataProvider;
     }
 }

@@ -57,6 +57,16 @@ BackendAsset::register($this);
                     return false;
                 }
             ],
+            ['label' => '照片管理', 'url' => ['/backend/photos/index'],
+                'active' => function () {
+                    if(Yii::$app->controller->id=='photos'){
+                        return true;
+                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_PHOTOS){
+                        return true;
+                    }
+                    return false;
+                }
+            ],
             ['label' => '下载管理', 'url' => ['/backend/downloads/index'],
                 'active' => function () {
                     if(Yii::$app->controller->id=='downloads'){
