@@ -210,6 +210,8 @@ class ContentQuery extends ActiveQuery
     {
         if(self::$type) {
             $this->andWhere(['type' => self::$type]);
+        }else{
+            $this->andFilterWhere(['in', 'type', array_keys(Content::$types)]);
         }
         return $this;
     }
