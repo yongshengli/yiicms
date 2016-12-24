@@ -8,12 +8,12 @@
  */
 
 namespace app\models;
-
+use yii\db\AfterSaveEvent;
 
 class Photos extends Content
 {
     static $currentType = Content::TYPE_PHOTOS;
-
+    static $autoUpdateDetail = false;
     /**
      * @return array
      */
@@ -27,6 +27,7 @@ class Photos extends Content
             return $model;
         }
     }
+
     /**
      * @inheritdoc
      */

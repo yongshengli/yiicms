@@ -11,7 +11,7 @@ use app\models\Content;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $pagination yii\data\Pagination */
 
-$this->title = '新闻管理';
+$this->title = '相册管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-10">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <p>
-                <?= Html::a('添加新闻', ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('添加相册', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'options' => ['style' => 'width:160px']
                     ],
 //             'update_at:datetime',
-                    ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
+                    ['class' => 'yii\grid\ActionColumn',],
                 ],
             ]); ?>
         </div>
@@ -58,12 +58,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'submenuTemplate'=>"\n<ul class='nav'>\n{items}\n</ul>\n",
                     'items' => [
                         [
-                            'label' => '新闻管理', 'url' => ['/backend/news/index'],
+                            'label' => '相册管理', 'url' => ['/backend/news/index'],
                             'items'=>[
-                                ['label'=>'添加新闻','url'=>['/backend/news/create']]
+                                ['label'=>'添加相册','url'=>['/backend/news/create']]
                             ]
                         ],
-                        ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_NEWS]],
+                        ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_PHOTOS]],
                     ]
                 ]) ?>
             </div>

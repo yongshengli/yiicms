@@ -96,7 +96,6 @@ class PhotosSearch extends Photos
             $query->andFilterWhere(['create_at'=>$createAt]);
 
         }
-        echo $query->createCommand()->getRawSql();
         return $dataProvider;
     }
 }

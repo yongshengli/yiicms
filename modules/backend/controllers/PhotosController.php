@@ -10,12 +10,14 @@
 namespace app\modules\backend\controllers;
 
 
+use app\models\PhotosDetail;
 use app\modules\backend\components\BackendController;
 use app\models\Photos;
 use app\modules\backend\models\PhotosSearch;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class PhotosController extends BackendController
 {
@@ -56,9 +58,31 @@ class PhotosController extends BackendController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $detailModelList = PhotosDetail::find()->where(['content_id'=>$model->id])->all();
+        $newPhotoDetail = new PhotosDetail();
+        $newPhotoDetail->content_id = $model->id;
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'detailModeList' =>$detailModelList,
+            'newPhotoDetail' =>$newPhotoDetail,
         ]);
+    }
+    public function actionUploadPhoto()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = new PhotosDetail();
+        if($model->load(Yii::$app->request->post()) && $model->uploadFile()){
+            return [
+                'code'=>0,
+                'data'=>$model->toArray()
+            ];
+        }else{
+            return [
+                'code'=>1,
+                'data'=>empty($model->errors)?'':$model->errors,
+            ];
+        }
     }
 
     /**
