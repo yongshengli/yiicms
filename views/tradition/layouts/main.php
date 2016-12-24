@@ -17,7 +17,7 @@ $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
-            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%;max-height:360px"/></a>',
+            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" /></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
     }
@@ -76,7 +76,8 @@ if(!empty(Yii::$app->params['logo'])){
     <div class="container">
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide'],
-            'items' => $carouselItems
+            'items' => $carouselItems,
+            'controls'=>false,
         ])?>
     </div>
     <div class="container">
