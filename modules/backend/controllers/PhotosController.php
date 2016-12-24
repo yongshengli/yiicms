@@ -60,14 +60,20 @@ class PhotosController extends BackendController
     {
         $model = $this->findModel($id);
         $detailModelList = PhotosDetail::find()->where(['content_id'=>$model->id])->all();
+//        print_r($detailModelList);
         $newPhotoDetail = new PhotosDetail();
         $newPhotoDetail->content_id = $model->id;
         return $this->render('view', [
             'model' => $model,
-            'detailModeList' =>$detailModelList,
+            'detailModelList' =>$detailModelList,
             'newPhotoDetail' =>$newPhotoDetail,
         ]);
     }
+
+    /**
+     * 上传图片
+     * @return array
+     */
     public function actionUploadPhoto()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;

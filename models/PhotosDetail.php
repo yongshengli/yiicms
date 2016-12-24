@@ -43,7 +43,7 @@ class PhotosDetail extends ContentDetail
     public function createUploadFilePath()
     {
         $rootPath = \Yii::getAlias('@webroot');
-        $path = '/uploads/photos/'.$this->content_id;
+        $path = '/uploads/photos/'.$this->content_id.'/';
         if(!is_dir($rootPath.$path)){
             FileHelper::createDirectory($rootPath.$path);
         }
