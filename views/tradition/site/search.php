@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'title',
                                 'format'=>'raw',
                                 'value'=>function($item){
-                                    $title = str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title);
+                                    $title = '<h4>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title).'</h4>';
                                     if($item->type==\app\models\Content::TYPE_NEWS) {
                                         $html = Html::a($title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
                                     }else{

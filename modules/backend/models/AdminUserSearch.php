@@ -36,10 +36,11 @@ class AdminUserSearch extends AdminUser
      * Creates data provider instance with search query applied
      *
      * @param array $params
+     * @param int $pageSize
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $pageSize)
     {
         $query = AdminUser::find();
 
@@ -47,6 +48,8 @@ class AdminUserSearch extends AdminUser
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
+            'pagination' => ['pageSize'=>$pageSize]
         ]);
 
         $this->load($params);

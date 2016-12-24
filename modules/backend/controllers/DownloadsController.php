@@ -42,7 +42,7 @@ class DownloadsController extends BackendController
     {
         $searchModel = new DownloadsSearch();
 
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$this->module->params['pageSize']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

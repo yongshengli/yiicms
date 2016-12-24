@@ -16,6 +16,6 @@ return [
         ]
     ],
     'params' => [
-        'pageSize' => '20',
+        'pageSize' => '5',
     ],
 ];
