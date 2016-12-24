@@ -97,7 +97,7 @@ class SiteController extends Controller
         $keyword = Yii::$app->request->get('keyword');
         Content::$currentType = null;
         $query = Content::find()
-            ->andFilterWhere(['in', 'type', [Content::TYPE_NEWS,Content::TYPE_PRODUCTS]])
+            ->andFilterWhere(['in', 'type', array_keys(Content::$types)])
             ->andFilterWhere(['or',['like', 'title', $keyword],['like', 'description', $keyword]])
             ->andFilterWhere(['status'=>Content::STATUS_ENABLE]);
 //        echo $query->createCommand()->getRawSql();
