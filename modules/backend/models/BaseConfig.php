@@ -46,10 +46,15 @@ class BaseConfig extends Model
             $this->setAttributes($configs);
         }
     }
-    public function save()
+
+    public function save($runValidation = true)
     {
-        $phpCode  = "<?php \n return ".var_export($this->toArray(),true).";\n";
-        return file_put_contents(Yii::getAlias('@app/config/params.php'),$phpCode);
+        if($runValidation && !$this->validate()) {
+            Yii::info('Model not updated due to validation error.', __METHOD__);
+            return false;
+        }
+        $phpCode = "<?php \n return " . var_export($this->toArray(), true) . ";\n";
+        return file_put_contents(Yii::getAlias('@app/config/params.php'), $phpCode);
     }
 
     public function getThemeColors()
@@ -70,8 +75,21 @@ class BaseConfig extends Model
             [['themeColor'], 'string', 'max' => 20],
             [['keywords'], 'string', 'max' => 300],
             [['cacheDuration'], 'integer'],
+            ['nav', 'validateJson'],
             [['description','logo'], 'string', 'max' => 500],
         ];
+    }
+
+    /**
+     * 验证是否是有效的json
+     * @param string $attribute
+     * @param array $params
+     */
+    public function validateJson($attribute, $params)
+    {
+        if(!json_decode($this->nav)){
+            $this->addError($attribute, "不是有效的Json字符串");
+        }
     }
     /**
      * 属性label
