@@ -47,6 +47,11 @@ class BaseConfig extends Model
         }
     }
 
+    /**
+     * 保存数据
+     * @param bool $runValidation
+     * @return bool|int
+     */
     public function save($runValidation = true)
     {
         if($runValidation && !$this->validate()) {
