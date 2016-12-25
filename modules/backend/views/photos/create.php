@@ -25,12 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options' => ['class' => 'nav bs-docs-sidenav'],
                     'submenuTemplate'=>"\n<ul class='nav'>\n{items}\n</ul>\n",
                     'items' => [
-                        ['label' => '新闻管理', 'url' => ['/backend/news/index'],'active'=>true,
+                        ['label' => '相册管理', 'url' => ['/backend/photos/index'],'active'=>true,
                             'items'=>[
-                                ['label'=>'添加新闻','url'=>['/backend/news/create'],'active'=>true]
+                                ['label'=>'添加相册','url'=>['/backend/photos/create'],'active'=>true]
                             ]
                         ],
-                        ['label' => '分类管理', 'url' => ['/backend/category/index', 'type' => app\models\Content::TYPE_NEWS]],
+                        ['label' => '分类管理',
+                            'url' => [
+                                '/backend/category/index',
+                                'type' => app\models\Content::TYPE_PHOTOS
+                            ]
+                        ],
                     ]
                 ]) ?>
             </div>

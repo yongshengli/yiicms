@@ -83,12 +83,11 @@ class PhotosController extends BackendController
                 'code'=>0,
                 'data'=>$model->toArray()
             ];
-        }else{
-            return [
-                'code'=>1,
-                'data'=>empty($model->errors)?'':$model->errors,
-            ];
         }
+        return [
+            'code'=>1,
+            'data'=>empty($model->errors)?'':$model->errors,
+        ];
     }
 
     /**

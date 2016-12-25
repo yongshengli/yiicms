@@ -71,6 +71,7 @@ class PhotosDetail extends ContentDetail
             'id' => 'ID',
             'content_id'=>'相册ID',
             'detail' => '照片描述',
+            'imageFile'=>'上传图片',
             'file_url' => '照片地址',
         ];
     }

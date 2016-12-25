@@ -12,6 +12,9 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '产品管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+    .img-thumbnail{max-width: 150px;max-height: 150px;}
+</style>
 <div class="content-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -25,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-3"><img src="<?=$model->image?>"/></div>
     </div>
 
-    <div class="row">
+    <div class="row" id="photo-list">
         <?php if(isset($detailModelList) && is_array($detailModelList)):foreach($detailModelList as $item):?>
-        <div class="col-lg-3"><img src="<?=$item->file_url?>" style="max-width: 150px;max-height: 150px;"/></div>
+        <div class="col-lg-3"><img src="<?=$item->file_url?>" class="img-thumbnail"/></div>
         <?php endforeach;endif;?>
     </div>
 </div>

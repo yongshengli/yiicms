@@ -58,9 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'submenuTemplate'=>"\n<ul class='nav'>\n{items}\n</ul>\n",
                     'items' => [
                         [
-                            'label' => '相册管理', 'url' => ['/backend/news/index'],
+                            'label' => '相册管理', 'url' => ['/backend/photos/index'],
                             'items'=>[
-                                ['label'=>'添加相册','url'=>['/backend/news/create']]
+                                ['label'=>'添加相册','url'=>['/backend/photos/create']]
                             ]
                         ],
                         ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_PHOTOS]],
