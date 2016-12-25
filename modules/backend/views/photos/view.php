@@ -14,13 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
     .img-thumbnail{max-width: 150px;max-height: 150px;}
+    .img-box{height: 300px; border: 1px solid #ccc}
 </style>
 <div class="content-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= $this->render('_detail_form', [
+        <?= $this->render('_upload_form', [
             'model' => $newPhotoDetail,
         ]) ?>
     </p>
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row" id="photo-list">
         <?php if(isset($detailModelList) && is_array($detailModelList)):foreach($detailModelList as $item):?>
-        <div class="col-lg-3"><img src="<?=$item->file_url?>" class="img-thumbnail"/></div>
+            <?=$this->render('_detail_item', ['model'=>$item])?>
         <?php endforeach;endif;?>
     </div>
 </div>

@@ -8,7 +8,6 @@
  */
 
 namespace app\models;
-use yii\db\AfterSaveEvent;
 
 class Photos extends Content
 {
@@ -22,9 +21,7 @@ class Photos extends Content
         if ($this->isNewRecord) {
             return [];
         } else {
-            $model = $this->hasMany(ContentDetail::class, ['content_id' => 'id'])->all();
-            $model->scenario = ContentDetail::SCENARIO_PHOTOS;
-            return $model;
+            return $this->hasMany(ContentDetail::class, ['content_id' => 'id'])->all();
         }
     }
 

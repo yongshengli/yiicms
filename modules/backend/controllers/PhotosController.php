@@ -81,7 +81,7 @@ class PhotosController extends BackendController
         if($model->load(Yii::$app->request->post()) && $model->uploadFile()){
             return [
                 'code'=>0,
-                'data'=>$model->toArray()
+                'data'=>$this->view->render('_detail_item',['model'=>$model], $this),
             ];
         }
         return [
@@ -90,6 +90,26 @@ class PhotosController extends BackendController
         ];
     }
 
+    /**
+     * 修改照片详情
+     * @param int $id
+     * @return array
+     */
+    public function actionEditDetail($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = PhotosDetail::findOne($id);
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            return [
+                'code'=>0,
+                'data'=>'ok',
+            ];
+        }
+        return [
+            'code'=>1,
+            'data'=>empty($model->errors)?'':$model->errors,
+        ];
+    }
     /**
      * Creates a new Content model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -121,11 +141,11 @@ class PhotosController extends BackendController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->showMessage('修改新闻成功','success');
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+
     }
 
     /**

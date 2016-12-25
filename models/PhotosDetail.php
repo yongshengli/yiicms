@@ -60,6 +60,7 @@ class PhotosDetail extends ContentDetail
     {
         return [
             [['content_id', 'file_url'], 'required'],
+            ['detail','string']
         ];
     }
     /**

@@ -21,10 +21,8 @@ $this->registerJs('
                 alert(\'上传失败\');
                 return false;
             }
-            var html = \'<div class="col-lg-3">\';
-            html += \'<img src="\' + res.data[\'file_url\'] + \'" class="img-thumbnail"/>\';
-            html += \'</div>\';
-            $(\'#photo-list\').append(html);
+            $(\'#photo-list\').append(res.data);
+            alert("上传图片成功");
         });
     });
 ');
