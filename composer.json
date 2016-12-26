@@ -1,16 +1,16 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "templi/yiicms",
+    "description": "yiicms",
+    "keywords": ["cms", "企业网站", "政府网站", "网站"],
+    "homepage": "http://yiicms.co/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "issues": "http://git.oschina.net/templi/yiicms/issues",
         "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
+        "wiki": "http://git.oschina.net/templi/yiicms/wiki/",
         "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "source": "http://git.oschina.net/templi/yiicms/"
     },
     "minimum-stability": "stable",
     "require": {
