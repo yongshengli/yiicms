@@ -30,15 +30,15 @@ CREATE TABLE `ad` (
   `title` varchar(50) NOT NULL DEFAULT '',
   `image` varchar(255) NOT NULL DEFAULT '',
   `link` varchar(255) NOT NULL DEFAULT '',
-  `create_at` int(11) NOT NULL DEFAULT '0',
-  `update_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` int(11) NOT NULL DEFAULT '0',
+  `updated_at` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `ad` WRITE;
 /*!40000 ALTER TABLE `ad` DISABLE KEYS */;
 
-INSERT INTO `ad` (`id`, `title`, `image`, `link`, `create_at`, `update_at`)
+INSERT INTO `ad` (`id`, `title`, `image`, `link`, `created_at`, `updated_at`)
 VALUES
 	(1,'百度','/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
 	(2,'腾讯','/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
@@ -62,8 +62,8 @@ CREATE TABLE `admin_user` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
   `access_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `create_at` int(11) NOT NULL,
-  `update_at` int(11) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `u-username` (`username`),
   UNIQUE KEY `u-email` (`email`),
@@ -73,7 +73,7 @@ CREATE TABLE `admin_user` (
 LOCK TABLES `admin_user` WRITE;
 /*!40000 ALTER TABLE `admin_user` DISABLE KEYS */;
 
-INSERT INTO `admin_user` (`id`, `username`, `auth_key`, `password`, `password_reset_token`, `email`, `status`, `access_token`, `create_at`, `update_at`)
+INSERT INTO `admin_user` (`id`, `username`, `auth_key`, `password`, `password_reset_token`, `email`, `status`, `access_token`, `created_at`, `updated_at`)
 VALUES
 	(1,'admin','','21232f297a57a5a743894a0e4a801fc3',NULL,'739800600@qq.com',10,'',0,1481432518),
 	(4,'demo','','fe01ce2a7fbac8fafaed7c982a04e229',NULL,'demo@demo.com',10,'',1481431804,1481431804);
@@ -92,8 +92,8 @@ CREATE TABLE `category` (
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '分类名',
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT '父id',
   `type` tinyint(4) NOT NULL COMMENT '1.news 2 products 3 photo',
-  `create_at` int(11) NOT NULL,
-  `update_at` int(11) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `i-type-pid` (`type`,`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -101,7 +101,7 @@ CREATE TABLE `category` (
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 
-INSERT INTO `category` (`id`, `name`, `pid`, `type`, `create_at`, `update_at`)
+INSERT INTO `category` (`id`, `name`, `pid`, `type`, `created_at`, `updated_at`)
 VALUES
 	(1,'产品分类一',0,2,1481360463,1481452810),
 	(2,'默认分类',0,1,1481367786,1481367944),
@@ -124,8 +124,8 @@ CREATE TABLE `config` (
   `name` varchar(20) NOT NULL DEFAULT '' COMMENT '字段名英文',
   `label` varchar(50) DEFAULT NULL COMMENT '字段标注',
   `value` text NOT NULL COMMENT '字段值',
-  `create_at` int(11) DEFAULT NULL,
-  `update_at` int(11) DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `i-name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -133,7 +133,7 @@ CREATE TABLE `config` (
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
 
-INSERT INTO `config` (`id`, `name`, `label`, `value`, `create_at`, `update_at`)
+INSERT INTO `config` (`id`, `name`, `label`, `value`, `created_at`, `updated_at`)
 VALUES
 	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p>\r\n<p>联系人: 李</p>\r\n<p>QQ: 739800600</p>\r\n<p>电话: 130435198910262331</p>\r\n<p>E-mail: 739800600@qq.com</p>\r\n<p>地址: 北京市丰台区大红门</p>',1481350005,1481353232),
 	(3,'about_us','关于我们','<p>CMS website system is using PHP + MYSQL technology and MVC pattern, structure clear, the code easier to maintain. Support the pseudo static function, can generate Google and baidu map, support custom url, keywords and description, accord with standard of SEO. With corporate websites commonly used modules (description module, news module, product module, download module, image module, online messages, online orders, links, site map, etc.), strong background management functions, flexible marketing for enterprises to create professional and has force standard web site.<br>The website system function is introduced:<br>Modules: </p><p>1. The single page can release enterprises of all kinds of information, such as the description, organization, enterprise honor, contact information, etc., and can freely add or delete.<br>2. News: modules can be issued corporate news and industry news, etc., to support the secondary column, column number is unlimited.<br>3. The product module: product support secondary classification, and can place orders directly to the product inquiry, and support email notification, conforms to the enterprise marketing.<br>4. Image module: in the form of picture album, photo albums and other columns can be successful or company, more intuitive to show the superiority of the enterprise.<br>5. Download module: users can upload document in the background information, convenient website customers to download to use.<br>6. Online message: let the customer advice message timely feedback to the enterprise, and support email notification, make communication more convenient.<br>7. Product search: input a keyword search, the products to the customer to increase the flexibility of the site.<br>8. Product can add the products to replicate, so as to improve the efficiency of the added products.<br>9. Image watermark: can set up the company in the background of the watermark image, in order to prevent the enterprise product pictures stolen.<br>10. Email notification: under customer orders or leave a message at the same time, will send email to the email address you specify, make work more efficiently.<br>11. Search optimization: total support pseudo static, customizable keywords, description, url, generates a sitemap function, add in chain and tags, and other functions.<br></p>',1481355647,1481607089);
@@ -157,17 +157,17 @@ CREATE TABLE `content` (
   `keywords` varchar(255) NOT NULL DEFAULT '',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0不显示1显示',
   `admin_user_id` int(11) NOT NULL DEFAULT '0',
-  `create_at` int(11) NOT NULL DEFAULT '0',
-  `update_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` int(11) NOT NULL DEFAULT '0',
+  `updated_at` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `i-type-status-title` (`type`,`status`,`title`),
-  KEY `i-update` (`update_at`)
+  KEY `i-update` (`updated_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `content` WRITE;
 /*!40000 ALTER TABLE `content` DISABLE KEYS */;
 
-INSERT INTO `content` (`id`, `title`, `type`, `category_id`, `image`, `description`, `keywords`, `status`, `admin_user_id`, `create_at`, `update_at`)
+INSERT INTO `content` (`id`, `title`, `type`, `category_id`, `image`, `description`, `keywords`, `status`, `admin_user_id`, `created_at`, `updated_at`)
 VALUES
 	(1,'测试1',1,0,'','测试测试222','',1,0,0,1481269292),
 	(7,'新闻2',1,3,'','吃豆腐的房地产','',0,0,1481264976,1481379895),
@@ -209,8 +209,8 @@ CREATE TABLE `content_detail` (
   `detail` text NOT NULL,
   `params` varchar(1000) NOT NULL DEFAULT '',
   `file_url` varchar(255) NOT NULL DEFAULT '',
-  `create_at` int(11) DEFAULT NULL,
-  `update_at` int(11) DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `i-content` (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -218,7 +218,7 @@ CREATE TABLE `content_detail` (
 LOCK TABLES `content_detail` WRITE;
 /*!40000 ALTER TABLE `content_detail` DISABLE KEYS */;
 
-INSERT INTO `content_detail` (`id`, `content_id`, `detail`, `params`, `file_url`, `create_at`, `update_at`)
+INSERT INTO `content_detail` (`id`, `content_id`, `detail`, `params`, `file_url`, `created_at`, `updated_at`)
 VALUES
 	(1,1,'测试detail,123232,45454545','','',1481264096,1481269292),
 	(3,7,'测试测试','','',1481264976,1481379895),
@@ -274,15 +274,15 @@ CREATE TABLE `feedback` (
   `phone` varchar(50) NOT NULL DEFAULT '',
   `email` varchar(50) NOT NULL DEFAULT '',
   `body` varchar(255) NOT NULL DEFAULT '',
-  `create_at` int(11) NOT NULL DEFAULT '0',
-  `update_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` int(11) NOT NULL DEFAULT '0',
+  `updated_at` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
 
-INSERT INTO `feedback` (`id`, `subject`, `name`, `phone`, `email`, `body`, `create_at`, `update_at`)
+INSERT INTO `feedback` (`id`, `subject`, `name`, `phone`, `email`, `body`, `created_at`, `updated_at`)
 VALUES
 	(1,'测试测试','李先生','13240702278','739800600@qq.com','你好你好你好',1481433870,1481433870),
 	(2,'你好','你好','','739800600@qq.com','你好，你好',1481434463,1481434463);
