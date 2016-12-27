@@ -20,7 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "kucha/ueditor": "*",
         "dmstr/yii2-adminlte-asset": "^2.3",
-        "mdmsoft/yii2-admin": "^3.2"
+        "mdmsoft/yii2-admin": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

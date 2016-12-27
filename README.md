@@ -20,8 +20,9 @@ DIRECTORY STRUCTURE
       vendor/             contains dependent 3rd-party packages
       views/              contains view files for the Web application
       web/                contains the entry script and Web resources
-
-
+      yiicms.sql          sql file
+      composer.json       
+    
 
 REQUIREMENTS
 ------------
@@ -36,6 +37,8 @@ INSTALLATION
 1. git clone git@git.oschina.net:templi/yiicms.git
 
 2. composer install
+
+3. import yiicms.sql
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
