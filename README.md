@@ -32,19 +32,11 @@ The minimum requirement by this project template that your Web server supports P
 INSTALLATION
 ------------
 
-### Install via Composer
+git clone git@git.oschina.net:templi/yiicms.git
 
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+composer install
 
-You can then install this project template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
-php composer.phar create-project --prefer-dist --stability=dev yongshengli/yiicms
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
+Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
 directly under the Web root.
 
 ~~~
