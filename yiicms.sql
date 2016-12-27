@@ -57,7 +57,7 @@ CREATE TABLE `admin_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
@@ -73,7 +73,7 @@ CREATE TABLE `admin_user` (
 LOCK TABLES `admin_user` WRITE;
 /*!40000 ALTER TABLE `admin_user` DISABLE KEYS */;
 
-INSERT INTO `admin_user` (`id`, `username`, `auth_key`, `password`, `password_reset_token`, `email`, `status`, `access_token`, `created_at`, `updated_at`)
+INSERT INTO `admin_user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `access_token`, `created_at`, `updated_at`)
 VALUES
 	(1,'admin','','21232f297a57a5a743894a0e4a801fc3',NULL,'739800600@qq.com',10,'',0,1481432518),
 	(4,'demo','','fe01ce2a7fbac8fafaed7c982a04e229',NULL,'demo@demo.com',10,'',1481431804,1481431804);
