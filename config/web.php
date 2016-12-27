@@ -57,24 +57,25 @@ $config = [
         'view' => [
             'theme'=>&$theme
         ],
+        'i18n' => [
+            'class'=>'yii\i18n\I18N',
+            'translations' => [
+                'rbac-admin' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@mdm/admin/messages', // if advanced application, set @frontend/messages
+                ],
+            ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
+        ],
     ],
     'params' => &$params,
     'language'=>'zh-CN',
     'modules' => [
         'backend' => [
             'class' => 'app\modules\backend\Module',
-            // ... 模块其他配置 ...
         ],
-        'redactor' => [
-            'class' => 'yii\redactor\RedactorModule',
-            'uploadDir' => '@webroot/uploads/redactor-img',
-            'uploadUrl' => '@web/uploads/redactor-img',
-            'imageAllowExtensions' => 'gif, jpg, png, jpeg',
-            'widgetClientOptions' => [
-                'lang' => 'zh_cn',
-                'plugins' =>['fontcolor', 'table']
-            ]
-        ]
     ],
 ];
 

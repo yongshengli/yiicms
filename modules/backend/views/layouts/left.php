@@ -59,7 +59,15 @@ use app\models\Content;
                         ]
                     ],
                     ['label' => '轮播图管理','icon' => 'fa fa-share', 'url' => ['/backend/ad/index'],],
-                    ['label' => '管理员管理', 'icon' => 'fa fa-user-secret','url' => ['/backend/admin-user/index'],],
+                    ['label' => '管理员权限', 'icon' => 'fa fa-user-secret','url' => '#',
+                        'items' => [
+                            ['label' => '管理员配置', 'url' => ['/backend/admin-user/index']],
+                            ['label' => '权限配置', 'url' => ['/backend/rabc'],],
+                            ['label' => '角色列表', 'url' => ['/backend/rabc/role'],],
+                            ['label' => '权限列表', 'url' => ['/backend/rabc/permission'],],
+                            ['label' => '规则列表', 'url' => ['/backend/rabc/rule'],],
+                        ]
+                    ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
