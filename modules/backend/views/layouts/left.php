@@ -21,13 +21,13 @@ use app\models\Content;
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
 //                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => '产品管理','icon' => 'fa fa-share', 'url' => '#',
+                    ['label' => '产品管理','icon' => 'fa fa-circle-o', 'url' => '#',
                         'items' => [
                             ['label' => '产品管理', 'url' => ['/backend/products/index'],],
                             ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_PRODUCTS]],
                         ]
                     ],
-                    ['label' => '新闻管理', 'icon' => 'fa fa-share','url' => ['/backend/news/index'],
+                    ['label' => '新闻管理', 'icon' => 'fa fa-newspaper-o','url' => ['/backend/news/index'],
                         'items' => [
                             [
                                 'label' => '新闻管理', 'url' => ['/backend/news/index'],
@@ -35,7 +35,7 @@ use app\models\Content;
                             ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_NEWS]],
                         ]
                     ],
-                    ['label' => '照片管理','icon' => 'fa fa-share', 'url' => ['/backend/photos/index'],
+                    ['label' => '照片管理','icon' => 'fa fa-picture-o', 'url' => ['/backend/photos/index'],
                         'items' => [
                             [
                                 'label' => '相册管理', 'url' => ['/backend/photos/index'],
@@ -43,7 +43,7 @@ use app\models\Content;
                             ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_PHOTOS]],
                         ]
                     ],
-                    ['label' => '下载管理', 'icon' => 'fa fa-share','url' => ['/backend/downloads/index'],
+                    ['label' => '下载管理', 'icon' => 'fa fa-download','url' => ['/backend/downloads/index'],
                         'items' => [
                             [
                                 'label' => '下载管理', 'url' => ['/backend/downloads/index'],
@@ -51,15 +51,15 @@ use app\models\Content;
                             ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_DOWNLOADS]],
                         ]
                     ],
-                    ['label' => '用户反馈', 'icon' => 'fa fa-share','url' => ['/backend/feedback/index'],],
-                    ['label' => '网站配置', 'icon' => 'fa fa-share','url' => ['/backend/config/index'],
+                    ['label' => '用户反馈', 'icon' => 'fa fa-envelope-o','url' => ['/backend/feedback/index'],],
+                    ['label' => '网站配置', 'icon' => 'fa fa-cog','url' => ['/backend/config/index'],
                         'items' => [
                             ['label' => '基础配置', 'url' => ['/backend/config/base-config']],
                             ['label' => '其他配置', 'url' => ['/backend/config/index'],]
                         ]
                     ],
                     ['label' => '轮播图管理','icon' => 'fa fa-share', 'url' => ['/backend/ad/index'],],
-                    ['label' => '管理员管理', 'icon' => 'fa fa-share','url' => ['/backend/admin-user/index'],],
+                    ['label' => '管理员管理', 'icon' => 'fa fa-user-secret','url' => ['/backend/admin-user/index'],],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
