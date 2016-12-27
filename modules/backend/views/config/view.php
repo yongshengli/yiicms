@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'label',
             'value',
-            'create_at:datetime',
-            'update_at:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 </div>

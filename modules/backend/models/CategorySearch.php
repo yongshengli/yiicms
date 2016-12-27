@@ -19,7 +19,7 @@ class CategorySearch extends Category
     {
         return [
             [['type'], 'required'],
-            [['id', 'pid', 'type', 'create_at', 'update_at'], 'integer'],
+            [['id', 'pid', 'type', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -62,8 +62,8 @@ class CategorySearch extends Category
             'id' => $this->id,
             'pid' => $this->pid,
             'type' => $this->type,
-            'create_at' => $this->create_at,
-            'update_at' => $this->update_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

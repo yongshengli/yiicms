@@ -12,8 +12,8 @@ use app\models\Content;
  * @property string $name
  * @property integer $pid
  * @property integer $type
- * @property integer $create_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  * @property array $types
  *
  * @const TYPE_NEWS \app\models\Content::TYPE_NEWS
@@ -87,8 +87,8 @@ class Category extends AppActiveRecord
             'name' => '分类名',
             'pid' => '父类',
             'type' => '分类类型',
-            'create_at' => '创建时间',
-            'update_at' => '最后修改',
+            'created_at' => '创建时间',
+            'updated_at' => '最后修改',
         ];
     }
 

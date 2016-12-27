@@ -25,12 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'label',
             'value',
             [
-                'attribute' => 'create_at',
+                'attribute' => 'created_at',
                 'format' => 'datetime',
                 'options' => ['style' => 'width:150px'],
             ],
             [
-                'attribute' => 'update_at',
+                'attribute' => 'updated_at',
                 'format' => 'datetime',
                 'options' => ['style' => 'width:150px'],
             ],

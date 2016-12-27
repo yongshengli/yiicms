@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'status',
             'access_token',
-            'create_at',
-            'update_at',
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
 

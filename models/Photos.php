@@ -41,7 +41,7 @@ class Photos extends Content
             'description' => 'Description',
             'status' => '状态',
             'statusText' => '状态',
-            'create_at'=>'创建时间'
+            'created_at'=>'创建时间'
         ];
     }
 }

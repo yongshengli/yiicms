@@ -16,8 +16,8 @@ use yii\db\Expression;
  * @property string $description
  * @property integer $status
  * @property integer $admin_user_id
- * @property integer $create_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class Content extends AppActiveRecord
 {
@@ -162,7 +162,7 @@ class Content extends AppActiveRecord
     {
         return [
             [['title', 'type', 'status','category_id'], 'required'],
-            [['type', 'status', 'admin_user_id', 'category_id','create_at', 'update_at'], 'integer'],
+            [['type', 'status', 'admin_user_id', 'category_id','created_at', 'updated_at'], 'integer'],
             [['title', 'image', 'description', 'keywords'], 'string', 'max' => 255],
         ];
     }
@@ -198,7 +198,7 @@ class Content extends AppActiveRecord
             'keywords' => 'Keywords',
             'status' => '状态',
             'statusText' => '状态',
-            'create_at'=>'创建时间'
+            'created_at'=>'创建时间'
         ];
     }
     /**

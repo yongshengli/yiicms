@@ -14,8 +14,8 @@ use yii\web\UploadedFile;
  * @property string $title
  * @property string $image
  * @property string $link
- * @property integer $create_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class Ad extends AppActiveRecord
 {
@@ -76,7 +76,7 @@ class Ad extends AppActiveRecord
         return [
             [['title',], 'required'],
             [['imageFile'], 'file', 'extensions' => 'gif, jpg, png, jpeg','mimeTypes' => 'image/jpeg, image/png',],
-            [['create_at', 'update_at'], 'integer'],
+            [['created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 50],
             [['image', 'link'], 'string', 'max' => 255],
         ];
@@ -93,8 +93,8 @@ class Ad extends AppActiveRecord
             'image' => '图片',
             'imageFile' => '图片',
             'link' => '链接',
-            'create_at' => '创建时间',
-            'update_at' => '最后修改',
+            'created_at' => '创建时间',
+            'updated_at' => '最后修改',
         ];
     }
 }

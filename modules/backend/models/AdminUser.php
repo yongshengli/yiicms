@@ -16,8 +16,8 @@ use Yii;
  * @property string $email
  * @property integer $status
  * @property string $access_token
- * @property integer $create_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class AdminUser extends AppActiveRecord
 {
@@ -84,13 +84,13 @@ class AdminUser extends AppActiveRecord
     public function rules()
     {
         return [
-            [['username', 'email', 'update_at'],'required'],
+            [['username', 'email', 'updated_at'],'required'],
 
-            [['update_at'], 'required', 'on'=>'update'],
+            [['updated_at'], 'required', 'on'=>'update'],
 
-            [['password', 'create_at', 'update_at'], 'required', 'on'=>'create'],
+            [['password', 'created_at', 'updated_at'], 'required', 'on'=>'create'],
 
-            [['status', 'create_at', 'update_at'], 'integer'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password', 'password_reset_token', 'email', 'access_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
@@ -113,8 +113,8 @@ class AdminUser extends AppActiveRecord
             'email' => 'Email',
             'status' => '状态',
             'access_token' => 'Access Token',
-            'create_at' => '创建时间',
-            'update_at' => '最后修改',
+            'created_at' => '创建时间',
+            'updated_at' => '最后修改',
         ];
     }
 }

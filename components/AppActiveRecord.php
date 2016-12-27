@@ -19,7 +19,7 @@ class AppActiveRecord extends ActiveRecord
      */
     public function insert($runValidation = true, $attributeNames = null)
     {
-        $this->create_at = $this->update_at = time();
+        $this->created_at = $this->updated_at = time();
         return parent::insert($runValidation, $attributeNames);
     }
     /**
@@ -29,7 +29,7 @@ class AppActiveRecord extends ActiveRecord
      */
     public function update($runValidation = true, $attributeNames = null)
     {
-        $this->update_at = time();
+        $this->updated_at = time();
         return parent::update($runValidation, $attributeNames);
     }
 }

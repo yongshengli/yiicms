@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'image',
             'link',
             [
-                'attribute' => 'create_at',
+                'attribute' => 'created_at',
                 'format' => 'datetime',
                 'options' => ['style' => 'width:160px']
             ],

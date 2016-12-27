@@ -42,7 +42,7 @@ class Downloads extends Content
         return [
             [['title', 'type', 'status','category_id',], 'required'],
             [['file'], 'file', 'extensions' => 'zip,rar',],
-            [['type', 'status', 'admin_user_id', 'category_id','create_at', 'update_at'], 'integer'],
+            [['type', 'status', 'admin_user_id', 'category_id','created_at', 'updated_at'], 'integer'],
             [['title', 'image', 'description'], 'string', 'max' => 255],
         ];
     }
@@ -103,7 +103,7 @@ class Downloads extends Content
             'description' => '描述',
             'status' => '状态',
             'statusText' => '状态',
-            'create_at'=>'创建时间'
+            'created_at'=>'创建时间'
         ];
     }
 }

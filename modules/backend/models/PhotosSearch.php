@@ -23,7 +23,7 @@ class PhotosSearch extends Photos
     {
         return [
             [['id', 'type','admin_user_id'], 'integer'],
-            [['title', 'image', 'description', 'create_at'], 'safe'],
+            [['title', 'image', 'description', 'created_at'], 'safe'],
         ];
     }
 
@@ -40,12 +40,12 @@ class PhotosSearch extends Photos
      * 创建时间
      * @return array|false|int
      */
-    public function getCreateAt()
+    public function getCreatedAt()
     {
-        if(empty($this->create_at)){
+        if(empty($this->created_at)){
             return null;
         }
-        $createAt = is_string($this->create_at)?strtotime($this->create_at):$this->create_at;
+        $createAt = is_string($this->created_at)?strtotime($this->created_at):$this->created_at;
         if(date('H:i:s', $createAt)=='00:00:00'){
             return [$createAt, $createAt+3600*24];
         }
@@ -82,7 +82,7 @@ class PhotosSearch extends Photos
             'id' => $this->id,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
-            'update_at' => $this->update_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
@@ -90,10 +90,10 @@ class PhotosSearch extends Photos
         $createAt = $this->getCreateAt();
         if(is_array($createAt)) {
 
-            $query->andFilterWhere(['>=','create_at', $createAt[0]])
-                ->andFilterWhere(['<=','create_at', $createAt[1]]);
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
         }else{
-            $query->andFilterWhere(['create_at'=>$createAt]);
+            $query->andFilterWhere(['created_at'=>$createAt]);
 
         }
         return $dataProvider;

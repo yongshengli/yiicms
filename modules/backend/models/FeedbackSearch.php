@@ -22,7 +22,7 @@ class FeedbackSearch extends Feedback
     {
         return [
             [['id'], 'integer'],
-            [['name', 'phone', 'email', 'subject', 'create_at'], 'safe'],
+            [['name', 'phone', 'email', 'subject', 'created_at'], 'safe'],
         ];
     }
 
@@ -39,16 +39,16 @@ class FeedbackSearch extends Feedback
      * 创建时间
      * @return array|false|int
      */
-    public function getCreateAt()
+    public function getCreatedAt()
     {
-        if(empty($this->create_at)){
+        if(empty($this->created_at)){
             return null;
         }
-        $createAt = is_string($this->create_at)?strtotime($this->create_at):$this->create_at;
-        if(date('H:i:s', $createAt)=='00:00:00'){
-            return [$createAt, $createAt+3600*24];
+        $createdAt = is_string($this->created_at)?strtotime($this->created_at):$this->created_at;
+        if(date('H:i:s', $createdAt)=='00:00:00'){
+            return [$createdAt, $createdAt+3600*24];
         }
-        return $createAt;
+        return $createdAt;
     }
     /**
      * Creates data provider instance with search query applied
@@ -84,13 +84,13 @@ class FeedbackSearch extends Feedback
 
         $query->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'name', $this->name]);
-        $createAt = $this->getCreateAt();
+        $createAt = $this->getCreatedAt();
         if(is_array($createAt)) {
 
-            $query->andFilterWhere(['>=','create_at', $createAt[0]])
-                ->andFilterWhere(['<=','create_at', $createAt[1]]);
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
         }else{
-            $query->andFilterWhere(['create_at'=>$createAt]);
+            $query->andFilterWhere(['created_at'=>$createAt]);
         }
 
         return $dataProvider;

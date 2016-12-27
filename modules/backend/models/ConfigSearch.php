@@ -18,7 +18,7 @@ class ConfigSearch extends Config
     public function rules()
     {
         return [
-            [['id', 'create_at', 'update_at'], 'integer'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
             [['name', 'label', 'value'], 'safe'],
         ];
     }
@@ -60,8 +60,8 @@ class ConfigSearch extends Config
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'create_at' => $this->create_at,
-            'update_at' => $this->update_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

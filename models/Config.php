@@ -11,8 +11,8 @@ use app\components\AppActiveRecord;
  * @property string $name
  * @property string $label
  * @property string $value
- * @property integer $create_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class Config extends AppActiveRecord
 {
@@ -45,8 +45,8 @@ class Config extends AppActiveRecord
             'name' => '配置字段',
             'label' => '配置字段名',
             'value' => '配置值',
-            'create_at' => '创建时间',
-            'update_at' => '最后修改',
+            'created_at' => '创建时间',
+            'updated_at' => '最后修改',
         ];
     }
 }

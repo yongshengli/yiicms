@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['style' => 'width:100px']
             ],
             [
-                'attribute' => 'create_at',
+                'attribute' => 'created_at',
                 'format' => 'datetime',
                 'options' => ['style' => 'width:150px']
             ],

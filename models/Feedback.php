@@ -14,8 +14,8 @@ use Yii;
  * @property string $phone
  * @property string $email
  * @property string $message
- * @property integer $carete_at
- * @property integer $update_at
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class Feedback extends AppActiveRecord
 {
@@ -59,7 +59,7 @@ class Feedback extends AppActiveRecord
             'phone' => '电话',
             'email' => 'Email',
             'body' => '内容',
-            'create_at' => '创建时间',
+            'created_at' => '创建时间',
             'verifyCode' => '验证码',
         ];
     }

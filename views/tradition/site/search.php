@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],
                             [
-                                'attribute'=>'create_at',
+                                'attribute'=>'created_at',
                                 'format'=>'date',
                                 'options'=>['class'=>'text-right','style'=>'width:100px']
                             ],

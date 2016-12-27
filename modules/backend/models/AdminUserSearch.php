@@ -18,7 +18,7 @@ class AdminUserSearch extends AdminUser
     public function rules()
     {
         return [
-            [['id', 'status', 'create_at', 'update_at'], 'integer'],
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'auth_key', 'password', 'password_reset_token', 'email', 'access_token'], 'safe'],
         ];
     }
@@ -64,8 +64,8 @@ class AdminUserSearch extends AdminUser
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'create_at' => $this->create_at,
-            'update_at' => $this->update_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
