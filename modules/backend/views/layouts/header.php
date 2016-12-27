@@ -27,15 +27,15 @@ use yii\helpers\Url;
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
-                        <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
-                                 alt="User Image"/>
-
-                            <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
-                            </p>
-                        </li>
+<!--                        <li class="user-header">-->
+<!--                            <img src="--><?//= $directoryAsset ?><!--/img/user2-160x160.jpg" class="img-circle"-->
+<!--                                 alt="User Image"/>-->
+<!---->
+<!--                            <p>-->
+<!--                                Alexander Pierce - Web Developer-->
+<!--                                <small>Member since Nov. 2012</small>-->
+<!--                            </p>-->
+<!--                        </li>-->
                         <!-- Menu Body -->
 <!--                        <li class="user-body">-->
 <!--                            <div class="col-xs-4 text-center">-->
