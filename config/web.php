@@ -16,7 +16,7 @@ $config = [
             'class'=>'yii\web\User',
             'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
             'enableAutoLogin' => true,
-            'loginUrl'=>['backend\default\login']
+            'loginUrl'=>['backend/rbac/user/login']
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

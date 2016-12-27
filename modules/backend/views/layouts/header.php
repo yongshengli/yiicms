@@ -51,7 +51,7 @@ use yii\helpers\Url;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="<?=Url::to(['/backend/default/edit-password'])?>" class="btn btn-default btn-flat">修改密码</a>
+                                <a href="<?=Url::to(['/backend/rbac/user/change-password'])?>" class="btn btn-default btn-flat">修改密码</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

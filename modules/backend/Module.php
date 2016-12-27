@@ -21,9 +21,17 @@ class Module extends \yii\base\Module
         parent::init();
         Yii::configure($this, require(__DIR__ . '/config.php'));
         // custom initialization code goes here
-        if(Yii::$app->user->isGuest && Yii::$app->requestedRoute!='backend/default/login'){
-            return Yii::$app->response->redirect(['backend/default/login']);
-        }
+//        if(Yii::$app->user->isGuest && Yii::$app->requestedRoute!='backend/default/login'){
+//            return Yii::$app->response->redirect(['backend/default/login']);
+//        }
+        Yii::$container->set(
+            'user', [
+                'class' => 'yii\web\User',
+                'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
+                'enableAutoLogin' => true,
+                'loginUrl' => ['backend\rbac\user\login']
+            ]
+        );
         Yii::$container->set('mdm\admin\components\Configs',
             [
                 'db' => 'customDb',

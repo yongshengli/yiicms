@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'captionOptions'=>['style'=>'width:120px']
             ],
             'auth_key',
-            'password',
             'password_reset_token',
             'email:email',
             'status',

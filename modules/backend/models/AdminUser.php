@@ -11,7 +11,7 @@ use Yii;
  * @property integer $id
  * @property string $username
  * @property string $auth_key
- * @property string $password
+ * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
  * @property integer $status
@@ -41,9 +41,9 @@ class AdminUser extends AppActiveRecord
     public function resetPassword()
     {
         if(empty($this->password)){
-            $this->setAttribute('password', $this->getOldAttribute('password'));
+            $this->setAttribute('password', $this->getOldAttribute('password_hash'));
         }else{
-            $this->setAttribute('password' ,self::createPassword($this->password));
+            $this->setAttribute('password' ,self::createPassword($this->password_hash));
         }
     }
     /**

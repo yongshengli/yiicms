@@ -30,4 +30,10 @@ return [
             ]
         ]
     ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'user/login',
+        ]
+    ],
 ];

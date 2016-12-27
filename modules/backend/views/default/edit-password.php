@@ -28,7 +28,7 @@ $this->title = '修改密码';
         ],
     ]); ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
+    <?= $form->field($model, 'password_hash')->passwordInput(['autofocus' => true]) ?>
     <?= $form->field($model, 'newPassword')->passwordInput() ?>
     <?= $form->field($model, 'passwordRepeat')->passwordInput() ?>
 
