@@ -62,10 +62,10 @@ use app\models\Content;
                     ['label' => '管理员权限', 'icon' => 'fa fa-user-secret','url' => '#',
                         'items' => [
                             ['label' => '管理员配置', 'url' => ['/backend/admin-user/index']],
-                            ['label' => '权限配置', 'url' => ['/backend/rabc'],],
-                            ['label' => '角色列表', 'url' => ['/backend/rabc/role'],],
-                            ['label' => '权限列表', 'url' => ['/backend/rabc/permission'],],
-                            ['label' => '规则列表', 'url' => ['/backend/rabc/rule'],],
+                            ['label' => '权限配置', 'url' => ['/backend/rbac'],],
+                            ['label' => '角色列表', 'url' => ['/backend/rbac/role'],],
+                            ['label' => '权限列表', 'url' => ['/backend/rbac/permission'],],
+                            ['label' => '规则列表', 'url' => ['/backend/rbac/rule'],],
                         ]
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],

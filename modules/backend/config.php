@@ -19,7 +19,7 @@ return [
         'pageSize' => '5',
     ],
     'modules'=>[
-        'rabc' => [
+        'rbac' => [
             'class' => 'mdm\admin\Module',
 //            'layout' => 'left-menu', // it can be '@path/to/your/layout'.
             'menus' => [

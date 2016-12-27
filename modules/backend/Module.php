@@ -24,6 +24,12 @@ class Module extends \yii\base\Module
         if(Yii::$app->user->isGuest && Yii::$app->requestedRoute!='backend/default/login'){
             return Yii::$app->response->redirect(['backend/default/login']);
         }
-        Yii::$container->set('mdm\admin\components\Configs',['db' => 'customDb', 'menuTable' => 'admin_menu',]);
+        Yii::$container->set('mdm\admin\components\Configs',
+            [
+                'db' => 'customDb',
+                'menuTable' => 'admin_menu',
+                'userTable' => 'admin_user',
+            ]
+        );
     }
 }
