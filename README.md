@@ -32,9 +32,11 @@ The minimum requirement by this project template that your Web server supports P
 INSTALLATION
 ------------
 
-git clone git@git.oschina.net:templi/yiicms.git
+~~~
+1. git clone git@git.oschina.net:templi/yiicms.git
 
-composer install
+2. composer install
+~~~
 
 Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
 directly under the Web root.
