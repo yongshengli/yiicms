@@ -25,6 +25,12 @@ class Module extends \yii\base\Module
 //            return Yii::$app->response->redirect(['backend/default/login']);
 //        }
         Yii::$container->set(
+            'errorHandler', [
+                'class'=>'yii\web\ErrorHandler',
+                'errorAction' => 'backend/default/error',
+            ]
+        );
+        Yii::$container->set(
             'user', [
                 'class' => 'yii\web\User',
                 'identityClass' => 'app\modules\backend\models\AdminUserIdentity',

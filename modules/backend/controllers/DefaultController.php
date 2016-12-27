@@ -13,6 +13,15 @@ use yii\filters\VerbFilter;
  */
 class DefaultController extends BackendController
 {
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ]
+        ];
+    }
+
     /**
      * 后台首页
      * Renders the index view for the module
