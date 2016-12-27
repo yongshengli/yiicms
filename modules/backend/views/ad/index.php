@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
                 'options' => ['style' => 'width:160px']
             ],
-            // 'update_at',
+            // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn','template' => '{update} {delete}',
                 'options'=>['style'=>'width:60px']

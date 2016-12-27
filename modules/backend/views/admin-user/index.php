@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['style' => 'width:150px']
             ],
             [
-                'attribute' => 'update_at',
+                'attribute' => 'updated_at',
                 'format' => 'datetime',
                 'options' => ['style' => 'width:150px']
             ],

@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-9">
                 <div class="page-header">
                     <h1><?=$model->title?></h1>
-                    <small><?=date('Y-m-d H:i:s',$model->update_at)?></small>
+                    <small><?=date('Y-m-d H:i:s',$model->updated_at)?></small>
                 </div>
                 <div class="panel-body">
                     <?=$model->detail->detail?>
