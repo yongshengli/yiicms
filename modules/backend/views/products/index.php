@@ -15,8 +15,7 @@ $this->title = '产品管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
-    <div class="row">
-        <div class="col-lg-10">
+
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <p>
                 <?= Html::a('添加产品', ['create'], ['class' => 'btn btn-success']) ?>
@@ -52,24 +51,4 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ],
             ]); ?>
-        </div>
-        <div class="col-lg-2">
-            <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-                <?= Menu::widget([
-//                'template' => "\n<div>\n{items}\n</div>\n",
-                    'options' => ['class' => 'nav bs-docs-sidenav'],
-                    'submenuTemplate'=>"\n<ul class='nav'>\n{items}\n</ul>\n",
-                    'items' => [
-                        [
-                            'label' => '产品管理', 'url' => ['/backend/products/index'],
-                            'items'=>[
-                                ['label'=>'添加产品','url'=>['/backend/products/create']]
-                            ]
-                        ],
-                        ['label' => '分类管理', 'url' => ['/backend/category/index','type'=>Content::TYPE_PRODUCTS]],
-                    ]
-                ]) ?>
-            </div>
-        </div>
-    </div>
 </div>

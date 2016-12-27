@@ -18,7 +18,7 @@ BackendAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body style="background-color: #aaadb1;color:#FFF">
+    <body class="login-page">
     <?php $this->beginBody() ?>
 
     <div class="wrap">

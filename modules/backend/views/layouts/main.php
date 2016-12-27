@@ -11,6 +11,7 @@ use app\modules\backend\assets\BackendAsset;
 use yii\bootstrap\Alert;
 
 BackendAsset::register($this);
+$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,120 +23,25 @@ BackendAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => '后台管理',
-        'brandUrl' => ['/backend/'],
-        'options' => [
-            'class' => 'navbar-inverse bs-docs-nav',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => '产品管理', 'url' => ['/backend/products/index'],
-                'active' => function () {
-                    if(Yii::$app->controller->id=='products'){
-                        return true;
-                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_PRODUCTS){
-                        return true;
-                    }
-                    return false;
-                }
-            ],
-            ['label' => '新闻管理', 'url' => ['/backend/news/index'],
-                'active' => function () {
-                    if(Yii::$app->controller->id=='news'){
-                        return true;
-                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_NEWS){
-                        return true;
-                    }
-                    return false;
-                }
-            ],
-            ['label' => '照片管理', 'url' => ['/backend/photos/index'],
-                'active' => function () {
-                    if(Yii::$app->controller->id=='photos'){
-                        return true;
-                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_PHOTOS){
-                        return true;
-                    }
-                    return false;
-                }
-            ],
-            ['label' => '下载管理', 'url' => ['/backend/downloads/index'],
-                'active' => function () {
-                    if(Yii::$app->controller->id=='downloads'){
-                        return true;
-                    }elseif(Yii::$app->controller->id=='category' && Yii::$app->request->get('type')==\app\models\Content::TYPE_DOWNLOADS){
-                        return true;
-                    }
-                    return false;
-                }
-            ],
-            ['label' => '用户反馈', 'url' => ['/backend/feedback/index'],
-                'active' => function () {
-                    return Yii::$app->controller->id=='feedback';
-                }
-            ],
-            ['label' => '网站配置', 'url' => ['/backend/config/index'],
-                'active' => function () {
-                    return Yii::$app->controller->id=='config';
-                }
-            ],
-            ['label' => '轮播图管理', 'url' => ['/backend/ad/index'],
-                'active' => function () {
-                    return Yii::$app->controller->id=='ad';
-                }
-            ],
-            ['label' => '管理员管理', 'url' => ['/backend/admin-user/index'],
-                'active' => function () {
-                    return Yii::$app->controller->id=='admin-user';
-                }
-            ],
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            [
-                'label'=>isset(Yii::$app->user->identity->username)?Yii::$app->user->identity->username:'',
-                'items' => [
-                    ['label' => '修改密码', 'url' => ['/backend/default/edit-password']],
-                    '<li><a>'
-                    . Html::beginForm(['/backend/default/logout'], 'post')
-                    . Html::submitButton(
-                        '退出',
-                        ['class' => 'btn-link']
-                    )
-                    . Html::endForm()
-                    .'</a></li>'
-                ]
-            ],
+    <?= $this->render(
+        'header.php',
+        ['directoryAsset' => $directoryAsset]
+    ) ?>
 
-        ],
-    ]);
-    NavBar::end();
+    <?= $this->render(
+        'left.php',
+        ['directoryAsset' => $directoryAsset]
+    )
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'homeLink'=>[
-                'label'=>'首页',
-                'url'=>['/backend/default/index']
-            ],
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-
-        <?php if(isset($this->params['showMessage'])):foreach($this->params['showMessage'] as $item):?>
-            <?=Alert::widget(['body'=>$item['message'],'options'=>['class'=>'alert alert-'.$item['type']]])?>
-        <?php endforeach;endif;?>
-        <?= $content ?>
-    </div>
+    <?= $this->render(
+        'content.php',
+        ['content' => $content, 'directoryAsset' => $directoryAsset]
+    ) ?>
 </div>
 <?php $this->endBody() ?>
 </body>
