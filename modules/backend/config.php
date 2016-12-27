@@ -33,8 +33,8 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            '/backend/user/login',
-            '/backend/default/error'
+            'user/login',
+            'default/error'
         ]
     ],
 ];

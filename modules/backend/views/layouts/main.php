@@ -13,7 +13,7 @@ use yii\bootstrap\Alert;
 BackendAsset::register($this);
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
-<?php if (Yii::$app->controller->action->id === 'login'): ?>
+<?php if (Yii::$app->controller->action->id === 'login' || Yii::$app->controller->action->id === 'error'): ?>
     <?= $this->render('main-login', [
         'content' => $content
     ]) ?>
