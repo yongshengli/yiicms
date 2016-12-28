@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.1.9-MariaDB)
 # Database: yiicms
-# Generation Time: 2016-12-27 07:33:27 +0000
+# Generation Time: 2016-12-28 06:59:26 +0000
 # ************************************************************
 
 
@@ -48,6 +48,27 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table admin_menu
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `admin_menu`;
+
+CREATE TABLE `admin_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
+  `route` varchar(256) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `data` blob,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent` (`parent`),
+  CONSTRAINT `admin_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `admin_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table admin_user
 # ------------------------------------------------------------
 
@@ -75,10 +96,504 @@ LOCK TABLES `admin_user` WRITE;
 
 INSERT INTO `admin_user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `access_token`, `created_at`, `updated_at`)
 VALUES
-	(1,'admin','','21232f297a57a5a743894a0e4a801fc3',NULL,'739800600@qq.com',10,'',0,1481432518),
+	(1,'admin','','21232f297a57a5a743894a0e4a801fc3',NULL,'739800600@qq.com',10,'',0,1482893156),
 	(4,'demo','','fe01ce2a7fbac8fafaed7c982a04e229',NULL,'demo@demo.com',10,'',1481431804,1481431804);
 
 /*!40000 ALTER TABLE `admin_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table auth_assignment
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `auth_assignment`;
+
+CREATE TABLE `auth_assignment` (
+  `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`item_name`,`user_id`),
+  CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `auth_assignment` WRITE;
+/*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`)
+VALUES
+	('Administrator','1',1482897657),
+	('AdministratorAccess','1',1482897661),
+	('Visitor','4',1482897661),
+	('VisitorAccess','4',1482897661);
+
+/*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table auth_item
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `auth_item`;
+
+CREATE TABLE `auth_item` (
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(11) NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` text COLLATE utf8_unicode_ci,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`),
+  KEY `rule_name` (`rule_name`),
+  KEY `idx-auth_item-type` (`type`),
+  CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `auth_item` WRITE;
+/*!40000 ALTER TABLE `auth_item` DISABLE KEYS */;
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`)
+VALUES
+	('/backend/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/ad/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/admin-user/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/base-config',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/edit-password',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/error',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/login',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/default/logout',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/downloads/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/feedback/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/feedback/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/feedback/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/feedback/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/feedback/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/news/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/edit-detail',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/upload-photo',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/photos/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/upload',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/products/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/assignment/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/assignment/assign',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/assignment/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/assignment/revoke',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/assignment/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/default/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/default/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/menu/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/assign',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/remove',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/permission/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/assign',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/remove',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/role/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/assign',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/refresh',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/route/remove',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/create',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/update',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/rule/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/activate',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/change-password',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/delete',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/login',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/logout',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/request-password-reset',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/reset-password',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/signup',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/rbac/user/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/*',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/action',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/diff',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/preview',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/gii/default/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('Administrator',1,'超级管理员',NULL,NULL,1482896582,1482898405),
+	('AdministratorAccess',2,'超级管理员权限',NULL,NULL,1482897169,1482898428),
+	('Visitor',1,'后台参观者','VisitorRule',NULL,1482897794,1482899002),
+	('VisitorAccess',2,'浏览者权限，只读权限','VisitorRule',NULL,1482897866,1482898974);
+
+/*!40000 ALTER TABLE `auth_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table auth_item_child
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `auth_item_child`;
+
+CREATE TABLE `auth_item_child` (
+  `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`),
+  CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `auth_item_child` WRITE;
+/*!40000 ALTER TABLE `auth_item_child` DISABLE KEYS */;
+
+INSERT INTO `auth_item_child` (`parent`, `child`)
+VALUES
+	('AdministratorAccess','/backend/*'),
+	('AdministratorAccess','/backend/ad/*'),
+	('AdministratorAccess','/backend/ad/create'),
+	('AdministratorAccess','/backend/ad/delete'),
+	('AdministratorAccess','/backend/ad/index'),
+	('AdministratorAccess','/backend/ad/update'),
+	('AdministratorAccess','/backend/ad/upload'),
+	('AdministratorAccess','/backend/ad/view'),
+	('AdministratorAccess','/backend/admin-user/*'),
+	('AdministratorAccess','/backend/admin-user/create'),
+	('AdministratorAccess','/backend/admin-user/delete'),
+	('AdministratorAccess','/backend/admin-user/index'),
+	('AdministratorAccess','/backend/admin-user/update'),
+	('AdministratorAccess','/backend/admin-user/upload'),
+	('AdministratorAccess','/backend/admin-user/view'),
+	('AdministratorAccess','/backend/category/*'),
+	('AdministratorAccess','/backend/category/create'),
+	('AdministratorAccess','/backend/category/delete'),
+	('AdministratorAccess','/backend/category/index'),
+	('AdministratorAccess','/backend/category/update'),
+	('AdministratorAccess','/backend/category/upload'),
+	('AdministratorAccess','/backend/category/view'),
+	('AdministratorAccess','/backend/config/*'),
+	('AdministratorAccess','/backend/config/base-config'),
+	('AdministratorAccess','/backend/config/create'),
+	('AdministratorAccess','/backend/config/delete'),
+	('AdministratorAccess','/backend/config/index'),
+	('AdministratorAccess','/backend/config/update'),
+	('AdministratorAccess','/backend/config/upload'),
+	('AdministratorAccess','/backend/config/view'),
+	('AdministratorAccess','/backend/default/*'),
+	('AdministratorAccess','/backend/default/edit-password'),
+	('AdministratorAccess','/backend/default/error'),
+	('AdministratorAccess','/backend/default/index'),
+	('AdministratorAccess','/backend/default/login'),
+	('AdministratorAccess','/backend/default/logout'),
+	('AdministratorAccess','/backend/downloads/*'),
+	('AdministratorAccess','/backend/downloads/create'),
+	('AdministratorAccess','/backend/downloads/delete'),
+	('AdministratorAccess','/backend/downloads/index'),
+	('AdministratorAccess','/backend/downloads/update'),
+	('AdministratorAccess','/backend/downloads/upload'),
+	('AdministratorAccess','/backend/downloads/view'),
+	('AdministratorAccess','/backend/feedback/*'),
+	('AdministratorAccess','/backend/feedback/delete'),
+	('AdministratorAccess','/backend/feedback/index'),
+	('AdministratorAccess','/backend/feedback/upload'),
+	('AdministratorAccess','/backend/feedback/view'),
+	('AdministratorAccess','/backend/news/*'),
+	('AdministratorAccess','/backend/news/create'),
+	('AdministratorAccess','/backend/news/delete'),
+	('AdministratorAccess','/backend/news/index'),
+	('AdministratorAccess','/backend/news/update'),
+	('AdministratorAccess','/backend/news/upload'),
+	('AdministratorAccess','/backend/news/view'),
+	('AdministratorAccess','/backend/photos/*'),
+	('AdministratorAccess','/backend/photos/create'),
+	('AdministratorAccess','/backend/photos/delete'),
+	('AdministratorAccess','/backend/photos/edit-detail'),
+	('AdministratorAccess','/backend/photos/index'),
+	('AdministratorAccess','/backend/photos/update'),
+	('AdministratorAccess','/backend/photos/upload'),
+	('AdministratorAccess','/backend/photos/upload-photo'),
+	('AdministratorAccess','/backend/photos/view'),
+	('AdministratorAccess','/backend/products/*'),
+	('AdministratorAccess','/backend/products/create'),
+	('AdministratorAccess','/backend/products/delete'),
+	('AdministratorAccess','/backend/products/index'),
+	('AdministratorAccess','/backend/products/update'),
+	('AdministratorAccess','/backend/products/upload'),
+	('AdministratorAccess','/backend/products/view'),
+	('AdministratorAccess','/backend/rbac/*'),
+	('AdministratorAccess','/backend/rbac/assignment/*'),
+	('AdministratorAccess','/backend/rbac/assignment/assign'),
+	('AdministratorAccess','/backend/rbac/assignment/index'),
+	('AdministratorAccess','/backend/rbac/assignment/revoke'),
+	('AdministratorAccess','/backend/rbac/assignment/view'),
+	('AdministratorAccess','/backend/rbac/default/*'),
+	('AdministratorAccess','/backend/rbac/default/index'),
+	('AdministratorAccess','/backend/rbac/menu/*'),
+	('AdministratorAccess','/backend/rbac/menu/create'),
+	('AdministratorAccess','/backend/rbac/menu/delete'),
+	('AdministratorAccess','/backend/rbac/menu/index'),
+	('AdministratorAccess','/backend/rbac/menu/update'),
+	('AdministratorAccess','/backend/rbac/menu/view'),
+	('AdministratorAccess','/backend/rbac/permission/*'),
+	('AdministratorAccess','/backend/rbac/permission/assign'),
+	('AdministratorAccess','/backend/rbac/permission/create'),
+	('AdministratorAccess','/backend/rbac/permission/delete'),
+	('AdministratorAccess','/backend/rbac/permission/index'),
+	('AdministratorAccess','/backend/rbac/permission/remove'),
+	('AdministratorAccess','/backend/rbac/permission/update'),
+	('AdministratorAccess','/backend/rbac/permission/view'),
+	('AdministratorAccess','/backend/rbac/role/*'),
+	('AdministratorAccess','/backend/rbac/role/assign'),
+	('AdministratorAccess','/backend/rbac/role/create'),
+	('AdministratorAccess','/backend/rbac/role/delete'),
+	('AdministratorAccess','/backend/rbac/role/index'),
+	('AdministratorAccess','/backend/rbac/role/remove'),
+	('AdministratorAccess','/backend/rbac/role/update'),
+	('AdministratorAccess','/backend/rbac/role/view'),
+	('AdministratorAccess','/backend/rbac/route/*'),
+	('AdministratorAccess','/backend/rbac/route/assign'),
+	('AdministratorAccess','/backend/rbac/route/create'),
+	('AdministratorAccess','/backend/rbac/route/index'),
+	('AdministratorAccess','/backend/rbac/route/refresh'),
+	('AdministratorAccess','/backend/rbac/route/remove'),
+	('AdministratorAccess','/backend/rbac/rule/*'),
+	('AdministratorAccess','/backend/rbac/rule/create'),
+	('AdministratorAccess','/backend/rbac/rule/delete'),
+	('AdministratorAccess','/backend/rbac/rule/index'),
+	('AdministratorAccess','/backend/rbac/rule/update'),
+	('AdministratorAccess','/backend/rbac/rule/view'),
+	('AdministratorAccess','/backend/rbac/user/*'),
+	('AdministratorAccess','/backend/rbac/user/activate'),
+	('AdministratorAccess','/backend/rbac/user/change-password'),
+	('AdministratorAccess','/backend/rbac/user/delete'),
+	('AdministratorAccess','/backend/rbac/user/index'),
+	('AdministratorAccess','/backend/rbac/user/login'),
+	('AdministratorAccess','/backend/rbac/user/logout'),
+	('AdministratorAccess','/backend/rbac/user/request-password-reset'),
+	('AdministratorAccess','/backend/rbac/user/reset-password'),
+	('AdministratorAccess','/backend/rbac/user/signup'),
+	('AdministratorAccess','/backend/rbac/user/view'),
+	('AdministratorAccess','/gii/*'),
+	('AdministratorAccess','/gii/default/*'),
+	('AdministratorAccess','/gii/default/action'),
+	('AdministratorAccess','/gii/default/diff'),
+	('AdministratorAccess','/gii/default/index'),
+	('AdministratorAccess','/gii/default/preview'),
+	('AdministratorAccess','/gii/default/view'),
+	('VisitorAccess','/backend/*'),
+	('VisitorAccess','/backend/ad/*'),
+	('VisitorAccess','/backend/ad/create'),
+	('VisitorAccess','/backend/ad/delete'),
+	('VisitorAccess','/backend/ad/index'),
+	('VisitorAccess','/backend/ad/update'),
+	('VisitorAccess','/backend/ad/upload'),
+	('VisitorAccess','/backend/ad/view'),
+	('VisitorAccess','/backend/admin-user/*'),
+	('VisitorAccess','/backend/admin-user/create'),
+	('VisitorAccess','/backend/admin-user/delete'),
+	('VisitorAccess','/backend/admin-user/index'),
+	('VisitorAccess','/backend/admin-user/update'),
+	('VisitorAccess','/backend/admin-user/upload'),
+	('VisitorAccess','/backend/admin-user/view'),
+	('VisitorAccess','/backend/category/*'),
+	('VisitorAccess','/backend/category/create'),
+	('VisitorAccess','/backend/category/delete'),
+	('VisitorAccess','/backend/category/index'),
+	('VisitorAccess','/backend/category/update'),
+	('VisitorAccess','/backend/category/upload'),
+	('VisitorAccess','/backend/category/view'),
+	('VisitorAccess','/backend/config/*'),
+	('VisitorAccess','/backend/config/base-config'),
+	('VisitorAccess','/backend/config/create'),
+	('VisitorAccess','/backend/config/delete'),
+	('VisitorAccess','/backend/config/index'),
+	('VisitorAccess','/backend/config/update'),
+	('VisitorAccess','/backend/config/upload'),
+	('VisitorAccess','/backend/config/view'),
+	('VisitorAccess','/backend/default/*'),
+	('VisitorAccess','/backend/default/edit-password'),
+	('VisitorAccess','/backend/default/error'),
+	('VisitorAccess','/backend/default/index'),
+	('VisitorAccess','/backend/default/login'),
+	('VisitorAccess','/backend/default/logout'),
+	('VisitorAccess','/backend/downloads/*'),
+	('VisitorAccess','/backend/downloads/create'),
+	('VisitorAccess','/backend/downloads/delete'),
+	('VisitorAccess','/backend/downloads/index'),
+	('VisitorAccess','/backend/downloads/update'),
+	('VisitorAccess','/backend/downloads/upload'),
+	('VisitorAccess','/backend/downloads/view'),
+	('VisitorAccess','/backend/feedback/*'),
+	('VisitorAccess','/backend/feedback/delete'),
+	('VisitorAccess','/backend/feedback/index'),
+	('VisitorAccess','/backend/feedback/upload'),
+	('VisitorAccess','/backend/feedback/view'),
+	('VisitorAccess','/backend/news/*'),
+	('VisitorAccess','/backend/news/create'),
+	('VisitorAccess','/backend/news/delete'),
+	('VisitorAccess','/backend/news/index'),
+	('VisitorAccess','/backend/news/update'),
+	('VisitorAccess','/backend/news/upload'),
+	('VisitorAccess','/backend/news/view'),
+	('VisitorAccess','/backend/photos/*'),
+	('VisitorAccess','/backend/photos/create'),
+	('VisitorAccess','/backend/photos/delete'),
+	('VisitorAccess','/backend/photos/edit-detail'),
+	('VisitorAccess','/backend/photos/index'),
+	('VisitorAccess','/backend/photos/update'),
+	('VisitorAccess','/backend/photos/upload'),
+	('VisitorAccess','/backend/photos/upload-photo'),
+	('VisitorAccess','/backend/photos/view'),
+	('VisitorAccess','/backend/products/*'),
+	('VisitorAccess','/backend/products/create'),
+	('VisitorAccess','/backend/products/delete'),
+	('VisitorAccess','/backend/products/index'),
+	('VisitorAccess','/backend/products/update'),
+	('VisitorAccess','/backend/products/upload'),
+	('VisitorAccess','/backend/products/view'),
+	('VisitorAccess','/backend/rbac/*'),
+	('VisitorAccess','/backend/rbac/assignment/*'),
+	('VisitorAccess','/backend/rbac/assignment/assign'),
+	('VisitorAccess','/backend/rbac/assignment/index'),
+	('VisitorAccess','/backend/rbac/assignment/revoke'),
+	('VisitorAccess','/backend/rbac/assignment/view'),
+	('VisitorAccess','/backend/rbac/default/*'),
+	('VisitorAccess','/backend/rbac/default/index'),
+	('VisitorAccess','/backend/rbac/menu/*'),
+	('VisitorAccess','/backend/rbac/menu/create'),
+	('VisitorAccess','/backend/rbac/menu/delete'),
+	('VisitorAccess','/backend/rbac/menu/index'),
+	('VisitorAccess','/backend/rbac/menu/update'),
+	('VisitorAccess','/backend/rbac/menu/view'),
+	('VisitorAccess','/backend/rbac/permission/*'),
+	('VisitorAccess','/backend/rbac/permission/assign'),
+	('VisitorAccess','/backend/rbac/permission/create'),
+	('VisitorAccess','/backend/rbac/permission/delete'),
+	('VisitorAccess','/backend/rbac/permission/index'),
+	('VisitorAccess','/backend/rbac/permission/remove'),
+	('VisitorAccess','/backend/rbac/permission/update'),
+	('VisitorAccess','/backend/rbac/permission/view'),
+	('VisitorAccess','/backend/rbac/role/*'),
+	('VisitorAccess','/backend/rbac/role/assign'),
+	('VisitorAccess','/backend/rbac/role/create'),
+	('VisitorAccess','/backend/rbac/role/delete'),
+	('VisitorAccess','/backend/rbac/role/index'),
+	('VisitorAccess','/backend/rbac/role/remove'),
+	('VisitorAccess','/backend/rbac/role/update'),
+	('VisitorAccess','/backend/rbac/role/view'),
+	('VisitorAccess','/backend/rbac/route/*'),
+	('VisitorAccess','/backend/rbac/route/assign'),
+	('VisitorAccess','/backend/rbac/route/create'),
+	('VisitorAccess','/backend/rbac/route/index'),
+	('VisitorAccess','/backend/rbac/route/refresh'),
+	('VisitorAccess','/backend/rbac/route/remove'),
+	('VisitorAccess','/backend/rbac/rule/*'),
+	('VisitorAccess','/backend/rbac/rule/create'),
+	('VisitorAccess','/backend/rbac/rule/delete'),
+	('VisitorAccess','/backend/rbac/rule/index'),
+	('VisitorAccess','/backend/rbac/rule/update'),
+	('VisitorAccess','/backend/rbac/rule/view'),
+	('VisitorAccess','/backend/rbac/user/*'),
+	('VisitorAccess','/backend/rbac/user/activate'),
+	('VisitorAccess','/backend/rbac/user/change-password'),
+	('VisitorAccess','/backend/rbac/user/delete'),
+	('VisitorAccess','/backend/rbac/user/index'),
+	('VisitorAccess','/backend/rbac/user/login'),
+	('VisitorAccess','/backend/rbac/user/logout'),
+	('VisitorAccess','/backend/rbac/user/request-password-reset'),
+	('VisitorAccess','/backend/rbac/user/reset-password'),
+	('VisitorAccess','/backend/rbac/user/signup'),
+	('VisitorAccess','/backend/rbac/user/view');
+
+/*!40000 ALTER TABLE `auth_item_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table auth_rule
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `auth_rule`;
+
+CREATE TABLE `auth_rule` (
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `data` text COLLATE utf8_unicode_ci,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `auth_rule` WRITE;
+/*!40000 ALTER TABLE `auth_rule` DISABLE KEYS */;
+
+INSERT INTO `auth_rule` (`name`, `data`, `created_at`, `updated_at`)
+VALUES
+	('VisitorRule','O:36:\"app\\modules\\backend\\rbac\\VisitorRule\":3:{s:4:\"name\";s:11:\"VisitorRule\";s:9:\"createdAt\";i:1482898941;s:9:\"updatedAt\";i:1482898941;}',1482898941,1482898941);
+
+/*!40000 ALTER TABLE `auth_rule` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -135,7 +650,7 @@ LOCK TABLES `config` WRITE;
 
 INSERT INTO `config` (`id`, `name`, `label`, `value`, `created_at`, `updated_at`)
 VALUES
-	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p>\r\n<p>联系人: 李</p>\r\n<p>QQ: 739800600</p>\r\n<p>电话: 130435198910262331</p>\r\n<p>E-mail: 739800600@qq.com</p>\r\n<p>地址: 北京市丰台区大红门</p>',1481350005,1481353232),
+	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李</p><p>QQ: 739800600</p><p>电话: 130435198910262331</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162),
 	(3,'about_us','关于我们','<p>CMS website system is using PHP + MYSQL technology and MVC pattern, structure clear, the code easier to maintain. Support the pseudo static function, can generate Google and baidu map, support custom url, keywords and description, accord with standard of SEO. With corporate websites commonly used modules (description module, news module, product module, download module, image module, online messages, online orders, links, site map, etc.), strong background management functions, flexible marketing for enterprises to create professional and has force standard web site.<br>The website system function is introduced:<br>Modules: </p><p>1. The single page can release enterprises of all kinds of information, such as the description, organization, enterprise honor, contact information, etc., and can freely add or delete.<br>2. News: modules can be issued corporate news and industry news, etc., to support the secondary column, column number is unlimited.<br>3. The product module: product support secondary classification, and can place orders directly to the product inquiry, and support email notification, conforms to the enterprise marketing.<br>4. Image module: in the form of picture album, photo albums and other columns can be successful or company, more intuitive to show the superiority of the enterprise.<br>5. Download module: users can upload document in the background information, convenient website customers to download to use.<br>6. Online message: let the customer advice message timely feedback to the enterprise, and support email notification, make communication more convenient.<br>7. Product search: input a keyword search, the products to the customer to increase the flexibility of the site.<br>8. Product can add the products to replicate, so as to improve the efficiency of the added products.<br>9. Image watermark: can set up the company in the background of the watermark image, in order to prevent the enterprise product pictures stolen.<br>10. Email notification: under customer orders or leave a message at the same time, will send email to the email address you specify, make work more efficiently.<br>11. Search optimization: total support pseudo static, customizable keywords, description, url, generates a sitemap function, add in chain and tags, and other functions.<br></p>',1481355647,1481607089);
 
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
@@ -302,6 +817,15 @@ CREATE TABLE `migration` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `migration` WRITE;
+/*!40000 ALTER TABLE `migration` DISABLE KEYS */;
+
+INSERT INTO `migration` (`version`, `apply_time`)
+VALUES
+	('m140506_102106_rbac_init',1482895903);
+
+/*!40000 ALTER TABLE `migration` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
