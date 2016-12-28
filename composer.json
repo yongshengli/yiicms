@@ -4,7 +4,7 @@
     "keywords": ["cms", "企业网站", "政府网站", "网站"],
     "homepage": "http://yiicms.co/",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "GPL",
     "support": {
         "issues": "https://github.com/yongshengli/yiicms/issues",
         "forum": "https://github.com/yongshengli/yiicms/forum/",
