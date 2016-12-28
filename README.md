@@ -4,6 +4,15 @@ YiiCms 企业站管理系统，基于 yii2 basic 开发
 Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 rapidly creating small projects.
 
+yiicms 主要功能：
+1. 新闻管理
+2. 产品管理
+3. 下载管理
+4. 图片管理
+5. 后台权限rbac
+6. 前台菜单自定义
+7. 多模板多主体
+8. 多语言支持 （后续开发）
 
 DIRECTORY STRUCTURE
 -------------------
