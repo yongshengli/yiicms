@@ -14,45 +14,46 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = '后台登录';
+$this->title = 'YiiCms后台登录';
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
 ?>
-<div class="site-login">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <h2><?= Html::encode($this->title) ?></h2>
+<div class="site-login login-box">
+    <div class="login-logo">
+        <a href="#"><b><?= Html::encode($this->title) ?></b></a>
+    </div>
+    <div class="login-box-body">
 
+        <?php $form = ActiveForm::begin([
+            'id' => 'login-form',
+            'enableClientValidation' => false,
+        ]); ?>
 
-            <?php $form = ActiveForm::begin([
-                'id' => 'login-form',
-                'layout' => 'horizontal',
-                'fieldConfig' => [
-                    'template' => "{label}\n<div class=\"col-lg-5\">{input}</div>\n<div class=\"col-lg-6\">{error}</div>",
-                    'labelOptions' => ['class' => 'col-lg-1 control-label'],
-                ],
-            ]); ?>
+        <?= $form->field($model, 'username', $fieldOptions1)->label(false)->textInput(['autofocus' => true]) ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?= $form->field($model, 'password', $fieldOptions2)->label(false)->passwordInput() ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
-
-            <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
-
-            <?php ActiveForm::end(); ?>
-
-            <div class="col-lg-offset-1" style="color:#FFF;">
-                You may login with <strong>demo/demo</strong>.<br>
-                To modify the username/password, please check out the code.
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
+            <!-- /.col -->
         </div>
-        <div class="col-lg-1"></div>
+        <?php ActiveForm::end(); ?>
+
+        <div class="social-auth-links">
+            You may login with <strong>demo/demo</strong>.<br>
+        </div>
     </div>
 </div>
