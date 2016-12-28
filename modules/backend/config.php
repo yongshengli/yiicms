@@ -19,7 +19,7 @@ return [
 //        ]
     ],
     'params' => [
-        'pageSize' => '5',
+        'pageSize' => '20',
     ],
     'modules'=>[
         'rbac' => [

@@ -87,7 +87,7 @@ class PhotosSearch extends Photos
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description]);
-        $createAt = $this->getCreateAt();
+        $createAt = $this->getCreatedAt();
         if(is_array($createAt)) {
 
             $query->andFilterWhere(['>=','created_at', $createAt[0]])
