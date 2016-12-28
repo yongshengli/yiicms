@@ -2,6 +2,8 @@
 
 namespace app\modules\backend;
 use Yii;
+use yii\web\ForbiddenHttpException;
+
 /**
  * backend module definition class
  */
@@ -25,12 +27,12 @@ class Module extends \yii\base\Module
 //            return Yii::$app->response->redirect(['backend/default/login']);
 //        }
 //        Yii::$container->clear('errorHandler');
-//        Yii::$container->set(
-//            'errorHandler', [
-//                'class'=>'yii\web\ErrorHandler',
-//                'errorAction' => 'backend/default/error',
-//            ]
-//        );
+        Yii::$container->set(
+            'errorHandler', [
+                'class'=>'yii\web\ErrorHandler',
+                'errorAction' => 'backend/default/error',
+            ]
+        );
         Yii::$container->set('mdm\admin\components\Configs',
             [
                 'db' => 'customDb',
