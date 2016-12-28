@@ -36,7 +36,7 @@ class Category extends AppActiveRecord
      */
     static public $topCategory = [
         'id'=>0,
-        'name'=>'顶级分类',
+        'name'=>'作为一级分类',
         'pid'=>null,
     ];
     /**
