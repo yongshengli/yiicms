@@ -30,11 +30,11 @@ return [
             ]
         ]
     ],
-    'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
-        'allowActions' => [
-            'user/login',
-            'default/error'
-        ]
-    ],
+//    'as access' => [
+//        'class' => 'app\modules\backend\components\AccessControl',
+//        'allowActions' => [
+//            'user/login',
+//            'default/error'
+//        ]
+//    ],
 ];

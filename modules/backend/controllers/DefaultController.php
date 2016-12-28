@@ -38,7 +38,7 @@ class DefaultController extends BackendController
      */
     public function actionLogin()
     {
-        $this->layout = 'blank.php';
+        $this->layout = 'main-login.php';
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->redirect(['/backend/default/index']);
@@ -65,11 +65,12 @@ class DefaultController extends BackendController
         $model = new EditPasswordForm();
         $model->user = AdminUser::findOne(Yii::$app->user->id);
         if(empty($model->user) || !($model->user instanceof AdminUser)){
-            $this->addMessage('用户不存在或者已删除');
+            $this->addFlash('用户不存在或者已删除');
         }
         if($model->load(Yii::$app->request->post()) && $model->saveEdit()){
-            return $this->showMessage('修改成功', 'success');
+            return $this->showFlash('修改成功', 'success');
         }
+//        print_r($model->errors);
         return $this->render('edit-password',[
             'model'=>$model
         ]);

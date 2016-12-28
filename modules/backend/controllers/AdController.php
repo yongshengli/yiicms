@@ -66,7 +66,7 @@ class AdController extends BackendController
         $model = new Ad();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('添加成功','success');
+            return $this->showFlash('添加成功','success');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class AdController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('添加成功','success');
+            return $this->showFlash('添加成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -103,9 +103,9 @@ class AdController extends BackendController
     {
         if($this->findModel($id)->delete()){
 
-            return $this->showMessage('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success',['index']);
         }
-        return $this->showMessage('删除失败');
+        return $this->showFlash('删除失败');
     }
 
     /**

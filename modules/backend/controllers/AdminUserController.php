@@ -66,7 +66,7 @@ class AdminUserController extends BackendController
         $model = new AdminUser(['scenario' => 'create']);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('添加成功', 'success');
+            return $this->showFlash('添加成功', 'success');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -86,7 +86,7 @@ class AdminUserController extends BackendController
         $model->scenario = 'update';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('修改成功', 'success');
+            return $this->showFlash('修改成功', 'success');
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -104,12 +104,12 @@ class AdminUserController extends BackendController
     {
         $model = $this->findModel($id);
         if($model->id==Yii::$app->user->id){
-            return $this->showMessage('不可删除自己当前使用的账户');
+            return $this->showFlash('不可删除自己当前使用的账户');
         }
         if($model->delete()) {
-            return $this->showMessage('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success',['index']);
         }else{
-            return $this->showMessage('删除失败');
+            return $this->showFlash('删除失败');
         }
     }
 

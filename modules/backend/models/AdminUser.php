@@ -40,10 +40,10 @@ class AdminUser extends AppActiveRecord
 
     public function resetPassword()
     {
-        if(empty($this->password)){
-            $this->setAttribute('password', $this->getOldAttribute('password_hash'));
+        if(empty($this->password_hash)){
+            $this->setAttribute('password_hash', $this->getOldAttribute('password_hash'));
         }else{
-            $this->setAttribute('password' ,self::createPassword($this->password_hash));
+            $this->setAttribute('password_hash' ,self::createPassword($this->password_hash));
         }
     }
     /**
@@ -74,8 +74,8 @@ class AdminUser extends AppActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_CREATE] = ['username', 'password', 'email'];
-        $scenarios[self::SCENARIO_UPDATE] = ['username', 'email', 'password'];
+        $scenarios[self::SCENARIO_CREATE] = ['username', 'password_hash', 'email'];
+        $scenarios[self::SCENARIO_UPDATE] = ['username', 'email', 'password_hash'];
         return $scenarios;
     }
     /**
@@ -91,7 +91,7 @@ class AdminUser extends AppActiveRecord
             [['password', 'created_at', 'updated_at'], 'required', 'on'=>'create'],
 
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'password', 'password_reset_token', 'email', 'access_token'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'access_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
@@ -108,7 +108,7 @@ class AdminUser extends AppActiveRecord
             'id' => 'ID',
             'username' => '用户名',
             'auth_key' => 'Auth Key',
-            'password' => '密码',
+            'password_hash' => '密码',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'status' => '状态',

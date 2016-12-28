@@ -14,7 +14,7 @@ use Yii;
 
 class EditPasswordForm extends Model
 {
-    public $password_hash;
+    public $password;
     public $newPassword;
     public $passwordRepeat;
 
@@ -47,7 +47,7 @@ class EditPasswordForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->user;
-            if (!$user || !$user::validatePassword($this->password_hash, $user->password_hash)) {
+            if (!$user || !$user::validatePassword($this->password, $user->password_hash)) {
                 $this->addError($attribute, '密码错误');
             }
         }

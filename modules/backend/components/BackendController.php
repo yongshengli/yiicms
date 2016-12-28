@@ -2,7 +2,6 @@
 
 namespace app\modules\backend\components;
 use yii\web\Controller;
-use yii\filters\AccessControl;
 use Yii;
 
 /**
@@ -14,22 +13,6 @@ use Yii;
  */
 class BackendController extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        $this->initShowMessage();
-    }
-    /**
-     * 初始化页面提示信息
-     */
-    protected function initShowMessage()
-    {
-        $showMessage = Yii::$app->session->get('showMessage');
-        if($showMessage) {
-            $this->view->params['showMessage'] = $showMessage;
-            Yii::$app->session->remove('showMessage');
-        }
-    }
 
     /**
      * 设置页面提示信息
@@ -38,9 +21,10 @@ class BackendController extends Controller
      * @param array|string $url
      * @return \yii\web\Response the current response object
      */
-    protected function showMessage($message, $type='danger', $url=null)
+    protected function showFlash($message, $type='danger', $url=null)
     {
-        $this->addMessage($message, $type, true);
+        $this->addFlash($message, $type, true);
+
         if($url==null){
             return $this->refresh();
         }
@@ -51,19 +35,11 @@ class BackendController extends Controller
      * 添加页面提示信息
      * @param string|array $message
      * @param string $type
-     * @param bool $addSession
+     * @param bool $removeAfterAccess
      */
-    protected function addMessage($message, $type='danger', $addSession=false)
+    protected function addFlash($message, $type='danger',$removeAfterAccess=true)
     {
-        if(is_array($message)){
-            $message = implode(',', $message);
-        }
-        $this->view->params['showMessage'][] = [
-            'type' => $type,
-            'message' => $message
-        ];
-
-        $addSession && Yii::$app->session->set('showMessage', $this->view->params['showMessage']);
+        Yii::$app->session->addFlash($type, $message, $removeAfterAccess);
     }
     public function actions()
     {

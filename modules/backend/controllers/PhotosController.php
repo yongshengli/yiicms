@@ -122,7 +122,7 @@ class PhotosController extends BackendController
         if ($post) {
             $post[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
             if ($model->load($post) && $model->save()) {
-                return $this->showMessage('添加成功','success');
+                return $this->showFlash('添加成功','success');
             }
         }
         return $this->render('create', [
@@ -140,7 +140,7 @@ class PhotosController extends BackendController
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('修改新闻成功','success');
+            return $this->showFlash('修改新闻成功','success');
         }
         return $this->render('update', [
             'model' => $model,
@@ -157,9 +157,9 @@ class PhotosController extends BackendController
     public function actionDelete($id)
     {
         if($this->findModel($id)->delete()){
-            return $this->showMessage('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success',['index']);
         }
-        return $this->showMessage('删除失败');
+        return $this->showFlash('删除失败');
     }
 
     /**

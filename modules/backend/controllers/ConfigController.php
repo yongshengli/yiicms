@@ -66,7 +66,7 @@ class ConfigController extends BackendController
     {
         $model = new Config();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('添加成功', 'success');
+            return $this->showFlash('添加成功', 'success');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class ConfigController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('修改成功','success');
+            return $this->showFlash('修改成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -102,9 +102,9 @@ class ConfigController extends BackendController
     public function actionDelete($id)
     {
         if($this->findModel($id)->delete()){
-            return $this->showMessage('删除成功','success', ['index']);
+            return $this->showFlash('删除成功','success', ['index']);
         }
-        return $this->showMessage('删除失败');
+        return $this->showFlash('删除失败');
     }
 
     /**
@@ -114,7 +114,7 @@ class ConfigController extends BackendController
     {
         $model = new BaseConfig();
         if($model->load(Yii::$app->request->post()) && $model->save()){
-            return $this->showMessage('操作成功', 'success');
+            return $this->showFlash('操作成功', 'success');
         }
         return $this->render('base-config',[
             'model'=>$model

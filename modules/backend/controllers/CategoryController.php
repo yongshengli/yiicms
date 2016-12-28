@@ -71,7 +71,7 @@ class CategoryController extends BackendController
         $model = new Category();
         $model->type = $type;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('添加分类成功','success');
+            return $this->showFlash('添加分类成功','success');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -90,7 +90,7 @@ class CategoryController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showMessage('修改分类成功','success');
+            return $this->showFlash('修改分类成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -107,9 +107,9 @@ class CategoryController extends BackendController
     public function actionDelete($id)
     {
         if($this->findModel($id)->delete()){
-            return $this->showMessage('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success',['index']);
         }
-        return $this->showMessage('删除失败');
+        return $this->showFlash('删除失败');
     }
 
     /**

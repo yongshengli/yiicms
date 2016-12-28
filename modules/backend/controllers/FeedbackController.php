@@ -70,9 +70,9 @@ class FeedbackController extends BackendController
     public function actionDelete($id)
     {
         if($this->findModel($id)->delete()){
-            return $this->showMessage('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success',['index']);
         }
-        return $this->showMessage('删除失败');
+        return $this->showFlash('删除失败');
     }
     /**
      * Finds the Content model based on its primary key value.

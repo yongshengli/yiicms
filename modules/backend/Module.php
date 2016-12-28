@@ -24,12 +24,14 @@ class Module extends \yii\base\Module
 //        if(Yii::$app->user->isGuest && Yii::$app->requestedRoute!='backend/default/login'){
 //            return Yii::$app->response->redirect(['backend/default/login']);
 //        }
-        Yii::$container->set(
-            'errorHandler', [
-                'class'=>'yii\web\ErrorHandler',
-                'errorAction' => 'backend/default/error',
-            ]
-        );
+//        Yii::$container->clear('errorHandler');
+//        Yii::$container->set(
+//            'errorHandler', [
+//                'class'=>'yii\web\ErrorHandler',
+//                'errorAction' => 'backend/default/error',
+//            ]
+//        );
+        Yii::$container->clear('user');
         Yii::$container->set(
             'user', [
                 'class' => 'yii\web\User',
