@@ -22,17 +22,16 @@ class Module extends \yii\base\Module
     {
         parent::init();
         Yii::configure($this, require(__DIR__ . '/config.php'));
-        // custom initialization code goes here
-//        if(Yii::$app->user->isGuest && Yii::$app->requestedRoute!='backend/default/login'){
-//            return Yii::$app->response->redirect(['backend/default/login']);
-//        }
-//        Yii::$container->clear('errorHandler');
-        Yii::$container->set(
-            'errorHandler', [
-                'class'=>'yii\web\ErrorHandler',
-                'errorAction' => 'backend/default/error',
-            ]
-        );
+
+        $this->resetErrorHandler();
+        $this->rbacConfInit();
+    }
+
+    /**
+     * 初始化rbac 配置初始化
+     */
+    protected function rbacConfInit()
+    {
         Yii::$container->set('mdm\admin\components\Configs',
             [
                 'db' => 'customDb',
@@ -40,5 +39,18 @@ class Module extends \yii\base\Module
                 'userTable' => 'admin_user',
             ]
         );
+    }
+    /**
+     * 重新设置异常捕获页面
+     */
+    protected function resetErrorHandler()
+    {
+        Yii::$app->set(
+            'errorHandler', [
+                'class'=>'yii\web\ErrorHandler',
+                'errorAction' => 'backend/default/error',
+            ]
+        );
+        Yii::$app->errorHandler->register();
     }
 }
