@@ -61,11 +61,12 @@ use app\models\Content;
                     ['label' => '轮播图管理','icon' => 'fa fa-share', 'url' => ['/backend/ad/index'],],
                     ['label' => '管理员权限', 'icon' => 'fa fa-user-secret','url' => '#',
                         'items' => [
-                            ['label' => '管理员配置', 'url' => ['/backend/admin-user/index']],
-                            ['label' => '权限配置', 'url' => ['/backend/rbac'],],
-                            ['label' => '角色列表', 'url' => ['/backend/rbac/role'],],
-                            ['label' => '权限列表', 'url' => ['/backend/rbac/permission'],],
-                            ['label' => '规则列表', 'url' => ['/backend/rbac/rule'],],
+                            ['label' => '管理员列表', 'url' => ['/backend/admin-user/index']],
+                            ['label' => '权限配置', 'url' => ['/backend/rbac']],
+                            ['label' => '角色列表', 'url' => ['/backend/rbac/role']],
+                            ['label' => '权限列表', 'url' => ['/backend/rbac/permission']],
+                            ['label' => '规则列表', 'url' => ['/backend/rbac/rule']],
+                            ['label' => '路由列表', 'url' => ['/backend/rbac/route']],
                         ]
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],

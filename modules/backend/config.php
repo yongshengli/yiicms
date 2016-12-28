@@ -14,6 +14,9 @@ return [
             'class'=>'kucha\ueditor\UEditorAction',
             'config'=>&$UEditor
         ],
+//        'authManager' => [
+//            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+//        ]
     ],
     'params' => [
         'pageSize' => '5',
@@ -30,11 +33,10 @@ return [
             ]
         ]
     ],
-//    'as access' => [
-//        'class' => 'app\modules\backend\components\AccessControl',
-//        'allowActions' => [
-//            'user/login',
-//            'default/error'
-//        ]
-//    ],
+    'as access' => [
+        'class' => 'app\modules\backend\components\AccessControl',
+        'allowActions' => [
+            'user/login',
+        ]
+    ],
 ];

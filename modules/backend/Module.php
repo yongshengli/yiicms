@@ -31,15 +31,6 @@ class Module extends \yii\base\Module
 //                'errorAction' => 'backend/default/error',
 //            ]
 //        );
-        Yii::$container->clear('user');
-        Yii::$container->set(
-            'user', [
-                'class' => 'yii\web\User',
-                'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
-                'enableAutoLogin' => true,
-                'loginUrl' => ['backend\rbac\user\login']
-            ]
-        );
         Yii::$container->set('mdm\admin\components\Configs',
             [
                 'db' => 'customDb',

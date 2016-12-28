@@ -16,7 +16,7 @@ $config = [
             'class'=>'yii\web\User',
             'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
             'enableAutoLogin' => true,
-            'loginUrl'=>['backend/rbac/user/login']
+            'loginUrl'=>['backend/default/login']
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -67,7 +67,7 @@ $config = [
             ],
         ],
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
         ],
     ],
     'params' => &$params,
