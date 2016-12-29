@@ -60,14 +60,47 @@ CREATE TABLE `admin_menu` (
   `route` varchar(256) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
   `data` blob,
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`),
   CONSTRAINT `admin_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `admin_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `admin_menu` WRITE;
+/*!40000 ALTER TABLE `admin_menu` DISABLE KEYS */;
 
+INSERT INTO `admin_menu` (`id`, `name`, `parent`, `route`, `order`, `data`)
+VALUES
+	(1,'产品管理',NULL,'/backend/products/index',0,X'7B2269636F6E22203A2266612066612D7468227D'),
+	(2,'产品分类',1,'/backend/category/index?type=1',1,NULL),
+	(3,'产品列表',1,'/backend/products/index',0,NULL),
+	(4,'新闻管理',NULL,'/backend/news/index',1,X'7B2269636F6E223A2266612066612D6E65777370617065722D6F227D'),
+	(5,'新闻列表',4,'/backend/news/index',0,NULL),
+	(6,'新闻分类',4,'/backend/category/index?type=2',1,NULL),
+	(7,'下载管理',NULL,'/backend/downloads/index',2,X'7B2269636F6E223A2266612066612D646F776E6C6F6164227D'),
+	(8,'下载列表',7,'/backend/downloads/index',0,NULL),
+	(9,'下载分类',7,'/backend/category/index?type=3',1,NULL),
+	(10,'照片管理',NULL,'/backend/photos/index',4,X'7B2269636F6E223A2266612066612D706963747572652D6F227D'),
+	(11,'相册列表',10,'/backend/photos/index',0,NULL),
+	(12,'相册分类',10,'/backend/category/index?type=4',1,NULL),
+	(13,'用户反馈',NULL,'/backend/feedback/index',5,X'7B2269636F6E223A2266612066612D636F6D6D656E74696E67227D'),
+	(14,'网站配置',NULL,'/backend/config/index',6,X'7B2269636F6E223A2266612066612D636F67227D'),
+	(15,'基础配置',14,'/backend/config/base-config',1,NULL),
+	(16,'其他配置',14,'/backend/config/index',2,NULL),
+	(17,'轮播图片',14,'/backend/ad/index',3,NULL),
+	(18,'后台配置',NULL,'/backend/rbac/route/index',7,X'7B2269636F6E223A2266612066612D62617273227D'),
+	(19,'管理员列表',18,'/backend/admin-user/index',1,NULL),
+	(20,'权限配置',18,'/backend/rbac/assignment/index',2,NULL),
+	(21,'角色列表',18,'/backend/rbac/role/index',3,NULL),
+	(22,'权限列表',18,'/backend/rbac/permission/index',4,NULL),
+	(23,'规则列表',18,'/backend/rbac/rule/index',5,NULL),
+	(24,'路由列表',18,'/backend/rbac/route/index',5,NULL),
+	(25,'后台菜单',18,'/backend/rbac/menu/index',7,NULL),
+	(26,'开发工具',NULL,'/gii/default/index',8,X'7B2269636F6E223A2266612066612D7368617265227D'),
+	(27,'gii',26,'/gii/default/index',2,NULL),
+	(28,'debug',26,'/debug/default/index',1,NULL);
+
+/*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
+UNLOCK TABLES;
 
 # Dump of table admin_user
 # ------------------------------------------------------------
