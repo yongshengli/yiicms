@@ -7,7 +7,7 @@ use app\modules\backend\models\EditPasswordForm;
 use Yii;
 use app\modules\backend\models\LoginForm;
 use yii\filters\VerbFilter;
-
+use app\helpers\StringHelper;
 /**
  * Default controller for the `backend` module
  */

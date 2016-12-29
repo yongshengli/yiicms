@@ -1,5 +1,6 @@
 <?php
 use app\models\Content;
+use app\helpers\StringHelper;
 ?>
 <aside class="main-sidebar">
 
@@ -15,11 +16,24 @@ use app\models\Content;
             </div>
         </form>
         <!-- /.search form -->
-
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu'],
-                'items' => \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id)
+                'items' => \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu){
+                    $data = empty($menu['data'])?[]:json_decode($menu['data'], true);
+                    $icon ='';
+                    if(isset($data['icon'])){
+                        $icon = $data['icon'];
+                        unset($data['icon']);
+                    }
+                    return [
+                        'icon' => $icon,
+                        'label' => $menu['name'],
+                        'url' => [$menu['route']],
+                        'options' => $data,
+                        'items' => $menu['children']
+                    ];
+                })
             ]
         ) ?>
 
