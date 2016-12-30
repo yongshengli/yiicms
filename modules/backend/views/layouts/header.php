@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\widgets\Nav;
 /* @var $this \yii\web\View */
 /* @var $content string */
 ?>
@@ -19,24 +20,28 @@ use yii\helpers\Url;
 
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
-
+                <li class="home-menu">
+                    <a href="<?=Yii::$app->homeUrl?>" role="button">
+                        <span class="fa fa-home"></span>
+                    </a>
+                </li>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                         <span class="hidden-xs"><?=isset(Yii::$app->user->identity->username)?Yii::$app->user->identity->username:''?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <!-- User image -->
-<!--                        <li class="user-header">-->
-<!--                            <img src="--><?//= $directoryAsset ?><!--/img/user2-160x160.jpg" class="img-circle"-->
-<!--                                 alt="User Image"/>-->
-<!---->
-<!--                            <p>-->
-<!--                                Alexander Pierce - Web Developer-->
-<!--                                <small>Member since Nov. 2012</small>-->
-<!--                            </p>-->
-<!--                        </li>-->
-                        <!-- Menu Body -->
+<!--                         User image -->
+                        <li class="user-header">
+                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
+                                 alt="User Image"/>
+
+                            <p>
+                                Alexander Pierce - Web Developer
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+<!--                         Menu Body -->
 <!--                        <li class="user-body">-->
 <!--                            <div class="col-xs-4 text-center">-->
 <!--                                <a href="#">Followers</a>-->
@@ -48,7 +53,7 @@ use yii\helpers\Url;
 <!--                                <a href="#">Friends</a>-->
 <!--                            </div>-->
 <!--                        </li>-->
-                        <!-- Menu Footer-->
+<!--                         Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="<?=Url::to(['/backend/default/edit-password'])?>" class="btn btn-default btn-flat">修改密码</a>
