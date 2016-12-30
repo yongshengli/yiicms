@@ -3,7 +3,7 @@
 namespace app\modules\backend;
 use Yii;
 use yii\web\ForbiddenHttpException;
-
+use yii\helpers\Url;
 /**
  * backend module definition class
  */
@@ -25,6 +25,13 @@ class Module extends \yii\base\Module
 
         $this->resetErrorHandler();
         $this->rbacConfInit();
+
+        /**
+         * 注册时间 记录下用户回退地址
+         */
+        $this->on(self::EVENT_AFTER_ACTION, function(){
+            Url::remember();
+        });
     }
 
     /**
