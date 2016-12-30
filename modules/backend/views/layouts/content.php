@@ -21,13 +21,10 @@ use dmstr\widgets\Alert;
             </h1>
         <?php } ?>
 
-        <?=
-        Breadcrumbs::widget(
-            [
+        <?= Breadcrumbs::widget([
                 'homeLink'=>['label'=>'首页', 'url'=>['/backend/']],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]
-        ) ?>
+        ]) ?>
     </section>
 
     <section class="content">

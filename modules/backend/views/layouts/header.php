@@ -20,7 +20,7 @@ use app\widgets\Nav;
 
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
-                <li class="home-menu">
+                <li>
                     <a href="<?=Yii::$app->homeUrl?>" role="button">
                         <span class="fa fa-home"></span>
                     </a>
