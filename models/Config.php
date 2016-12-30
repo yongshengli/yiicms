@@ -32,7 +32,7 @@ class Config extends AppActiveRecord
             [['name', 'label', 'value'], 'required'],
             [['name'], 'string', 'max' => 20],
             [['label'], 'string', 'max' => 50],
-            [['value'], 'string', 'max' => 50000],
+            [['value'], 'string', 'max' => 255],
         ];
     }
 

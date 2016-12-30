@@ -11,6 +11,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Products;
 use app\models\Ad;
 use yii\web\NotFoundHttpException;
+use app\models\Page;
 
 class SiteController extends Controller
 {
@@ -120,11 +121,11 @@ class SiteController extends Controller
      */
     public function actionPage($id)
     {
-        $model = Config::find()->where(['name'=>$id])->one();
+        $model = Page::find()->where(['name'=>$id])->one();
         if(empty($model)){
             throw new NotFoundHttpException('页面不存在');
         }
-        return $this->render('page',[
+        return $this->render($model->template,[
             'model'=>$model
         ]);
     }
