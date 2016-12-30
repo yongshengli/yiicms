@@ -9,6 +9,7 @@
 
 namespace app\modules\backend\components;
 
+use yii\web\Response;
 use yii\web\User;
 use yii\web\ForbiddenHttpException;
 use Yii;
@@ -27,12 +28,12 @@ class AccessControl extends \mdm\admin\components\AccessControl
         try{
             parent::denyAccess($user);
         }catch(ForbiddenHttpException $e){
-            if(Yii::$app->request->isAjax || Yii::$app->request->isPjax || Yii::$app->request->isFlash){
-                throw $e;
-            }else {
+            if(Yii::$app->response->format == Response::FORMAT_HTML){
                 Yii::$app->session->addFlash('danger', $e->getMessage());
                 Yii::$app->getResponse()->redirect(Yii::$app->getUser()->getReturnUrl());
                 Yii::$app->response->send();
+            }else {
+                throw $e;
             }
         }
     }
