@@ -21,12 +21,12 @@ class BackendController extends Controller
      * @param array|string $url
      * @return \yii\web\Response the current response object
      */
-    protected function showFlash($message, $type='danger', $url=null)
+    public function showFlash($message, $type='danger', $url=null)
     {
         $this->addFlash($message, $type, true);
 
         if($url==null){
-            return $this->refresh();
+            return $this->goBack();
         }
         return $this->redirect($url);
     }
@@ -37,7 +37,7 @@ class BackendController extends Controller
      * @param string $type
      * @param bool $removeAfterAccess
      */
-    protected function addFlash($message, $type='danger',$removeAfterAccess=true)
+    public function addFlash($message, $type='danger',$removeAfterAccess=true)
     {
         Yii::$app->session->addFlash($type, $message, $removeAfterAccess);
     }
