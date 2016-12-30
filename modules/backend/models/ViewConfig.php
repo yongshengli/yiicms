@@ -28,9 +28,11 @@ class ViewConfig extends Model
      * 初始化model
      */
     public function init(){
-        $configs = Yii::$app->params;
-        if(!empty($configs)){
-            $this->setAttributes($configs);
+        parent::init();
+        if(!empty(Yii::$app->components['view'])){
+            $configs = Yii::$app->components['view'];
+            isset($configs['params']['themeColor']) && $this->themeColor = $configs['params']['themeColor'];
+            isset($configs['theme']['pathMap']['@app/views']) && $this->themePath = $configs['theme']['pathMap']['@app/views'];
         }
     }
 
@@ -95,6 +97,7 @@ class ViewConfig extends Model
     {
         return [
             'themeColor'=>'主题颜色',
+            'themePath'=>'主题',
         ];
     }
 }

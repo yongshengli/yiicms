@@ -26,5 +26,6 @@ class BackendAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'dmstr\web\AdminLteAsset',
+        'mdm\admin\AutocompleteAsset',
     ];
 }

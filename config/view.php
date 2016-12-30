@@ -9,6 +9,6 @@
   ),
   'params' => 
   array (
-    'themeColor' => 'green',
+    'themeColor' => 'yellow',
   ),
 );

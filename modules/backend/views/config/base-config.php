@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="base-config">
     <h1><?= Html::encode($this->title) ?></h1>
 
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
@@ -41,8 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ->textInput() ?>
 
     <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>

@@ -15,23 +15,5 @@ $('#menu-keyword').autocomplete({
             }
         });
         response(result);
-    },
-    focus: function (event, ui) {
-        $('#menu-keyword').val(ui.item.label);
-        return false;
-    },
-    select: function (event, ui) {
-        $('#menu-keyword').val(ui.item.label);
-        return false;
-    },
-    search: function (event, ui) {
-        // console.log(ui);
-        // $('#menu-keyword').val(ui.item.label);
     }
-}).autocomplete("instance")._renderItem = function (ul, item) {
-    console.log(item);
-    return $("<li>")
-        .append($('<a>').append($('<b>').text(item.label)).append('<br>')
-        .append($('<i>').text(item.label)))
-        .appendTo(ul);
-};
+});
