@@ -34,9 +34,6 @@ class BaseConfig extends Model
      */
     public $nav;
 
-    /** @var string  */
-    public $themeColor = 'blue';
-
     /**
      * 初始化model
      */
@@ -62,22 +59,11 @@ class BaseConfig extends Model
         return file_put_contents(Yii::getAlias('@app/config/params.php'), $phpCode);
     }
 
-    public function getThemeColors()
-    {
-        return [
-            'blue'=>'蓝色',
-            'red'=>'红色',
-            'yellow'=>'黄色',
-            'green'=>'绿色',
-            'purple'=>'紫色',
-        ];
-    }
     public function rules()
     {
         return [
-            [['appName', 'pageSize', 'nav', 'themeColor'], 'required'],
+            [['appName', 'pageSize', 'nav'], 'required'],
             [['appName'], 'string', 'max' => 100],
-            [['themeColor'], 'string', 'max' => 20],
             [['keywords'], 'string', 'max' => 300],
             [['cacheDuration'], 'integer'],
             ['nav', 'validateJson'],
@@ -111,7 +97,6 @@ class BaseConfig extends Model
             'cacheDuration'=>'页面缓存时长',
             'logo'=>'网站logo路径',
             'nav'=>'导航内容',
-            'themeColor'=>'主题颜色',
         ];
     }
 }

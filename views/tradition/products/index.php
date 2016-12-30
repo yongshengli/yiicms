@@ -31,12 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-lg-3">
                 <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
-                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
+                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
-                <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
+                <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us',
-                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')]
+                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
             </div>
             <div class="col-lg-9">
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
-                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue(Yii::$app->params,'themeColor')?>" style="margin-top: 20px">
+                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>" style="margin-top: 20px">
                     <div class="panel-heading"><h3 class="panel-title">产品详情</h3></div>
                 </div>
 

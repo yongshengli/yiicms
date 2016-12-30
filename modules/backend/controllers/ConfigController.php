@@ -9,6 +9,7 @@ use app\modules\backend\models\ConfigSearch;
 use app\modules\backend\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\backend\models\ViewConfig;
 
 /**
  * ConfigController implements the CRUD actions for Config model.
@@ -107,6 +108,20 @@ class ConfigController extends BackendController
         return $this->showFlash('删除失败');
     }
 
+    /**
+     * 主题配置
+     * @return string|\yii\web\Response
+     */
+    public function actionViewConfig()
+    {
+        $model = new ViewConfig();
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            return $this->showFlash('操作成功', 'success');
+        }
+        return $this->render('view-config',[
+            'model'=>$model
+        ]);
+    }
     /**
      * 基础配置
      */

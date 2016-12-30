@@ -66,5 +66,4 @@
         }
     ]
 }',
-  'themeColor' => 'green',
 );

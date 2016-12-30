@@ -66,7 +66,7 @@ if(!empty(Yii::$app->params['logo'])){
             'brandLabel' => $brandLabel,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar  navbar-'. ArrayHelper::getValue(Yii::$app->params, 'themeColor', 'blue'),
+                'class' => 'navbar  navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
             ],
         ]);
         echo Nav::widget(json_decode(Yii::$app->params['nav'], true));

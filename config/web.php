@@ -1,7 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
-$theme = require(__DIR__ . '/theme.php');
+$view = require(__DIR__ . '/view.php');
 
 $config = [
     'id' => 'basic',
@@ -54,9 +54,7 @@ $config = [
             'timeFormat'=>'php:H:i:s',
             'datetimeFormat'=>'php:Y-m-d H:i:s'
         ],
-        'view' => [
-            'theme'=>&$theme
-        ],
+        'view' =>&$view,
         'i18n' => [
             'class'=>'yii\i18n\I18N',
             'translations' => [
