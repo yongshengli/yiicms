@@ -28,12 +28,12 @@ class AccessControl extends \mdm\admin\components\AccessControl
         try{
             parent::denyAccess($user);
         }catch(ForbiddenHttpException $e){
-            if(Yii::$app->response->format == Response::FORMAT_HTML){
+            if(Yii::$app->request->isAjax){
+                throw $e;
+            }else {
                 Yii::$app->session->addFlash('danger', $e->getMessage());
                 Yii::$app->getResponse()->redirect(Yii::$app->getUser()->getReturnUrl());
                 Yii::$app->response->send();
-            }else {
-                throw $e;
             }
         }
     }
