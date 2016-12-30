@@ -24,6 +24,7 @@ use dmstr\widgets\Alert;
         <?=
         Breadcrumbs::widget(
             [
+                'homeLink'=>['label'=>'首页', 'url'=>['/backend/']],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]
         ) ?>
