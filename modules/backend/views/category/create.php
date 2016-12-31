@@ -11,9 +11,16 @@ $this->params['breadcrumbs'][] = ['label' => '分类管理', 'url' => ['index', 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-create">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><?= Html::a('分类列表', ['index','type'=>$model->type]) ?></li>
+            <li role="presentation" class="active"><?= Html::a('添加分类', ['create', 'type'=>$model->type]) ?></li>
+        </ul>
+        <div class="tab-content">
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+</div>
+</div>
 </div>
