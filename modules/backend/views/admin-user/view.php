@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation"><?= Html::a('管理员管理', ['index']) ?></li>
             <li role="presentation"><?= Html::a('添加管理员', ['create']) ?></li>
-            <li role="presentation"><?= Html::a('修改管理员', ['create']) ?></li>
             <li role="presentation" class="active"><?= Html::a('详情', ['#']) ?></li>
         </ul>
         <div class="tab-content">
