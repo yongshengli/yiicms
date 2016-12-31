@@ -26,7 +26,7 @@ class BackendController extends Controller
         $this->addFlash($message, $type, true);
 
         if($url==null){
-            return $this->goBack();
+            return $this->refresh();
         }
         return $this->redirect($url);
     }
