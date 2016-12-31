@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\backend\models\PageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pages';
+$this->title = '页面管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Page', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加页面', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,15 +24,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'options' => ['style' => 'width:50px']
+            ],
             'title',
             'description',
-            'keyword',
+//            'keyword',
             'template',
             // 'content',
-            // 'created_at',
-            // 'update_at',
-
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+                'options' => ['style' => 'width:160px']
+            ],
+            // 'updated_at',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

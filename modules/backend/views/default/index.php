@@ -1,6 +1,6 @@
 <div class="backend-default-index">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">系统信息</h3>

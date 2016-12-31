@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'template',
             'content',
             'created_at',
-            'update_at',
+            'updated_at',
         ],
     ]) ?>
 

@@ -66,7 +66,7 @@ class PageController extends BackendController
         $model = new Page();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->showFlash('添加成功','success');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class PageController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->showFlash('修改成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,9 +101,12 @@ class PageController extends BackendController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if($this->findModel($id)->delete()) {
 
-        return $this->redirect(['index']);
+            return $this->showFlash('删除失败', 'success',['index']);
+        }else{
+            return $this->showFlash('删除失败');
+        }
     }
 
     /**

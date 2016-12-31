@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'template')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'template')->dropDownList($model->getTemplates()) ?>
 
     <?= $form->field($model, 'content')->widget(\kucha\ueditor\UEditor::className()) ?>
 

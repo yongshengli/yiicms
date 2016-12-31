@@ -10,6 +10,12 @@
 namespace app\components;
 use \yii\db\ActiveRecord;
 
+/**
+ * Class AppActiveRecord
+ * @package app\components
+ * @property integer $created_at
+ * @property integer $updated_at
+ */
 class AppActiveRecord extends ActiveRecord
 {
     /**

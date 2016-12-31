@@ -14,8 +14,6 @@ use Yii;
  * @property string $keyword
  * @property string $template
  * @property integer $content
- * @property integer $created_at
- * @property integer $update_at
  */
 class Page extends \app\components\AppActiveRecord
 {
@@ -33,19 +31,24 @@ class Page extends \app\components\AppActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'created_at', 'update_at'], 'required'],
-            [['title', 'content', 'created_at', 'update_at'], 'integer'],
+            [['title', 'content', 'created_at', 'updated_at'], 'required'],
+            [['created_at', 'updated_at'], 'integer'],
             [['description'], 'string', 'max' => 255],
-            [['keyword', 'template'], 'string', 'max' => 100],
+            [['title', 'keyword', 'template'], 'string', 'max' => 100],
+            ['content','string', 'max'=>5000]
         ];
     }
 
+    /**
+     * 获取模板
+     * @return array
+     */
     public function getTemplates()
     {
         return [
-            'about',
-            'page',
-            'index',
+            'about'=>'about',
+            'page'=>'page',
+            'index'=>'index',
         ];
     }
     /**
@@ -55,13 +58,13 @@ class Page extends \app\components\AppActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => '名称',
+            'description' => '描述',
             'keyword' => 'Keyword',
-            'template' => 'Template',
-            'content' => 'Content',
-            'created_at' => 'Created At',
-            'update_at' => 'Update At',
+            'template' => '模板',
+            'content' => '内容',
+            'created_at' => '创建时间',
+            'updated_at' => '最后修改',
         ];
     }
 }
