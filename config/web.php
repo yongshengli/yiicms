@@ -15,7 +15,7 @@ $config = [
         'user' => [
             'class'=>'yii\web\User',
             'identityClass' => 'app\modules\backend\models\AdminUserIdentity',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'loginUrl'=>['backend/default/login']
         ],
         'cache' => [

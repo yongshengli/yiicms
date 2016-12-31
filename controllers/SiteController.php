@@ -81,12 +81,16 @@ class SiteController extends Controller
 
     /**
      * Displays about page.
-     *
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionAbout()
     {
-        return $this->actionPage('about_us');
+        $config = Config::find()->where(['name'=>'about_us'])->one();
+        if(empty($config)){
+            throw new NotFoundHttpException('页面不存在');
+        }
+        return $this->actionPage($config['value']);
     }
     /**
      * Displays products page
@@ -115,7 +119,7 @@ class SiteController extends Controller
 
     /**
      * config 页面
-     * @param string $id
+     * @param int $id
      * @throws NotFoundHttpException
      * @return string
      */
@@ -124,6 +128,12 @@ class SiteController extends Controller
         $model = Page::find()->where(['name'=>$id])->one();
         if(empty($model)){
             throw new NotFoundHttpException('页面不存在');
+        }
+        if(!empty($model->keywords)){
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$model->keywords],'keywords');
+        }
+        if(!empty($model->description)){
+            $this->view->registerMetaTag(['name'=>'description', 'content'=>$model->description], 'description');
         }
         return $this->render($model->template,[
             'model'=>$model
