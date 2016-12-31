@@ -28,7 +28,15 @@ use dmstr\widgets\Alert;
 
     <section class="content">
         <?= Alert::widget() ?>
-        <?= $content ?>
+        <?php if($this->context->module->id=='backend'):?>
+            <?= $content ?>
+        <?php else:?>
+        <div class="box">
+            <div class="box-body">
+                <?= $content ?>
+            </div>
+        </div>
+        <?php endif;?>
     </section>
 </div>
 
