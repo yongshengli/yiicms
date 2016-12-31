@@ -15,36 +15,42 @@ $this->title = '新闻管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <p>
-        <?= Html::a('添加新闻', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' => 'id',
-                'options' => ['style' => 'width:50px']
-            ],
-            'title',
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><?= Html::a('新闻管理', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加新闻', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    [
+                        'attribute' => 'id',
+                        'options' => ['style' => 'width:50px']
+                    ],
+                    'title',
 //            'image',
-            'description',
-            [
-                'attribute' => 'status',
-                'options' => ['style' => 'width:60px'],
-                'format' => 'text',
-                'value' => 'statusText'
-            ],
-            // 'admin_user_id',
-            [
-                'attribute' => 'created_at',
-                'format' => 'datetime',
-                'options' => ['style' => 'width:160px']
-            ],
+                    'description',
+                    [
+                        'attribute' => 'status',
+                        'options' => ['style' => 'width:60px'],
+                        'format' => 'text',
+                        'value' => 'statusText'
+                    ],
+                    // 'admin_user_id',
+                    [
+                        'attribute' => 'created_at',
+                        'format' => 'datetime',
+                        'options' => ['style' => 'width:160px']
+                    ],
 //             'updated_at:datetime',
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
-        ],
-    ]); ?>
+                    ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
+                ],
+            ]); ?>
+        </div>
+    </div>
 </div>

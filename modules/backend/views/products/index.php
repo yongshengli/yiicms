@@ -15,11 +15,13 @@ $this->title = '产品管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-index">
-
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><?= Html::a('产品管理', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加产品', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-            <p>
-                <?= Html::a('添加产品', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
@@ -47,8 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //             'updated_at:datetime',
                     [
                         'class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}',
-                        'options'=>['style'=>'width:60px']
+                        'options' => ['style' => 'width:60px']
                     ],
                 ],
             ]); ?>
+        </div>
+    </div>
 </div>

@@ -7,9 +7,11 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use app\models\Feedback;
 
 $this->title = '联系我们';
 $this->params['breadcrumbs'][] = $this->title;
+empty($model) && $model = new Feedback();
 ?>
 <div class="site-contact">
     <div class="row">
@@ -24,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ])?>
         </div>
         <div class="col-lg-9">
-            <h1><?= Html::encode($this->title) ?></h1>
+
+            <?=isset($page->content)?$page->content:''?>
 
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
@@ -53,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+                        <?php $form = ActiveForm::begin(['id' => 'contact-form','action'=>['/site/contact']]); ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>

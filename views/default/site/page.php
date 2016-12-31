@@ -1,12 +1,12 @@
 <?php
 
 /* @var $this \yii\web\View */
-/* @var $model \app\models\Config*/
+/* @var $page \app\models\Page */
 use yii\helpers\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 
-$this->title = $model->label;
+$this->title = $page->title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-9">
             <h1><?= Html::encode($this->title) ?></h1>
             <div class="">
-                <?=$model->value?>
+                <?=$page->content?>
             </div>
         </div>
     </div>

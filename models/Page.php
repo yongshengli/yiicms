@@ -47,6 +47,7 @@ class Page extends \app\components\AppActiveRecord
     {
         return [
             'about'=>'about',
+            'contact'=>'contact',
             'page'=>'page',
             'index'=>'index',
         ];

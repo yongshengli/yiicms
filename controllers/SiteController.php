@@ -67,6 +67,18 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new Feedback();
+        $config = Config::find()->where(['name'=>'contact_us_page_id'])->one();
+        if($config) {
+            $page = Page::find()->where(['id' => $config])->one();
+        } else {
+            $page = null;
+        }
+        if(!empty($page->keywords)){
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keywords],'keywords');
+        }
+        if(!empty($page->description)){
+            $this->view->registerMetaTag(['name'=>'description', 'content'=>$page->description], 'description');
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(isset(Yii::$app->params['adminEmail'])) {
                 $model->sendEmail(Yii::$app->params['adminEmail']);
@@ -76,6 +88,7 @@ class SiteController extends Controller
         }
         return $this->render('contact', [
             'model' => $model,
+            'page' =>$page
         ]);
     }
 
@@ -86,7 +99,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        $config = Config::find()->where(['name'=>'about_us'])->one();
+        $config = Config::find()->where(['name'=>'about_us_page_id'])->one();
         if(empty($config)){
             throw new NotFoundHttpException('页面不存在');
         }
@@ -125,18 +138,18 @@ class SiteController extends Controller
      */
     public function actionPage($id)
     {
-        $model = Page::find()->where(['name'=>$id])->one();
-        if(empty($model)){
+        $page = Page::findOne($id);
+        if(empty($page)){
             throw new NotFoundHttpException('页面不存在');
         }
-        if(!empty($model->keywords)){
-            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$model->keywords],'keywords');
+        if(!empty($page->keywords)){
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keywords],'keywords');
         }
-        if(!empty($model->description)){
-            $this->view->registerMetaTag(['name'=>'description', 'content'=>$model->description], 'description');
+        if(!empty($page->description)){
+            $this->view->registerMetaTag(['name'=>'description', 'content'=>$page->description], 'description');
         }
-        return $this->render($model->template,[
-            'model'=>$model
+        return $this->render($page->template,[
+            'page'=>$page
         ]);
     }
 

@@ -11,35 +11,39 @@ $this->title = '页面管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-index">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><?= Html::a('页面管理', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加页面', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
-    <p>
-        <?= Html::a('添加页面', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            [
-                'attribute' => 'id',
-                'options' => ['style' => 'width:50px']
-            ],
-            'title',
-            'description',
+                    [
+                        'attribute' => 'id',
+                        'options' => ['style' => 'width:50px']
+                    ],
+                    'title',
+                    'description',
 //            'keyword',
-            'template',
-            // 'content',
-            [
-                'attribute' => 'created_at',
-                'format' => 'datetime',
-                'options' => ['style' => 'width:160px']
-            ],
-            // 'updated_at',
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                    'template',
+                    // 'content',
+                    [
+                        'attribute' => 'created_at',
+                        'format' => 'datetime',
+                        'options' => ['style' => 'width:160px']
+                    ],
+                    // 'updated_at',
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
+        </div>
+
+    </div>
 </div>
