@@ -19,18 +19,26 @@ $this->params['breadcrumbs'][] = ['label' => '模板主题配置', 'url' => ['in
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="base-config">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><?= Html::a('基础配置', ['base-config']) ?></li>
+            <li role="presentation" class="active"><?= Html::a('模板配置', ['view-config']) ?></li>
+            <li role="presentation"><?= Html::a('其他配置', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加配置', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'themePath')->dropDownList($model->themes) ?>
 
-    <?= $form->field($model, 'themePath')->dropDownList($model->themes) ?>
+            <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
 
-    <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
+            <div class="form-group">
+                <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+            </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
+
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

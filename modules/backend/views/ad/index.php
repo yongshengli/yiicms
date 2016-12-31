@@ -12,34 +12,38 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ad-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><?= Html::a('轮播图管理', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加轮播图', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('添加图片', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute'=>'id',
-                'options'=>['style'=>'width:50px']
-            ],
-            'title',
-            'image',
-            'link',
-            [
-                'attribute' => 'created_at',
-                'format' => 'datetime',
-                'options' => ['style' => 'width:160px']
-            ],
-            // 'updated_at',
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    [
+                        'attribute' => 'id',
+                        'options' => ['style' => 'width:50px']
+                    ],
+                    'title',
+                    'image',
+                    'link',
+                    [
+                        'attribute' => 'created_at',
+                        'format' => 'datetime',
+                        'options' => ['style' => 'width:160px']
+                    ],
+                    // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn','template' => '{update} {delete}',
-                'options'=>['style'=>'width:60px']
-            ],
-        ],
-    ]); ?>
+                    ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}',
+                        'options' => ['style' => 'width:60px']
+                    ],
+                ],
+            ]); ?>
+        </div>
+    </div>
 </div>

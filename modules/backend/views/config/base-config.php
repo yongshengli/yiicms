@@ -19,32 +19,40 @@ $this->params['breadcrumbs'][] = ['label' => '网站配置', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="base-config">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><?= Html::a('基础配置', ['base-config']) ?></li>
+            <li role="presentation"><?= Html::a('模板配置', ['view-config']) ?></li>
+            <li role="presentation"><?= Html::a('其他配置', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加配置', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'logo')->textInput(['maxlength' => true])
+                ->label($model->getAttributeLabel('logo') . '<code>如：@web/images/logo.png</code>')
+            ?>
 
-    <?= $form->field($model, 'logo')->textInput(['maxlength' => true])
-        ->label($model->getAttributeLabel('logo') . '<code>如：@web/images/logo.png</code>')
-    ?>
+            <?= $form->field($model, 'keywords')->textarea() ?>
 
-    <?= $form->field($model, 'keywords')->textarea() ?>
+            <?= $form->field($model, 'description')->textarea() ?>
 
-    <?= $form->field($model, 'description')->textarea() ?>
+            <?= $form->field($model, 'pageSize', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">条</span></div>'])
+                ->textInput() ?>
 
-    <?= $form->field($model, 'pageSize', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">条</span></div>'])
-        ->textInput() ?>
+            <?= $form->field($model, 'cacheDuration', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">秒</span></div>'])
+                ->textInput() ?>
 
-    <?= $form->field($model, 'cacheDuration', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">秒</span></div>'])
-        ->textInput() ?>
+            <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
+            <div class="form-group">
+                <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+            </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
+
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

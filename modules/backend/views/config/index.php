@@ -8,33 +8,41 @@ use yii\widgets\Menu;
 /* @var $searchModel app\modules\backend\models\ConfigSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '配置列表';
+$this->title = '其他配置';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="config-index">
-    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
-    <p>
-        <?= Html::a('添加配置', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'name',
-            'label',
-            'value',
-            [
-                'attribute' => 'created_at',
-                'format' => 'datetime',
-                'options' => ['style' => 'width:150px'],
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => 'datetime',
-                'options' => ['style' => 'width:150px'],
-            ],
-            ['class' => 'yii\grid\ActionColumn', 'options' => ['style' => 'width:100px']],
-        ],
-    ]); ?>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><?= Html::a('基础配置', ['base-config']) ?></li>
+            <li role="presentation"><?= Html::a('模板配置', ['view-config']) ?></li>
+            <li role="presentation" class="active"><?= Html::a('其他配置', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加配置', ['create']) ?></li>
+        </ul>
+        <div class="tab-content">
+            <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'name',
+                    'label',
+                    'value',
+                    [
+                        'attribute' => 'created_at',
+                        'format' => 'datetime',
+                        'options' => ['style' => 'width:150px'],
+                    ],
+                    [
+                        'attribute' => 'updated_at',
+                        'format' => 'datetime',
+                        'options' => ['style' => 'width:150px'],
+                    ],
+                    ['class' => 'yii\grid\ActionColumn', 'options' => ['style' => 'width:100px']],
+                ],
+            ]); ?>
+        </div>
+    </div>
 </div>
