@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.1.9-MariaDB)
 # Database: yiicms
-# Generation Time: 2016-12-28 06:59:26 +0000
+# Generation Time: 2017-01-01 03:07:39 +0000
 # ************************************************************
 
 
@@ -97,10 +97,13 @@ VALUES
 	(25,'后台菜单',18,'/backend/rbac/menu/index',7,NULL),
 	(26,'开发工具',NULL,'/gii/default/index',8,X'7B2269636F6E223A2266612066612D7368617265227D'),
 	(27,'gii',26,'/gii/default/index',2,NULL),
-	(28,'debug',26,'/debug/default/index',1,NULL);
+	(28,'debug',26,'/debug/default/index',1,NULL),
+	(29,'模板主题配置',14,'/backend/config/view-config',2,NULL),
+	(30,'页面管理',14,'/backend/page/index',7,NULL);
 
 /*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 # Dump of table admin_user
 # ------------------------------------------------------------
@@ -205,7 +208,11 @@ VALUES
 	('/backend/category/*',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/category/create',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/category/delete',2,NULL,NULL,NULL,1482896720,1482896720),
-	('/backend/category/index',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/category/index',2,NULL,NULL,NULL,1482977677,1482977677),
+	('/backend/category/index?type=1',2,NULL,NULL,NULL,1482977712,1482977712),
+	('/backend/category/index?type=2',2,NULL,NULL,NULL,1482977717,1482977717),
+	('/backend/category/index?type=3',2,NULL,NULL,NULL,1482977721,1482977721),
+	('/backend/category/index?type=4',2,NULL,NULL,NULL,1482977728,1482977728),
 	('/backend/category/update',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/category/upload',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/category/view',2,NULL,NULL,NULL,1482896720,1482896720),
@@ -217,6 +224,7 @@ VALUES
 	('/backend/config/update',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/config/upload',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/config/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/config/view-config',2,NULL,NULL,NULL,1483066838,1483066838),
 	('/backend/default/*',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/default/edit-password',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/default/error',2,NULL,NULL,NULL,1482896720,1482896720),
@@ -242,6 +250,13 @@ VALUES
 	('/backend/news/update',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/news/upload',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/news/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/backend/page/*',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/create',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/delete',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/index',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/update',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/upload',2,NULL,NULL,NULL,1483164471,1483164471),
+	('/backend/page/view',2,NULL,NULL,NULL,1483164471,1483164471),
 	('/backend/photos/*',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/photos/create',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/photos/delete',2,NULL,NULL,NULL,1482896720,1482896720),
@@ -311,6 +326,13 @@ VALUES
 	('/backend/rbac/user/reset-password',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/rbac/user/signup',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/backend/rbac/user/view',2,NULL,NULL,NULL,1482896720,1482896720),
+	('/debug/*',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/*',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/db-explain',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/download-mail',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/index',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/toolbar',2,NULL,NULL,NULL,1482977163,1482977163),
+	('/debug/default/view',2,NULL,NULL,NULL,1482977163,1482977163),
 	('/gii/*',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/gii/default/*',2,NULL,NULL,NULL,1482896720,1482896720),
 	('/gii/default/action',2,NULL,NULL,NULL,1482896720,1482896720),
@@ -364,7 +386,6 @@ VALUES
 	('AdministratorAccess','/backend/category/*'),
 	('AdministratorAccess','/backend/category/create'),
 	('AdministratorAccess','/backend/category/delete'),
-	('AdministratorAccess','/backend/category/index'),
 	('AdministratorAccess','/backend/category/update'),
 	('AdministratorAccess','/backend/category/upload'),
 	('AdministratorAccess','/backend/category/view'),
@@ -376,6 +397,7 @@ VALUES
 	('AdministratorAccess','/backend/config/update'),
 	('AdministratorAccess','/backend/config/upload'),
 	('AdministratorAccess','/backend/config/view'),
+	('AdministratorAccess','/backend/config/view-config'),
 	('AdministratorAccess','/backend/default/*'),
 	('AdministratorAccess','/backend/default/edit-password'),
 	('AdministratorAccess','/backend/default/error'),
@@ -470,6 +492,13 @@ VALUES
 	('AdministratorAccess','/backend/rbac/user/reset-password'),
 	('AdministratorAccess','/backend/rbac/user/signup'),
 	('AdministratorAccess','/backend/rbac/user/view'),
+	('AdministratorAccess','/debug/*'),
+	('AdministratorAccess','/debug/default/*'),
+	('AdministratorAccess','/debug/default/db-explain'),
+	('AdministratorAccess','/debug/default/download-mail'),
+	('AdministratorAccess','/debug/default/index'),
+	('AdministratorAccess','/debug/default/toolbar'),
+	('AdministratorAccess','/debug/default/view'),
 	('AdministratorAccess','/gii/*'),
 	('AdministratorAccess','/gii/default/*'),
 	('AdministratorAccess','/gii/default/action'),
@@ -495,7 +524,6 @@ VALUES
 	('VisitorAccess','/backend/category/*'),
 	('VisitorAccess','/backend/category/create'),
 	('VisitorAccess','/backend/category/delete'),
-	('VisitorAccess','/backend/category/index'),
 	('VisitorAccess','/backend/category/update'),
 	('VisitorAccess','/backend/category/upload'),
 	('VisitorAccess','/backend/category/view'),
@@ -671,11 +699,11 @@ CREATE TABLE `config` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '' COMMENT '字段名英文',
   `label` varchar(50) DEFAULT NULL COMMENT '字段标注',
-  `value` text NOT NULL COMMENT '字段值',
+  `value` varchar(255) NOT NULL DEFAULT '' COMMENT '字段值',
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `i-name` (`name`)
+  UNIQUE KEY `iu-name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `config` WRITE;
@@ -684,7 +712,7 @@ LOCK TABLES `config` WRITE;
 INSERT INTO `config` (`id`, `name`, `label`, `value`, `created_at`, `updated_at`)
 VALUES
 	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李</p><p>QQ: 739800600</p><p>电话: 130435198910262331</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162),
-	(3,'about_us','关于我们','<p>CMS website system is using PHP + MYSQL technology and MVC pattern, structure clear, the code easier to maintain. Support the pseudo static function, can generate Google and baidu map, support custom url, keywords and description, accord with standard of SEO. With corporate websites commonly used modules (description module, news module, product module, download module, image module, online messages, online orders, links, site map, etc.), strong background management functions, flexible marketing for enterprises to create professional and has force standard web site.<br>The website system function is introduced:<br>Modules: </p><p>1. The single page can release enterprises of all kinds of information, such as the description, organization, enterprise honor, contact information, etc., and can freely add or delete.<br>2. News: modules can be issued corporate news and industry news, etc., to support the secondary column, column number is unlimited.<br>3. The product module: product support secondary classification, and can place orders directly to the product inquiry, and support email notification, conforms to the enterprise marketing.<br>4. Image module: in the form of picture album, photo albums and other columns can be successful or company, more intuitive to show the superiority of the enterprise.<br>5. Download module: users can upload document in the background information, convenient website customers to download to use.<br>6. Online message: let the customer advice message timely feedback to the enterprise, and support email notification, make communication more convenient.<br>7. Product search: input a keyword search, the products to the customer to increase the flexibility of the site.<br>8. Product can add the products to replicate, so as to improve the efficiency of the added products.<br>9. Image watermark: can set up the company in the background of the watermark image, in order to prevent the enterprise product pictures stolen.<br>10. Email notification: under customer orders or leave a message at the same time, will send email to the email address you specify, make work more efficiently.<br>11. Search optimization: total support pseudo static, customizable keywords, description, url, generates a sitemap function, add in chain and tags, and other functions.<br></p>',1481355647,1481607089);
+	(3,'contact_us_page_id','联系我们','1',1481355647,1483169811);
 
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -802,9 +830,9 @@ VALUES
 	(33,30,'','','/uploads/photos/30/img_585f7afeb8410.jpg',1482652414,1482652414),
 	(34,30,'','','/uploads/photos/30/img_585f7c8f432bd.png',1482652815,1482652815),
 	(35,30,'','','/uploads/photos/30/img_585f7cabe31fd.jpg',1482652843,1482652843),
-	(36,31,'ceshi','','/uploads/photos/31/img_585f8410249c6.jpg',1482654736,1482655672),
+	(36,31,'ceshi','','/uploads/photos/31/img_585f8410249c6.jpg',1482654736,1482913682),
 	(37,31,'测试2','','/uploads/photos/31/img_585f84183ea3b.jpg',1482654744,1482822674),
-	(38,31,'ceshi3','','/uploads/photos/31/img_585f8410249c6.jpg',1482655165,1482822675);
+	(38,31,'ceshi34','','/uploads/photos/31/img_585f8410249c6.jpg',1482655165,1482913687);
 
 /*!40000 ALTER TABLE `content_detail` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -858,6 +886,35 @@ VALUES
 	('m140506_102106_rbac_init',1482895903);
 
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table page
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `page`;
+
+CREATE TABLE `page` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL DEFAULT '',
+  `image` varchar(255) NOT NULL DEFAULT '',
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `keyword` varchar(100) NOT NULL DEFAULT '',
+  `template` varchar(100) NOT NULL DEFAULT '' COMMENT '模板路径',
+  `content` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `page` WRITE;
+/*!40000 ALTER TABLE `page` DISABLE KEYS */;
+
+INSERT INTO `page` (`id`, `title`, `image`, `description`, `keyword`, `template`, `content`, `created_at`, `updated_at`)
+VALUES
+	(1,'关于我们','','关于我们','关于我们','page','<p><iframe class=\"ueditor_baidumap\" src=\"http://dev.qy.com/assets/7a0b751e/dialogs/map/show.html#center=116.404,39.915&zoom=10&width=530&height=340&markers=116.404,39.915&markerStyles=l,A\" frameborder=\"0\" width=\"534\" height=\"344\"></iframe></p>',1483165325,1483170261);
+
+/*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
