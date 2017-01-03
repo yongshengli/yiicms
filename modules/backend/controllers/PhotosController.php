@@ -81,7 +81,7 @@ class PhotosController extends BackendController
         if($model->load(Yii::$app->request->post()) && $model->uploadFile()){
             return [
                 'code'=>0,
-                'data'=>$this->view->render('_detail_item',['model'=>$model], $this),
+                'data'=>$this->renderPartial('_detail_item',['model'=>$model]),
             ];
         }
         return [
