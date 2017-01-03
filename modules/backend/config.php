@@ -25,12 +25,12 @@ return [
         'rbac' => [
             'class' => 'mdm\admin\Module',
 //            'layout' => 'left-menu', // it can be '@path/to/your/layout'.
-            'menus' => [
-                'assignment' => [
-                    'label' => 'Grand Access' // change label
-                ],
-                'route' => null, // disable menu route
-            ]
+//            'menus' => [
+//                'assignment' => [
+//                    'label' => 'Grand Access' // change label
+//                ],
+//                'route' => null, // disable menu route
+//            ]
         ]
     ],
     'as access' => [

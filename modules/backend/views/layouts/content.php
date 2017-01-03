@@ -31,7 +31,7 @@ use dmstr\widgets\Alert;
         <?php if($this->context->module->id=='backend'):?>
             <?= $content ?>
         <?php else:?>
-        <div class="invoice">
+        <div class="box">
             <div class="box-body">
                 <?= $content ?>
             </div>
