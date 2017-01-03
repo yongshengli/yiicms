@@ -1,3 +1,8 @@
+<?php
+/** @var $this yii\web\View */
+
+$this->title = '后台首页';
+?>
 <div class="backend-default-index">
     <div class="row">
         <div class="col-md-4">
