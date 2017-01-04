@@ -47,7 +47,8 @@ INSTALLATION
 ~~~
 1. git clone git@git.oschina.net:templi/yiicms.git
 
-2. composer install
+2. php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
+   php composer.phar install
 
 3. import yiicms.sql
 ~~~
