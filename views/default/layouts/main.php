@@ -89,7 +89,7 @@ if(!empty(Yii::$app->params['logo'])){
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">&copy; My Company <?= date('Y') ?></div>
+            <div class="col-lg-12">&copy; YiiCms <?= date('Y') ?></div>
         </div>
         <div class="row">
             <div class="col-lg-3">
