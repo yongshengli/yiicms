@@ -12,6 +12,7 @@ use app\models\Products;
 use app\models\Ad;
 use yii\web\NotFoundHttpException;
 use app\models\Page;
+use yii\helpers\Html;
 
 class SiteController extends Controller
 {
@@ -116,7 +117,7 @@ class SiteController extends Controller
      */
     public function actionSearch()
     {
-        $keyword = Yii::$app->request->get('keyword');
+        $keyword = Html::encode(strip_tags(Yii::$app->request->get('keyword')));
         Content::$currentType = null;
         $query = Content::find()
             ->andFilterWhere(['or',['like', 'title', $keyword],['like', 'description', $keyword]])
