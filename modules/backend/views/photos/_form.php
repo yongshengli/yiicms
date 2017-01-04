@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -17,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map($model->categorys,'id', 'name')) ?>
+            <?= $form->field($model, 'category_id')->widget(Select2::class,['data'=>ArrayHelper::map($model->categorys,'id', 'name')]) ?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
