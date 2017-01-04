@@ -1,9 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
+use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,15 +16,20 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'description')->textarea() ?>
 
-    <?= $form->field($model, 'imageFile')->fileInput()?>
-    <?php if($model->image):?>
-        <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
-        <div style="position: relative;">
-            <image src="<?= $model->image ?>" class="img-responsive img-thumbnail"
-                   style="max-height: 200px;" alt="Responsive image" />
-            <div id="source-button"><a onclick="removeImage(this)"><span class="glyphicon glyphicon-trash"></span></a></div>
-        </div>
-    <?php endif?>
+    <?= $form->field($model, 'imageFile')->widget(
+        FileInput::class,
+        [
+            'pluginOptions' => [
+                'showUpload' => false,
+                'initialPreview' => empty($model->image)?'':[\yii\helpers\Url::to($model->image)],
+                'initialPreviewAsData' => true,
+            ],
+            'pluginEvents' => [
+                "fileclear" => "function() { $('#products-image').val('');}",
+            ],
+        ]
+    ) ?>
+    <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput(['id'=>'products-image'])?>
     <div class="row">
         <div class="col-sm-6">
             <?= $form->field($model, 'category_id')->widget(Select2::class,['data'=>ArrayHelper::map($model->categorys,'id', 'name')]) ?>
