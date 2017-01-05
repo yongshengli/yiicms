@@ -2,12 +2,14 @@
 
 namespace app\modules\backend\controllers;
 
+use app\models\Content;
 use app\models\ContentDetail;
 use Yii;
 use app\models\News;
 use app\modules\backend\models\NewsSearch;
 use app\modules\backend\components\BackendController;
-use yii\data\Pagination;
+use app\modules\backend\actions\ContentCheckAction;
+use app\modules\backend\actions\ContentDeleteAllAction;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -30,7 +32,25 @@ class NewsController extends BackendController
             ],
         ];
     }
-
+    public function actions()
+    {
+        return [
+            'check'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Content::TYPE_NEWS,
+                'status'=>Content::STATUS_ENABLE
+            ],
+            'unCheck'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Content::TYPE_NEWS,
+                'status'=>Content::STATUS_DISABLE
+            ],
+            'deleteAll'=>[
+                'class'=>ContentDeleteAllAction::class,
+                'type'=>Content::TYPE_NEWS,
+            ]
+        ];
+    }
     /**
      * Lists all Content models.
      * @return mixed

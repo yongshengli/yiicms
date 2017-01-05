@@ -1,10 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\modules\backend\widgets\GridView;
+//use yii\grid\GridView;
 use yii\widgets\LinkPager;
 use yii\widgets\Menu;
 use app\models\Content;
+use yii\grid\CheckboxColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\NewsSearch */
@@ -26,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
+                    ['class' => CheckboxColumn::className()],
                     [
                         'attribute' => 'id',
                         'options' => ['style' => 'width:50px']

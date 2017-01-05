@@ -32,7 +32,7 @@ class Module extends \yii\base\Module
          * 注册时间 记录下用户回退地址
          */
         $this->on(self::EVENT_AFTER_ACTION, function(){
-            if(Yii::$app->response==Response::FORMAT_HTML && !Yii::$app->request->isAjax) {
+            if(!Yii::$app->request->isAjax) {
                 Url::remember();
             }
         });

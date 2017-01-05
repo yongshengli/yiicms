@@ -55,8 +55,8 @@ class Content extends AppActiveRecord
 
     /** @var array  */
     static public $statusList = [
-        self::STATUS_DISABLE=>'不显示',
-        self::STATUS_ENABLE=>'显示',
+        self::STATUS_DISABLE=>'未审核',
+        self::STATUS_ENABLE=>'审核',
     ];
 
     /** @var  ContentDetail */
