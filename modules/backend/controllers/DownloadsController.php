@@ -16,6 +16,8 @@ use app\modules\backend\models\DownloadsSearch;
 use Yii;
 use app\models\Downloads;
 use yii\web\NotFoundHttpException;
+use app\modules\backend\actions\ContentDeleteAllAction;
+use app\modules\backend\actions\ContentCheckAction;
 
 class DownloadsController extends BackendController
 {
@@ -33,7 +35,25 @@ class DownloadsController extends BackendController
             ],
         ];
     }
-
+    public function actions()
+    {
+        return [
+            'check'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Downloads::$currentType,
+                'status'=>Downloads::STATUS_ENABLE
+            ],
+            'unCheck'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Downloads::$currentType,
+                'status'=>Downloads::STATUS_DISABLE
+            ],
+            'deleteAll'=>[
+                'class'=>ContentDeleteAllAction::class,
+                'type'=>Downloads::$currentType,
+            ]
+        ];
+    }
     /**
      * Lists all Content models.
      * @return mixed

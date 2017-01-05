@@ -15,7 +15,8 @@ use app\modules\backend\models\ProductsSearch;
 use Yii;
 use app\models\Products;
 use yii\web\NotFoundHttpException;
-
+use app\modules\backend\actions\ContentDeleteAllAction;
+use app\modules\backend\actions\ContentCheckAction;
 class ProductsController extends BackendController
 {
     /**
@@ -33,6 +34,25 @@ class ProductsController extends BackendController
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'check'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Products::$currentType,
+                'status'=>Products::STATUS_ENABLE
+            ],
+            'unCheck'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Products::$currentType,
+                'status'=>Products::STATUS_DISABLE
+            ],
+            'deleteAll'=>[
+                'class'=>ContentDeleteAllAction::class,
+                'type'=>Products::$currentType,
+            ]
+        ];
+    }
     /**
      * Lists all Content models.
      * @return mixed
