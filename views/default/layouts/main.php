@@ -97,6 +97,9 @@ if(!empty(Yii::$app->params['logo'])){
             </div>
             <div class="col-lg-3">
                 <a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a>
+            </div>
+            <div class="col-lg-3">
+                <a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a>
             </div
             <div class="col-lg-3">
                 QQ群:248898849
