@@ -1,5 +1,6 @@
 <?php
 /** @var $this yii\web\View */
+use yii\helpers\Url;
 
 $this->title = '后台首页';
 ?>
@@ -34,6 +35,33 @@ $this->title = '后台首页';
                         <tr>
                             <th>PHP 版本</th>
                             <td><?= PHP_VERSION ?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">快捷入口</h3>
+                </div>
+                <!-- /.box-header -->
+
+                <div class="box-body no-padding">
+                    <table class="table table-condensed">
+                        <tbody>
+                        <tr>
+                            <th style="width: 150px"><a href="<?=Url::to('/backend/products/create')?>">添加产品</a></th>
+                            <td><a href="<?=Url::to('/backend/news/create')?>">添加新闻</a></td>
+                        </tr>
+                        <tr>
+                            <th><a href="<?=Url::to('/backend/downloads/create')?>">添加下载</a></th>
+                            <td><a href="<?=Url::to('/backend/photos/create')?>">添加相册</a></td>
+                        </tr>
+                        <tr>
+                            <th><a href="<?=Url::to('/backend/config/base-config')?>">网站配置</a></th>
+                            <td><a href="<?=Url::to('/backend/rbac/assignment/index')?>">权限配置</a></td>
                         </tr>
                         </tbody>
                     </table>
