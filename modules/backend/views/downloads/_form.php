@@ -21,6 +21,7 @@ use kartik\file\FileInput;
             'pluginOptions' => [
                 'showUpload' => false,
                 'showPreview'=>false,
+                'showRemove'=>false,
                 'initialPreview' => empty($model->detail->file_url)?'':[\yii\helpers\Url::to($model->detail->file_url)],
                 'initialPreviewAsData' => true,
             ],
