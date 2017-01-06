@@ -4,7 +4,7 @@
   'logo' => '@web/images/logo.png',
   'keywords' => '',
   'description' => '',
-  'cacheDuration' => '1',
+  'cacheDuration' => '-1',
   'pageSize' => '2',
   'nav' => '{
     "options": {

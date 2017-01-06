@@ -24,20 +24,25 @@ class AppController extends Controller
         if(isset(Yii::$app->params['description'])){
             $this->view->registerMetaTag(['name'=>'description', 'content'=>Yii::$app->params['description']], 'description');
         }
-        $this->view->params['adList'] = Ad::find()->asArray()->all();
+        $this->view->params['adList'] = Ad::getDb()->cache(function(){
+            return Ad::find()->asArray()->all();
+        }, Yii::$app->params['cacheDuration']);
     }
 
     public function behaviors()
     {
-        return [
-            [
-                'class' => 'yii\filters\PageCache',
-                'duration' => Yii::$app->params['cacheDuration'],
-                'variations' => [
-                    \Yii::$app->language,
-                    Yii::$app->request->get()
-                ]
-            ],
-        ];
+        if (isset(Yii::$app->params['cacheDuration']) && Yii::$app->params['cacheDuration'] >= 0) {
+            return [
+                [
+                    'class' => 'yii\filters\PageCache',
+                    'duration' => Yii::$app->params['cacheDuration'],
+                    'variations' => [
+                        \Yii::$app->language,
+                        Yii::$app->request->get()
+                    ]
+                ],
+            ];
+        }
+        return parent::behaviors();
     }
 }
