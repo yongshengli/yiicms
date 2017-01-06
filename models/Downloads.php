@@ -40,7 +40,7 @@ class Downloads extends Content
     public function rules()
     {
         return [
-            [['title', 'type', 'status','category_id',], 'required'],
+            [['title', 'type', 'status','category_id'], 'required'],
             [['file'], 'file', 'extensions' => 'zip,rar',],
             [['type', 'status', 'admin_user_id', 'category_id','created_at', 'updated_at'], 'integer'],
             [['title', 'image', 'description'], 'string', 'max' => 255],
@@ -66,7 +66,7 @@ class Downloads extends Content
 
     public function uploadFile()
     {
-        /** @var UploadedFile imageFile */
+        /** @var UploadedFile file */
         $this->file = current(UploadedFile::getInstances($this, 'file'));
         if(empty($this->file)){
             return '';

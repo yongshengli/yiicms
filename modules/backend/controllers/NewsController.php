@@ -34,7 +34,7 @@ class NewsController extends BackendController
     }
     public function actions()
     {
-        return [
+        return array_merge(parent::actions(),[
             'check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Content::TYPE_NEWS,
@@ -49,7 +49,7 @@ class NewsController extends BackendController
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Content::TYPE_NEWS,
             ]
-        ];
+        ]);
     }
     /**
      * Lists all Content models.

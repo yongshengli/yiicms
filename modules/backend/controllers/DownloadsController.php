@@ -37,7 +37,7 @@ class DownloadsController extends BackendController
     }
     public function actions()
     {
-        return [
+        return array_merge(parent::actions(),[
             'check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Downloads::$currentType,
@@ -52,7 +52,7 @@ class DownloadsController extends BackendController
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Downloads::$currentType,
             ]
-        ];
+        ]);
     }
     /**
      * Lists all Content models.

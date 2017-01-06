@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
-
+use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,7 +15,18 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
-    <?= $form->field($model, 'file')->fileInput()?>
+    <?= $form->field($model, 'file')->widget(
+        FileInput::class,
+        [
+            'pluginOptions' => [
+                'showUpload' => false,
+                'showPreview'=>false,
+                'initialPreview' => empty($model->detail->file_url)?'':[\yii\helpers\Url::to($model->detail->file_url)],
+                'initialPreviewAsData' => true,
+            ],
+        ]
+    ) ?>
+    <?= $form->field($model->detail, 'file_url',['options'=>['style'=>'display:none']])->hiddenInput()?>
 
     <?= !empty($model->detail->file_url)?$model->detail->file_url:''?>
 

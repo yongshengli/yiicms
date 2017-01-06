@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Ad */
@@ -14,11 +15,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'imageFile')->fileInput() ?>
-    <?php if($model->image):?>
-        <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput()?>
-        <div><image src="<?=$model->image?>" class="img-responsive img-thumbnail" style="max-height: 200px;" alt="Responsive image"/></div>
-    <?php endif?>
+    <?= $form->field($model, 'imageFile')->widget(
+        FileInput::class,
+        [
+            'pluginOptions' => [
+                'showUpload' => false,
+                'initialPreview' => empty($model->image)?'':[\yii\helpers\Url::to($model->image)],
+                'initialPreviewAsData' => true,
+            ],
+            'pluginEvents' => [
+                "fileclear" => "function() { $('#ad-image').val('');}",
+            ],
+        ]
+    ) ?>
+    <?= $form->field($model, 'image',['options'=>['style'=>'display:none']])->hiddenInput(['id'=>'ad-image'])?>
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

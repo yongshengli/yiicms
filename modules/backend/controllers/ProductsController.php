@@ -36,7 +36,7 @@ class ProductsController extends BackendController
 
     public function actions()
     {
-        return [
+        return array_merge(parent::actions(), [
             'check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Products::$currentType,
@@ -51,7 +51,7 @@ class ProductsController extends BackendController
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Products::$currentType,
             ]
-        ];
+        ]);
     }
     /**
      * Lists all Content models.
