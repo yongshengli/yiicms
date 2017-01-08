@@ -12,6 +12,7 @@ namespace app\modules\backend\models;
 
 use yii\base\Model;
 use Yii;
+use yii\helpers\FileHelper;
 
 class BaseConfig extends Model
 {
@@ -55,8 +56,12 @@ class BaseConfig extends Model
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $phpCode = "<?php \n return " . var_export($this->toArray(), true) . ";\n";
-        return file_put_contents(Yii::getAlias('@app/config/params.php'), $phpCode);
+        $phpCode = "<?php \n //please do not modify this file, this file is built by app\\modules\\backend\\models\\baseConfig.php ";
+        $phpCode .= "\n return " . var_export($this->toArray(), true) . ";\n";
+        if(!is_dir(Yii::getAlias('@runtime/config/'))){
+            FileHelper::createDirectory(Yii::getAlias('@runtime/config/'));
+        }
+        return file_put_contents(Yii::getAlias('@runtime/config/params.php'), $phpCode);
     }
 
     public function rules()

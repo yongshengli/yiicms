@@ -56,7 +56,6 @@ INSTALLATION
 
 3. import yiicms.sql
 
-4. cp config/db.php.default config/db.php && cp config/params.php.default config/params.php
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `yiicms` is the directory

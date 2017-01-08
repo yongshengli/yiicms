@@ -9,7 +9,7 @@
 
 namespace app\modules\backend\models;
 
-
+use yii\helpers\FileHelper;
 use yii\base\Model;
 use Yii;
 
@@ -47,8 +47,12 @@ class ViewConfig extends Model
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $phpCode = "<?php \n return " . var_export($this->_createConfig(), true) . ";\n";
-        return file_put_contents(Yii::getAlias('@app/config/view.php'), $phpCode);
+        if(!is_dir(Yii::getAlias('@runtime/config/'))){
+            FileHelper::createDirectory(Yii::getAlias('@runtime/config/'));
+        }
+        $phpCode = "<?php \n //please do not modify this file, this file is built by app\\modules\\backend\\models\\baseConfig.php ";
+        $phpCode .= "\n return " . var_export($this->_createConfig(), true) . ";\n";
+        return file_put_contents(Yii::getAlias('@runtime/config/view.php'), $phpCode);
     }
 
     private function _createConfig()
