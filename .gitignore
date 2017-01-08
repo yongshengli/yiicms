@@ -30,4 +30,3 @@ tests/_output/*
 tests/_support/_generated
 web/uploads/
 config/db.php
-config/params.php
