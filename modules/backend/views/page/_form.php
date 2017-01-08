@@ -20,7 +20,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'template')->dropDownList($model->getTemplates()) ?>
 
-    <?= $form->field($model, 'content')->widget(\kucha\ueditor\UEditor::className()) ?>
+    <?= $form->field($model, 'content')->widget(\kucha\ueditor\UEditor::className(),[
+        'clientOptions'=>[
+            'initialFrameHeight'=>'200'
+        ]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

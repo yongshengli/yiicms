@@ -40,7 +40,11 @@ use kartik\file\FileInput;
         </div>
     </div>
 
-    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className()) ?>
+    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className(), [
+        'clientOptions' => [
+            'initialFrameHeight' => '200'
+        ]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
