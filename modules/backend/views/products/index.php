@@ -2,10 +2,7 @@
 
 use yii\helpers\Html;
 use app\modules\backend\widgets\GridView;
-//use yii\grid\GridView;
-use yii\widgets\LinkPager;
-use yii\widgets\Menu;
-use app\models\Content;
+use app\models\Products;
 use yii\grid\CheckboxColumn;
 
 /* @var $this yii\web\View */
@@ -39,8 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'status',
                         'options' => ['style' => 'width:60px'],
-                        'format' => 'text',
-                        'value' => 'statusText'
+                        'format' => 'html',
+                        'value' => function ($item) {
+                            if($item['status']==Products::STATUS_ENABLE) {
+                                return '<span class="badge bg-green">' . $item['statusText'] . '</span>';
+                            }else{
+                                return '<span class="badge">' . $item['statusText'] . '</span>';
+                            }
+                        }
                     ],
                     // 'admin_user_id',
                     [

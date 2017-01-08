@@ -36,8 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'status',
                         'options' => ['style' => 'width:60px'],
-                        'format' => 'text',
-                        'value' => 'statusText'
+                        'format' => 'html',
+                        'value' => function ($item) {
+                            if($item['status']==\app\models\News::STATUS_ENABLE) {
+                                return '<span class="badge bg-green">' . $item['statusText'] . '</span>';
+                            }else{
+                                return '<span class="badge">' . $item['statusText'] . '</span>';
+                            }
+                        }
                     ],
                     // 'admin_user_id',
                     [
