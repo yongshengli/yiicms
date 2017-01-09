@@ -57,6 +57,9 @@ INSTALLATION
 3. import yiicms.sql
 
 4. Database config
+
+5. 配置 ngixn 虚拟机或者apache虚拟机 网站跟目录指向 yiicms/web/
+
 ~~~
 
 ### Database
@@ -73,6 +76,16 @@ return [
 ];
 ```
 
+
+config/web.php 中作如下修改 或者 将网站根目录直接指向 yiicms/web/ 目录
+
+```
+
+'enablePrettyUrl' => true,
+
+```
+
+
 **NOTES:**
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
@@ -84,7 +97,7 @@ directly under the Web root.
 ~~~
 http://localhost/yiicms/web/  前台
 
-http://localhost/yiicms/web/backend 后台
+http://localhost/yiicms/web/index.php?r=backend 后台
 ~~~
 
 
