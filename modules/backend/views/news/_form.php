@@ -24,7 +24,11 @@ use yii\helpers\ArrayHelper;
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>
         </div>
     </div>
-    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className()) ?>
+    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className(), [
+        'clientOptions' => [
+            'initialFrameHeight' => '200'
+        ]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

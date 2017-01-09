@@ -48,16 +48,16 @@ class GridView extends YiiGridView
         $buttonList = [
             Html::tag('button', '审核',[
                 'class'=>'btn btn-xs btn-success',
-                'onclick'=>'this.form.action=\''.Url::to(['check']).'\';this.form.submit();'
+                'onclick'=>'this.form.action=\''.Url::to(['check']).'\';this.form.submit();this.disabled=true;'
             ]),
             Html::tag('button', '取消审核',[
                 'class'=>'btn btn-xs btn-warning',
-                'onclick'=>'this.form.action=\''.Url::to(['unCheck']).'\';this.form.submit();'
+                'onclick'=>'this.form.action=\''.Url::to(['unCheck']).'\';this.form.submit();this.disabled=true;'
             ]),
             Html::tag('button', '删除',[
                 'class'=>'btn btn-xs btn-danger',
                 'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                'onclick'=>'this.form.action=\''.Url::to(['deleteAll']).'\';this.form.submit();'
+                'onclick'=>'this.form.action=\''.Url::to(['deleteAll']).'\';this.form.submit();this.disabled=true;'
             ]),
         ];
         return Html::tag('div', implode('', $buttonList), [

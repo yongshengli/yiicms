@@ -40,7 +40,11 @@ use kartik\file\FileInput;
         </div>
     </div>
 
-    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className()) ?>
+    <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className(), [
+        'clientOptions' => [
+            'initialFrameHeight' => '200'
+        ]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -49,11 +53,3 @@ use kartik\file\FileInput;
     <?php ActiveForm::end(); ?>
 
 </div>
-<script>
-    function removeImage(obj){
-        if(window.confirm('确认要删除图片吗？')) {
-            $('#products-image').val('');
-            $(obj).parent().parent().remove();
-        }
-    }
-</script>
