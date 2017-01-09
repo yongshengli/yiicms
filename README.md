@@ -81,7 +81,7 @@ config/web.php 中作如下修改 或者 将网站根目录直接指向 yiicms/w
 
 ```
 
-'enablePrettyUrl' => true,
+'enablePrettyUrl' => false,
 
 ```
 
