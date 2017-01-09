@@ -56,34 +56,8 @@ INSTALLATION
 
 3. import yiicms.sql
 
+4. Database config
 ~~~
-
-Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/yiicms/web/
-~~~
-
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/yiicms/web/
-~~~
-
-
-CONFIGURATION
--------------
 
 ### Database
 
@@ -103,6 +77,15 @@ return [
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
+
+Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
+directly under the Web root.
+
+~~~
+http://localhost/yiicms/web/  前台
+
+http://localhost/yiicms/web/backend 后台
+~~~
 
 
 
