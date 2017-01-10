@@ -31,7 +31,9 @@ class PhotosController extends BackendController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    'deleteDetail' => ['POST'],
+                    'delete-detail' => ['POST'],
+                    'upload-photo' => ['POST'],
+                    'edit-detail' => ['POST'],
                 ],
             ],
         ];
@@ -87,7 +89,7 @@ class PhotosController extends BackendController
         }
         return [
             'code'=>1,
-            'data'=>empty($model->errors)?'':$model->errors,
+            'data'=>empty($model->errors)?'参数错误':$model->errors,
         ];
     }
 
