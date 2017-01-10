@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\backend\widgets;
 
+use yii\widgets\Pjax;
 use kartik\form\ActiveForm;
 use yii\bootstrap\Html;
 use yii\grid\GridView as YiiGridView;
@@ -48,7 +49,7 @@ class GridView extends YiiGridView
         $buttonList = [
             Html::tag('button', '审核',[
                 'class'=>'btn btn-xs btn-success',
-                'onclick'=>'this.form.action=\''.Url::to(['check']).'\';this.form.submit();this.disabled=true;'
+                'onclick'=>'$(\'#w0\').yiiGridView(\'getSelectedRows\');this.form.action=\''.Url::to(['check']).'\';this.form.submit();this.disabled=true;'
             ]),
             Html::tag('button', '取消审核',[
                 'class'=>'btn btn-xs btn-warning',
@@ -68,9 +69,11 @@ class GridView extends YiiGridView
     {
         ob_start();
         ob_implicit_flush(false);
-        ActiveForm::begin();
+        Pjax::begin();
+//        ActiveForm::begin();
         parent::run();
-        ActiveForm::end();
+//        ActiveForm::end();
+        Pjax::end();
         return ob_get_clean();
     }
 }
