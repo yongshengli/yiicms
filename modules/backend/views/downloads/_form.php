@@ -53,11 +53,3 @@ use kartik\file\FileInput;
     <?php ActiveForm::end(); ?>
 
 </div>
-<script>
-    function removeImage(obj){
-        if(window.confirm('确认要删除图片吗？')) {
-            $('#products-image').val('');
-            $(obj).parent().parent().remove();
-        }
-    }
-</script>

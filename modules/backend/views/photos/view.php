@@ -1,8 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
-
+use kartik\form\ActiveForm;
+use kartik\file\FileInput;
+use kartik\file\CanvasBlobAsset;
+use kartik\file\SortableAsset;
+use kartik\file\DomPurifyAsset;
+use kartik\file\FileInputAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Photos */
 /* @var $newPhotoDetail app\models\PhotosDetail */
@@ -11,6 +15,10 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '产品管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+CanvasBlobAsset::register($this);
+SortableAsset::register($this);
+DomPurifyAsset::register($this);
+FileInputAsset::register($this);
 ?>
 <style>
     .img-thumbnail {
@@ -39,11 +47,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-lg-3"><img src="<?= $model->image ?>"/></div>
             </div>
-
-            <div class="row" id="photo-list">
-                <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
-                    <?= $this->render('_detail_item', ['model' => $item]) ?>
-                <?php endforeach;endif; ?>
+            <div class="form-group">
+            <div class="file-input" id="photo-list">
+                <div class="file-preview">
+                    <div class="file-drop-disabled">
+                        <div class="file-preview-thumbnails">
+                            <div class="file-initial-thumbs">
+                                <div class="clearfix">
+                                <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
+                                    <?= $this->render('_detail_item', ['model' => $item]) ?>
+                                <?php endforeach;endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
