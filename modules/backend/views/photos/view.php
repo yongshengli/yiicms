@@ -53,9 +53,11 @@ FileInputAsset::register($this);
                     <div class="file-drop-disabled">
                         <div class="file-preview-thumbnails">
                             <div class="file-initial-thumbs">
+                                <div class="clearfix">
                                 <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
                                     <?= $this->render('_detail_item', ['model' => $item]) ?>
                                 <?php endforeach;endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
