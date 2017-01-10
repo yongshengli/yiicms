@@ -34,23 +34,25 @@ FileInputAsset::register($this);
             <div class="row">
                 <div class="col-lg-3"><img src="<?= $model->image ?>"/></div>
             </div>
-            <div class="form-group">
+<!--            <div class="form-group">-->
+                <?php if (isset($detailModelList) && is_array($detailModelList)):?>
             <div class="file-input" id="photo-list">
                 <div class="file-preview">
                     <div class="file-drop-disabled">
                         <div class="file-preview-thumbnails">
                             <div class="file-initial-thumbs">
                                 <div class="clearfix">
-                                <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
+                                <?php foreach ($detailModelList as $item): ?>
                                     <?= $this->render('_detail_item', ['model' => $item]) ?>
-                                <?php endforeach;endif; ?>
+                                <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+<!--            </div>-->
             </div>
-            </div>
+            <?php endif;?>
         </div>
     </div>
 </div>
