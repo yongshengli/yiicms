@@ -27,6 +27,9 @@ use yii\bootstrap\ActiveForm;
                     <button type="button" class="kv-file-zoom btn btn-xs btn-default" title="查看详情">
                         <i class="glyphicon glyphicon-zoom-in"></i>
                     </button>
+                    <button type="button" class="btn btn-xs btn-default" title="删除">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
                 </div>
                 <div class="file-upload-indicator" title="没有上传">
                     <i class="glyphicon glyphicon-hand-down text-warning"></i>
