@@ -32,7 +32,6 @@ class PhotosController extends BackendController
                 'actions' => [
                     'delete' => ['POST'],
                     'delete-detail' => ['POST'],
-                    'upload-photo' => ['POST'],
                     'edit-detail' => ['POST'],
                 ],
             ],
