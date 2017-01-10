@@ -14,7 +14,7 @@ use yii\web\UploadedFile;
 
 class PhotosDetail extends ContentDetail
 {
-
+    /** @var $imageFile  UploadedFile */
     public $imageFile;
 
     /**

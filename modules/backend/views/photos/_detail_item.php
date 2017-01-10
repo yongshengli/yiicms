@@ -15,7 +15,7 @@ use yii\bootstrap\ActiveForm;
     <?php $form = ActiveForm::begin(['action' => ['/backend/photos/edit-detail', 'id' => $model->id]]); ?>
     <div class="kv-file-content">
         <img src="<?= $model->file_url ?>" class="kv-preview-data file-preview-image"
-             style="width:auto;height:160px;"/>
+             style="width:210px;height:160px;"/>
         <?= $form->field($model, 'content_id',['options'=>['style'=>'display:none']])->hiddenInput() ?>
         <?= $form->field($model, 'file_url', ['options' => ['style' => 'display:none']])->hiddenInput() ?>
         <?= $form->field($model, 'detail')->textarea(['form-id' => $form->getId(), 'class' => 'form-control detail-input']); ?>
