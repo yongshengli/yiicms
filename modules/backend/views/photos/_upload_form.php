@@ -8,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 $this->registerJs('
     $(\'#image-file\').change(function () {
+        $(\'.overlay\').show();
         $.ajax({
             "url":$("#upload-form").attr("action"),
             "type":"post",
@@ -23,6 +24,7 @@ $this->registerJs('
             }
             $(\'#photo-list\').append(res.data);
             alert("上传图片成功");
+            $(\'.overlay\').hide();
         });
     });
 ');

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\file\FileInputAsset;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Photos */
 /* @var $newPhotoDetail app\models\PhotosDetail */
@@ -21,27 +22,32 @@ FileInputAsset::register($this);
             <li role="presentation" class="active"><?= Html::a('上传照片', ['#']) ?></li>
         </ul>
         <div class="tab-content">
-            <p>
-                <?= $this->render('_upload_form', [
-                    'model' => $newPhotoDetail,
-                ]) ?>
-            </p>
-            <div class="row">
-                <div class="col-lg-3"><img src="<?= $model->image ?>"/></div>
-            </div>
-            <div class="file-input">
-                <div class="file-preview">
-                    <div class="file-drop-disabled">
-                        <div class="file-preview-thumbnails">
-                            <div class="file-initial-thumbs">
-                                <div class="clearfix" id="photo-list">
-                                <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
-                                    <?= $this->render('_detail_item', ['model' => $item]) ?>
-                                <?php endforeach; endif;?>
+            <div class="box box-solid">
+                <p>
+                    <?= $this->render('_upload_form', [
+                        'model' => $newPhotoDetail,
+                    ]) ?>
+                </p>
+                <div class="row">
+                    <div class="col-lg-3"><img src="<?= $model->image ?>"/></div>
+                </div>
+                <div class="file-input">
+                    <div class="file-preview">
+                        <div class="file-drop-disabled">
+                            <div class="file-preview-thumbnails">
+                                <div class="file-initial-thumbs">
+                                    <div class="clearfix" id="photo-list">
+                                        <?php if (isset($detailModelList) && is_array($detailModelList)):foreach ($detailModelList as $item): ?>
+                                            <?= $this->render('_detail_item', ['model' => $item]) ?>
+                                        <?php endforeach; endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="overlay" style="display: none">
+                    <i class="fa fa-refresh fa-spin"></i>
                 </div>
             </div>
         </div>
