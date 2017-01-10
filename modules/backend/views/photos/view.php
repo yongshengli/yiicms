@@ -15,22 +15,9 @@ use kartik\file\FileInputAsset;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '产品管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-CanvasBlobAsset::register($this);
-SortableAsset::register($this);
-DomPurifyAsset::register($this);
+
 FileInputAsset::register($this);
 ?>
-<style>
-    .img-thumbnail {
-        max-width: 150px;
-        max-height: 150px;
-    }
-
-    .img-box {
-        height: 300px;
-        border: 1px solid #ccc
-    }
-</style>
 <div class="content-view">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">

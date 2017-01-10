@@ -14,7 +14,7 @@ use yii\web\UploadedFile;
 
 class PhotosDetail extends ContentDetail
 {
-
+    /** @var $imageFile  UploadedFile */
     public $imageFile;
 
     /**
@@ -29,15 +29,19 @@ class PhotosDetail extends ContentDetail
             $this->addError('imageFile', '图片不能为空');
             return false;
         }
-        $fileName = $this->createUploadFilePath().uniqid('img_').'.'. $this->imageFile->extension;
-
+        try {
+            $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
+        }catch(\Exception $e){
+            $this->addError('imageFile', $e->getMessage());
+            return false;
+        }
         if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
             $this->file_url = $fileName;
         }
         return $this->save();
     }
     /**
-     *
+     * @throw \Exception
      * @return string
      */
     public function createUploadFilePath()

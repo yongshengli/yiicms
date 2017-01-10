@@ -31,6 +31,8 @@ class PhotosController extends BackendController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'delete-detail' => ['POST'],
+                    'edit-detail' => ['POST'],
                 ],
             ],
         ];
@@ -86,7 +88,7 @@ class PhotosController extends BackendController
         }
         return [
             'code'=>1,
-            'data'=>empty($model->errors)?'':$model->errors,
+            'data'=>empty($model->errors)?'参数错误':$model->errors,
         ];
     }
 
@@ -109,6 +111,34 @@ class PhotosController extends BackendController
             'code'=>1,
             'data'=>empty($model->errors)?'':$model->errors,
         ];
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function actionDeleteDetail($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = PhotosDetail::findOne($id);
+        if(empty($model)){
+            return [
+                'code'=>1,
+                'data'=>'图片不存在或者已删除',
+            ];
+        }
+        try {
+            $model->delete();
+            return [
+                'code' => 0,
+                'data' => '删除成功',
+            ];
+        }catch(\Exception $e){
+            return [
+                'code' => 1,
+                'data' => $e->getMessage(),
+            ];
+        }
     }
     /**
      * Creates a new Content model.

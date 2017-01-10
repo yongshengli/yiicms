@@ -53,7 +53,12 @@ class Downloads extends Content
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $file = $this->uploadFile();
+        try {
+            $file = $this->uploadFile();
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+            return false;
+        }
         if($file){
             $this->detail->file_url = $file;
         }
