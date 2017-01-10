@@ -47,7 +47,7 @@ FileInputAsset::register($this);
                     </div>
                 </div>
                 <div class="overlay dark" style="display: none">
-                    <i class="fa fa-refresh fa-spin"></i>
+                    <i class="fa fa-spinner fa-spin" style="font-size: 100px;color:#fff"></i>
                 </div>
             </div>
         </div>
