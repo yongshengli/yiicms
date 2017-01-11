@@ -711,7 +711,7 @@ LOCK TABLES `config` WRITE;
 
 INSERT INTO `config` (`id`, `name`, `label`, `value`, `created_at`, `updated_at`)
 VALUES
-	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李</p><p>QQ: 739800600</p><p>电话: 130435198910262331</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162),
+	(2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李</p><p>QQ: 739800600</p><p>电话: 1304351</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162),
 	(3,'contact_us_page_id','联系我们','1',1481355647,1483169811);
 
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
