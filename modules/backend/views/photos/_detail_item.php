@@ -26,19 +26,52 @@ use yii\bootstrap\ActiveForm;
 <!--                <button type="button" class="kv-file-zoom btn btn-xs btn-default" title="查看详情">-->
 <!--                    <i class="glyphicon glyphicon-zoom-in"></i>-->
 <!--                </button>-->
+                <button type="button" class="kv-file-bookmark btn btn-xs btn-default" title="设为封面" data-id="<?=$model->id?>">
+                    <i class="fa fa-bookmark" style="color:#3c8dbc"></i>
+                </button>
                 <button type="button" class="kv-file-remove btn btn-xs btn-default" title="删除" data-id="<?=$model->id?>">
-                    <i class="glyphicon glyphicon-trash"></i>
+                    <i class="glyphicon glyphicon-trash" style="color:red"></i>
                 </button>
             </div>
-            <div class="file-upload-indicator" title="没有上传">
-                <i class="glyphicon glyphicon-hand-down text-warning"></i>
-            </div>
+<!--            <div class="file-upload-indicator" title="没有上传">-->
+<!--                <i class="glyphicon glyphicon-hand-down text-warning"></i>-->
+<!--            </div>-->
             <div class="clearfix"></div>
         </div>
     </div>
     <?php ActiveForm::end(); ?>
 </div>
-
+<!--设为封面-->
+<?php $this->registerJs('
+    $(\'.kv-file-bookmark\').click(function(){
+        if(window.confirm(\'你确定要设此照片为封面？\')==false){
+            return;
+        }
+        var id = $(this).data(\'id\');
+        var self = this;
+        if(!id){
+            alert(\'参数错误\');
+        }
+        $.ajax({
+            "url":"/backend/photos/set-cover?id="+id,
+            "type":"post",
+            "data":{"id":id},
+            "dataType":"json",
+            statusCode: {
+                403: function() {
+                    alert( "您没有执行此操作的权限." );
+                }
+            }
+        }).done(function(res){
+            if(res.code!=0){
+                alert(res.data);
+                return;
+            }
+            alert(res.data);
+        });
+    });
+')?>
+<!--修改备注-->
 <?php $this->registerJs(
 '$(\'.detail-input\').change(function(){
     var formId= $(this).attr(\'form-id\');
@@ -60,6 +93,7 @@ use yii\bootstrap\ActiveForm;
         }
     });
 });') ?>
+<!--删除-->
 <?php $this->registerJs('
 $(\'.kv-file-remove\').click(function(){
     if(window.confirm(\'你确定要删除吗？\')==false){

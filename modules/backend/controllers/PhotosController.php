@@ -88,7 +88,41 @@ class PhotosController extends BackendController
         }
         return [
             'code'=>1,
-            'data'=>empty($model->errors)?'参数错误':$model->errors,
+            'data'=>empty($model->firstErrors)?'上传失败':$model->firstErrors,
+        ];
+    }
+
+    /**
+     * 设置相册封面
+     * @param int $id
+     * @return array
+     */
+    public function actionSetCover($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $detailModel = PhotosDetail::findOne($id);
+        if(empty($detailModel)){
+            return [
+                'code'=>1,
+                'data'=>'照片不存在'
+            ];
+        }
+        $model = $detailModel->content;
+        if(empty($model)){
+            return [
+                'code'=>1,
+                'data'=>'相册不存在'
+            ];
+        }
+        if($detailModel->setCover()){
+            return [
+                'code'=>0,
+                'data'=>'操作成功'
+            ];
+        }
+        return [
+            'code'=>1,
+            'data'=>empty($model->firstErrors)?'操作失败':$model->firstErrors,
         ];
     }
 
@@ -109,7 +143,7 @@ class PhotosController extends BackendController
         }
         return [
             'code'=>1,
-            'data'=>empty($model->errors)?'':$model->errors,
+            'data'=>empty($model->firstErrors)?'修改失败':$model->firstErrors,
         ];
     }
 

@@ -12,11 +12,14 @@ use Yii;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
+/**
+ * Class PhotosDetail
+ * @package app\models
+ */
 class PhotosDetail extends ContentDetail
 {
     /** @var $imageFile  UploadedFile */
     public $imageFile;
-
     /**
      * 保存照片
      * @return bool
@@ -38,7 +41,15 @@ class PhotosDetail extends ContentDetail
         if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
             $this->file_url = $fileName;
         }
-        return $this->save();
+        if($this->save()){
+            //如果相册没有封面那么就把当前照片设为封面
+            if(empty($this->content->image)){
+                return $this->setCover();
+            }
+            return true;
+        }else{
+            return false;
+        }
     }
     /**
      * @throw \Exception
@@ -53,9 +64,14 @@ class PhotosDetail extends ContentDetail
         }
         return $path;
     }
-    public function scenarios()
+
+    /**
+     * 把当前照片设为封面
+     */
+    public function setCover()
     {
-        return parent::scenarios();
+        $this->getContent()->image = $this->file_url;
+        return $this->getContent()->save();
     }
     /**
      * @inheritdoc
@@ -79,5 +95,18 @@ class PhotosDetail extends ContentDetail
             'imageFile'=>'上传图片',
             'file_url' => '照片地址',
         ];
+    }
+
+    /**
+     * @return \app\models\Content
+     */
+    public function content()
+    {
+        if ($this->isNewRecord) {
+            return new Photos();
+        } else {
+            return $this->hasOne(Photos::class, ['id' => 'content_id'])->one();
+        }
+
     }
 }

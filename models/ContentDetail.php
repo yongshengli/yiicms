@@ -10,6 +10,7 @@ use app\components\AppActiveRecord;
  * @property integer $id
  * @property integer $content_id
  * @property integer $detail
+ * @property Content $content
  */
 class ContentDetail extends AppActiveRecord
 {
@@ -31,6 +32,28 @@ class ContentDetail extends AppActiveRecord
         $scenarios[self::SCENARIO_DOWNLOADS] = ['content_id','detail', 'file_url'];
         $scenarios[self::SCENARIO_PRODUCTS] = ['content_id','detail', 'params'];
         return $scenarios;
+    }
+
+    /** @var  Content */
+    protected $_content;
+    /**
+     * 获取主表数据
+     */
+    public function getContent()
+    {
+        if(empty($this->_content)) {
+            $this->_content = $this->content();
+        }
+        return $this->_content;
+    }
+
+    /**
+     * need rewrite
+     * @return \app\models\Content
+     */
+    public function content()
+    {
+
     }
     /**
      * @inheritdoc
