@@ -40,7 +40,7 @@ $this->registerJs('
     <?= $form->field($model, 'content_id',['options'=>['style'=>'display:none']])->hiddenInput()?>
     <a href="javascript:;" class="btn btn-block btn-primary" style="position:relative;cursor:pointer;overflow:hidden;display:inline-block;*display:inline;">
         <i class="fa fa-upload">上传照片</i>
-        <input name="PhotosDetail[imageFile]" type="file" style="position: absolute;font-size: 100px;right: 0;top: 0;opacity: 0;">
+        <input name="PhotosDetail[imageFile]" id="image-file" type="file" style="position: absolute;font-size: 100px;right: 0;top: 0;opacity: 0;"/>
     </a>
     <?php ActiveForm::end(); ?>
 
