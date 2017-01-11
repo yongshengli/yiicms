@@ -46,8 +46,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $title = '<h4>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title).'</h4>';
                                     if($item->type==\app\models\Content::TYPE_NEWS) {
                                         $html = Html::a($title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
-                                    }else{
+                                    }elseif($item->type==\app\models\Content::TYPE_PRODUCTS){
                                         $html = Html::a($title, ['/products', 'id'=>$item->id],['target'=>'_blank']);
+                                    }elseif($item->type==\app\models\Content::TYPE_PHOTOS){
+                                        $html = Html::a($title, ['/photos', 'id'=>$item->id],['target'=>'_blank']);
+                                    }elseif($item->type==\app\models\Content::TYPE_DOWNLOADS){
+                                        $html = Html::a($title, ['/downloads', 'id'=>$item->id],['target'=>'_blank']);
+                                    }else{
+                                        $html = $title;
                                     }
                                     $html .='<p>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</b>',$item->description).'</p>';
                                     return $html;
