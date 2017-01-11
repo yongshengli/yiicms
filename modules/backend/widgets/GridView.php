@@ -65,7 +65,7 @@ class GridView extends YiiGridView
         $view = $this->getView();
         $view->registerJs('$(\'.content-operation\').click(function(){
             var self = this;
-            this.disable =true;
+            this.disabled =true;
             var url = $(this).data(\'action\');
             var ids = $(\'#'.$id.'\').yiiGridView(\'getSelectedRows\');
             if(!url){
@@ -83,14 +83,14 @@ class GridView extends YiiGridView
                     403: function() {
                         alert( "您没有执行此操作的权限." );
                     }
-                },
+                }
             }).done(function(res){
                 if(res.code==1){
                     alert(res.data);
                 }
                 alert(\'操作成功\');
                 $(\'#'.$id.'\').yiiGridView(\'applyFilter\');
-                self.disable = false;
+                self.disabled = false;
             });
         });');
         return Html::tag('div', implode('', $buttonList), [
