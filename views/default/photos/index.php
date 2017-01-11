@@ -40,16 +40,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="panel-body">
+                <div class="panel-body text-center">
                     <?= ListView::widget([
                         'dataProvider' => $dataProvider,
                         'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
                         'itemView'=>function($item){
-                            return '<img src="'.$item->file_url.'"/>';
+                            $html ='<p><img src="'.$item->file_url.'"/></p>';
+                            $html .='<p class="text-left">'.$item->detail.'</p>';
+                            return $html;
                         }
                     ]); ?>
                 </div>
-                <div class="panel-body" style="text-align: center">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-3">
                             <?=$this->render('@app/views/news/_share')?>
