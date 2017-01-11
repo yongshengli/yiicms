@@ -10,9 +10,8 @@
 /* @var $this yii\web\View */
 /* @var $model \app\models\News */
 use yii\bootstrap\Html;
-use app\widgets\LastNews;
-use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
+use yii\data\Pagination;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>'企业相册', 'url'=>['list']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -41,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-9">
                 <div class="panel-body text-center">
-                    <?= ListView::widget([
+                    <?php $imgListView = ListView::begin([
                         'dataProvider' => $dataProvider,
                         'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
                         'itemView'=>function($item){
@@ -50,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return $html;
                         }
                     ]); ?>
+                    <?php ListView::end()?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

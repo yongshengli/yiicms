@@ -43,7 +43,7 @@ class PhotosController extends AppController
             'sort'=>['defaultOrder'=>['id'=>SORT_ASC]],
             'pagination' => ['pageSize'=>1]
         ]);
-
+//        print_r($dataProvider->pagination->getLinks());
         return $this->render('index', [
             'model'=>$model,
             'searchModel'=> new PhotosDetail(),
