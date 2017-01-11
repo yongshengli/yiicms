@@ -22,15 +22,20 @@ FileInputAsset::register($this);
             <li role="presentation" class="active"><?= Html::a('上传照片', ['#']) ?></li>
         </ul>
         <div class="tab-content">
-            <div class="">
-                <img id="cover-image" src="<?= $model->image ?>" title="相册封面" style="width: 80px;height: 80px"/>
-            </div>
             <div class="box box-solid">
                 <p>
-                    <?= $this->render('_upload_form', [
-                        'model' => $newPhotoDetail,
-                    ]) ?>
+                    <div class="pull-left">
+                        <img id="cover-image" src="<?= $model->image ?>" title="相册封面" class="img-thumbnail" style="width: 80px;height: 80px"/>
+                    </div>
+                    <div class="pull-left" style="margin-left: 20px">
+                        <h4><?=$this->title?></h4>
+                        <?= $this->render('_upload_form', [
+                            'model' => $newPhotoDetail,
+                        ]) ?>
+                    </div>
+                    <div class="clearfix"></div>
                 </p>
+
                 <div class="file-input">
                     <div class="file-drop-disabled">
                         <div class="file-preview-thumbnails">
