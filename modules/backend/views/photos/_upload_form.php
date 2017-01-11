@@ -37,8 +37,8 @@ $this->registerJs('
             'action'=>['/backend/photos/upload-photo'],
             'id'=>'upload-form'
         ]); ?>
-    <?= $form->field($model, 'content_id')->hiddenInput()?>
-    <?= $form->field($model, 'imageFile')->fileInput(['id'=>'image-file'])?>
+    <?= $form->field($model, 'content_id',['options'=>['style'=>'display:none']])->hiddenInput()?>
+    <?= $form->field($model, 'imageFile',['options'=>['class'=>'btn btn-block btn-primary',]])->fileInput(['id'=>'image-file'])?>
     <?php ActiveForm::end(); ?>
 
 </div>
