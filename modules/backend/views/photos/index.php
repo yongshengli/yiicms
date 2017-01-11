@@ -1,10 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\LinkPager;
-use yii\widgets\Menu;
-use app\models\Content;
+use app\modules\backend\widgets\GridView;
 use app\models\Photos;
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\NewsSearch */

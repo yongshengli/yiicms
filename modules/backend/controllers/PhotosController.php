@@ -9,7 +9,8 @@
 
 namespace app\modules\backend\controllers;
 
-
+use app\modules\backend\actions\ContentDeleteAllAction;
+use app\modules\backend\actions\ContentCheckAction;
 use app\models\PhotosDetail;
 use app\modules\backend\components\BackendController;
 use app\models\Photos;
@@ -37,7 +38,25 @@ class PhotosController extends BackendController
             ],
         ];
     }
-
+    public function actions()
+    {
+        return array_merge(parent::actions(), [
+            'check'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Photos::$currentType,
+                'status'=>Photos::STATUS_ENABLE
+            ],
+            'un-check'=>[
+                'class'=>ContentCheckAction::class,
+                'type'=>Photos::$currentType,
+                'status'=>Photos::STATUS_DISABLE
+            ],
+            'delete-all'=>[
+                'class'=>ContentDeleteAllAction::class,
+                'type'=>Photos::$currentType,
+            ]
+        ]);
+    }
     /**
      * Lists all Content models.
      * @return mixed
