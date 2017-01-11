@@ -59,7 +59,7 @@ empty($model) && $model = new Feedback();
                         <?php $form = ActiveForm::begin(['id' => 'contact-form','action'=>['/site/contact']]); ?>
                         <div class="row">
                             <div class="col-sm-6">
-                                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                                <?= $form->field($model, 'name')->textInput() ?>
                             </div>
                             <div class="col-sm-6">
                                 <?= $form->field($model, 'email') ?>
