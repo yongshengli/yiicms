@@ -20,6 +20,7 @@ $this->registerJs('
             statusCode: {
                 403: function() {
                     alert( "您没有执行此操作的权限." );
+                    $(\'.overlay\').hide();
                 }
             }
         }).done(function (res) {
