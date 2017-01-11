@@ -12,7 +12,7 @@
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
-$this->title = '产品';
+$this->title = '企业相册';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
