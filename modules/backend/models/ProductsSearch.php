@@ -19,7 +19,7 @@ class ProductsSearch extends Products
     {
         return [
             [['id', 'type','admin_user_id'], 'integer'],
-            [['title', 'image', 'description', 'created_at'], 'safe'],
+            [['title', 'status','image', 'description', 'created_at'], 'safe'],
         ];
     }
 

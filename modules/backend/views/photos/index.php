@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'description',
                     [
                         'attribute' => 'status',
+                        'filter'=>$searchModel::$statusList,
                         'options' => ['style' => 'width:60px'],
                         'format' => 'text',
                         'value' => 'statusText'

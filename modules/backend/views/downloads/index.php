@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'status',
                         'options' => ['style' => 'width:60px'],
                         'format' => 'html',
+                        'filter'=>$searchModel::$statusList,
                         'value' => function ($item) {
                             if($item['status']==Downloads::STATUS_ENABLE) {
                                 return '<span class="badge bg-green">' . $item['statusText'] . '</span>';
