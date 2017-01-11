@@ -2,34 +2,32 @@
 /**
  * Created by PhpStorm.
  * User: david
- * Date: 2016/12/11
- * Time: 21:42
+ * Date: 2017/1/11
+ * Time: 14:27
  * Email:liyongsheng@meicai.cn
  */
 
 namespace app\controllers;
 
-use yii\web\NotFoundHttpException;
-use app\models\Products;
-use app\components\AppController as Controller;
-use yii\data\ActiveDataProvider;
-use Yii;
 
-class ProductsController extends Controller
+use app\components\AppController;
+use app\models\Photos;
+use app\models\PhotosDetail;
+use yii\web\NotFoundHttpException;
+use Yii;
+use yii\data\ActiveDataProvider;
+
+class PhotosController extends AppController
 {
     /**
-     * 新闻详情页
-     * @param $id
+     * 相册详情
+     * @param int $id
      * @return string
      * @throws NotFoundHttpException
      */
     public function actionIndex($id)
     {
-        if(empty($id)){
-            $this->redirect(['list']);
-        }
-        $model = Products::find()->where(['status'=>Products::STATUS_ENABLE, 'id'=>$id])->one();
-
+        $model = Photos::find()->where(['status'=>Photos::STATUS_ENABLE,'id'=>$id])->one();
         if(empty($model)){
             throw new NotFoundHttpException('你查看的页面不存在或者已删除');
         }
@@ -39,18 +37,24 @@ class ProductsController extends Controller
         if(!empty($model->description)){
             $this->view->registerMetaTag(['name'=>'description', 'content'=>$model->description], 'description');
         }
+        $query = PhotosDetail::find()->where(['content_id'=>$id]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=>['defaultOrder'=>['id'=>SORT_ASC]],
+            'pagination' => ['pageSize'=>1]
+        ]);
 
-        return $this->render('index',['model'=>$model]);
+        return $this->render('index', [
+            'model'=>$model,
+            'searchModel'=> new PhotosDetail(),
+            'dataProvider' => $dataProvider
+        ]);
     }
-    /**
-     * Displays news page
-     *
-     * @return string
-     */
+
     public function actionList()
     {
         $categoryId = Yii::$app->request->get('category-id');
-        $query = Products::find()->where(['status'=>Products::STATUS_ENABLE]);
+        $query = Photos::find()->where(['status'=>Photos::STATUS_ENABLE]);
         if($categoryId){
             $query->andWhere(['category_id'=>$categoryId]);
         }
@@ -62,7 +66,7 @@ class ProductsController extends Controller
         ]);
 
         return $this->render('list', [
-            'searchModel' => new Products(),
+            'searchModel' => new Photos(),
             'dataProvider' => $dataProvider
         ]);
     }
