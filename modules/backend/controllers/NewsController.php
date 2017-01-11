@@ -40,12 +40,12 @@ class NewsController extends BackendController
                 'type'=>Content::TYPE_NEWS,
                 'status'=>Content::STATUS_ENABLE
             ],
-            'unCheck'=>[
+            'un-check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Content::TYPE_NEWS,
                 'status'=>Content::STATUS_DISABLE
             ],
-            'deleteAll'=>[
+            'delete-all'=>[
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Content::TYPE_NEWS,
             ]

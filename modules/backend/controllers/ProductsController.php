@@ -42,12 +42,12 @@ class ProductsController extends BackendController
                 'type'=>Products::$currentType,
                 'status'=>Products::STATUS_ENABLE
             ],
-            'unCheck'=>[
+            'un-check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Products::$currentType,
                 'status'=>Products::STATUS_DISABLE
             ],
-            'deleteAll'=>[
+            'delete-all'=>[
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Products::$currentType,
             ]

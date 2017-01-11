@@ -15,7 +15,7 @@ use app\models\ContentQuery;
 use Yii;
 use yii\base\ErrorException;
 use yii\base\Exception;
-
+use yii\web\Response;
 /**
  * Class ContentDeleteAllAction
  * @property \app\modules\backend\components\BackendController $controller
@@ -35,13 +35,14 @@ class ContentDeleteAllAction extends Action
     }
 
     /**
-     * @return \yii\web\Response
+     * @return array
      */
     public function run()
     {
-        $ids =  Yii::$app->request->post('selection');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $ids =  Yii::$app->request->post('ids');
         if(empty($ids)){
-            return $this->controller->showFlash('id不能为空','warning',Yii::$app->user->getReturnUrl());
+            return ['data'=>'id不能为空','code'=>1];
         }
         Content::$currentType = $this->type;
 
@@ -53,9 +54,15 @@ class ContentDeleteAllAction extends Action
         ]);
         try {
             Content::deleteAll($query->where);
-            return $this->controller->showFlash('操作成功', 'success',Yii::$app->user->getReturnUrl());
+            return [
+                'code'=>0,
+                'data'=>'操作成功'
+            ];
         }catch(Exception $e){
-            return $this->controller->showFlash($e->getMessage(),'danger',Yii::$app->user->getReturnUrl());
+            return [
+                'code'=>1,
+                'data'=>$e->getMessage()
+            ];
         }
     }
 }

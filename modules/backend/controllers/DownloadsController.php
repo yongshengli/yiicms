@@ -43,12 +43,12 @@ class DownloadsController extends BackendController
                 'type'=>Downloads::$currentType,
                 'status'=>Downloads::STATUS_ENABLE
             ],
-            'unCheck'=>[
+            'un-check'=>[
                 'class'=>ContentCheckAction::class,
                 'type'=>Downloads::$currentType,
                 'status'=>Downloads::STATUS_DISABLE
             ],
-            'deleteAll'=>[
+            'delete-all'=>[
                 'class'=>ContentDeleteAllAction::class,
                 'type'=>Downloads::$currentType,
             ]

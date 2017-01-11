@@ -46,21 +46,48 @@ class GridView extends YiiGridView
 
     public function renderOperation()
     {
+        $id = $this->options['id'];
         $buttonList = [
             Html::tag('button', '审核',[
-                'class'=>'btn btn-xs btn-success',
-                'onclick'=>'$(\'#w0\').yiiGridView(\'getSelectedRows\');this.form.action=\''.Url::to(['check']).'\';this.form.submit();this.disabled=true;'
+                'class'=>'content-operation btn btn-xs btn-success',
+                'data-action'=>Url::to(['check']),
             ]),
             Html::tag('button', '取消审核',[
-                'class'=>'btn btn-xs btn-warning',
-                'onclick'=>'this.form.action=\''.Url::to(['unCheck']).'\';this.form.submit();this.disabled=true;'
+                'class'=>'content-operation btn btn-xs btn-warning',
+                'data-action'=>Url::to(['un-check']),
             ]),
             Html::tag('button', '删除',[
-                'class'=>'btn btn-xs btn-danger',
+                'class'=>'content-operation btn btn-xs btn-danger',
                 'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                'onclick'=>'this.form.action=\''.Url::to(['deleteAll']).'\';this.form.submit();this.disabled=true;'
+                'data-action'=>Url::to(['delete-all'])
             ]),
         ];
+        $view = $this->getView();
+        $view->registerJs('$(\'.content-operation\').click(function(){
+            var self = this;
+            this.disable =true;
+            var url = $(this).data(\'action\');
+            var ids = $(\'#'.$id.'\').yiiGridView(\'getSelectedRows\');
+            if(!url){
+                alert(\'action不能为空\');
+            }
+            if(!ids){
+                alert(\'请选择要处理的记录\');return;
+            }
+            $.ajax({
+                "url":url,
+                "type":"post",
+                "data":{"ids":ids},
+                "dataType":"json"
+            }).done(function(res){
+                if(res.code==1){
+                    alert(res.data);
+                }
+                alert(\'操作成功\');
+                $(\'#'.$id.'\').yiiGridView(\'applyFilter\');
+                self.disable = false;
+            });
+        });');
         return Html::tag('div', implode('', $buttonList), [
             'class'=>'btn-group'
         ]);
