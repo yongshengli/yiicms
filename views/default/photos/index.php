@@ -14,7 +14,7 @@ use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'企业相册', 'url'=>['/products/list']];
+$this->params['breadcrumbs'][] = ['label'=>'企业相册', 'url'=>['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
