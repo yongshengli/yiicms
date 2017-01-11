@@ -78,7 +78,12 @@ class GridView extends YiiGridView
                 "url":url,
                 "type":"post",
                 "data":{"ids":ids},
-                "dataType":"json"
+                "dataType":"json",
+                statusCode: {
+                    403: function() {
+                        alert( "您没有执行此操作的权限." );
+                    }
+                },
             }).done(function(res){
                 if(res.code==1){
                     alert(res.data);
