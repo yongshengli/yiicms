@@ -40,7 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-9">
                 <div class="panel-body text-center">
-                    <?php $imgListView = ListView::begin([
+                    <?php \yii\widgets\Pjax::begin();?>
+                    <?=$imgListView = ListView::widget([
                         'dataProvider' => $dataProvider,
                         'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
                         'itemView'=>function($item){
@@ -49,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return $html;
                         }
                     ]); ?>
-                    <?php ListView::end()?>
+                    <?php \yii\widgets\Pjax::end()?>
                 </div>
                 <div class="panel-body">
                     <div class="row">
