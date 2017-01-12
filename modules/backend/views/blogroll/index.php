@@ -7,15 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\backend\models\AdSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '轮播图管理';
+$this->title = '友情链接管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ad-index">
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><?= Html::a('轮播图管理', ['index']) ?></li>
-            <li role="presentation"><?= Html::a('添加轮播图', ['create']) ?></li>
+            <li role="presentation" class="active"><?= Html::a('友情链接管理', ['index']) ?></li>
+            <li role="presentation"><?= Html::a('添加友情链接', ['create']) ?></li>
         </ul>
         <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

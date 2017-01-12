@@ -1,16 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: david
+ * Date: 2017/1/12
+ * Time: 14:01
+ * Email:liyongsheng@meicai.cn
+ */
 
 namespace app\modules\backend\models;
 
+
+use app\models\Blogroll;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Ad;
 
-/**
- * AdSearch represents the model behind the search form about `app\models\Ad`.
- */
-class AdSearch extends Ad
+class BlogrollSearch extends Blogroll
 {
     /**
      * @inheritdoc
