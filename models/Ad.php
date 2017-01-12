@@ -2,24 +2,47 @@
 
 namespace app\models;
 
+use yii\db\Expression;
 use Yii;
 use app\components\AppActiveRecord;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
-
+use yii\db\ActiveQuery;
 /**
  * This is the model class for table "ad".
  *
  * @property integer $id
  * @property string $title
  * @property string $image
- * @property string $link
+ * @property string $link partner
  * @property integer $created_at
  * @property integer $updated_at
  */
 class Ad extends AppActiveRecord
 {
+    /**
+     * 轮播图
+     */
+    const TYPE_CAROUSEL =1;
+    /**
+     * 友情链接
+     */
+    const TYPE_BLOGROLL =2;
+
+    /**
+     * 合作伙伴
+     */
+    const TYPE_PARTNER = 3;
+
+    /**
+     * 当前类型
+     * @var int
+     */
+    static $currentType = self::TYPE_CAROUSEL;
+
+    /** @var UploadedFile imageFile */
     public $imageFile;
+
     /**
      * @inheritdoc
      */
@@ -35,6 +58,7 @@ class Ad extends AppActiveRecord
         }
         $file = $this->uploadFile();
         if(empty($file) && empty($this->image)){
+            $this->addError('imageFile','图片不能为空');
             return false;
         }
         if(!empty($file)) {
@@ -96,5 +120,47 @@ class Ad extends AppActiveRecord
             'created_at' => '创建时间',
             'updated_at' => '最后修改',
         ];
+    }
+    /**
+     * @inheritdoc
+     * @return \yii\db\ActiveQuery the newly created [[ActiveQuery]] instance.
+     */
+    public static function find()
+    {
+        AdQuery::$type = static::$currentType;
+        return Yii::createObject(AdQuery::class, [get_called_class()]);
+    }
+}
+
+class AdQuery extends ActiveQuery
+{
+    static $type = Ad::TYPE_CAROUSEL;
+
+    public function init()
+    {
+        $this->andWhere(['type' => self::$type]);
+        return $this;
+    }
+    /**
+     * Sets the WHERE part of the query.
+     *
+     * The method requires a `$condition` parameter, and optionally a `$params` parameter
+     * specifying the values to be bound to the query.
+     *
+     * The `$condition` parameter should be either a string (e.g. `'id=1'`) or an array.
+     *
+     * @inheritdoc
+     *
+     * @param string|array|Expression $condition the conditions that should be put in the WHERE part.
+     * @param array $params the parameters (name => value) to be bound to the query.
+     * @return $this the query object itself
+     * @see andWhere()
+     * @see orWhere()
+     * @see QueryInterface::where()
+     */
+    public function where($condition, $params = [])
+    {
+        parent::andWhere($condition, $params);
+        return $this;
     }
 }

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+            <?php \yii\widgets\Pjax::begin()?>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ],
             ]); ?>
+            <?php \yii\widgets\Pjax::end()?>
         </div>
     </div>
 </div>
