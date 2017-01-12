@@ -109,7 +109,7 @@ if(!empty(Yii::$app->params['logo'])){
     </div>
 </footer>
 <?php $this->endBody() ?>
-<script type="text/javascript" src="//s.union.360.cn/93182.js"></script>
+<?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?>
 </body>
 </html>
 <?php $this->endPage() ?>
