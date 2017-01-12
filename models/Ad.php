@@ -42,6 +42,11 @@ class Ad extends AppActiveRecord
     /** @var UploadedFile imageFile */
     public $imageFile;
 
+    public function init()
+    {
+        parent::init();
+        $this->setAttribute('type', static::$currentType);
+    }
     /**
      * @inheritdoc
      */
