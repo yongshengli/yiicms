@@ -28,21 +28,24 @@ DROP TABLE IF EXISTS `ad`;
 CREATE TABLE `ad` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL DEFAULT '',
+  `type` tinyint(4) DEFAULT '101' COMMENT '101 轮播图 102 友情链接',
+  `category_id` int(11) DEFAULT '0',
   `image` varchar(255) NOT NULL DEFAULT '',
   `link` varchar(255) NOT NULL DEFAULT '',
   `created_at` int(11) NOT NULL DEFAULT '0',
   `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `i-type-category` (`type`,`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `ad` WRITE;
 /*!40000 ALTER TABLE `ad` DISABLE KEYS */;
 
 INSERT INTO `ad` (`id`, `title`, `image`, `link`, `created_at`, `updated_at`)
 VALUES
-	(1,'百度','/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
-	(2,'腾讯','/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
-	(3,'网易','/uploads/ad-img/img_58500a8b4fb51.png','http://www.163.com',1481640587,1481640587);
+	(1,'百度',1,0,'/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
+	(2,'腾讯',1,0,'/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
+	(3,'网易',1,0,'/uploads/ad-img/img_58500a8b4fb51.png','http://www.163.com',1481640587,1481640587);
 
 /*!40000 ALTER TABLE `ad` ENABLE KEYS */;
 UNLOCK TABLES;

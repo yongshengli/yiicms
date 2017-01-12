@@ -23,16 +23,11 @@ class Ad extends AppActiveRecord
     /**
      * 轮播图
      */
-    const TYPE_CAROUSEL =1;
+    const TYPE_CAROUSEL =101;
     /**
      * 友情链接
      */
-    const TYPE_BLOGROLL =2;
-
-    /**
-     * 合作伙伴
-     */
-    const TYPE_PARTNER = 3;
+    const TYPE_BLOGROLL =102;
 
     /**
      * 当前类型
@@ -40,6 +35,10 @@ class Ad extends AppActiveRecord
      */
     static $currentType = self::TYPE_CAROUSEL;
 
+    static $types = [
+        self::TYPE_CAROUSEL=>'轮播图',
+        self::TYPE_BLOGROLL=>'友情链接',
+    ];
     /** @var UploadedFile imageFile */
     public $imageFile;
 
