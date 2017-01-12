@@ -43,9 +43,9 @@ LOCK TABLES `ad` WRITE;
 
 INSERT INTO `ad` (`id`, `title`, `image`, `link`, `created_at`, `updated_at`)
 VALUES
-	(1,'百度',1,0,'/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
-	(2,'腾讯',1,0,'/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
-	(3,'网易',1,0,'/uploads/ad-img/img_58500a8b4fb51.png','http://www.163.com',1481640587,1481640587);
+	(1,'百度',101,0,'/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
+	(2,'腾讯',101,0,'/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
+	(3,'网易',101,0,'/uploads/ad-img/img_58500a8b4fb51.png','http://www.163.com',1481640587,1481640587);
 
 /*!40000 ALTER TABLE `ad` ENABLE KEYS */;
 UNLOCK TABLES;
