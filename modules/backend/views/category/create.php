@@ -1,13 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-
+use app\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
+/** @var int $type */
 
 $this->title = '新建分类';
-$this->params['breadcrumbs'][] = ['label' => '分类管理', 'url' => ['index', 'type' => $model->type]];
+$this->params['breadcrumbs'][] = ['label' =>  Category::getTypes()[$type].'分类管理', 'url' => ['index', 'type' => $model->type]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-create">

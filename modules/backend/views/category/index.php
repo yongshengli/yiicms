@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Category;
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/** @var int $type */
 
-$this->title = '分类管理';
+$this->title = Category::getTypes()[$type].'分类管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">

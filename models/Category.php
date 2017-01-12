@@ -96,7 +96,7 @@ class Category extends AppActiveRecord
      * 分类类型
      * @return array
      */
-    public function getTypes()
+    public static function getTypes()
     {
         return array_merge(Content::$types, Ad::$types);
     }
