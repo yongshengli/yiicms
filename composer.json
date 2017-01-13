@@ -1,5 +1,5 @@
 {
-    "name": "yongshengli/yiicms",
+    "name": "sheng/yiicms",
     "description": "yiicms 企业站管理系统",
     "keywords": ["cms", "企业网站", "政府网站", "网站"],
     "homepage": "http://yiicms.co/",
@@ -18,10 +18,10 @@
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "kucha/ueditor": "*",
         "dmstr/yii2-adminlte-asset": "^2.3",
         "mdmsoft/yii2-admin": "~2.0",
-        "kartik-v/yii2-widgets": "^3.4"
+        "kartik-v/yii2-widgets": "^3.4",
+        "sheng/ueditor": "1.3.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
