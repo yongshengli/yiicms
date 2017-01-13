@@ -41,10 +41,4 @@ class BackendController extends Controller
     {
         Yii::$app->session->addFlash($type, $message, $removeAfterAccess);
     }
-    public function actions()
-    {
-        return [
-            'upload' => $this->module->components['UEditorAction']
-        ];
-    }
 }

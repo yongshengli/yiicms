@@ -18,10 +18,10 @@ class DefaultController extends BackendController
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ]
+            ],
+            'ueditor' => $this->module->components['UEditorAction']
         ];
     }
-
     /**
      * 后台首页
      * Renders the index view for the module

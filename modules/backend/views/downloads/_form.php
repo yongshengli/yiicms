@@ -42,6 +42,7 @@ use kartik\file\FileInput;
 
     <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className(), [
         'clientOptions' => [
+            'serverUrl'=>yii\helpers\Url::to('/backend/default/ueditor'),
             'initialFrameHeight' => '200'
         ]
     ]) ?>
