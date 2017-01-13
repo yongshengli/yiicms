@@ -49,16 +49,14 @@ INSTALLATION
 ------------
 
 ~~~
-1. git clone git@git.oschina.net:templi/yiicms.git
+1. php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
+   php composer.phar create-project --prefer-dist --stability=dev sheng/yiicms yiicms
 
-2. php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
-   php composer.phar install
+2. import yiicms.sql
 
-3. import yiicms.sql
+3. Database config
 
-4. Database config
-
-5. 配置 ngixn 虚拟机或者apache虚拟机 网站根目录指向 yiicms/web/
+4. 配置 ngixn 虚拟机或者apache虚拟机 网站根目录指向 yiicms/web/
    或者 修改/config/web.php url路由配置
 
 ~~~
