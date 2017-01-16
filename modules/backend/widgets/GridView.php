@@ -7,7 +7,7 @@ use yii\bootstrap\Html;
 use yii\grid\GridView as YiiGridView;
 use yii\helpers\Url;
 use Yii;
-
+use app\modules\backend\grid\DataColumn;
 /**
  * Created by PhpStorm.
  * User: david
@@ -17,6 +17,7 @@ use Yii;
  */
 class GridView extends YiiGridView
 {
+    public $dataColumnClass = DataColumn::Class;
     /**
      * @var string the layout that determines how different sections of the list view should be organized.
      * The following tokens will be replaced with the corresponding section contents:

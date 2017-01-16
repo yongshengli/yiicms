@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use app\modules\backend\widgets\GridView;
 use yii\grid\CheckboxColumn;
+use app\modules\backend\grid\DataColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\NewsSearch */
@@ -48,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     // 'admin_user_id',
                     [
+                        'filterType'=>'date',
                         'attribute' => 'created_at',
                         'format' => 'datetime',
                         'options' => ['style' => 'width:160px']
