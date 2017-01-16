@@ -16,22 +16,6 @@ use yii\helpers\Html;
 
 class SiteController extends Controller
 {
-    public function behaviors()
-    {
-        if(isset(Yii::$app->params['cacheDuration']) && Yii::$app->params['cacheDuration']>=0){
-            return [
-                [
-                    'class' => 'yii\filters\PageCache',
-                    'duration' => Yii::$app->params['cacheDuration'],
-                    'only' => ['index', 'about'],
-                    'variations' => [
-                        \Yii::$app->language,
-                    ]
-                ]
-            ];
-        }
-        return parent::behaviors();
-    }
     /**
      * @inheritdoc
      */

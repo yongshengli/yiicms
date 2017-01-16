@@ -30,6 +30,10 @@ class AppController extends Controller
 
         $this->pageCache();
     }
+
+    /**
+     * 设置缓存
+     */
     protected function pageCache()
     {
         if (isset(Yii::$app->params['cacheDuration']) && Yii::$app->params['cacheDuration'] >= 0) {
