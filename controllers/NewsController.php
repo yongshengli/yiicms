@@ -41,10 +41,7 @@ class NewsController extends Controller
         }
         return $this->render('index',['model'=>$model]);
     }
-    public function afterActionIndex()
-    {
 
-    }
     /**
      * Displays news page
      *
