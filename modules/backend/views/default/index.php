@@ -52,16 +52,24 @@ $this->title = '后台首页';
                     <table class="table table-condensed">
                         <tbody>
                         <tr>
-                            <th style="width: 150px"><a href="<?=Url::to('/backend/products/create')?>">添加产品</a></th>
+                            <td style="width: 150px"><a href="<?=Url::to('/backend/products/create')?>">添加产品</a></td>
                             <td><a href="<?=Url::to('/backend/news/create')?>">添加新闻</a></td>
                         </tr>
                         <tr>
-                            <th><a href="<?=Url::to('/backend/downloads/create')?>">添加下载</a></th>
+                            <td><a href="<?=Url::to('/backend/downloads/create')?>">添加下载</a></td>
                             <td><a href="<?=Url::to('/backend/photos/create')?>">添加相册</a></td>
                         </tr>
                         <tr>
-                            <th><a href="<?=Url::to('/backend/config/base-config')?>">网站配置</a></th>
+                            <td><a href="<?=Url::to('/backend/config/base-config')?>">网站配置</a></td>
                             <td><a href="<?=Url::to('/backend/rbac/assignment/index')?>">权限配置</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="<?=Url::to('/backend/page/index')?>">页面管理</a></td>
+                            <td><a href="<?=Url::to('/backend/page/create')?>">添加页面</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="<?=Url::to('/backend/blogroll/index')?>">友情链接</a></td>
+                            <td><a href="<?=Url::to('/backend/blogroll/create')?>">添加友情链接</a></td>
                         </tr>
                         </tbody>
                     </table>
