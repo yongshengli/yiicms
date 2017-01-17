@@ -111,6 +111,15 @@ class Content extends AppActiveRecord
     }
 
     /**
+     * 累加点击量
+     * @param int $id
+     * @return int
+     */
+    public static function hitCounters($id)
+    {
+        return self::updateAllCounters(['hits'=>1], ['id'=>$id]);
+    }
+    /**
      * 下一个
      */
     public function next()

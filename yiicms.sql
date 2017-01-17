@@ -736,6 +736,7 @@ CREATE TABLE `content` (
   `keywords` varchar(255) NOT NULL DEFAULT '',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0不显示1显示',
   `admin_user_id` int(11) NOT NULL DEFAULT '0',
+  `hits` int(11) NOT NULL DEFAULT '0' COMMENT '浏览数点击数',
   `created_at` int(11) NOT NULL DEFAULT '0',
   `updated_at` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
