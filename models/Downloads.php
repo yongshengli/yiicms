@@ -108,6 +108,7 @@ class Downloads extends Content
             'description' => '描述',
             'status' => '状态',
             'statusText' => '状态',
+            'hits' => '点击数',
             'created_at'=>'创建时间'
         ];
     }

@@ -101,6 +101,7 @@ class Products extends Content
             'description' => 'Description',
             'status' => '状态',
             'statusText' => '状态',
+            'hits' => '点击数',
             'created_at'=>'创建时间'
         ];
     }

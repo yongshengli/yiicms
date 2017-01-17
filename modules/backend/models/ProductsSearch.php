@@ -18,7 +18,7 @@ class ProductsSearch extends Products
     public function rules()
     {
         return [
-            [['id', 'type','admin_user_id'], 'integer'],
+            [['id', 'type','admin_user_id','hits'], 'integer'],
             [['title', 'status','image', 'description', 'created_at'], 'safe'],
         ];
     }
@@ -77,6 +77,7 @@ class ProductsSearch extends Products
             'id' => $this->id,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
+            'hits' => $this->hits,
             'updated_at' => $this->updated_at,
         ]);
 

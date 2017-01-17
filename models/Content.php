@@ -16,6 +16,7 @@ use yii\db\Expression;
  * @property string $description
  * @property integer $status
  * @property integer $admin_user_id
+ * @property integer $hits
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -207,6 +208,7 @@ class Content extends AppActiveRecord
             'description' => 'Description',
             'keywords' => 'Keywords',
             'status' => '状态',
+            'hits' => '点击数',
             'statusText' => '状态',
             'created_at'=>'创建时间'
         ];

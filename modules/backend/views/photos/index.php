@@ -46,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     ],
                     // 'admin_user_id',
+                    'hits',
                     [
                         'attribute' => 'created_at',
                         'filterType'=>'date',

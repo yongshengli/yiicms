@@ -82,6 +82,7 @@ class PhotosSearch extends Photos
             'id' => $this->id,
             'status' => $this->status,
             'admin_user_id' => $this->admin_user_id,
+            'hits' => $this->hits,
             'updated_at' => $this->updated_at,
         ]);
 
