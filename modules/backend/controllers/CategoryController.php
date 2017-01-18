@@ -96,6 +96,7 @@ class CategoryController extends BackendController
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'type'=>$model->type
             ]);
         }
     }
