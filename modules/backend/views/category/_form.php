@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\helpers\CategoryHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
@@ -12,7 +13,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'pid')->dropDownList(array_column($model->possibleParentArr,'name', 'id'),[]) ?>
+    <?= $form->field($model, 'pid')->widget(\kartik\select2\Select2::class,[
+        'data'=>(new CategoryHelper(['categories'=>$model->getPossibleParentArr()]))->getKV()
+    ]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

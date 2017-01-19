@@ -30,11 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'options' => ['style' => 'width:50px']
                     ],
                     'name',
-                    [
-                        'attribute' => 'pid',
-                        'value' => 'parent.name',
-                        'options' => ['style' => 'width:100px']
-                    ],
+                    'fullName',
                     [
                         'attribute' => 'created_at',
                         'format' => 'datetime',

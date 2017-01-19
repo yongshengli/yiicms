@@ -19,6 +19,7 @@ use yii\db\Expression;
  * @property integer $hits
  * @property integer $created_at
  * @property integer $updated_at
+ * @property array $categories
  */
 class Content extends AppActiveRecord
 {
@@ -106,9 +107,9 @@ class Content extends AppActiveRecord
      * 获取全部的新闻分类
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getCategorys()
+    public function getCategories()
     {
-        return Category::find()->where(['type'=>static::$currentType])->all();
+        return Category::find()->where(['type'=>static::$currentType])->asArray()->all();
     }
 
     /**

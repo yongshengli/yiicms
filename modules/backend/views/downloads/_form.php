@@ -33,7 +33,7 @@ use kartik\file\FileInput;
 
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'category_id')->widget(Select2::class,['data'=>\yii\helpers\ArrayHelper::map($model->categorys,'id', 'name')]) ?>
+            <?= $form->field($model, 'category_id')->widget(Select2::class,['data'=>(new \app\helpers\CategoryHelper(['categories'=>$model->categories]))->getKV()]) ?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'status')->dropDownList($model::$statusList) ?>

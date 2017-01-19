@@ -64,32 +64,6 @@ class CategorySearch extends Category
         return $query->asArray()->all();
     }
     /**
-     * 取树形结构结果
-     * @param $params
-     * @return array
-     */
-    public function tree($params)
-    {
-        $data = $this->listData($params);
-        $map = [];
-        $tree = [];
-        foreach($data as $key=>$item){
-            $map[$item['id']] = isset($map[$item['id']])?array_merge($item,$map[$item['id']]):$item;
-            if($item['pid']==0){
-                $tree[$item['id']] = &$map[$item['id']];
-            }else{
-                if(!isset($map[$item['pid']])){
-                    $map[$item['pid']] = [];
-                }
-                if(!isset($map[$item['pid']]['children'])){
-                    $map[$item['pid']]['children'] = [];
-                }
-                $map[$item['pid']]['children'][$item['id']] = &$map[$item['id']];
-            }
-        }
-        return $tree;
-    }
-    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
