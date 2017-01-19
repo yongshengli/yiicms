@@ -41,7 +41,7 @@ CREATE TABLE `ad` (
 LOCK TABLES `ad` WRITE;
 /*!40000 ALTER TABLE `ad` DISABLE KEYS */;
 
-INSERT INTO `ad` (`id`, `title`, `image`, `link`, `created_at`, `updated_at`)
+INSERT INTO `ad` (`id`, `title`, `type`, `category_id`,`image`, `link`, `created_at`, `updated_at`)
 VALUES
 	(1,'百度',101,0,'/uploads/ad-img/img_58500a3e1b241.jpg','http://www.baidu.com',1481640510,1481640673),
 	(2,'腾讯',101,0,'/uploads/ad-img/img_58500a67014d3.jpg','http://www.qq.com',1481640551,1481640751),
@@ -681,14 +681,14 @@ CREATE TABLE `category` (
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 
-INSERT INTO `category` (`id`, `name`, `pid`, `type`, `created_at`, `updated_at`)
+INSERT INTO `category` (`id`, `name`, `pid`, `path`, `type`, `created_at`, `updated_at`)
 VALUES
-	(1,'产品分类一',0,2,1481360463,1481452810),
-	(2,'默认分类',0,1,1481367786,1481367944),
-	(3,'新闻分类2',2,1,1481372394,1481372772),
-	(4,'产品分类二',0,2,1481609361,1481609361),
-	(5,'下载文档',0,3,1482155225,1482155225),
-	(6,'企业环境',0,4,1482559711,1482559711);
+	(1,'产品分类一',0,'',2,1481360463,1481452810),
+	(2,'默认分类',0,'',1,1481367786,1481367944),
+	(3,'新闻分类2',2,'',1,1481372394,1481372772),
+	(4,'产品分类二',0,'',2,1481609361,1481609361),
+	(5,'下载文档',0,'',3,1482155225,1482155225),
+	(6,'企业环境',0,'',4,1482559711,1482559711);
 
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
