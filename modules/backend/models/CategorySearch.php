@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Category;
+use yii\helpers\ArrayHelper;
 
 /**
  * CategorySearch represents the model behind the search form about `app\models\Category`.
@@ -38,7 +39,7 @@ class CategorySearch extends Category
      * @param return array
      * @return array
      */
-    public function getList($params)
+    public function listData($params)
     {
         $this->load($params);
         if (!$this->validate()) {
@@ -62,26 +63,28 @@ class CategorySearch extends Category
         // add conditions that should always apply here
         return $query->asArray()->all();
     }
-
     /**
      * 取树形结构结果
      * @param $params
      * @return array
      */
-    public function getTree($params)
+    public function tree($params)
     {
-        $data = $this->getList($params);
+        $data = $this->listData($params);
         $map = [];
         $tree = [];
         foreach($data as $key=>$item){
+            $map[$item['id']] = isset($map[$item['id']])?array_merge($item,$map[$item['id']]):$item;
             if($item['pid']==0){
-                $item['level'] = 1;
-                $map[$item['id']] = $item;
                 $tree[$item['id']] = &$map[$item['id']];
             }else{
-                $item['level'] =  &$map[$item['pid']]['level']+1;
-                $item['children'] = &$map[$item['id']];
-                $map[$item['pid']]['children'][$item['id']] = $item;
+                if(!isset($map[$item['pid']])){
+                    $map[$item['pid']] = [];
+                }
+                if(!isset($map[$item['pid']]['children'])){
+                    $map[$item['pid']]['children'] = [];
+                }
+                $map[$item['pid']]['children'][$item['id']] = &$map[$item['id']];
             }
         }
         return $tree;

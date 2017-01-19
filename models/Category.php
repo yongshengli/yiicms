@@ -46,7 +46,7 @@ class Category extends AppActiveRecord
     public function getPossibleParentArr()
     {
         $list = self::find()
-            ->where(['type'=>$this->type, 'pid'=>0])
+            ->where(['type'=>$this->type])
             ->andFilterWhere(['<>', 'id', $this->id])
             ->asArray()
             ->all();
