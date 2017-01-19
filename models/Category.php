@@ -54,7 +54,11 @@ class Category extends AppActiveRecord
     {
         $parent = $this->getParent();
         if($parent){
-            $this->path = trim($parent->path, '/').'/'.$parent->id;
+            if(empty($parent->path)){
+                $this->path = $parent->id;
+            } else {
+                $this->path = trim($parent->path, '/') . '/' . $parent->id;
+            }
         }else{
             $this->path = '';
         }
