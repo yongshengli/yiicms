@@ -19,6 +19,7 @@ use yii\helpers\Url;
 class Category extends Panel
 {
     public $title = '产品分类';
+    public $baseUrl = '/products/list';
     public $limit = 5;
     public $type;
 
@@ -34,7 +35,7 @@ class Category extends Panel
             ->all();
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
-            $url = Url::to(['/products/list', 'category-id'=>$item['id']]);
+            $url = Url::to([$this->baseUrl, 'category-id'=>$item['id']]);
             $html .= '<li class="list-group-item"><a href="'.$url.'">'.$item['name'].'</a></li>';
         }
         $html .= Html::endTag('ul');
