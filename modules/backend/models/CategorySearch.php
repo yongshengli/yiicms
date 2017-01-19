@@ -36,7 +36,7 @@ class CategorySearch extends Category
      * 获取取全部 分类
      * @param array $params
      * @param return array
-     * @return array|ArrayDataProvider|\yii\db\ActiveRecord[]
+     * @return array
      */
     public function getList($params)
     {
@@ -113,7 +113,6 @@ class CategorySearch extends Category
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
-        $query->orderBy('pid asc, id asc');
         // add conditions that should always apply here
         return new ActiveDataProvider([
             'query' =>$query
