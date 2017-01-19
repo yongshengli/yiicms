@@ -4,7 +4,7 @@ namespace app\modules\backend\models;
 
 use Yii;
 use yii\base\Model;
-use yii\data\ArrayDataProvider;
+use yii\data\ActiveDataProvider;
 use app\models\Category;
 
 /**
@@ -91,12 +91,32 @@ class CategorySearch extends Category
      *
      * @param array $params
      *
-     * @return ArrayDataProvider
+     * @return ActiveDataProvider
      */
     public function search($params)
     {
-        return new ArrayDataProvider([
-            'allModels' =>$this->getList($params)
+        $this->load($params);
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return new ActiveDataProvider();
+        }
+        $query = Category::find();
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'pid' => $this->pid,
+            'type' => $this->type,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->orderBy('pid asc, id asc');
+        // add conditions that should always apply here
+        return new ActiveDataProvider([
+            'query' =>$query
         ]);
     }
 }
