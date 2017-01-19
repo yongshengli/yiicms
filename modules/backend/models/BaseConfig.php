@@ -20,6 +20,10 @@ class BaseConfig extends Model
      * @var string 网站名称
      */
     public $appName;
+    /**
+     * @var string 首页标题
+     */
+    public $homeTitle ='';
 
     public $logo;
     public $keywords;
@@ -67,8 +71,8 @@ class BaseConfig extends Model
     public function rules()
     {
         return [
-            [['appName', 'pageSize', 'nav'], 'required'],
-            [['appName'], 'string', 'max' => 100],
+            [['appName', 'pageSize', 'nav', 'homeTitle'], 'required'],
+            [['appName','homeTitle'], 'string', 'max' => 100],
             [['keywords'], 'string', 'max' => 300],
             [['cacheDuration'], 'integer'],
             ['nav', 'validateJson'],
@@ -95,6 +99,7 @@ class BaseConfig extends Model
     {
         return [
             'appName'=>'网站名称',
+            'homeTitle'=>'首页标题',
             'keywords'=>'网站关键字',
             'description'=>'网站描述',
             'adminEmail'=>'管理员邮箱',

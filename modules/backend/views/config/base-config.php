@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ->label($model->getAttributeLabel('logo') . '<code>如：@web/images/logo.png</code>')
             ?>
 
+            <?= $form->field($model, 'homeTitle')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'keywords')->textarea() ?>
 
             <?= $form->field($model, 'description')->textarea() ?>
