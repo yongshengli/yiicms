@@ -4,7 +4,7 @@ namespace app\modules\backend\models;
 
 use Yii;
 use yii\base\Model;
-use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use app\models\Category;
 
 /**
@@ -32,30 +32,21 @@ class CategorySearch extends Category
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-
     /**
-     * Creates data provider instance with search query applied
-     *
+     * 获取取全部 分类
      * @param array $params
-     *
-     * @return ActiveDataProvider
+     * @param return array
+     * @return array|ArrayDataProvider|\yii\db\ActiveRecord[]
      */
-    public function search($params)
+    public function getList($params)
     {
-        $query = Category::find();
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
-            return $dataProvider;
+            return [];
         }
+        $query = Category::find();
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -67,7 +58,45 @@ class CategorySearch extends Category
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->orderBy('pid asc, id asc');
+        // add conditions that should always apply here
+        return $query->asArray()->all();
+    }
 
-        return $dataProvider;
+    /**
+     * 取树形结构结果
+     * @param $params
+     * @return array
+     */
+    public function getTree($params)
+    {
+        $data = $this->getList($params);
+        $map = [];
+        $tree = [];
+        foreach($data as $key=>$item){
+            if($item['pid']==0){
+                $item['level'] = 1;
+                $map[$item['id']] = $item;
+                $tree[$item['id']] = &$map[$item['id']];
+            }else{
+                $item['level'] =  &$map[$item['pid']]['level']+1;
+                $item['children'] = &$map[$item['id']];
+                $map[$item['pid']]['children'][$item['id']] = $item;
+            }
+        }
+        return $tree;
+    }
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ArrayDataProvider
+     */
+    public function search($params)
+    {
+        return new ArrayDataProvider([
+            'allModels' =>$this->getList($params)
+        ]);
     }
 }

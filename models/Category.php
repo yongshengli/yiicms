@@ -4,7 +4,7 @@ namespace app\models;
 use app\components\AppActiveRecord;
 use Yii;
 use app\models\Content;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "category".
  *
@@ -39,6 +39,7 @@ class Category extends AppActiveRecord
         'name'=>'作为一级分类',
         'pid'=>null,
     ];
+
     /**
      * 获取可能的全部父类
      */
@@ -98,7 +99,7 @@ class Category extends AppActiveRecord
      */
     public static function getTypes()
     {
-        return array_merge(Content::$types, Ad::$types);
+        return ArrayHelper::merge(Content::$types, Ad::$types);
     }
 
     /**
