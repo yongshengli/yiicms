@@ -410,8 +410,16 @@ a.desc:after {
     }
 }
 /** 其他样式*/
+.panel-title{position: relative}
 .panel-yellow .panel-heading{border-bottom-color:#f19b2c;}
-.panel-blue .panel-heading{border-bottom-color: #408eba;}
+.panel-blue .panel-title:after{
+    content:"";
+    width: 100px;height: 3px;
+    background-color: #408eba;
+    position: absolute;
+    top: 40px;
+    left: -15px;
+}
 .panel-red .panel-heading{border-bottom-color: #db4c3f;}
 .panel-green .panel-heading{border-bottom-color: #18a55d;}
 .panel-purple .panel-heading{border-bottom-color: #605ea6;}

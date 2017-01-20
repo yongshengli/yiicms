@@ -10,7 +10,7 @@
 use yii\helpers\Url;
 use app\helpers\StringHelper;
 ?>
-<div class="col-sm-6 col-md-4">
+<div class="col-md-4">
     <div class="thumbnail">
         <div class="image-box">
             <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>">
