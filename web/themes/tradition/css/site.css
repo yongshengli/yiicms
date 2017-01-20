@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    background-color: #ebebeb;
 }
 
 .wrap {
@@ -17,7 +18,6 @@ body {
     background-color:#fcfcfc;height: 28px;
     line-height: 28px;color:#727272;
     border-bottom:1px solid #ebebeb;
-    margin-bottom: 20px;
 }
 .footer {
     height: 60px;
@@ -124,6 +124,9 @@ a.desc:after {
         font-size: 28px;
         line-height: 45px;
     }
+    .navbar > .container .navbar-brand{
+        margin-left: 0;
+    }
     .navbar-brand img{
         max-width:130px; max-height:45px
     }
@@ -152,7 +155,7 @@ a.desc:after {
     line-height: 30px;
 }
 .panel-heading{border-bottom: 3px solid}
-
+.breadcrumb{background-color:#fff}
 @media (max-width: 767px) {
     .navbar-brand img{
         max-width: 120px;
@@ -177,7 +180,7 @@ a.desc:after {
 .navbar-blue{
     border: none;
 }
-.navbar {border-radius: 0;margin-bottom:0}
+.navbar {border-radius: 0;margin-bottom:0;background-color: #fff}
 .navbar-blue .nav > li > a:hover,
 .navbar-blue .nav > li > a:focus {background-color: #3a80a7;color:#fff}
 .navbar-blue .navbar-collapse,
