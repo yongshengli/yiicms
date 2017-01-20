@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
                     <div class="panel-heading"><h3 class="panel-title">下载</h3></div>
-                </div>
-                <div>
+
+                <div class="panel-body">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'tableOptions'=>['class'=>'table-simple'],
@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                     ]); ?>
+                </div>
                 </div>
             </div>
 

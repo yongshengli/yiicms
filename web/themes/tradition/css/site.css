@@ -135,6 +135,7 @@ a.desc:after {
         padding: 5px 10px;
         /*line-height: 45px;*/
         font-size: 16px;
+        border-radius: 4px;
     }
     .navbar-brand {
         padding: 15px 0;

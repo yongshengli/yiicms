@@ -31,25 +31,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="page-header">
-                    <h1><?=$model->title?></h1>
-                    <small><?=date('Y-m-d H:i:s',$model->updated_at)?> <span class="glyphicon glyphicon-eye-open"><?=$model->hits?></span></small>
-                </div>
-                <div class="panel-body">
-                    <?=$model->detail->detail?>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <?=$this->render('_share')?>
-                        </div>
-                        <div class="col-lg-9 text-right">
-                            <?php if($previous = $model->previous()):?>
-                                上一条 <?=Html::a($previous->title, ['/news/index', 'id'=>$previous->id])?>
-                            <?php endif;?>
-                            <?php if($next = $model->next()):?>
-                                下一条 <?=Html::a($next->title, ['/news/index', 'id'=>$next->id])?>
-                            <?php endif;?>
+                <div class="panel">
+                    <div class="panel-body page-header">
+                        <h1><?= $model->title ?></h1>
+                        <small><?= date('Y-m-d H:i:s', $model->updated_at) ?> <span
+                                class="glyphicon glyphicon-eye-open"><?= $model->hits ?></span></small>
+                    </div>
+                    <div class="panel-body">
+                        <?= $model->detail->detail ?>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <?= $this->render('_share') ?>
+                            </div>
+                            <div class="col-lg-9 text-right">
+                                <?php if ($previous = $model->previous()): ?>
+                                    上一条 <?= Html::a($previous->title, ['/news/index', 'id' => $previous->id]) ?>
+                                <?php endif; ?>
+                                <?php if ($next = $model->next()): ?>
+                                    下一条 <?= Html::a($next->title, ['/news/index', 'id' => $next->id]) ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

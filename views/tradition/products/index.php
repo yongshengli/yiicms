@@ -54,25 +54,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
 
-                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>" style="margin-top: 20px">
+                <div class="panel panel-default panel-<?= \yii\helpers\ArrayHelper::getValue($this->params, 'themeColor') ?>"
+                    style="margin-top: 20px">
                     <div class="panel-heading"><h3 class="panel-title">产品详情</h3></div>
-                </div>
 
-                <div class="panel-body">
-                    <?=$model->detail->detail?>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <?=$this->render('@app/views/news/_share')?>
-                        </div>
-                        <div class="col-lg-9 text-right">
-                            <?php if($previous = $model->previous()):?>
-                                上一条 <?=Html::a($previous->title, ['/products/index', 'id'=>$previous->id])?>
-                            <?php endif;?>
-                            <?php if($next = $model->next()):?>
-                                下一条 <?=Html::a($next->title, ['/products/index', 'id'=>$next->id])?>
-                            <?php endif;?>
+
+                    <div class="panel-body">
+                        <?= $model->detail->detail ?>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <?= $this->render('@app/views/news/_share') ?>
+                            </div>
+                            <div class="col-lg-9 text-right">
+                                <?php if ($previous = $model->previous()): ?>
+                                    上一条 <?= Html::a($previous->title, ['/products/index', 'id' => $previous->id]) ?>
+                                <?php endif; ?>
+                                <?php if ($next = $model->next()): ?>
+                                    下一条 <?= Html::a($next->title, ['/products/index', 'id' => $next->id]) ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
