@@ -91,7 +91,7 @@ class SiteController extends Controller
     {
         $config =Config::getDb()->cache(function ($db) {
              return Config::find()->where(['name' => 'about_us_page_id'])->one();
-        });
+        }, -1);
         if(empty($config)){
             throw new NotFoundHttpException('页面不存在');
         }

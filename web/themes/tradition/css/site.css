@@ -177,6 +177,9 @@ a.desc:after {
 .panel-default > .panel-heading{
     background-color: #fff;
 }
+.panel h1, .h1, h2, .h2, h3, .h3{
+    margin-top: 0;
+}
 /** 蓝色主题0099FF*/
 .navbar-blue{
     border: none;

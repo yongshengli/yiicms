@@ -40,17 +40,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="img-thumbnail">
-                            <div class="img-box">
-                                <img src="<?=$model->image?>" alt="<?=$model->title?>">
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="img-rounded">
+                                <div class="img-box">
+                                    <img src="<?= $model->image ?>" alt="<?= $model->title ?>">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <h4><?=$model->title?></h4>
-                        <div><?=$model->detail->params?></div>
+                        <div class="col-lg-6">
+                            <div class="panel-body">
+                                <h4><?= $model->title ?></h4>
+                                <div><?= $model->detail->params ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
