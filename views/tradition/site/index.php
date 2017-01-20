@@ -58,7 +58,7 @@ $carouselItems = [];
     <?= \app\widgets\LastNews::widget([
         'showDate'=>true,
         'showHeader'=>false,
-        'options' => ['class' =>''],
+        'options' => ['class' =>'panel-body'],
         'itemOptions'=>['class'=>'list-group-item-simple']
     ]) ?>
 </div>

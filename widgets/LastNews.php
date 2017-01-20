@@ -11,13 +11,14 @@ namespace app\widgets;
 use app\models\News;
 use yii\bootstrap\Html;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 class LastNews extends Panel
 {
     public $title = '最新新闻';
     public $limit=5;
     public $showDate = false;
-    public $itemOptions =['class'=>'list-group-item'];
+    public $itemOptions = ['class'=>'list-group-item', 'baseUrl'=>'/news/'];
     /**
      *
      * @return null|string
@@ -34,7 +35,7 @@ class LastNews extends Panel
             ->all();
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
-            $url = Url::to(['/news/', 'id'=>$item['id']]);
+            $url = Url::to([ArrayHelper::getValue($this->itemOptions,'baseUrl'), 'id'=>$item['id']]);
             $html .= Html::beginTag('li', $this->itemOptions);
             $html .='<a href="'.$url.'">'.$item['title'].'</a>';
             if($this->showDate){
