@@ -29,46 +29,46 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                    <div class="panel-heading"><h3 class="panel-title">搜索-<?=$this->params['keyword']?></h3></div>
-                </div>
-                <div>
-                    <?= GridView::widget([
-                        'dataProvider' => $dataProvider,
-                        'tableOptions'=>['class'=>'table-simple'],
-                        'showHeader'=>false,
-                        'layout' => "{items}\n{pager}",
-                        'columns' => [
-                            [
-                                'attribute'=>'title',
-                                'format'=>'raw',
-                                'value'=>function($item){
-                                    $title = '<h4>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title).'</h4>';
-                                    if($item->type==\app\models\Content::TYPE_NEWS) {
-                                        $html = Html::a($title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
-                                    }elseif($item->type==\app\models\Content::TYPE_PRODUCTS){
-                                        $html = Html::a($title, ['/products', 'id'=>$item->id],['target'=>'_blank']);
-                                    }elseif($item->type==\app\models\Content::TYPE_PHOTOS){
-                                        $html = Html::a($title, ['/photos', 'id'=>$item->id],['target'=>'_blank']);
-                                    }elseif($item->type==\app\models\Content::TYPE_DOWNLOADS){
-                                        $html = Html::a($title, ['/downloads', 'id'=>$item->id],['target'=>'_blank']);
-                                    }else{
-                                        $html = $title;
+                <div class="panel panel-default panel-<?= \yii\helpers\ArrayHelper::getValue($this->params, 'themeColor') ?>">
+                    <div class="panel-heading"><h3 class="panel-title">搜索-<?= $this->params['keyword'] ?></h3></div>
+
+                    <div class="panel-body">
+                        <?= GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            'tableOptions' => ['class' => 'table-simple'],
+                            'showHeader' => false,
+                            'layout' => "{items}\n{pager}",
+                            'columns' => [
+                                [
+                                    'attribute' => 'title',
+                                    'format' => 'raw',
+                                    'value' => function ($item) {
+                                        $title = '<h4>' . str_ireplace($this->params['keyword'], '<font color="#cc0000">' . $this->params['keyword'] . '</font>', $item->title) . '</h4>';
+                                        if ($item->type == \app\models\Content::TYPE_NEWS) {
+                                            $html = Html::a($title, ['/news/', 'id' => $item->id], ['target' => '_blank']);
+                                        } elseif ($item->type == \app\models\Content::TYPE_PRODUCTS) {
+                                            $html = Html::a($title, ['/products', 'id' => $item->id], ['target' => '_blank']);
+                                        } elseif ($item->type == \app\models\Content::TYPE_PHOTOS) {
+                                            $html = Html::a($title, ['/photos', 'id' => $item->id], ['target' => '_blank']);
+                                        } elseif ($item->type == \app\models\Content::TYPE_DOWNLOADS) {
+                                            $html = Html::a($title, ['/downloads', 'id' => $item->id], ['target' => '_blank']);
+                                        } else {
+                                            $html = $title;
+                                        }
+                                        $html .= '<p>' . str_ireplace($this->params['keyword'], '<font color="#cc0000">' . $this->params['keyword'] . '</b>', $item->description) . '</p>';
+                                        return $html;
                                     }
-                                    $html .='<p>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</b>',$item->description).'</p>';
-                                    return $html;
-                                }
+                                ],
+                                [
+                                    'attribute' => 'created_at',
+                                    'format' => 'date',
+                                    'options' => ['class' => 'text-right', 'style' => 'width:100px']
+                                ],
                             ],
-                            [
-                                'attribute'=>'created_at',
-                                'format'=>'date',
-                                'options'=>['class'=>'text-right','style'=>'width:100px']
-                            ],
-                        ],
-                    ]); ?>
+                        ]); ?>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

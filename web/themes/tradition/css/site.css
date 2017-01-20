@@ -15,7 +15,7 @@ body {
     padding: 0 15px 20px;
 }
 .topbar{
-    background-color:#fcfcfc;height: 28px;
+    background-color:#fcfcfc;height: 30px;
     line-height: 28px;color:#727272;
     border-bottom:1px solid #ebebeb;
 }
@@ -172,7 +172,15 @@ a.desc:after {
 .navbar-nav > li > a {
     color: #000;
 }
-.panel-default{
+.projects-header {
+    width: 60%;
+    text-align: center;
+    margin: 60px 0 10px;
+    font-weight: 200;
+    margin-bottom: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .panel-default > .panel-heading{
     background-color: #fff;
