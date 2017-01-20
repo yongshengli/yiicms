@@ -17,6 +17,11 @@ class LastNews extends Panel
     public $title = '最新新闻';
     public $limit=5;
     public $showDate = false;
+    public $itemOptions =['class'=>'list-group-item'];
+    /**
+     *
+     * @return null|string
+     */
     public function renderBodyBegin()
     {
         if($this->showBody==false){
@@ -30,11 +35,12 @@ class LastNews extends Panel
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
             $url = Url::to(['/news/', 'id'=>$item['id']]);
-            $html .= '<li class="list-group-item"><a href="'.$url.'">'.$item['title'].'</a>';
+            $html .= Html::beginTag('li', $this->itemOptions);
+            $html .='<a href="'.$url.'">'.$item['title'].'</a>';
             if($this->showDate){
                 $html .= '<span class="badge">'.date('Y-m-d').'</span>';
             }
-            $html .= '</li>';
+            $html .= Html::endTag('li');
         }
         $html .= Html::endTag('ul');
         return $html;

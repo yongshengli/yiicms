@@ -103,9 +103,24 @@ if(!empty(Yii::$app->params['logo'])){
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right">技术支持<a href="http://yiicms.co">YiiCms</a></p>
+        <div class="row">
+            <div class="col-lg-12">&copy; YiiCms <?= date('Y') ?></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="http://yiicms.co/backend" target="_blank">后台演示</a>
+            </div>
+            <div class="col-lg-3">
+                <a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a>
+            </div>
+            <div class="col-lg-3">
+                <a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a>
+            </div
+            <div class="col-lg-3">
+                QQ群:248898849
+            </div
+        </div>
+        <p class="pull-left">技术支持<a href="http://yiicms.co">YiiCms</a></p>
     </div>
 </footer>
 <?php $this->endBody() ?>
