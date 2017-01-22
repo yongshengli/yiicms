@@ -46,10 +46,10 @@ class Page extends \app\components\AppActiveRecord
     public function getTemplates()
     {
         return [
-            'about'=>'about',
-            'contact'=>'contact',
+//            'about'=>'about',
             'page'=>'page',
-            'index'=>'index',
+//            'index'=>'index',
+            'contact'=>'contact',
         ];
     }
     /**
