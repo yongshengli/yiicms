@@ -53,7 +53,7 @@ class Category extends AppActiveRecord
     public function beforeSave($insert)
     {
         $parent = $this->getParent();
-        if($parent){
+        if($parent instanceof static){
             if(empty($parent->path)){
                 $this->path = $parent->id;
             } else {
