@@ -105,7 +105,7 @@ class PageController extends BackendController
 
             return $this->showFlash('删除失败', 'success',['index']);
         }else{
-            return $this->showFlash('删除失败');
+            return $this->showFlash('删除失败','danger',Yii::$app->getUser()->getReturnUrl());
         }
     }
 

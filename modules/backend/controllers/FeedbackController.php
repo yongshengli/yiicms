@@ -72,7 +72,7 @@ class FeedbackController extends BackendController
         if($this->findModel($id)->delete()){
             return $this->showFlash('删除成功','success',['index']);
         }
-        return $this->showFlash('删除失败');
+        return $this->showFlash('删除失败','danger',Yii::$app->getUser()->getReturnUrl());
     }
     /**
      * Finds the Content model based on its primary key value.

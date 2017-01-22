@@ -104,12 +104,12 @@ class AdminUserController extends BackendController
     {
         $model = $this->findModel($id);
         if($model->id==Yii::$app->user->id){
-            return $this->showFlash('不可删除自己当前使用的账户');
+            return $this->showFlash('不可删除自己当前使用的账户','warning', Yii::$app->getUser()->getReturnUrl());
         }
         if($model->delete()) {
             return $this->showFlash('删除成功','success',['index']);
         }else{
-            return $this->showFlash('删除失败');
+            return $this->showFlash('删除失败','danger', Yii::$app->getUser()->getReturnUrl());
         }
     }
 
