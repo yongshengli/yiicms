@@ -16,13 +16,7 @@ $this->registerJs('
             "data":new FormData($(\'#upload-form\')[0]),
             processData: false,
             cache: false,
-            contentType: false,
-            statusCode: {
-                403: function() {
-                    alert( "您没有执行此操作的权限." );
-                    $(\'.overlay\').hide();
-                }
-            }
+            contentType: false
         }).done(function (res) {
             if (res.code == 1) {
                 alert(\'上传失败\');

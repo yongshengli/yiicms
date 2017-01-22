@@ -1,12 +1,5 @@
-// $(document).on('pjax:send', function() {
-//     $('#loading').show()
-// });
-$(document).on('pjax:complete', function(xhr, textStatus, error, options) {
-    if(textStatus.status=='403'){
-        alert(textStatus.responseText);
-        return;
+$(document).ajaxError(function(event,xhr,options,exc){
+    if(xhr.status==403) {
+        alert(xhr.responseText);
     }
 });
-// $(document).on('pjax:error', function(xhr, textStatus, error, options) {
-//     $('#loading').hide();
-// });

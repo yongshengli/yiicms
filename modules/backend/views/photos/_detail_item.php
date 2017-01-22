@@ -56,12 +56,7 @@ use yii\bootstrap\ActiveForm;
             "url":"/backend/photos/set-cover?id="+id,
             "type":"post",
             "data":{"id":id},
-            "dataType":"json",
-            statusCode: {
-                403: function() {
-                    alert( "您没有执行此操作的权限." );
-                }
-            }
+            "dataType":"json"
         }).done(function(res){
             if(res.code!=0){
                 alert(res.data);
@@ -80,11 +75,6 @@ use yii\bootstrap\ActiveForm;
         "type":"post",
         "dataType":"json",
         "data":new FormData($("#"+formId)[0]),
-        statusCode: {
-            403: function() {
-                alert( "您没有执行此操作的权限." );
-            }
-        },
         processData: false,
         contentType: false
     }).done(function(res){
@@ -108,12 +98,7 @@ $(\'.kv-file-remove\').click(function(){
         "url":"/backend/photos/delete-detail?id="+id,
         "type":"post",
         "data":{"id":id},
-        "dataType":"json",
-        statusCode: {
-            403: function() {
-                alert( "您没有执行此操作的权限." );
-            }
-        }
+        "dataType":"json"
     }).done(function(res){
         if(res.code!=0){
             alert(res.data);
