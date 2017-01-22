@@ -2,6 +2,7 @@
 
 namespace app\modules\backend\controllers;
 
+use app\models\Content;
 use Yii;
 use app\models\Category;
 use app\modules\backend\models\CategorySearch;
@@ -109,7 +110,13 @@ class CategoryController extends BackendController
      */
     public function actionDelete($id)
     {
-        if($this->findModel($id)->delete()){
+        $model = $this->findModel($id);
+        Content::$currentType =null;
+        $content = Content::find()->where(['category_id'=>$id])->limit(1)->one();
+        if($content){
+            return $this->showFlash('此分类下有内容，不可删除');
+        }
+        if($model->delete()){
             return $this->showFlash('删除成功','success', Yii::$app->getUser()->getReturnUrl());
         }
         return $this->showFlash('删除失败');
