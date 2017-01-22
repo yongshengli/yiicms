@@ -40,34 +40,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="panel-body text-center">
-                    <?= ListView::widget([
-                        'dataProvider' => $dataProvider,
-                        'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
-                        'itemView'=>function($item){
-                            $html ='<p><img src="'.$item->file_url.'"/></p>';
-                            $html .='<p class="text-left">'.$item->detail.'</p>';
-                            return $html;
-                        }
-                    ]); ?>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <?=$this->render('@app/views/news/_share')?>
-                        </div>
-                        <div class="col-lg-9 text-right">
-                            <?php if($previous = $model->previous()):?>
-                                上一相册 <?=Html::a($previous->title, ['/photos/index', 'id'=>$previous->id])?>
-                            <?php endif;?>
-                            <?php if($next = $model->next()):?>
-                                下一相册 <?=Html::a($next->title, ['/photos/index', 'id'=>$next->id])?>
-                            <?php endif;?>
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <?= ListView::widget([
+                            'dataProvider' => $dataProvider,
+                            'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
+                            'itemView' => function ($item) {
+                                $html = '<p><img src="' . $item->file_url . '"/></p>';
+                                $html .= '<p class="text-left">' . $item->detail . '</p>';
+                                return $html;
+                            }
+                        ]); ?>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <?= $this->render('@app/views/news/_share') ?>
+                            </div>
+                            <div class="col-lg-9 text-right">
+                                <?php if ($previous = $model->previous()): ?>
+                                    上一相册 <?= Html::a($previous->title, ['/photos/index', 'id' => $previous->id]) ?>
+                                <?php endif; ?>
+                                <?php if ($next = $model->next()): ?>
+                                    下一相册 <?= Html::a($next->title, ['/photos/index', 'id' => $next->id]) ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

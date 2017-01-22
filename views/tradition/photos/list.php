@@ -35,15 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
+                <div
+                    class="panel panel-default panel-<?= \yii\helpers\ArrayHelper::getValue($this->params, 'themeColor') ?>">
                     <div class="panel-heading"><h3 class="panel-title">相册</h3></div>
-                </div>
-                <div>
-                    <?= ListView::widget([
-                        'dataProvider' => $dataProvider,
-                        'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
-                        'itemView'=>'_item'
-                    ]); ?>
+                    <div>
+                        <?= ListView::widget([
+                            'dataProvider' => $dataProvider,
+                            'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
+                            'itemView' => '_item'
+                        ]); ?>
+                    </div>
                 </div>
             </div>
 
