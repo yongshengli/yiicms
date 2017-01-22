@@ -39,7 +39,7 @@ class LastNews extends Panel
             $html .= Html::beginTag('li', $this->itemOptions);
             $html .='<a href="'.$url.'">'.$item['title'].'</a>';
             if($this->showDate){
-                $html .= '<span class="badge">'.date('Y-m-d').'</span>';
+                $html .= '<span class="badge pull-right">'.date('Y-m-d').'</span>';
             }
             $html .= Html::endTag('li');
         }

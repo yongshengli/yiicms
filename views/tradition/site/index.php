@@ -51,14 +51,34 @@ $carouselItems = [];
         </div>
     </div>
 </div>
-<div class="site-index panel">
-    <div class="projects-header page-header">
-        <h2>企业咨询 <small>The latest news</small></h2>
+<div class="row">
+    <div class="col-md-7">
+        <div class="panel">
+            <div class="projects-header page-header">
+                <h2>企业咨询
+                    <small>The latest news</small>
+                </h2>
+            </div>
+            <?= \app\widgets\LastNews::widget([
+                'showDate' => true,
+                'showHeader' => false,
+                'options' => ['class' => 'panel-body'],
+                'itemOptions' => ['class' => 'list-group-item-simple']
+            ]) ?>
+        </div>
     </div>
-    <?= \app\widgets\LastNews::widget([
-        'showDate'=>true,
-        'showHeader'=>false,
-        'options' => ['class' =>'panel-body'],
-        'itemOptions'=>['class'=>'list-group-item-simple']
-    ]) ?>
+    <div class="col-md-5">
+        <div class="panel">
+            <div class="projects-header page-header">
+                <h2>联系我们
+                    <small>connect us</small>
+                </h2>
+            </div>
+            <?=\app\widgets\ConfigPanel::widget([
+                'configName'=>'contact_us',
+                'showHeader'=>false,
+                'options' => ['class' => 'panel-body'],
+            ])?>
+        </div>
+    </div>
 </div>
