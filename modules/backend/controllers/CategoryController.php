@@ -110,7 +110,7 @@ class CategoryController extends BackendController
     public function actionDelete($id)
     {
         if($this->findModel($id)->delete()){
-            return $this->showFlash('删除成功','success',['index']);
+            return $this->showFlash('删除成功','success', Yii::$app->getUser()->getReturnUrl());
         }
         return $this->showFlash('删除失败');
     }
