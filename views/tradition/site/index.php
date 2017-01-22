@@ -62,6 +62,7 @@ $carouselItems = [];
             <?= \app\widgets\LastNews::widget([
                 'showDate' => true,
                 'showHeader' => false,
+                'limit'=>6,
                 'options' => ['class' => 'panel-body'],
                 'itemOptions' => ['class' => 'list-group-item-simple']
             ]) ?>
