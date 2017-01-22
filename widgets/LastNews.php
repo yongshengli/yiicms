@@ -35,7 +35,7 @@ class LastNews extends Panel
             ->all();
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
-            $url = Url::to([ArrayHelper::getValue($this->itemOptions,'baseUrl'), 'id'=>$item['id']]);
+            $url = Url::to([ArrayHelper::remove($this->itemOptions,'baseUrl', '/news/'), 'id'=>$item['id']]);
             $html .= Html::beginTag('li', $this->itemOptions);
             $html .='<a href="'.$url.'">'.$item['title'].'</a>';
             if($this->showDate){
