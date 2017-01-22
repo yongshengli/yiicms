@@ -15,12 +15,13 @@ use yii\web\AssetBundle;
  */
 class BackendAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+    public $sourcePath ='@app/modules/backend/assets/';
     public $baseUrl = '@web';
     public $css = [
-        'css/backend.css',
+        'backend.css',
     ];
     public $js = [
+        'backend.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
