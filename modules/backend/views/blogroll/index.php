@@ -30,7 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'options' => ['style' => 'width:50px']
                     ],
                     'title',
-                    'image',
+                    [
+                        'attribute'=>'image',
+                        'format'=>'html',
+                        'value'=>function($item){
+                            if($item->image){
+                                return '<img src="'.$item->image.'" style="height:50px;width:80px"/>';
+                            }
+                            return '';
+                        }
+                    ],
                     'link',
                     [
                         'attribute' => 'created_at',
