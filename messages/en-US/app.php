@@ -22,6 +22,6 @@ return [
     '企业简介'=>'Introduction',
     '企业荣誉'=>'Enterprise Honor',
     '联系我们'=>'Connect us',
-    '淘宝'=>'TaoBao',
+    '淘宝店'=>'TaoBao Shop',
     '欢迎访问YiiCms企业站系统'=>'Welcome to YiiCms',
 ];
