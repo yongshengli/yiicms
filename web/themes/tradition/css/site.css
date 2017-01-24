@@ -156,7 +156,6 @@ a.desc:after {
     color: inherit;
     line-height: 30px;
 }
-.panel-heading{border-bottom: 3px solid}
 .breadcrumb{background-color:#fff}
 .list-group-item-simple {
     position: relative;
@@ -432,32 +431,19 @@ a.desc:after {
 }
 /** 其他样式*/
 .panel-title{position: relative}
-.panel-yellow .panel-heading{border-bottom-color:#f19b2c;}
-.panel-blue .panel-title:after{
+.panel-title:after{
     background-color: #408eba;
     content:"";
     width: 100px;height: 3px;
     position: absolute;
-    top: 40px;
+    top: 38px;
     left: -15px;
 }
-.panel-red .panel-title:after{
-    background-color: #db4c3f;
-    content:"";
-    width: 100px;height: 3px;
-    position: absolute;
-    top: 40px;
-    left: -15px;
-}
-.panel-green .panel-heading{border-bottom-color: #18a55d;}
-.panel-purple .panel-title:after{
-    background-color: #605ea6;
-    content:"";
-    width: 100px;height: 3px;
-    position: absolute;
-    top: 40px;
-    left: -15px;
-}
+.panel-blue .panel-title:after{background-color: #408eba;}
+.panel-yellow .panel-title:after{background-color:#f19b2c;}
+.panel-red .panel-title:after{background-color: #db4c3f;}
+.panel-green .panel-title:after{background-color: #18a55d;}
+.panel-purple .panel-title:after{background-color: #605ea6;}
 
 .table-simple{
     width:100%
