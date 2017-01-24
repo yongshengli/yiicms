@@ -34,7 +34,7 @@ class CommonHelper
     {
         foreach($navItems as &$item){
             if(isset($item['items']) && is_array($item['items'])){
-                $item['items']= self::navTranslation($item['items']);
+                $item['items']= self::navItemsTranslation($item['items']);
             }
             $item['label'] = Yii::t($category, $item['label']);
         }
