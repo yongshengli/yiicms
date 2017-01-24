@@ -12,7 +12,7 @@
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
-$this->title = '产品';
+$this->title = Yii::t('app', '产品');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?= \yii\helpers\ArrayHelper::getValue($this->params, 'themeColor') ?>">
-                    <div class="panel-heading"><h3 class="panel-title">产品</h3></div>
+                    <div class="panel-heading"><h3 class="panel-title"><?=Yii::t('app', '产品')?></h3></div>
 
                     <div class="panel-body">
                         <?= ListView::widget([

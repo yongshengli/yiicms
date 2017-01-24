@@ -2,6 +2,7 @@
 namespace app\widgets;
 use yii\bootstrap\Widget;
 use yii\bootstrap\Html;
+use Yii;
 
 /**
  * Created by PhpStorm.
@@ -25,7 +26,7 @@ class Panel extends Widget
         }
         $html = Html::beginTag('div', ['class'=>'panel-heading']);
         $html .= Html::beginTag('h3', ['class'=>'panel-title']);
-        $html .= $this->title;
+        $html .= Yii::t('app', $this->title);
         $html .= Html::endTag('h3');
         $html .= Html::endTag('div');
         return $html;

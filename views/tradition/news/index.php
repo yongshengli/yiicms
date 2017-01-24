@@ -14,7 +14,7 @@ use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'新闻', 'url'=>['/news/list']];
+$this->params['breadcrumbs'][] = ['label'=>Yii::t('app', '新闻'), 'url'=>['/news/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
