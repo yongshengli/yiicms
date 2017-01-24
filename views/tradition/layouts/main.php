@@ -11,6 +11,7 @@ use app\assets\AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
+use yii\helpers\Url;
 
 AppAsset::register($this)->css = [Yii::getAlias('/themes/tradition/css/site.css'),];
 $carouselItems = [];
@@ -56,8 +57,12 @@ if(!empty(Yii::$app->params['logo'])){
     <div class="topbar">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3"><?=Yii::t('app', '欢迎访问YiiCms企业站系统')?></div>
-                <div class="col-lg-6"></div>
+                <div class="col-lg-9">
+                    <?=Yii::t('app', '欢迎访问YiiCms企业站系统')?>
+                    <span class="label label-warning">
+                        <a href="<?=Url::to('/site/language/?language=en-US')?>">English</a>/<a href="<?=Url::to('/site/language/?language=zh-CN')?>">中文</a>
+                    </span>
+                </div>
                 <div class="col-lg-3">
                     <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
                     <div class="input-group input-group-sm" style="margin-top: -16px">
@@ -83,7 +88,7 @@ if(!empty(Yii::$app->params['logo'])){
                 'class' => 'navbar  navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
             ],
         ]);
-        echo Nav::widget(json_decode(Yii::$app->params['nav'], true));
+        echo Nav::widget(\app\helpers\CommonHelper::navTranslation(json_decode(Yii::$app->params['nav'], true)));
         ?>
         <?php NavBar::end(); ?>
     </div>

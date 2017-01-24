@@ -56,7 +56,7 @@ class SiteController extends Controller
     {
         Yii::$app->session->set('language', $language);
         $referrer = Yii::$app->request->getReferrer();
-        return $this->goBack($referrer?$referrer:Yii::$app->getHomeUrl());
+        return $this->redirect($referrer?$referrer:Yii::$app->getHomeUrl());
     }
     /**
      * Displays contact page.
