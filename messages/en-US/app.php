@@ -31,4 +31,5 @@ return [
     '相册分类'=>'Photos category',
     '最新咨询'=>'The last news',
     '最新新闻'=>'The last news',
+    '产品详情'=>'The product detail',
 ];
