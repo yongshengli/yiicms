@@ -192,6 +192,7 @@ a.desc:after {
 }
 .panel-default > .panel-heading{
     background-color: #fff;
+    border-bottom: 3px solid;
 }
 .panel h1, .h1, h2, .h2, h3, .h3{
     margin-top: 0;
