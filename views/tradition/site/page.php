@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 
-$this->title =  $page->title;
+$this->title =  Yii::t('app', $page->title);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-9">
             <div class="panel panel-default">
                 <div class="panel-body page-header">
-                    <h1><?= Html::encode($page->title) ?></h1>
+                    <h1><?= Html::encode($this->title) ?></h1>
                 </div>
                 <div class="panel-body">
                     <?= $page->content ?>

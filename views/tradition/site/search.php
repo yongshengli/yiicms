@@ -12,7 +12,7 @@
 use yii\grid\GridView;
 use yii\bootstrap\Html;
 
-$this->title = '搜索-'.$this->params['keyword'];
+$this->title = Yii::t('app','搜索').'-'.$this->params['keyword'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?= \yii\helpers\ArrayHelper::getValue($this->params, 'themeColor') ?>">
-                    <div class="panel-heading"><h3 class="panel-title">搜索-<?= $this->params['keyword'] ?></h3></div>
+                    <div class="panel-heading"><h3 class="panel-title"><?=Yii::t('app','搜索')?>-<?= $this->params['keyword'] ?></h3></div>
 
                     <div class="panel-body">
                         <?= GridView::widget([
