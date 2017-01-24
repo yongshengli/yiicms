@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading"><h3 class="panel-title"><?=Yii::t('app', '相册')?></h3></div>
                     <div>
                         <?= ListView::widget([
+                            'pager'=>['hideOnSinglePage'=>false],
                             'dataProvider' => $dataProvider,
                             'layout' => "<div class='panel-body'>{items}</div>\n<div class='panel-body'>{pager}</div>",
                             'itemView' => '_item'

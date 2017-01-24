@@ -192,8 +192,8 @@ a.desc:after {
 }
 .panel-default > .panel-heading{
     background-color: #fff;
-    border-bottom: 3px solid;
 }
+.panel-heading{border-bottom: 3px solid}
 .panel h1, .h1, h2, .h2, h3, .h3{
     margin-top: 0;
 }
@@ -437,7 +437,7 @@ a.desc:after {
     content:"";
     width: 100px;height: 3px;
     position: absolute;
-    top: 38px;
+    top: 40px;
     left: -15px;
 }
 .panel-blue .panel-title:after{background-color: #408eba;}
@@ -454,7 +454,7 @@ a.desc:after {
 .table-simple > thead > tr > td,
 .table-simple > tbody > tr > td,
 .table-simple > tfoot > tr > td {
-    padding: 8px;
+    padding: 8px 0;
     line-height: 1.42857143;
     vertical-align: top;
     border-bottom: 1px dashed #ddd;

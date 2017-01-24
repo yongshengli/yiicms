@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'tableOptions' => ['class' => 'table-simple'],
                             'showHeader' => false,
                             'layout' => "{items}\n{pager}",
+                            'pager'=>['hideOnSinglePage'=>false],
                             'columns' => [
                                 [
                                     'attribute' => 'title',
