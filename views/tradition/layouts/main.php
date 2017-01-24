@@ -56,18 +56,18 @@ if(!empty(Yii::$app->params['logo'])){
     <div class="topbar">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">欢迎访问YiiCms企业站系统</div>
+                <div class="col-lg-3"><?=Yii::t('app', '欢迎访问YiiCms企业站系统')?></div>
                 <div class="col-lg-6"></div>
                 <div class="col-lg-3">
                     <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
                     <div class="input-group input-group-sm" style="margin-top: -16px">
                         <input type="text" class="form-control" id="navbar-search-input"
                                value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
-                               placeholder="输入关键字搜索"
+                               placeholder="<?=Yii::t('app','输入关键字搜索')?>"
                                name="keyword"
                         />
                         <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">搜索</button>
+                        <button class="btn btn-default" type="submit"><?=Yii::t('app','搜索')?></button>
                         </span>
                     </div><!-- /input-group -->
                     <?php ActiveForm::end(); ?>

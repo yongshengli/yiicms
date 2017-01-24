@@ -77,6 +77,7 @@ $config = [
     ],
     'params' => &$params,
     'language'=>'zh-CN',
+    'sourceLanguage'=>'zh-CN',
     'modules' => [
         'backend' => [
             'class' => 'app\modules\backend\Module',
