@@ -3,14 +3,11 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider \yii\data\ActiveDataProvider */
 /* @var $adList array */
-$this->title = '首页';
-use app\widgets\LastNews;
-use app\widgets\ConfigPanel;
-use yii\widgets\ListView;
-use yii\bootstrap\Carousel;
 use yii\helpers\Url;
 use app\helpers\StringHelper;
+use yii\helpers\ArrayHelper;
 
+$this->title = ArrayHelper::getValue(Yii::$app->params,'homeTitle', 'YiiCms首页');
 $carouselItems = [];
 ?>
 <style>
