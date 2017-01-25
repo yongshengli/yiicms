@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\modules\backend\widgets\GridView;
 use yii\widgets\Menu;
 
 /* @var $this yii\web\View */
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
             <?= GridView::widget([
+                'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
@@ -31,12 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'label',
                     'value',
                     [
+                        'filterType'=>'date',
                         'attribute' => 'created_at',
-                        'format' => 'datetime',
-                        'options' => ['style' => 'width:150px'],
-                    ],
-                    [
-                        'attribute' => 'updated_at',
                         'format' => 'datetime',
                         'options' => ['style' => 'width:150px'],
                     ],

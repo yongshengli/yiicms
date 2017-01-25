@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\modules\backend\widgets\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\AdSearch */
@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <?php \yii\widgets\Pjax::begin()?>
             <?= GridView::widget([
+                'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
@@ -42,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'link',
                     [
+                        'filterType'=>'date',
                         'attribute' => 'created_at',
                         'format' => 'datetime',
                         'options' => ['style' => 'width:160px']

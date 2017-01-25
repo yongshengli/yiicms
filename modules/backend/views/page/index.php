@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\modules\backend\widgets\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\PageSearch */
@@ -20,11 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
             <?= GridView::widget([
+                'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-
                     [
                         'attribute' => 'id',
                         'options' => ['style' => 'width:50px']
@@ -32,9 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title',
                     'description',
 //            'keyword',
-                    'template',
+                    [
+                        'attribute'=>'template',
+                        'filter'=>$searchModel->templates
+                    ],
                     // 'content',
                     [
+                        'filterType'=>'date',
                         'attribute' => 'created_at',
                         'format' => 'datetime',
                         'options' => ['style' => 'width:160px']

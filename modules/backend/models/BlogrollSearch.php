@@ -23,8 +23,8 @@ class BlogrollSearch extends Blogroll
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'image', 'link'], 'safe'],
+            [['id',], 'integer'],
+            [['title', 'link', 'created_at'], 'safe'],
         ];
     }
 
@@ -65,14 +65,19 @@ class BlogrollSearch extends Blogroll
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'link', $this->link]);
-
+        $createAt = $this->getCreatedAt();
+        if(is_array($createAt)) {
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
+        }else{
+            $query->andFilterWhere(['created_at'=>$createAt]);
+        }
         return $dataProvider;
     }
 }

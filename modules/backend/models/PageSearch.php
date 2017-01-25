@@ -18,8 +18,8 @@ class PageSearch extends Page
     public function rules()
     {
         return [
-            [['id', 'title', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'keyword', 'template', 'content'], 'safe'],
+            [['id'], 'integer'],
+            [['title','description', 'keyword', 'template', 'content', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -31,22 +31,23 @@ class PageSearch extends Page
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-
     /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $pageSize
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $pageSize=20)
     {
-        $query = Page::find();
+        $query = static::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]],
+            'pagination' => ['pageSize'=>$pageSize]
         ]);
 
         $this->load($params);
@@ -62,14 +63,19 @@ class PageSearch extends Page
             'id' => $this->id,
             'title' => $this->title,
             'content' => $this->content,
-            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'keyword', $this->keyword])
             ->andFilterWhere(['like', 'template', $this->template]);
-
+        $createAt = $this->getCreatedAt();
+        if(is_array($createAt)) {
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
+        }else{
+            $query->andFilterWhere(['created_at'=>$createAt]);
+        }
         return $dataProvider;
     }
 }

@@ -18,8 +18,8 @@ class ConfigSearch extends Config
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'label', 'value'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'label', 'value', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -67,7 +67,13 @@ class ConfigSearch extends Config
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'label', $this->label])
             ->andFilterWhere(['like', 'value', $this->value]);
-
+        $createAt = $this->getCreatedAt();
+        if(is_array($createAt)) {
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
+        }else{
+            $query->andFilterWhere(['created_at'=>$createAt]);
+        }
         return $dataProvider;
     }
 }

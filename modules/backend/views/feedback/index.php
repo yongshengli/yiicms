@@ -1,10 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\LinkPager;
-use yii\widgets\Menu;
-use app\models\Content;
+use app\modules\backend\widgets\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\backend\models\NewsSearch */
@@ -22,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <?= GridView::widget([
+                'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
@@ -35,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'name',
                     'phone',
                     [
+                        'filterType'=>'date',
                         'attribute' => 'created_at',
                         'format' => 'datetime',
                         'options' => ['style' => 'width:160px']

@@ -86,7 +86,6 @@ class FeedbackSearch extends Feedback
             ->andFilterWhere(['like', 'name', $this->name]);
         $createAt = $this->getCreatedAt();
         if(is_array($createAt)) {
-
             $query->andFilterWhere(['>=','created_at', $createAt[0]])
                 ->andFilterWhere(['<=','created_at', $createAt[1]]);
         }else{

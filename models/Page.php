@@ -14,6 +14,7 @@ use Yii;
  * @property string $keyword
  * @property string $template
  * @property integer $content
+ * @property array $templates
  */
 class Page extends \app\components\AppActiveRecord
 {

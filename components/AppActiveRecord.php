@@ -38,4 +38,20 @@ class AppActiveRecord extends ActiveRecord
         $this->updated_at = time();
         return parent::update($runValidation, $attributeNames);
     }
+
+    /**
+     * 创建时间
+     * @return array|false|int
+     */
+    public function getCreatedAt()
+    {
+        if(empty($this->created_at)){
+            return null;
+        }
+        $createAt = is_string($this->created_at)?strtotime($this->created_at):$this->created_at;
+        if(date('H:i:s', $createAt)=='00:00:00'){
+            return [$createAt, $createAt+3600*24];
+        }
+        return $createAt;
+    }
 }

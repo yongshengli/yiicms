@@ -20,8 +20,8 @@ class CategorySearch extends Category
     {
         return [
             [['type'], 'required'],
-            [['id', 'pid', 'type', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'pid', 'type'], 'integer'],
+            [['name', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -72,27 +72,33 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
+        $query = static::find();
+
+        $activeDataProvider =  new ActiveDataProvider([
+            'query' =>$query
+        ]);
         $this->load($params);
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
-            return new ActiveDataProvider();
+            return $activeDataProvider;
         }
-        $query = Category::find();
-
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'pid' => $this->pid,
             'type' => $this->type,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        $createAt = $this->getCreatedAt();
+        if(is_array($createAt)) {
+            $query->andFilterWhere(['>=','created_at', $createAt[0]])
+                ->andFilterWhere(['<=','created_at', $createAt[1]]);
+        }else{
+            $query->andFilterWhere(['created_at'=>$createAt]);
+        }
         // add conditions that should always apply here
-        return new ActiveDataProvider([
-            'query' =>$query
-        ]);
+        return $activeDataProvider;
     }
 }
