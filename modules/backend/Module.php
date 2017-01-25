@@ -27,7 +27,7 @@ class Module extends \yii\base\Module
 
         $this->resetErrorHandler();
         $this->rbacConfInit();
-
+        $this->resetLanguage();
         /**
          * 注册时间 记录下用户回退地址
          */
@@ -41,6 +41,13 @@ class Module extends \yii\base\Module
         });
     }
 
+    /**
+     * 重置app language
+     */
+    protected function resetLanguage()
+    {
+        Yii::$app->sourceLanguage = 'en-US';
+    }
     /**
      * 初始化rbac 配置初始化
      */
