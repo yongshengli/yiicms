@@ -142,6 +142,20 @@ class Content extends AppActiveRecord
             ->limit(1)
             ->one();
     }
+
+    /**
+     * @param bool $runValidation
+     * @param null $attributeNames
+     * @return boolean whether the saving succeeded (i.e. no validation errors occurred).
+     */
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $res = parent::save($runValidation, $attributeNames);
+        if(static::$autoUpdateDetail && $this->_detail->errors){
+            return false;
+        }
+        return $res;
+    }
     /**
      * 更新 detail 表中的 contend_id
      * @param bool $insert
