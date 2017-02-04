@@ -18,7 +18,7 @@ $carouselItems = [];
 </style>
 <div class="site-index panel">
     <div class="projects-header page-header">
-        <h2>YiiCms <small>The YiiCms</small></h2>
+        <h2>关于YiiCms <small>About the YiiCms</small></h2>
     </div>
     <div class="panel-body">
         <div class="row">
