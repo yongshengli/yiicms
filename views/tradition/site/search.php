@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-body">
                         <?= GridView::widget([
                             'dataProvider' => $dataProvider,
+                            'pager'=>['hideOnSinglePage'=>false],
                             'tableOptions' => ['class' => 'table-simple'],
                             'showHeader' => false,
                             'layout' => "{items}\n{pager}",
