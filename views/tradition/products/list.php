@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= ListView::widget([
                             'pager'=>['hideOnSinglePage'=>false],
                             'dataProvider' => $dataProvider,
-                            'layout' => "{items}\n<div class='panel-body'>{pager}</div>",
+                            'layout' => "{items}<div class='clearfix'></div><div class='panel-body'>{pager}</div>",
                             'itemView' => '_item'
                         ]); ?>
                     </div>
