@@ -44,10 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             'pager'=>['hideOnSinglePage'=>false],
                             'columns' => [
                                 [
-                                    'attribute' => 'title',
-                                    'format' => 'raw',
-                                    'value' => function ($item) {
-                                        return Html::a($item->title, ['/news/', 'id' => $item->id]);
+                                    'attribute'=>'title',
+                                    'format'=>'raw',
+                                    'value'=>function($item){
+                                        $html = '<h4>'.Html::a($item->title, ['/news/', 'id'=>$item->id]).'</h4>';
+                                        $html .= '<p>'.Html::encode($item->description).'</p>';
+                                        return $html;
                                     }
                                 ],
                                 [
