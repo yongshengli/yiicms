@@ -166,7 +166,7 @@ a.desc:after {
     /*border-bottom: 1px solid #ddd;*/
 }
 @media (max-width: 767px) {
-    .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse
+    .container > .navbar-header, .container-fluid > .navbar-header
     {
         margin-right: -15px;
         margin-left: -15px;
