@@ -43,7 +43,7 @@ class Downloads extends Content
             [['title', 'type', 'status','category_id'], 'required'],
             [['file'], 'file', 'extensions' => 'zip,rar',],
             [['type', 'status', 'admin_user_id', 'category_id','created_at', 'updated_at'], 'integer'],
-            [['title', 'image', 'description'], 'string', 'max' => 255],
+            [['title', 'image', 'description', 'keywords'], 'string', 'max' => 255],
         ];
     }
 
