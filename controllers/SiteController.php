@@ -70,7 +70,7 @@ class SiteController extends Controller
              return Config::find()->where(['name' => 'contact_us_page_id'])->one();
         }, 60);
         if($config) {
-            $page = Page::find()->where(['id' => $config])->one();
+            $page = Page::find()->where(['id' => $config->value])->one();
         } else {
             $page = null;
         }
