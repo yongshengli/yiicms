@@ -113,19 +113,24 @@ if(!empty(Yii::$app->params['logo'])){
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <a href="http://yiicms.co/backend" target="_blank">后台演示</a>
+                <ul>
+                    <li><a href="http://yiicms.co/backend" target="_blank">后台演示</a></li>
+                    <li><a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a></li>
+                    <li><a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a></li>
+                </ul>
             </div>
             <div class="col-lg-3">
-                <a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a>
+                友情链接
+                <?=\app\widgets\Blogroll::widget()?>
             </div>
-            <div class="col-lg-3">
-                <a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a>
-            </div
             <div class="col-lg-3">
                 QQ群:248898849
             </div
+            <div class="col-lg-3">
+                <p class="pull-left">技术支持<a href="http://yiicms.co">YiiCms</a></p>
+            </div
         </div>
-        <p class="pull-left">技术支持<a href="http://yiicms.co">YiiCms</a></p>
+
     </div>
 </footer>
 <?php $this->endBody() ?>

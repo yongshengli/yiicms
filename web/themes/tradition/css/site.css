@@ -25,7 +25,11 @@ body {
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
-
+.footer ul, .footer ul li{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
 .jumbotron {
     text-align: center;
     background-color: transparent;
