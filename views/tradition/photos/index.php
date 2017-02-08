@@ -14,7 +14,8 @@ use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 use yii\widgets\ListView;
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>Yii::t('app','企业相册'), 'url'=>['list']];
+$this->params['breadcrumbs']=[];
+\app\helpers\CommonHelper::categoryBreadcrumbs($model->category, $this->params['breadcrumbs']);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="body-content">
         <div class="row">
             <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
+                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PHOTOS,'title'=>'相册分类',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]

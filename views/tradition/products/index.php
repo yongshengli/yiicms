@@ -14,7 +14,8 @@ use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>Yii::t('app', '产品'), 'url'=>['/products/list']];
+$this->params['breadcrumbs']=[];
+\app\helpers\CommonHelper::categoryBreadcrumbs($model->category, $this->params['breadcrumbs']);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>

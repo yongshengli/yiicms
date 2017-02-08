@@ -15,6 +15,7 @@ use app\models\Downloads;
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\web\NotFoundHttpException;
+use app\models\Category;
 
 class DownloadsController extends AppController
 {
@@ -54,6 +55,10 @@ class DownloadsController extends AppController
         $query = Downloads::find()->where(['status'=>Downloads::STATUS_ENABLE]);
         if($categoryId){
             $query->andWhere(['category_id'=>$categoryId]);
+            $category = Category::findOne($categoryId);
+        }else{
+            $category = new Category();
+            $category->type = Downloads::$currentType;
         }
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -63,6 +68,7 @@ class DownloadsController extends AppController
         ]);
 
         return $this->render('list', [
+            'category'=>$category,
             'searchModel' => new Downloads(),
             'dataProvider' => $dataProvider
         ]);

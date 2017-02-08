@@ -14,6 +14,7 @@ use app\models\Products;
 use app\components\AppController as Controller;
 use yii\data\ActiveDataProvider;
 use Yii;
+use app\models\Category;
 
 class ProductsController extends Controller
 {
@@ -53,6 +54,10 @@ class ProductsController extends Controller
         $query = Products::find()->where(['status'=>Products::STATUS_ENABLE]);
         if($categoryId){
             $query->andWhere(['category_id'=>$categoryId]);
+            $category = Category::findOne($categoryId);
+        }else{
+            $category = new Category();
+            $category->type = Products::$currentType;
         }
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -62,6 +67,7 @@ class ProductsController extends Controller
         ]);
 
         return $this->render('list', [
+            'category'=>$category,
             'searchModel' => new Products(),
             'dataProvider' => $dataProvider
         ]);

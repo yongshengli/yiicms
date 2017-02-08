@@ -19,7 +19,7 @@ use yii\helpers\Url;
 class Category extends Panel
 {
     public $title = '产品分类';
-    public $baseUrl = '/products/list';
+    public $baseUrl;
     public $limit = 5;
     public $type;
 
@@ -27,6 +27,9 @@ class Category extends Panel
     {
         if($this->showBody==false){
             return null;
+        }
+        if(empty($this->baseUrl)){
+            $this->baseUrl = '/'.Content::type2String($this->type).'/list';
         }
         $newsList = Model::find()
             ->where(['type'=>$this->type])

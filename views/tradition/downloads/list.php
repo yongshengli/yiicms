@@ -9,11 +9,14 @@
 
 /* @var $this yii\web\View */
 /** @var $dataProvider \yii\data\ActiveDataProvider */
+/** @var \app\models\Category $category */
+
 use yii\grid\GridView;
 use yii\bootstrap\Html;
 
 $this->title = Yii::t('app', '下载');
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs']=[];
+\app\helpers\CommonHelper::categoryBreadcrumbs($category, $this->params['breadcrumbs']);
 ?>
 <div class="site-index">
     <div class="body-content">

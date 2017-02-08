@@ -10,6 +10,8 @@
 namespace app\controllers;
 
 
+use app\models\Category;
+use app\models\Content;
 use app\models\News;
 use yii\data\ActiveDataProvider;
 use Yii;
@@ -53,6 +55,10 @@ class NewsController extends Controller
         $query = News::find()->where(['status'=>News::STATUS_ENABLE]);
         if($categoryId){
             $query->andWhere(['category_id'=>$categoryId]);
+            $category = Category::findOne($categoryId);
+        }else{
+            $category = new Category();
+            $category->type = News::$currentType;
         }
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -62,6 +68,7 @@ class NewsController extends Controller
         ]);
 
         return $this->render('list', [
+            'category'=>$category,
             'searchModel' => new News(),
             'dataProvider' => $dataProvider
         ]);

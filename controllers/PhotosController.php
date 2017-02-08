@@ -16,6 +16,7 @@ use app\models\PhotosDetail;
 use yii\web\NotFoundHttpException;
 use Yii;
 use yii\data\ActiveDataProvider;
+use app\models\Category;
 
 class PhotosController extends AppController
 {
@@ -57,6 +58,10 @@ class PhotosController extends AppController
         $query = Photos::find()->where(['status'=>Photos::STATUS_ENABLE]);
         if($categoryId){
             $query->andWhere(['category_id'=>$categoryId]);
+            $category = Category::findOne($categoryId);
+        }else{
+            $category = new Category();
+            $category->type = Photos::$currentType;
         }
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -66,6 +71,7 @@ class PhotosController extends AppController
         ]);
 
         return $this->render('list', [
+            'category'=>$category,
             'searchModel' => new Photos(),
             'dataProvider' => $dataProvider
         ]);

@@ -12,6 +12,7 @@ use yii\db\Expression;
  * @property integer $id
  * @property string $title
  * @property integer $type
+ * @property integer $category_id
  * @property string $image
  * @property string $description
  * @property integer $status
@@ -39,6 +40,7 @@ class Content extends AppActiveRecord
         self::TYPE_DOWNLOADS=>'下载',
         self::TYPE_PHOTOS=>'照片',
     ];
+
     /**
      * 自动更新详情
      * @var bool
@@ -64,6 +66,16 @@ class Content extends AppActiveRecord
 
     /** @var  ContentDetail */
     protected $_detail;
+
+    /**
+     * 当前分类信息
+     * @var
+     */
+    protected $_category;
+
+    /** @var array 此类型下全部的分类 */
+    protected static $_categories = [];
+
     /**
      * @inheritdoc
      */
@@ -84,7 +96,27 @@ class Content extends AppActiveRecord
         }
         return $res;
     }
+    /**
+     * 类型常量对应的字符串常量
+     * @var array
+     */
+    static public $typeStrings = [
+        self::TYPE_NEWS=>'news',
+        self::TYPE_PRODUCTS=>'products',
+        self::TYPE_DOWNLOADS=>'downloads',
+        self::TYPE_PHOTOS=>'photos',
+    ];
 
+    /**
+     * 类型常量的字符串形式
+     * @param $type
+     * @param null $default
+     * @return mixed|null
+     */
+    static public function type2String($type, $default=null)
+    {
+        return isset(self::$typeStrings[$type])?self::$typeStrings[$type]:$default;
+    }
     public function getDetail()
     {
         if(empty($this->_detail)) {
@@ -103,13 +135,34 @@ class Content extends AppActiveRecord
             return $this->hasOne(ContentDetail::class, ['content_id' => 'id'])->one();
         }
     }
+
     /**
-     * 获取全部的新闻分类
+     * 只读属性
+     * 获取 分类信息
+     * @return static
+     */
+    public function getCategory()
+    {
+        if(empty($this->_category) || $this->_category->id!=$this->category_id){
+            if($this->category_id){
+                $this->_category = Category::findOne($this->category_id);
+            }else{
+                $this->_category = null;
+            }
+        }
+        return $this->_category;
+    }
+    /**
+     * 只读属性
+     * 获取当前类型下的全部分类
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getCategories()
+    public static function getCategories()
     {
-        return Category::find()->where(['type'=>static::$currentType])->asArray()->all();
+        if(empty(static::$_categories)){
+            static::$_categories = Category::find()->where(['type'=>static::$currentType])->asArray()->all();
+        }
+        return static::$_categories;
     }
 
     /**

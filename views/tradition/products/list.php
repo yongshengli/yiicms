@@ -9,11 +9,13 @@
 
 /* @var $this yii\web\View */
 /** @var $dataProvider \yii\data\ActiveDataProvider */
+/** @var \app\models\Category $category */
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
 $this->title = Yii::t('app', '产品');
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs']=[];
+\app\helpers\CommonHelper::categoryBreadcrumbs($category, $this->params['breadcrumbs']);
 ?>
 <style>
     .image-box a{

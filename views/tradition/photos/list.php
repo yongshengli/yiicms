@@ -9,11 +9,13 @@
 
 /* @var $this yii\web\View */
 /** @var $dataProvider \yii\data\ActiveDataProvider */
+/** @var \app\models\Category $category */
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
 $this->title = Yii::t('app', '企业相册');
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs']=[];
+\app\helpers\CommonHelper::categoryBreadcrumbs($category, $this->params['breadcrumbs']);
 ?>
 <style>
     .image-box a{
@@ -25,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="body-content">
         <div class="row">
             <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
+                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PHOTOS,'title'=>'相册分类',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
