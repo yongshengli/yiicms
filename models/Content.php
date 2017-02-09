@@ -23,7 +23,6 @@ use yii\db\Expression;
  * @property integer $hits
  * @property integer $created_at
  * @property integer $updated_at
- * @property array $categories
  */
 class Content extends AppActiveRecord
 {
