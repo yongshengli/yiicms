@@ -9,7 +9,9 @@ use app\components\AppActiveRecord;
  *
  * @property integer $id
  * @property integer $content_id
- * @property integer $detail
+ * @property string $detail
+ * @property string $params
+ * @property string $file_url
  * @property Content $content
  */
 class ContentDetail extends AppActiveRecord

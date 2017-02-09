@@ -15,6 +15,9 @@ use yii\db\Expression;
  * @property integer $category_id
  * @property string $image
  * @property string $description
+ * @property \app\models\ContentDetail $detail
+ * @property \app\models\Category $category
+ * @property array $categories
  * @property integer $status
  * @property integer $admin_user_id
  * @property integer $hits

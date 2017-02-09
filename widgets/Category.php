@@ -11,7 +11,6 @@ namespace app\widgets;
 
 use app\models\Category as Model;
 use app\models\Content;
-use app\widgets\Panel;
 use yii\base\ErrorException;
 use yii\bootstrap\Html;
 use yii\helpers\Url;
