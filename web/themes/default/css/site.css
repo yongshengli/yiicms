@@ -14,11 +14,16 @@ body {
     padding: 0 15px 20px;
 }
 .footer {
-    height: 160px;
+    height: auto;
     background-color: #333333;
     border-top: 1px solid #ddd;
     padding-top: 20px;
     color:#9d9d9d;
+}
+.footer ul, .footer ul li{
+    list-style:none;
+    margin:0;
+    padding:0;
 }
 .footer .row{
     margin-bottom: 20px;
