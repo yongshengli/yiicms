@@ -11,6 +11,7 @@ $this->title = ArrayHelper::getValue(Yii::$app->params,'homeTitle', 'YiiCmsé¦–é¡
 $carouselItems = [];
 ?>
 <style>
+    .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;}
     .image-box a{
         height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
     }
@@ -53,7 +54,7 @@ $carouselItems = [];
     <div class="panel-body">
         <div class="row">
             <?php if (!empty($products)):foreach ($products as $model): ?>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <div class="thumbnail">
                         <div class="image-box">
                             <a href="<?= Url::to(['/products/', 'id' => $model->id]) ?>">
