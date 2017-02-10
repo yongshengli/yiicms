@@ -19,7 +19,7 @@ $carouselItems = [];
     .image-box a{
         height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
     }
-    .image{max-width:100%;max-height:200px;vertical-align:middle;display: inline}
+    .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
 </style>
 <div class="site-index">
     <div class="row">

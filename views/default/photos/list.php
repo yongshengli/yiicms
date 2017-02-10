@@ -16,10 +16,11 @@ $this->title = '企业相册';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
+    .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;}
     .image-box a{
         height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
     }
-    .image{max-width:100%;max-height:200px;vertical-align:middle;display: inline}
+    .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
 </style>
 <div class="site-index">
     <div class="body-content">
