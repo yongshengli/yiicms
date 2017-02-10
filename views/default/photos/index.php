@@ -29,12 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="body-content">
         <div class="row">
             <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
+                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PHOTOS,'title'=>'相册分类',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us',
+                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
+                ])?>
+                <?=\app\widgets\ConfigPanel::widget(['configName'=>'donate',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
             </div>
