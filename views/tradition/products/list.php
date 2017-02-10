@@ -20,7 +20,7 @@ $this->params['breadcrumbs']=[];
 <style>
     .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;}
     .caption{text-align: left}
-    .image-box{border-bottom: 1px solid #ddd;}
+    .image-box:after{position: absolute;left: 22px;height: 1px; background-color: #ddd;content: "";width: 240px}
     .image-box a{
         height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
     }
