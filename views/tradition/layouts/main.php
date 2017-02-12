@@ -58,7 +58,7 @@ if(!empty(Yii::$app->params['logo'])){
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <?=Yii::t('app', '欢迎访问YiiCms企业站系统')?>
+                    <?=Yii::t('app', \app\widgets\Hook::widget(['configName'=>'top_message']))?>
                     <span class="label label-warning">
                         <a href="<?=Url::to('/site/language/?language=en-US')?>">English</a>/<a href="<?=Url::to('/site/language/?language=zh-CN')?>">中文</a>
                     </span>
