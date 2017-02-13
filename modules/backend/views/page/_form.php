@@ -22,6 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'content')->widget(\kucha\ueditor\UEditor::className(),[
         'clientOptions'=>[
+            'serverUrl'=>yii\helpers\Url::to($this->context->module->UEditorConfigAction),
             'initialFrameHeight'=>'200'
         ]
     ]) ?>
