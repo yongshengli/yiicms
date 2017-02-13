@@ -9,6 +9,8 @@
 
 namespace app\components;
 use \yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * Class AppActiveRecord
@@ -18,25 +20,14 @@ use \yii\db\ActiveRecord;
  */
 class AppActiveRecord extends ActiveRecord
 {
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function insert($runValidation = true, $attributeNames = null)
+    public function behaviors()
     {
-        $this->created_at = $this->updated_at = time();
-        return parent::insert($runValidation, $attributeNames);
-    }
-    /**
-     * @param bool $runValidation
-     * @param null $attributeNames
-     * @return bool
-     */
-    public function update($runValidation = true, $attributeNames = null)
-    {
-        $this->updated_at = time();
-        return parent::update($runValidation, $attributeNames);
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 
     /**
