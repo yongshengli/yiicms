@@ -13,7 +13,6 @@ $('#menu-keyword').autocomplete({
                 }
             }
         });
-        console.log(result);
         response(result);
     }
 }).autocomplete("instance")._renderItem = function (ul, item) {
