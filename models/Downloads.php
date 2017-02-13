@@ -15,7 +15,7 @@ use app\components\behaviors\UploadBehavior;
 /**
  * Class Downloads
  * @package app\models
- * @property $file
+ * @property \yii\web\UploadedFile $file
  * @method uploadFile()
  */
 class Downloads extends Content

@@ -27,7 +27,6 @@ use kartik\file\FileInput;
             ],
         ]
     ) ?>
-    <?= $form->field($model->detail, 'file_url',['options'=>['style'=>'display:none']])->hiddenInput()?>
 
     <?= !empty($model->detail->file_url)?$model->detail->file_url:''?>
 
