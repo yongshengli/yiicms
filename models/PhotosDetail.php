@@ -11,10 +11,11 @@ namespace app\models;
 use Yii;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
-
+use app\components\behaviors\UploadBehavior;
 /**
  * Class PhotosDetail
  * @package app\models
+ * @method createUploadFilePath()
  */
 class PhotosDetail extends ContentDetail
 {
@@ -51,18 +52,15 @@ class PhotosDetail extends ContentDetail
             return false;
         }
     }
-    /**
-     * @throw \Exception
-     * @return string
-     */
-    public function createUploadFilePath()
+
+    public function behaviors()
     {
-        $rootPath = \Yii::getAlias('@webroot');
-        $path = '/uploads/photos/'.$this->content_id.'/';
-        if(!is_dir($rootPath.$path)){
-            FileHelper::createDirectory($rootPath.$path);
-        }
-        return $path;
+        return [
+            [
+                'class'=>UploadBehavior::class,
+                'saveDir'=>'/uploads/photos/'.$this->content_id.'/'
+            ]
+        ];
     }
 
     /**

@@ -207,6 +207,8 @@ class Content extends AppActiveRecord
     {
         $res = parent::save($runValidation, $attributeNames);
         if(static::$autoUpdateDetail && $this->_detail->errors){
+            //detail 创建失败 删除content 表数据
+            $this->delete();
             return false;
         }
         return $res;

@@ -9,10 +9,14 @@
 
 namespace app\models;
 
-use yii\helpers\FileHelper;
-use yii\web\UploadedFile;
+use app\components\behaviors\UploadBehavior;
 use Yii;
 
+/**
+ * Class Products
+ * @package app\models
+ * @method uploadImgFile()
+ */
 class Products extends Content
 {
     static $currentType = Parent::TYPE_PRODUCTS;
@@ -50,40 +54,21 @@ class Products extends Content
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $file = $this->uploadFile();
+        $file = $this->uploadImgFile();
         if($file){
             $this->image = $file;
         }
         return true;
     }
 
-    public function uploadFile()
+    public function behaviors()
     {
-        /** @var UploadedFile imageFile */
-        $this->imageFile = current(UploadedFile::getInstances($this, 'imageFile'));
-        if(empty($this->imageFile)){
-            return '';
-        }
-        try {
-            $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
-        } catch (\Exception $e) {
-            $this->addError('imageFile', $e->getMessage());
-            return false;
-        }
-        if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
-            return $fileName;
-        }
-        return '';
-    }
-
-    public function createUploadFilePath()
-    {
-        $rootPath = \Yii::getAlias('@webroot');
-        $path = '/uploads/products-img/';
-        if(!is_dir($rootPath.$path)){
-            FileHelper::createDirectory($rootPath.$path);
-        }
-        return $path;
+        return [
+            [
+                'class'=>UploadBehavior::class,
+                'saveDir'=>'products-img/'
+            ]
+        ];
     }
     /**
      * @inheritdoc

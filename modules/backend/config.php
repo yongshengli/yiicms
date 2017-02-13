@@ -21,6 +21,7 @@ return [
     'params' => [
         'pageSize' => '20',
     ],
+    'UEditorConfigAction'=>'/backend/default/ueditor',
     'modules'=>[
         'rbac' => [
             'class' => 'mdm\admin\Module',

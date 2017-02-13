@@ -40,13 +40,13 @@ use kartik\file\FileInput;
     </div>
     <?= $form->field($model->detail, 'params')->widget(\kucha\ueditor\UEditor::className(),[
         'clientOptions'=>[
-            'serverUrl'=>yii\helpers\Url::to('/backend/default/ueditor'),
+            'serverUrl'=>yii\helpers\Url::to($this->context->module->UEditorConfigAction),
             'initialFrameHeight'=>'100'
         ]
     ]) ?>
     <?= $form->field($model->detail, 'detail')->widget(\kucha\ueditor\UEditor::className(), [
         'clientOptions' => [
-            'serverUrl'=>yii\helpers\Url::to('/backend/default/ueditor'),
+            'serverUrl'=>yii\helpers\Url::to($this->context->module->UEditorConfigAction),
             'initialFrameHeight' => '200'
         ]
     ]) ?>

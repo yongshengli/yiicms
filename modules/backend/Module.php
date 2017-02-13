@@ -17,6 +17,9 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'app\modules\backend\controllers';
     public $layout = 'main.php';
 
+    /** @var string  UEditor config action*/
+    public $UEditorConfigAction = '/backend/default/ueditor';
+
     /**
      * @inheritdoc
      */

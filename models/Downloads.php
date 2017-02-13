@@ -9,12 +9,15 @@
 
 namespace app\models;
 
-use yii\db\ActiveQuery;
-use yii\db\Expression;
 use Yii;
-use yii\web\UploadedFile;
-use yii\helpers\FileHelper;
+use app\components\behaviors\UploadBehavior;
 
+/**
+ * Class Downloads
+ * @package app\models
+ * @property $file
+ * @method uploadFile()
+ */
 class Downloads extends Content
 {
     static $currentType = Parent::TYPE_DOWNLOADS;
@@ -32,8 +35,6 @@ class Downloads extends Content
             return $model;
         }
     }
-    /** @var  UploadedFile */
-    public $file;
     /**
      * @inheritdoc
      */
@@ -68,30 +69,14 @@ class Downloads extends Content
         }
         return true;
     }
-
-    public function uploadFile()
+    public function behaviors()
     {
-        /** @var UploadedFile file */
-        $this->file = current(UploadedFile::getInstances($this, 'file'));
-        if(empty($this->file)){
-            return '';
-        }
-        $fileName = $this->createUploadFilePath().uniqid('yiicms').'.'. $this->file->extension;
-
-        if($this->file->saveAs(\Yii::getAlias('@webroot').$fileName)){
-            return $fileName;
-        }
-        return '';
-    }
-
-    public function createUploadFilePath()
-    {
-        $rootPath = \Yii::getAlias('@webroot');
-        $path = '/uploads/downloads/';
-        if(!is_dir($rootPath.$path)){
-            FileHelper::createDirectory($rootPath.$path);
-        }
-        return $path;
+        return [
+            [
+                'class'=>UploadBehavior::class,
+                'saveDir'=>'downloads/'
+            ]
+        ];
     }
     /**
      * @inheritdoc
