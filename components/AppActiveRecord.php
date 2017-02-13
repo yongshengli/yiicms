@@ -10,7 +10,6 @@
 namespace app\components;
 use \yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
 
 /**
  * Class AppActiveRecord
@@ -23,10 +22,7 @@ class AppActiveRecord extends ActiveRecord
     public function behaviors()
     {
         return [
-            [
-                'class' => TimestampBehavior::className(),
-                'value' => new Expression('NOW()'),
-            ],
+            TimestampBehavior::className(),
         ];
     }
 
