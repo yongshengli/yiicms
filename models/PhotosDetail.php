@@ -58,7 +58,7 @@ class PhotosDetail extends ContentDetail
         return [
             [
                 'class'=>UploadBehavior::class,
-                'saveDir'=>'/uploads/photos/'.$this->content_id.'/'
+                'saveDir'=>'photos/'.$this->content_id.'/'
             ]
         ];
     }

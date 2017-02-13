@@ -19,11 +19,12 @@ use yii\behaviors\TimestampBehavior;
  */
 class AppActiveRecord extends ActiveRecord
 {
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
+    public function init(){
+        parent::init();
+        $this->attachBehaviors([
+                TimestampBehavior::className(),
+            ]
+        );
     }
 
     /**
