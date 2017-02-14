@@ -207,10 +207,10 @@ class Content extends AppActiveRecord
     {
         $res = parent::save($runValidation, $attributeNames);
         if($res && static::$autoUpdateDetail) {
-            if (empty($this->_detail->content_id)) {
-                $this->_detail->content_id = $this->id;
+            if (empty($this->detail->content_id)) {
+                $this->detail->content_id = $this->id;
             }
-            if($this->_detail->save()==false){
+            if($this->detail->save()==false){
                 $this->delete();
                 return false;
             }
@@ -222,7 +222,7 @@ class Content extends AppActiveRecord
     {
         $res = parent::validate($attributeNames, $clearErrors);
         if(static::$autoUpdateDetail){
-            $this->detail->id = 0; //临时设置
+            $this->detail->content_id = 0; //临时设置
             return $this->detail->validate($attributeNames, $clearErrors);
         }
         return $res;
