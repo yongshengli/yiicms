@@ -203,7 +203,6 @@ class PhotosController extends BackendController
         $model = new Photos();
         $post = Yii::$app->request->post();
         if ($post) {
-            $post[$model->formName()]['admin_user_id'] = Yii::$app->user->id;
             if ($model->load($post) && $model->save()) {
                 return $this->showFlash('添加成功','success');
             }

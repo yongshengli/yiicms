@@ -6,6 +6,7 @@ use app\components\AppActiveRecord;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\Expression;
+use yii\behaviors\AttributeBehavior;
 /**
  * This is the model class for table "content".
  *
@@ -90,6 +91,14 @@ class Content extends AppActiveRecord
     {
         parent::init();
         $this->setAttribute('type', static::$currentType);
+        //添加的时候设置 添加人id
+        $this->attachBehavior('set_admin_user_id', [
+            'class' => AttributeBehavior::className(),
+            'attributes' => [
+                static::EVENT_BEFORE_INSERT => 'admin_user_id',
+            ],
+            'value' => Yii::$app->user->id,
+        ]);
     }
     public function load($data, $formName = null){
         $res = parent::load($data, $formName);
