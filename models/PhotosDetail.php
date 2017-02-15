@@ -10,38 +10,25 @@
 namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\FileHelper;
-use yii\web\UploadedFile;
 use app\components\behaviors\UploadBehavior;
 /**
  * Class PhotosDetail
  * @package app\models
  * @method createUploadFilePath()
+ * @method uploadImgFile()
  */
 class PhotosDetail extends ContentDetail
 {
-    /** @var $imageFile  UploadedFile */
-    public $imageFile;
     /**
      * 保存照片
      * @return bool
      */
-    public function uploadFile()
+    public function uploadPhoto()
     {
-        /** @var UploadedFile imageFile */
-        $this->imageFile = UploadedFile::getInstance($this, 'imageFile');
-        if(empty($this->imageFile)){
+        $this->file_url = $this->uploadImgFile();
+        if(empty($this->file_url)){
             $this->addError('imageFile', '图片不能为空');
             return false;
-        }
-        try {
-            $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
-        }catch(\Exception $e){
-            $this->addError('imageFile', $e->getMessage());
-            return false;
-        }
-        if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
-            $this->file_url = $fileName;
         }
         if($this->save()){
             //如果相册没有封面那么就把当前照片设为封面
@@ -59,7 +46,7 @@ class PhotosDetail extends ContentDetail
         return [
             [
                 'class'=>UploadBehavior::class,
-                'saveDir'=>'photos/'.$this->content_id.'/'
+                'saveDir'=>'photos/'
             ]
         ];
     }

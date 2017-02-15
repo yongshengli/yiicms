@@ -99,7 +99,7 @@ class PhotosController extends BackendController
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $model = new PhotosDetail();
-        if($model->load(Yii::$app->request->post()) && $model->uploadFile()){
+        if($model->load(Yii::$app->request->post()) && $model->uploadPhoto()){
             return [
                 'code'=>0,
                 'data'=>$this->renderPartial('_detail_item',['model'=>$model]),
