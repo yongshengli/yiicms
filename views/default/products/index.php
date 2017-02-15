@@ -20,10 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>
     .img-box{
         height: 400px;width:400px; text-align: center;vertical-align: middle;display: table-cell;
+        max-width: 100%
     }
     .img-box img{
         display: inline;
-        max-width:400px;max-height: 400px;
+        max-width:100%;max-height: 400px;
     }
 </style>
 <div class="site-index">

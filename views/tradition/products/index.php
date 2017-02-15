@@ -19,13 +19,13 @@ $this->params['breadcrumbs']=[];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
-    .img-rounded{margin-left: auto;margin-right:auto;width:380px;padding: 10px}
+    .img-rounded{margin-left: auto;margin-right:auto;width:380px;padding: 10px;max-width: 100%}
     .img-box{
         height: 360px;width:360px; text-align: center;vertical-align: middle;display: table-cell;
     }
     .img-box img{
         display: inline;
-        max-width:360px;max-height: 360px;
+        max-width:100%;max-height: 360px;
     }
 </style>
 <div class="site-index">
