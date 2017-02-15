@@ -9,6 +9,7 @@
 
 namespace app\models;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use app\components\behaviors\UploadBehavior;
@@ -96,7 +97,7 @@ class PhotosDetail extends ContentDetail
     }
 
     /**
-     * @return \app\models\Content
+     * @return ActiveRecord
      */
     public function content()
     {

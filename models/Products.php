@@ -48,9 +48,13 @@ class Products extends Content
         }
     }
 
-    public function beforeSave($runValidation = true)
+    public function beforeSave($insert)
     {
-        if ($runValidation && !$this->validate()) {
+        $res = parent::beforeSave($insert);
+        if($res==false){
+            return $res;
+        }
+        if (!$this->validate()) {
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
