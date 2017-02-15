@@ -77,7 +77,7 @@ class UploadBehavior extends Behavior
         $rootPath = \Yii::getAlias('@webroot');
         $path = rtrim('/uploads/'.$this->saveDir, '/').'/';
         if(!is_dir($rootPath.$path)){
-            FileHelper::createDirectory($rootPath.$path);
+            FileHelper::createDirectory($rootPath.$path, 777);
         }
         return $path;
     }
