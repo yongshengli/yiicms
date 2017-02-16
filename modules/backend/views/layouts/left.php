@@ -25,8 +25,7 @@ $this->registerJs("var _menu_opts = $opts;");
 $this->registerJs($this->render('_menu_script.js'));
 ?>
 <aside class="main-sidebar">
-
-    <section class="sidebar">
+    <section class="sidebar" style="height: auto;">
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -34,7 +33,7 @@ $this->registerJs($this->render('_menu_script.js'));
                 <span class="input-group-btn">
                 <button type='button' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
-              </span>
+                </span>
             </div>
         </form>
         <!-- /.search form -->
@@ -44,7 +43,5 @@ $this->registerJs($this->render('_menu_script.js'));
                 'items' => $menuItems
             ]
         ) ?>
-
     </section>
-
 </aside>

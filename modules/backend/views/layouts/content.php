@@ -3,7 +3,7 @@ use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 /* @var $this \yii\web\View */
 ?>
-<div class="content-wrapper">
+<div class="content-wrapper" style="min-height: 916px;">
     <section class="content-header">
         <?php if (isset($this->blocks['content-header'])) { ?>
             <h1><?= $this->blocks['content-header'] ?></h1>
@@ -56,3 +56,4 @@ use dmstr\widgets\Alert;
         </div>
     </div>
 </aside><!-- /.control-sidebar -->
+<div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>

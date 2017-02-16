@@ -4,9 +4,6 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use app\widgets\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\modules\backend\assets\BackendAsset;
 use yii\bootstrap\Alert;
 
@@ -20,7 +17,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
 <?php else: ?>
     <?php $this->beginPage() ?>
     <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>">
+    <html lang="<?= Yii::$app->language ?>" style="height: auto;">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,10 +25,10 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="sidebar-mini skin-blue" style="height: auto;">
     <?php $this->beginBody() ?>
 
-    <div class="wrap">
+    <div class="wrap" style="height: auto;">
         <?= $this->render(
             'header.php',
             ['directoryAsset' => $directoryAsset]
