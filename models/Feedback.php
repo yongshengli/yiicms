@@ -9,11 +9,11 @@ use Yii;
  * This is the model class for table "feedback".
  *
  * @property integer $id
- * @property string $title
+ * @property string $subject
  * @property string $name
  * @property string $phone
  * @property string $email
- * @property string $message
+ * @property string $body
  * @property integer $created_at
  * @property integer $updated_at
  */
