@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\components\AppActiveRecord;
+use Codeception\Lib\Interfaces\ActiveRecord;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\Expression;
@@ -136,7 +137,7 @@ class Content extends AppActiveRecord
         return $this->_detail;
     }
     /**
-     * @return \app\models\ContentDetail
+     * @return \app\models\ContentDetail|ActiveRecord|array
      */
     public function detail()
     {
