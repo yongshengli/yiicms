@@ -41,7 +41,7 @@ class AdSearch extends Ad
      */
     public function search($params)
     {
-        $query = static::find();
+        $query = Ad::find();
 
         // add conditions that should always apply here
 

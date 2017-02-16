@@ -40,7 +40,7 @@ class PageSearch extends Page
      */
     public function search($params, $pageSize=20)
     {
-        $query = static::find();
+        $query = Page::find();
 
         // add conditions that should always apply here
 

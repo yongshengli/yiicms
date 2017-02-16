@@ -58,7 +58,7 @@ class NewsSearch extends News
      */
     public function search($params, $pageSize=20)
     {
-        $query = static::find();
+        $query = News::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([

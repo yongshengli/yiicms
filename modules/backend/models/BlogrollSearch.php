@@ -46,7 +46,7 @@ class BlogrollSearch extends Blogroll
      */
     public function search($params)
     {
-        $query = static::find();
+        $query = Blogroll::find();
 
         // add conditions that should always apply here
 

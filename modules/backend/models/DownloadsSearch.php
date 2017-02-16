@@ -61,7 +61,7 @@ class DownloadsSearch extends Downloads
      */
     public function search($params, $pageSize=20)
     {
-        $query = static::find();
+        $query = Downloads::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([

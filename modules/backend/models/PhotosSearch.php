@@ -37,21 +37,6 @@ class PhotosSearch extends Photos
     }
 
     /**
-     * 创建时间
-     * @return array|false|int
-     */
-    public function getCreatedAt()
-    {
-        if(empty($this->created_at)){
-            return null;
-        }
-        $createAt = is_string($this->created_at)?strtotime($this->created_at):$this->created_at;
-        if(date('H:i:s', $createAt)=='00:00:00'){
-            return [$createAt, $createAt+3600*24];
-        }
-        return $createAt;
-    }
-    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
@@ -61,7 +46,7 @@ class PhotosSearch extends Photos
      */
     public function search($params, $pageSize=20)
     {
-        $query = static::find();
+        $query = Photos::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([

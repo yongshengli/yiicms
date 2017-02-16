@@ -56,7 +56,7 @@ class ProductsSearch extends Products
      */
     public function search($params, $pageSize=20)
     {
-        $query = static::find();
+        $query = Products::find();
 
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
