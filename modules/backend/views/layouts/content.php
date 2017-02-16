@@ -48,7 +48,7 @@ use dmstr\widgets\Alert;
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark" style="height: 100%">
+<aside class="control-sidebar control-sidebar-dark" style="height: auto">
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="control-sidebar-home-tab" class="tab-pane active">
