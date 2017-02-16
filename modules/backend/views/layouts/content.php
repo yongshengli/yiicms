@@ -48,7 +48,7 @@ use dmstr\widgets\Alert;
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-dark" style="height: 100%">
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
@@ -64,13 +64,16 @@ use dmstr\widgets\Alert;
                 </div>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
-                        <input type="checkbox" data-layout="sidebar-collapse" class="pull-right">收起左边栏</label>
+                        <input type="checkbox" data-layout="sidebar-collapse" class="pull-right">收起左边栏
+                    </label>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
-                        <input type="checkbox" data-enable="expandOnHover" class="pull-right">自动隐藏左边栏</label>
+                        <input type="checkbox" data-enable="expandOnHover" class="pull-right">自动隐藏左边栏
+                    </label>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
-                        <input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right">隐藏右边栏</label>
+                        <input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right">固定右边栏
+                    </label>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         <input type="checkbox" data-sidebarskin="toggle" class="pull-right">右边栏高亮</label>
