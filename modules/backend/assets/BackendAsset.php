@@ -18,7 +18,7 @@ class BackendAsset extends AssetBundle
     public $sourcePath ='@app/modules/backend/assets/';
     public $baseUrl = '@web';
     public $css = [
-        'backend.css',
+//        'backend.css',
     ];
     public $js = [
         'skin.js',

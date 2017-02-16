@@ -8,7 +8,7 @@ use app\widgets\Nav;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '后台</span>', ['/backend/'], ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">CMS</span><span class="logo-lg">' . Yii::$app->name . '后台</span>', ['/backend/'], ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
