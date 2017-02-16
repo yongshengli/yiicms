@@ -8,6 +8,8 @@ use app\components\AppActiveRecord;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 use yii\db\ActiveQuery;
+use app\components\behaviors\UploadBehavior;
+
 /**
  * This is the model class for table "ad".
  *
@@ -17,6 +19,8 @@ use yii\db\ActiveQuery;
  * @property string $link partner
  * @property integer $created_at
  * @property integer $updated_at
+ * @method createUploadFilePath()
+ * @method uploadImgFile()
  */
 class Ad extends AppActiveRecord
 {
@@ -39,8 +43,6 @@ class Ad extends AppActiveRecord
         self::TYPE_CAROUSEL=>'轮播图',
         self::TYPE_BLOGROLL=>'友情链接',
     ];
-    /** @var UploadedFile imageFile */
-    public $imageFile;
 
     public function init()
     {
@@ -54,13 +56,17 @@ class Ad extends AppActiveRecord
     {
         return 'ad';
     }
-    public function beforeSave($runValidation = true)
+    public function beforeSave($insert)
     {
-        if ($runValidation && !$this->validate()) {
+        $res = parent::beforeSave($insert);
+        if($res==false){
+            return $res;
+        }
+        if (!$this->validate()) {
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-        $file = $this->uploadFile();
+        $file = $this->uploadImgFile();
         if(empty($file) && empty($this->image)){
             $this->addError('imageFile','图片不能为空');
             return false;
@@ -70,31 +76,14 @@ class Ad extends AppActiveRecord
         }
         return true;
     }
-
-    public function uploadFile()
+    public function behaviors()
     {
-        /** @var UploadedFile imageFile */
-        $this->imageFile = current(UploadedFile::getInstances($this, 'imageFile'));
-        if(empty($this->imageFile)){
-            $this->addError('imageFile','图片不能为空');
-            return false;
-        }
-        $fileName = $this->createUploadFilePath().uniqid('img_').'.'. $this->imageFile->extension;
-
-        if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
-            return $fileName;
-        }
-        return '';
-    }
-
-    public function createUploadFilePath()
-    {
-        $rootPath = \Yii::getAlias('@webroot');
-        $path = '/uploads/ad-img/';
-        if(!is_dir($rootPath.$path)){
-            FileHelper::createDirectory($rootPath.$path);
-        }
-        return $path;
+        return [
+            [
+                'class' => UploadBehavior::class,
+                'saveDir' => 'ad-img/'
+            ]
+        ];
     }
     /**
      * @inheritdoc
