@@ -72,7 +72,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = static::find();
+        $query = Category::find();
 
         $activeDataProvider =  new ActiveDataProvider([
             'query' =>$query

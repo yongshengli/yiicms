@@ -74,16 +74,13 @@ class Category extends AppActiveRecord
         if(empty($this->path)){
             return null;
         }
-        $pids = explode('/',$this->path);
-        $list = self::find()->andFilterWhere(['in', 'id', $pids])
-            ->orderBy('path')
-            ->asArray()->all();
+        $list = ArrayHelper::toArray($this->getFullParent());
         return implode('/',array_column($list, 'name'));
     }
 
     /**
      * 顶级分类信息
-     * @var $topCategory array
+     * @var array $topCategory
      */
     static public $topCategory = [
         'id'=>0,
@@ -101,6 +98,8 @@ class Category extends AppActiveRecord
         $baseName = $this->getFullParentName();
         return $baseName?$baseName.'/'.$this->name:$this->name;
     }
+    /** @var  array */
+    private $_parents;
     /**
      * 获取全部完整父类
      */
@@ -109,8 +108,14 @@ class Category extends AppActiveRecord
         if(empty($this->path)){
             return null;
         }
-        $pids = explode('/',$this->path);
-        return self::find()->andFilterWhere(['in', 'id', $pids])->all();
+        if(empty($this->_parents['fullParent']) || empty($this->_parents['path']) || $this->_parents['path']!=$this->path){
+            $pids = explode('/',$this->path);
+            $this->_parents['fullParent'] = self::find()->andFilterWhere(['in', 'id', $pids])->orderBy('path')->all();
+            if($this->_parents['fullParent']) {
+                $this->_parents['parent'] = end($this->_parents['fullParent']);
+            }
+        }
+        return $this->_parents['fullParent'];
     }
 
     /**
@@ -122,10 +127,11 @@ class Category extends AppActiveRecord
         if(empty($this->pid)){
             return self::$topCategory['name'];
         }
-        $category = self::find()->where(['id'=>$this->pid])->asArray()->one();
+        $category = $this->getParent();
 
         return empty($category)?null:$category['name'];
     }
+
     /**
      * 获取父类
      * @return static|array
@@ -135,7 +141,10 @@ class Category extends AppActiveRecord
         if(empty($this->pid)){
             return self::$topCategory;
         }
-        return self::findOne($this->pid);
+        if(empty($this->_parents['parent']) || $this->_parents['parent']->id!=$this->pid){
+            $this->_parents['parent'] = self::findOne($this->pid);
+        }
+        return $this->_parents['parent'];
     }
 
     /**
