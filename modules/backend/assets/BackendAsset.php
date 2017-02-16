@@ -21,12 +21,13 @@ class BackendAsset extends AssetBundle
         'backend.css',
     ];
     public $js = [
+        'skin.js',
         'backend.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'dmstr\web\AdminLteAsset',
+        'app\modules\backend\assets\AdminLteAsset',
         'mdm\admin\AutocompleteAsset',
     ];
 }

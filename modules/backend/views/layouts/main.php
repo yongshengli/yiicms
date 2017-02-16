@@ -48,8 +48,6 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
         ) ?>
     </div>
     <?php $this->endBody() ?>
-    <script src="<?=$directoryAsset?>/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="<?=$directoryAsset?>/js/demo.js"></script>
     </body>
     </html>
     <?php $this->endPage() ?>
