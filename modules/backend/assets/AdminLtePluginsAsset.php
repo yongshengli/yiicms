@@ -8,9 +8,9 @@
  */
 
 namespace app\modules\backend\assets;
-use dmstr\web\AdminLteAsset;
+use yii\web\AssetBundle;
 
-class AdminLtePluginsAsset extends AdminLteAsset
+class AdminLtePluginsAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/almasaeed2010/adminlte/';
 
