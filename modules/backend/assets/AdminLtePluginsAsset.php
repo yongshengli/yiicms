@@ -8,12 +8,13 @@
  */
 
 namespace app\modules\backend\assets;
-use dmstr\web\AdminLteAsset as BaseAdminLteAsset;
+use dmstr\web\AdminLteAsset;
 
-class AdminLteAsset extends BaseAdminLteAsset
+class AdminLtePluginsAsset extends AdminLteAsset
 {
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/';
+
     public $js = [
-        'js/app.min.js',
         'plugins/slimScroll/jquery.slimscroll.min.js'
     ];
 }

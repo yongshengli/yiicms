@@ -27,7 +27,8 @@ class BackendAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'app\modules\backend\assets\AdminLteAsset',
+        'dmstr\web\AdminLteAsset',
         'mdm\admin\AutocompleteAsset',
+        'app\modules\backend\assets\AdminLtePluginsAsset',
     ];
 }
