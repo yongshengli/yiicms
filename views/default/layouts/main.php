@@ -11,6 +11,7 @@ use app\assets\AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
+use yii\web\UrlManager;
 
 AppAsset::register($this)->css = ['themes/default/css/site.css',];
 $carouselItems = [];
@@ -94,7 +95,7 @@ if(!empty(Yii::$app->params['logo'])){
         <div class="row">
             <div class="col-lg-3">
                 <ul>
-                    <li><a href="http://yiicms.co/backend" target="_blank">后台演示</a></li>
+                    <li><a href="<?=Url::to(['/backend'])?>" target="_blank">后台演示</a></li>
                     <li><a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a></li>
                     <li><a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a></li>
                 </ul>
