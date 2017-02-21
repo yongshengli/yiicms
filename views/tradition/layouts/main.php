@@ -18,6 +18,7 @@ $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
+            'options'=>['style'=>'"background:url('.$item['image'].');background-size:cover;'],
             'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%"/></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
@@ -92,7 +93,7 @@ if(!empty(Yii::$app->params['logo'])){
         ?>
         <?php NavBar::end(); ?>
     </div>
-    <div class="container">
+    <div style="margin-bottom: 20px">
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
             'items' => $carouselItems,
