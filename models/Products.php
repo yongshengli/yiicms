@@ -42,7 +42,7 @@ class Products extends Content
         if ($this->isNewRecord) {
             return new ContentDetail(['scenario' => ContentDetail::SCENARIO_PRODUCTS]);
         } else {
-            $model = $this->hasOne(ContentDetail::class, ['content_id' => 'id'])->one();
+            $model = $this->hasOne(ContentDetail::className(), ['content_id' => 'id'])->one();
             $model->scenario = ContentDetail::SCENARIO_PRODUCTS;
             return $model;
         }
@@ -69,7 +69,7 @@ class Products extends Content
     {
         return [
             [
-                'class'=>UploadBehavior::class,
+                'class'=>UploadBehavior::className(),
                 'saveDir'=>'products-img/'
             ]
         ];

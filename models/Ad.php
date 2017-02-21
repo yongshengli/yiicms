@@ -121,7 +121,7 @@ class Ad extends AppActiveRecord
     public static function find()
     {
         AdQuery::$type = static::$currentType;
-        return Yii::createObject(AdQuery::class, [get_called_class()]);
+        return Yii::createObject(AdQuery::className(), [get_called_class()]);
     }
 }
 

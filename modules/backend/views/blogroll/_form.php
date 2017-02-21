@@ -16,7 +16,7 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'imageFile')->widget(
-        FileInput::class,
+        FileInput::className(),
         [
             'pluginOptions' => [
                 'showUpload' => false,

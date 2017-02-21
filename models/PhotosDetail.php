@@ -45,7 +45,7 @@ class PhotosDetail extends ContentDetail
     {
         return [
             [
-                'class'=>UploadBehavior::class,
+                'class'=>UploadBehavior::className(),
                 'saveDir'=>'photos/'
             ]
         ];
@@ -91,7 +91,7 @@ class PhotosDetail extends ContentDetail
         if ($this->isNewRecord) {
             return new Photos();
         } else {
-            return $this->hasOne(Photos::class, ['id' => 'content_id'])->one();
+            return $this->hasOne(Photos::className(), ['id' => 'content_id'])->one();
         }
 
     }

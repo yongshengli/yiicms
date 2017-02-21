@@ -13,7 +13,7 @@ use app\helpers\CategoryHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'pid')->widget(\kartik\select2\Select2::class,[
+    <?= $form->field($model, 'pid')->widget(\kartik\select2\Select2::className(),[
         'data'=>(new CategoryHelper(['categories'=>$model->getPossibleParentArr()]))->getKV()
     ]) ?>
 

@@ -42,17 +42,17 @@ class PhotosController extends BackendController
     {
         return array_merge(parent::actions(), [
             'check'=>[
-                'class'=>ContentCheckAction::class,
+                'class'=>ContentCheckAction::className(),
                 'type'=>Photos::$currentType,
                 'status'=>Photos::STATUS_ENABLE
             ],
             'un-check'=>[
-                'class'=>ContentCheckAction::class,
+                'class'=>ContentCheckAction::className(),
                 'type'=>Photos::$currentType,
                 'status'=>Photos::STATUS_DISABLE
             ],
             'delete-all'=>[
-                'class'=>ContentDeleteAllAction::class,
+                'class'=>ContentDeleteAllAction::className(),
                 'type'=>Photos::$currentType,
             ]
         ]);

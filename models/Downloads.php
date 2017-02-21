@@ -31,7 +31,7 @@ class Downloads extends Content
         if ($this->isNewRecord) {
             return new ContentDetail(['scenario' => ContentDetail::SCENARIO_DOWNLOADS]);
         } else {
-            $model = $this->hasOne(ContentDetail::class, ['content_id' => 'id'])->one();
+            $model = $this->hasOne(ContentDetail::className(), ['content_id' => 'id'])->one();
             $model->scenario = ContentDetail::SCENARIO_DOWNLOADS;
             return $model;
         }
@@ -78,7 +78,7 @@ class Downloads extends Content
     {
         return [
             [
-                'class'=>UploadBehavior::class,
+                'class'=>UploadBehavior::className(),
                 'saveDir'=>'downloads/'
             ]
         ];

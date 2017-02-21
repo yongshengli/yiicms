@@ -21,7 +21,7 @@ class Photos extends Content
         if ($this->isNewRecord) {
             return [];
         } else {
-            return $this->hasMany(ContentDetail::class, ['content_id' => 'id'])->all();
+            return $this->hasMany(ContentDetail::className(), ['content_id' => 'id'])->all();
         }
     }
 

@@ -144,7 +144,7 @@ class Content extends AppActiveRecord
         if ($this->isNewRecord) {
             return new ContentDetail();
         } else {
-            return $this->hasOne(ContentDetail::class, ['content_id' => 'id'])->one();
+            return $this->hasOne(ContentDetail::className(), ['content_id' => 'id'])->one();
         }
     }
 
@@ -301,7 +301,7 @@ class Content extends AppActiveRecord
     public static function find()
     {
         ContentQuery::$type = static::$currentType;
-        return Yii::createObject(ContentQuery::class, [get_called_class()]);
+        return Yii::createObject(ContentQuery::className(), [get_called_class()]);
     }
 }
 

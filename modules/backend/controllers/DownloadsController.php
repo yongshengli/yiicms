@@ -39,17 +39,17 @@ class DownloadsController extends BackendController
     {
         return array_merge(parent::actions(),[
             'check'=>[
-                'class'=>ContentCheckAction::class,
+                'class'=>ContentCheckAction::className(),
                 'type'=>Downloads::$currentType,
                 'status'=>Downloads::STATUS_ENABLE
             ],
             'un-check'=>[
-                'class'=>ContentCheckAction::class,
+                'class'=>ContentCheckAction::className(),
                 'type'=>Downloads::$currentType,
                 'status'=>Downloads::STATUS_DISABLE
             ],
             'delete-all'=>[
-                'class'=>ContentDeleteAllAction::class,
+                'class'=>ContentDeleteAllAction::className(),
                 'type'=>Downloads::$currentType,
             ]
         ]);
