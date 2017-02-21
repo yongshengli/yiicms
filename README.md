@@ -97,7 +97,7 @@ directly under the Web root.
 1. 网站跟目录指向 yiicms/web/
 
 http://domain.com/ 前台
-http://domain.com/backend/ 后台
+http://domain.com/backend.html 后台
 
 2. 修改url路由规则
 http://localhost/yiicms/web/  前台
