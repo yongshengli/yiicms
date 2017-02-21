@@ -74,7 +74,7 @@ if(!empty(Yii::$app->params['logo'])){
     </div>
     <div class="container">
         <?= Carousel::widget([
-            'options'=>['class'=>'carousel slide'],
+            'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
             'items' => $carouselItems,
             'controls'=>false
         ])?>
