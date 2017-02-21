@@ -49,7 +49,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
-            'suffix'=>'.html',
+//            'suffix'=>'.html',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
