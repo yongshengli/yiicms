@@ -96,10 +96,10 @@ if(!empty(Yii::$app->params['logo'])){
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
             'items' => $carouselItems,
-            'controls'=>'<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            'controls'=>['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>',
             '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>',
+    <span class="sr-only">Next</span>'],
         ])?>
     </div>
     <div class="container">
