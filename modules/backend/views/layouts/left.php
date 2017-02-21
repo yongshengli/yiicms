@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Json;
 use mdm\admin\components\MenuHelper;
+use yii\web\UrlManager;
 
 $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu){
     $data = empty($menu['data'])?[]:json_decode($menu['data'], true);
@@ -9,10 +10,16 @@ $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu
         $icon = $data['icon'];
         unset($data['icon']);
     }
+    $route = parse_url($menu['route']);
+    $url = [];
+    if(isset($route['query'])) {
+        parse_str($route['query'], $url);
+    }
+    array_unshift($url, $route['path']);
     return [
         'icon' => $icon,
         'label' => $menu['name'],
-        'url' => [$menu['route']],
+        'url' => $url,
         'options' => $data,
         'items' => $menu['children']
     ];
