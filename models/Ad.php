@@ -80,7 +80,7 @@ class Ad extends AppActiveRecord
     {
         return [
             [
-                'class' => UploadBehavior::class,
+                'class' => UploadBehavior::className(),
                 'saveDir' => 'ad-img/'
             ]
         ];
