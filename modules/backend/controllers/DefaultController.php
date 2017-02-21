@@ -58,7 +58,7 @@ class DefaultController extends BackendController
         return $this->redirect(['/backend/default/login']);
     }
     /**
-     * @return \yii\web\Response
+     * @return string
      */
     public function actionEditPassword()
     {
@@ -74,6 +74,20 @@ class DefaultController extends BackendController
         return $this->render('edit-password',[
             'model'=>$model
         ]);
+    }
+
+    /**
+     * 清理缓存
+     * @return \yii\web\Response
+     */
+    public function actionClearCache()
+    {
+        if(Yii::$app->cache->flush()==true){
+            $this->addFlash('缓存清理成功', 'info');
+        }else {
+            $this->addFlash('缓存清理失败');
+        }
+        return $this->goBack();
     }
     /**
      * @inheritdoc

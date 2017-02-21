@@ -21,7 +21,12 @@ use app\widgets\Nav;
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li>
-                    <a href="<?=Yii::$app->homeUrl?>" role="button">
+                    <a href="<?=Url::to(['/backend/default/clear-cache'])?>" role="button" title="clear cache">
+                        <span class="fa fa-trash-o"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=Yii::$app->homeUrl?>" role="button" title="前台首页">
                         <span class="fa fa-home"></span>
                     </a>
                 </li>
