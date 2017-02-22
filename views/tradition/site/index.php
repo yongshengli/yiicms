@@ -21,35 +21,6 @@ $carouselItems = [];
 </style>
 <div class="site-index panel">
     <div class="projects-header page-header">
-        <h2>关于YiiCms <small>About the YiiCms</small></h2>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3 class="text-center">快速/安全/专业</h3>
-                <p>YiiCms 基于Yii2 框架开发。
-                    Yii只加载您需要的功能。它具有强大的缓存支持。
-                    它的标准是安全的。它包括了输入验证，输出过滤，SQL 注入和跨站点脚本的预防。
-                    它遵循了 MVC 模式，确保了清晰分离逻辑层和表示层。
-                </p>
-            </div>
-            <div class="col-sm-4">
-                <h3 class="text-center">开源/免费/强大</h3>
-                <p>YiiCms 是免费开源的企业站系统，功能强大齐全。<br/>
-                    主要功能：文章管理，产品管理，下载管理，相册管理，多模板支持，前台菜单自定义，后台菜单自定义等等。
-                </p>
-            </div>
-            <div class="col-sm-4">
-                <h3 class="text-center">一个框架、多种设备</h3>
-                <p>前台样式使用Bootstrap 框架开发，兼容各种设备。<br>
-                    你的网站和应用能在 Bootstrap 的帮助下通过同一份代码快速、有效适配手机、平板、PC 设备，这一切都是 CSS 媒体查询（Media Query）的功劳。
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="site-index panel">
-    <div class="projects-header page-header">
         <h2>产品展示 <small>The latest product</small></h2>
 
     </div>
