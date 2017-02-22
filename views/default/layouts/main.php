@@ -11,7 +11,7 @@ use app\assets\AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
-use yii\web\UrlManager;
+use yii\helpers\Url;
 
 AppAsset::register($this)->css = ['themes/default/css/site.css',];
 $carouselItems = [];
