@@ -94,7 +94,7 @@ Now you should be able to access the application through the following URL, assu
 directly under the Web root.
 
 ~~~
-1. 网站跟目录指向 yiicms/web/
+1. 网站跟目录指向 yiicms/web/ （推荐）
 
 http://domain.com/ 前台
 http://domain.com/backend.html 后台
