@@ -9,6 +9,7 @@
 /* @var $model \app\models\PhotosDetail */
 /* @var $this \yii\web\View*/
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 ?>
 
 <div class="file-preview-frame file-preview-initial">
@@ -53,7 +54,7 @@ use yii\bootstrap\ActiveForm;
             alert(\'参数错误\');
         }
         $.ajax({
-            "url":"/backend/photos/set-cover?id="+id,
+            "url":"'.Url::to(['/backend/photos/set-cover']).'?id="+id,
             "type":"post",
             "data":{"id":id},
             "dataType":"json"
@@ -95,7 +96,7 @@ $(\'.kv-file-remove\').click(function(){
         alert(\'参数错误\');
     }
     $.ajax({
-        "url":"/backend/photos/delete-detail?id="+id,
+        "url":"'.Url::to(['/backend/photos/delete-detail']).'?id="+id,
         "type":"post",
         "data":{"id":id},
         "dataType":"json"

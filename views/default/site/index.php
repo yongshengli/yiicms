@@ -48,7 +48,7 @@ $carouselItems = [];
                         <div class="thumbnail">
                             <div class="image-box">
                                 <a href="<?= Url::to(['/products/', 'id' => $model->id]) ?>">
-                                    <img alt="<?= $model->title ?>" src="<?= $model->image ?>" class="image">
+                                    <img alt="<?= $model->title ?>" src="<?=$model->image ?>" class="image">
                                 </a>
                             </div>
                             <div class="caption">
