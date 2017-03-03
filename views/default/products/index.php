@@ -18,13 +18,29 @@ $this->params['breadcrumbs'][] = ['label'=>'产品', 'url'=>['/products/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
-    .img-box{
-        height: 400px;width:400px; text-align: center;vertical-align: middle;display: table-cell;
-        max-width: 100%
+    @media (min-width:768px) {
+        .img-box {
+            height: 400px;
+            width: 400px;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            max-width: 100%
+        }
+        .img-box img {
+            display: inline;
+            max-width: 100%;
+            max-height: 400px;
+        }
     }
-    .img-box img{
-        display: inline;
-        max-width:100%;max-height: 400px;
+    @media (max-width:767px){
+        .img-box{
+            text-align: center;
+        }
+        .img-box img{
+            display: inline;
+            max-height: 400px;
+        }
     }
 </style>
 <div class="site-index">

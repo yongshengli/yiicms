@@ -15,13 +15,25 @@ $this->title = ArrayHelper::getValue(Yii::$app->params,'homeTitle', 'YiiCmsé¦–é¡
 $carouselItems = [];
 ?>
 <style>
-    .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
     .caption{text-align: left}
-    .image-box{border-bottom: 1px solid #ddd;padding: 5px}
-    .image-box a{
-        height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
+    @media screen and (min-width:1200px) {
+        .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
+        .image-box{border-bottom: 1px solid #ddd;padding: 5px}
+        .image-box a{
+            height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
+        }
+        .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
     }
-    .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
+    @media ( min-width:992px ) and ( max-width:1199px ) {
+        .thumbnail{width:200px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
+        .image-box{border-bottom: 1px solid #ddd;padding: 5px}
+        .image-box a{
+            height: 200px;width:200px; text-align: center;vertical-align: middle;display: table-cell;
+        }
+        .image{max-width:100%;max-height:190px;vertical-align:middle;display: inline}
+        h5, .h5 {font-size: 12px}
+        .caption{font-size: 12px;}
+    }
 </style>
 <div class="site-index">
     <div class="row">

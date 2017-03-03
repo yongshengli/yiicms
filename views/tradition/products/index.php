@@ -19,13 +19,25 @@ $this->params['breadcrumbs']=[];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
-    .img-rounded{margin-left: auto;margin-right:auto;width:380px;padding: 10px;max-width: 100%}
-    .img-box{
-        height: 360px;width:360px; text-align: center;vertical-align: middle;display: table-cell;
+
+    @media (min-width:768px) {
+        .img-rounded{margin-left: auto;margin-right:auto;width:380px;padding: 10px;max-width: 100%}
+        .img-box{
+            height: 360px;width:360px; text-align: center;vertical-align: middle;display: table-cell;
+        }
+        .img-box img{
+            display: inline;
+            max-width:100%;max-height: 360px;
+        }
     }
-    .img-box img{
-        display: inline;
-        max-width:100%;max-height: 360px;
+    @media (max-width:767px){
+        .img-box{
+            text-align: center;
+        }
+        .img-box img{
+            display: inline;
+            max-height: 400px;
+        }
     }
 </style>
 <div class="site-index">
