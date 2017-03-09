@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             </div>
             <div class="col-lg-9">
-                <div class="panel panel-default" style="margin: 15px 15px 15px -5px;">
+                <div class="panel panel-default">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="img-rounded">
@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="panel-body">
+                            <div class="panel-body" style="margin: 15px 15px 15px -5px;padding: 0px">
                                 <h4><?= $model->title ?></h4>
                                 <div><?= $model->detail->params ?></div>
                             </div>
