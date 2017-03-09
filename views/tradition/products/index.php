@@ -21,10 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>
 
     @media (min-width:768px) {
-        .img-rounded{margin-left: auto;margin-right:auto;width:380px;padding: 10px;max-width: 100%}
+        .img-rounded{margin-left: auto;margin-right:auto;width:420px;padding: 10px;max-width: 100%}
         .img-box{
             background-color: #ebebeb;
-            height: 360px;width:360px; text-align: center;vertical-align: middle;display: table-cell;
+            height: 400px;width:400px; text-align: center;vertical-align: middle;display: table-cell;
         }
         .img-box img{
             display: inline;
