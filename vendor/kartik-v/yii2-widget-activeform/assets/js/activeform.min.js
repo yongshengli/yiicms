@@ -1,0 +1,13 @@
+/*!
+ * @package   yii2-widget-activeform
+ * @author    Kartik Visweswaran <kartikv2@gmail.com>
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2016
+ * @version   1.4.8
+ *
+ * Active Field Hints Display Module
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2015, Kartik Visweswaran, Krajee.com
+ * For more JQuery plugins visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */!function(e){"use strict";var t=function(t,n){return null===t||void 0===t||t===[]||""===t||n&&""===e.trim(t)},n=".kvActiveField",i=function(t,n){var i=this;i.$element=e(t),e.each(n,function(e,t){i[e]=t}),i.init()};i.prototype={constructor:i,init:function(){var n,i=this,a=i.$element,s=a.find(".kv-hint-block"),o=s.html(),l=a.find(".kv-hintable");s.hide(),t(o)||(t(i.contentCssClass)||(n=e(document.createElement("span")).addClass(i.contentCssClass).append(o),n=e(document.createElement("span")).append(n),o=n.html(),n.remove()),l.each(function(){var t=e(this);t.hasClass("kv-type-label")?t.removeClass(i.labelCssClass).addClass(i.labelCssClass):t.removeClass("hide "+i.iconCssClass).addClass(i.iconCssClass),t.hasClass("kv-hint-click")&&i.listen("click",t,o),t.hasClass("kv-hint-hover")&&i.listen("hover",t,o)}),i.hideOnEscape&&e(document).on("keyup",function(t){l.each(function(){var n=e(this);27===t.which&&n.popover("hide")})}),i.hideOnClickOut&&e("body").on("click",function(t){l.each(function(){var n=e(this);n.is(t.target)||0!==n.has(t.target).length||0!==e(".popover").has(t.target).length||n.popover("hide")})}))},listen:function(e,n,i){var a=this,s={html:!0,trigger:"manual",content:i,title:a.title,placement:a.placement,container:a.container||!1,animation:!!a.animation,delay:a.delay,selector:a.selector};return t(a.template)||(s.template=a.template),t(a.viewport)||(s.viewport=a.viewport),n.popover(s),"click"===e?void a.raise(n,"click",function(e){e.preventDefault(),n.popover("toggle")}):(a.raise(n,"mouseenter",function(){n.popover("show")}),void a.raise(n,"mouseleave",function(){n.popover("hide")}))},raise:function(e,t,i){t+=n,e.off(t).on(t,i)}},e.fn.activeFieldHint=function(t){var n=Array.apply(null,arguments);return n.shift(),this.each(function(){var a=e(this),s=a.data("activeFieldHint"),o="object"==typeof t&&t;s||a.data("activeFieldHint",s=new i(this,e.extend({},e.fn.activeFieldHint.defaults,o,e(this).data()))),"string"==typeof t&&s[t].apply(s,n)})},e.fn.activeFieldHint.defaults={labelCssClass:"kv-hint-label",iconCssClass:"kv-hint-icon",contentCssClass:"kv-hint-content",hideOnEscape:!1,hideOnClickOut:!1,title:"",placement:"right",container:"form",delay:0,animation:!0,selector:!1,template:"",viewport:""}}(window.jQuery);

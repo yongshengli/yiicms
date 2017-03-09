@@ -1,0 +1,181 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2016
+ * @package yii2-widgets
+ * @subpackage yii2-widget-activeform
+ * @version 1.4.8
+ *
+ * Active Form Styling for Bootstrap 3.0
+ * Built for Yii Framework 2.0
+ * Author: Kartik Visweswaran
+ * Year: 2015
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.form-inline-block .btn-default {
+    margin-top: -10px;
+}
+
+.kv-hint-icon {
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+    margin-left: 4px;
+    vertical-align: middle;
+    cursor: help;
+    opacity: 0.8;
+}
+
+.kv-hint-icon:hover, .kv-hint-icon:focus {
+    opacity: 1;
+}
+
+.kv-hint-content {
+    opacity: 0.9;
+}
+
+.kv-hint-label {
+    border-bottom: 1px dashed #888;
+    cursor: help;
+}
+
+label.disabled, label.readonly, .disabled label, .readonly label {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+
+@media (min-width: 768px) {
+    .form-inline .form-group, .form-inline .form-control {
+        vertical-align: top;
+    }
+
+    .form-inline .btn-default {
+        margin: 0;
+    }
+
+    .form-inline .checkbox, .form-inline .radio {
+        padding-top: 6px;
+    }
+}
+
+.input-multiselect {
+    overflow: auto;
+    min-height: 145px !important;
+}
+
+.kv-form-horizontal .form-group {
+    margin-bottom: 0;
+}
+
+.kv-form-horizontal .form-group + .form-group {
+    margin-top: 5px;
+}
+
+/**
+ * input group buttons styling change for 
+ * has-success and has-danger states
+ * added by Kartik Visweswaran
+ */
+.has-success .input-group-btn .btn-default {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #3c763d;
+}
+
+.has-success .input-group-btn .btn-default:hover,
+.has-success .input-group-btn .btn-default:focus,
+.has-success .input-group-btn .btn-default.focus,
+.has-success .input-group-btn .btn-default:active,
+.has-success .input-group-btn .btn-default.active,
+.open > .dropdown-toggle.has-success .input-group-btn .btn-default {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.has-success .input-group-btn .btn-default:active,
+.has-success .input-group-btn .btn-default.active,
+.open > .dropdown-toggle.has-success .input-group-btn .btn-default {
+    background-image: none;
+}
+
+.has-success .input-group-btn .btn-default.disabled,
+.has-success .input-group-btn .btn-default[disabled]
+.has-success .input-group-btn .btn-default.disabled:hover,
+.has-success .input-group-btn .btn-default[disabled]:hover
+.has-success .input-group-btn .btn-default.disabled:focus,
+.has-success .input-group-btn .btn-default[disabled]:focus
+.has-success .input-group-btn .btn-default.disabled.focus,
+.has-success .input-group-btn .btn-default[disabled].focus
+.has-success .input-group-btn .btn-default.disabled:active,
+.has-success .input-group-btn .btn-default[disabled]:active
+.has-success .input-group-btn .btn-default.disabled.active,
+.has-success .input-group-btn .btn-default[disabled].active {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.has-success .input-group-btn .btn-default .badge {
+    color: #5cb85c;
+    background-color: #fff;
+}
+
+.has-error .input-group-btn .btn-default {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #a94442;
+}
+
+.has-error .input-group-btn .btn-default:hover,
+.has-error .input-group-btn .btn-default:focus,
+.has-error .input-group-btn .btn-default.focus,
+.has-error .input-group-btn .btn-default:active,
+.has-error .input-group-btn .btn-default.active,
+.open > .dropdown-toggle.has-error .input-group-btn .btn-default {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+.has-error .input-group-btn .btn-default:active,
+.has-error .input-group-btn .btn-default.active,
+.open > .dropdown-toggle.has-error .input-group-btn .btn-default {
+    background-image: none;
+}
+
+.has-error .input-group-btn .btn-default.disabled,
+.has-error .input-group-btn .btn-default[disabled]
+.has-error .input-group-btn .btn-default.disabled:hover,
+.has-error .input-group-btn .btn-default[disabled]:hover
+.has-error .input-group-btn .btn-default.disabled:focus,
+.has-error .input-group-btn .btn-default[disabled]:focus
+.has-error .input-group-btn .btn-default.disabled.focus,
+.has-error .input-group-btn .btn-default[disabled].focus
+.has-error .input-group-btn .btn-default.disabled:active,
+.has-error .input-group-btn .btn-default[disabled]:active
+.has-error .input-group-btn .btn-default.disabled.active,
+.has-error .input-group-btn .btn-default[disabled].active {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.has-error .input-group-btn .btn-default .badge {
+    color: #d9534f;
+    background-color: #fff;
+}
+
+/**
+ * feedback icon styling
+ */
+.kv-feedback-success,
+.kv-feedback-error,
+.has-error .kv-feedback-default,
+.has-success .kv-feedback-default {
+    display: none;
+}
+
+.has-error .kv-feedback-error,
+.has-success .kv-feedback-success {
+    display: inline;
+}

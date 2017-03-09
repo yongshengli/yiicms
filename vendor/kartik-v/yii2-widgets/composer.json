@@ -1,0 +1,42 @@
+{
+    "name": "kartik-v/yii2-widgets",
+    "description": "Collection of useful widgets for Yii Framework 2.0 extending functionalities for Bootstrap",
+    "keywords": ["yii2", "extension", "widget", "form"],
+    "homepage": "https://github.com/kartik-v/yii2-widgets",
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "Kartik Visweswaran",
+            "email": "kartikv2@gmail.com",
+            "homepage": "http://www.krajee.com/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "kartik-v/yii2-krajee-base": "*",
+        "kartik-v/yii2-widget-activeform": "*",
+        "kartik-v/yii2-widget-affix": "*",
+        "kartik-v/yii2-widget-alert": "*",
+        "kartik-v/yii2-widget-colorinput": "*",
+        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-widget-datetimepicker": "*",
+        "kartik-v/yii2-widget-depdrop": "*",
+        "kartik-v/yii2-widget-fileinput": "*",
+        "kartik-v/yii2-widget-growl": "*",
+        "kartik-v/yii2-widget-rangeinput": "*",
+        "kartik-v/yii2-widget-rating": "*",
+        "kartik-v/yii2-widget-select2": "*",
+        "kartik-v/yii2-widget-sidenav": "*",
+        "kartik-v/yii2-widget-spinner": "*",
+        "kartik-v/yii2-widget-switchinput": "*",
+        "kartik-v/yii2-widget-timepicker": "*",
+        "kartik-v/yii2-widget-touchspin": "*",
+        "kartik-v/yii2-widget-typeahead": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "kartik\\widgets\\": ""
+        }
+    }
+}
