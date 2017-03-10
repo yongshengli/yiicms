@@ -10,7 +10,7 @@ use app\modules\backend\widgets\GridView;
 $this->title = '友情链接管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ad-index">
+<div class="blogroll-index">
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-            <?php \yii\widgets\Pjax::begin()?>
+
             <?= GridView::widget([
                 'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
@@ -55,7 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ],
             ]); ?>
-            <?php \yii\widgets\Pjax::end()?>
         </div>
     </div>
 </div>
