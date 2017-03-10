@@ -9,7 +9,7 @@ $this->title = '修改友情链接: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => '友情链接管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = '修改';
 ?>
-<div class="ad-update">
+<div class="adx-update">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation"><?= Html::a('友情链接管理', ['index']) ?></li>

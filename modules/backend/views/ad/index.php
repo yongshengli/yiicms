@@ -10,7 +10,7 @@ use app\modules\backend\widgets\GridView;
 $this->title = '轮播图管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="">
+<div class="adx-index">
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">

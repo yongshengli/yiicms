@@ -10,7 +10,7 @@ $this->title = '添加友情链接';
 $this->params['breadcrumbs'][] = ['label' => '友情链接管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ad-create">
+<div class="adx-create">
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" role="tablist">
