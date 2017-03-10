@@ -28,8 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-                    'name',
-                    'label',
+                    [
+                        'attribute'=>'name',
+                        'options' => ['style' => 'width:80px']
+                    ],
+                    [
+                        'attribute'=>'label',
+                        'options' => ['style' => 'width:120px']
+                    ],
                     'value',
                     [
                         'filterType'=>'date',
