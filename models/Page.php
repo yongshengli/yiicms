@@ -32,7 +32,7 @@ class Page extends \app\components\AppActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'created_at', 'updated_at'], 'required'],
+            [['title', 'content'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
             [['description'], 'string', 'max' => 255],
             [['title', 'keyword', 'template'], 'string', 'max' => 100],
