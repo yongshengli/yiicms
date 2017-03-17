@@ -31,7 +31,7 @@ class ContentDetail extends AppActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_DOWNLOADS] = ['content_id','detail', 'file_url'];
+        $scenarios[self::SCENARIO_DOWNLOADS] = ['content_id','detail'];
         $scenarios[self::SCENARIO_PRODUCTS] = ['content_id','detail', 'params'];
         return $scenarios;
     }

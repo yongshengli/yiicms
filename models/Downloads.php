@@ -69,7 +69,7 @@ class Downloads extends Content
             $this->detail->file_url = $file;
         }
         if(empty($this->detail->file_url)){
-            $this->addError('file', '文件能为空');
+            $this->addError('file', '文件不能为空');
             return false;
         }
         return true;
