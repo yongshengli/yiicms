@@ -87,4 +87,5 @@ empty($model) && $model = new Feedback();
 
             <?php endif; ?>
         </div>
+    </div>
 </div>
