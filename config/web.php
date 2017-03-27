@@ -53,6 +53,12 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+//                'index'=>'site/index',
+//                'about'=>'site/about',
+//                'contact'=>'site/contact',
+//                'search'=>'site/search',
+//                '<controller:[\w-]+>/<id:\d+>'=>'<controller>/index',
+//                'page-<id:\d+>'=>'site/page',
             ],
         ],
         'formatter'=>[
