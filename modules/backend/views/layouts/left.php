@@ -5,7 +5,7 @@ use yii\web\UrlManager;
 
 $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu){
     $data = empty($menu['data'])?[]:json_decode($menu['data'], true);
-    $icon ='';
+    $icon ='fa fa-circle-o';
     if(isset($data['icon'])){
         $icon = $data['icon'];
         unset($data['icon']);
