@@ -58,7 +58,8 @@ $config = [
                 'contact'=>'site/contact',
                 'search'=>'site/search',
                 '<controller:[\w-]+>/<id:\d+>'=>'<controller>/item',
-//                'page-<id:\d+>'=>'site/page',
+                '<controller:[\w-]+>/list_<category-id:\d+>'=>'<controller>/list',
+                'page_<id:\d+>'=>'site/page',
             ],
         ],
         'formatter'=>[
