@@ -42,7 +42,7 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
+The minimum requirement by this project template that your Web server supports PHP 5.5.0.
 
 
 INSTALLATION
@@ -57,7 +57,8 @@ INSTALLATION
 3. Database config
 
 4. 配置 ngixn 虚拟机或者apache虚拟机 网站根目录指向 yiicms/web/
-   或者 修改/config/web.php url路由配置
+
+5. 不能将yiicms/web作为根目录时，可将yiicms/web 目录下的文件全部移动到 yiicms下，否则跳过此步骤
 
 ~~~
 
@@ -76,32 +77,14 @@ return [
 ```
 
 
-config/web.php 中作如下修改 或者 将网站根目录直接指向 yiicms/web/ 目录
-
-```
-
-'enablePrettyUrl' => false,
-
-```
-
 
 **NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
-
-Now you should be able to access the application through the following URL, assuming `yiicms` is the directory
-directly under the Web root.
-
 ~~~
-1. 网站跟目录指向 yiicms/web/ （推荐）
+配置完成后可通过如下地址访问前台/后台
 
 http://domain.com/ 前台
 http://domain.com/backend.html 后台
 
-2. 不能执行方法1时，可将yiicms/web 目录下的文件全部移动到 yiicms下
-http://localhost/yiicms/  前台
-http://localhost/yiicms/backend.html 后台
 
 ~~~
 
