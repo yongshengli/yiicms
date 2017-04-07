@@ -13,13 +13,13 @@ use app\helpers\StringHelper;
 <div class="col-md-4">
     <div class="thumbnail">
         <div class="image-box">
-            <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>">
+            <a href="<?=Url::to(['/products/item', 'id'=>$model->id])?>">
                 <img alt="<?=$model->title?>" src="<?=$model->image?>" class="image">
             </a>
         </div>
         <div class="caption">
             <h5>
-                <a href="<?=Url::to(['/products/', 'id'=>$model->id])?>" title="<?=$model->title?>">
+                <a href="<?=Url::to(['/products/item', 'id'=>$model->id])?>" title="<?=$model->title?>">
                     <?=StringHelper::truncateUtf8String($model->title, 13, false)?>
                 </a>
             </h5>

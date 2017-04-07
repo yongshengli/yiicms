@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'title',
                                 'format'=>'raw',
                                 'value'=>function($item){
-                                    return Html::a($item->title, ['/downloads/', 'id'=>$item->id]);
+                                    return Html::a($item->title, ['/downloads/item', 'id'=>$item->id]);
                                 }
                             ],
                             [

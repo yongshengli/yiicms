@@ -22,11 +22,24 @@ class PhotosController extends AppController
 {
     /**
      * 相册详情
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionIndex()
+    {
+        $id = Yii::$app->request->get('id');
+        if(empty($id)){
+            return $this->redirect(['list']);
+        }
+        return $this->actionItem($id);
+    }
+
+    /**
      * @param int $id
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionIndex($id)
+    public function actionItem($id)
     {
         $model = Photos::find()->where(['status'=>Photos::STATUS_ENABLE,'id'=>$id])->one();
         if(empty($model)){
@@ -51,7 +64,6 @@ class PhotosController extends AppController
             'dataProvider' => $dataProvider
         ]);
     }
-
     public function actionList()
     {
         $categoryId = Yii::$app->request->get('category-id');

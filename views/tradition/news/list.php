@@ -49,7 +49,7 @@ $this->params['breadcrumbs']=[];
                                     'attribute'=>'title',
                                     'format'=>'raw',
                                     'value'=>function($item){
-                                        $html = '<h4>'.Html::a($item->title, ['/news/', 'id'=>$item->id]).'</h4>';
+                                        $html = '<h4>'.Html::a($item->title, ['/news/item', 'id'=>$item->id]).'</h4>';
                                         $html .= '<p>'.Html::encode($item->description).'</p>';
                                         return $html;
                                     }

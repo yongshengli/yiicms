@@ -19,16 +19,27 @@ use app\models\Category;
 class ProductsController extends Controller
 {
     /**
-     * 新闻详情页
-     * @param $id
+     * 产品首页
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionIndex($id)
+    public function actionIndex()
     {
+        $id = Yii::$app->request->get('id');
         if(empty($id)){
-            $this->redirect(['list']);
+            return $this->redirect(['list']);
         }
+        return $this->actionItem($id);
+    }
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionItem($id)
+    {
+
         $model = Products::find()->where(['status'=>Products::STATUS_ENABLE, 'id'=>$id])->one();
 
         if(empty($model)){

@@ -48,13 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value'=>function($item){
                                     $title = '<h4>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title).'</h4>';
                                     if($item->type==\app\models\Content::TYPE_NEWS) {
-                                        $html = Html::a($title, ['/news/', 'id' => $item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/news/item', 'id' => $item->id],['target'=>'_blank']);
                                     }elseif($item->type==\app\models\Content::TYPE_PRODUCTS){
-                                        $html = Html::a($title, ['/products', 'id'=>$item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/products/item', 'id'=>$item->id],['target'=>'_blank']);
                                     }elseif($item->type==\app\models\Content::TYPE_PHOTOS){
-                                        $html = Html::a($title, ['/photos', 'id'=>$item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/photos/item', 'id'=>$item->id],['target'=>'_blank']);
                                     }elseif($item->type==\app\models\Content::TYPE_DOWNLOADS){
-                                        $html = Html::a($title, ['/downloads', 'id'=>$item->id],['target'=>'_blank']);
+                                        $html = Html::a($title, ['/downloads/item', 'id'=>$item->id],['target'=>'_blank']);
                                     }else{
                                         $html = $title;
                                     }

@@ -63,10 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="col-lg-9 text-right">
                                 <?php if ($previous = $model->previous()): ?>
-                                    上一相册 <?= Html::a($previous->title, ['/photos/index', 'id' => $previous->id]) ?>
+                                    上一相册 <?= Html::a($previous->title, ['/photos/item', 'id' => $previous->id]) ?>
                                 <?php endif; ?>
                                 <?php if ($next = $model->next()): ?>
-                                    下一相册 <?= Html::a($next->title, ['/photos/index', 'id' => $next->id]) ?>
+                                    下一相册 <?= Html::a($next->title, ['/photos/item', 'id' => $next->id]) ?>
                                 <?php endif; ?>
                             </div>
                         </div>

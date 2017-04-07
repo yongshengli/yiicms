@@ -21,12 +21,25 @@ use app\components\AppController as Controller;
 class NewsController extends Controller
 {
     /**
+     * 相册详情
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionIndex()
+    {
+        $id = Yii::$app->request->get('id');
+        if(empty($id)){
+            return $this->redirect(['list']);
+        }
+        return $this->actionItem($id);
+    }
+    /**
      * 新闻详情页
      * @param $id
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionIndex($id)
+    public function actionItem($id)
     {
         if(empty($id)){
             $this->redirect(['list']);

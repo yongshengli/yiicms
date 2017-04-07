@@ -91,10 +91,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="col-lg-9 text-right">
                                 <?php if ($previous = $model->previous()): ?>
-                                    上一条 <?= Html::a($previous->title, ['/products/index', 'id' => $previous->id]) ?>
+                                    上一条 <?= Html::a($previous->title, ['/products/item', 'id' => $previous->id]) ?>
                                 <?php endif; ?>
                                 <?php if ($next = $model->next()): ?>
-                                    下一条 <?= Html::a($next->title, ['/products/index', 'id' => $next->id]) ?>
+                                    下一条 <?= Html::a($next->title, ['/products/item', 'id' => $next->id]) ?>
                                 <?php endif; ?>
                             </div>
                         </div>
