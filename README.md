@@ -21,7 +21,7 @@ yiicms 主要功能：
 YiiCms版权
 ----------
 
-http://git.oschina.net/templi/yiicms/blob/master/LICENSE.md?dir=0&filepath=LICENSE.md&oid=14736b7be693f1533707187c87aa96edc8749c57&sha=a8b54ba413ef169f8e15ee0918195fed34cb1e13
+http://git.oschina.net/templi/yiicms/blob/master/LICENSE.md
 
 DIRECTORY STRUCTURE
 -------------------
