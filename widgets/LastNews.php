@@ -18,7 +18,7 @@ class LastNews extends Panel
     public $title = '最新新闻';
     public $limit=5;
     public $showDate = false;
-    public $itemOptions = ['class'=>'list-group-item', 'baseUrl'=>'/news/'];
+    public $itemOptions = ['class'=>'list-group-item', 'baseUrl'=>'/news/item'];
     /**
      *
      * @return null|string
