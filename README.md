@@ -87,6 +87,13 @@ http://domain.com/backend.html 后台
 
 
 ~~~
+关于route规则（url美化）配置
+-----------------------------
+请参考yii2用户指南
+http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls
+
+中文权威指南
+http://www.yiichina.com/doc/guide/2.0/rest-routing
 
 
 
