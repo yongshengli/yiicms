@@ -99,9 +99,9 @@ directly under the Web root.
 http://domain.com/ 前台
 http://domain.com/backend.html 后台
 
-2. 修改url路由规则
-http://localhost/yiicms/web/  前台
-http://localhost/yiicms/web/index.php?r=backend 后台
+2. 不能执行方法1时，可将yiicms/web 目录下的文件全部移动到 yiicms下
+http://localhost/yiicms/  前台
+http://localhost/yiicms/backend.html 后台
 
 ~~~
 
