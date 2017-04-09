@@ -29,23 +29,35 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="tab-content">
             <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
-
-            <?= $form->field($model, 'logo')->textInput(['maxlength' => true])
-                ->label($model->getAttributeLabel('logo') . '<code>如：@web/images/logo.png</code>')
-            ?>
-
+            <div class="row">
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'appName')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'logo')->textInput(['maxlength' => true])
+                        ->label($model->getAttributeLabel('logo') . '<code>如：@web/images/logo.png</code>')
+                    ?>
+                </div>
+            </div>
             <?= $form->field($model, 'homeTitle')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'keywords')->textarea() ?>
-
-            <?= $form->field($model, 'description')->textarea() ?>
-
-            <?= $form->field($model, 'pageSize', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">条</span></div>'])
-                ->textInput() ?>
-
-            <?= $form->field($model, 'cacheDuration', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">秒</span></div>'])
-                ->textInput() ?>
-
+            <div class="row">
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'keywords')->textarea() ?>
+                </div>
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'description')->textarea() ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'pageSize', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">条</span></div>'])
+                        ->textInput() ?>
+                </div>
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'cacheDuration', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon">秒</span></div>'])
+                        ->textInput() ?>
+                </div>
+            </div>
             <?= $form->field($model, 'nav')->textarea(['rows' => 6]) ?>
 
             <div class="form-group">
