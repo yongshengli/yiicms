@@ -171,7 +171,7 @@ a.desc:after {
     border: none;
 }
 .navbar-blue a {color:#FFF}
-.navbar {border-radius: 0;}
+.navbar {border-radius: 0;margin-bottom: 0px}
 .navbar-blue .nav > li > a:hover,
 .navbar-blue .nav > li > a:focus {background-color: #3a80a7;}
 .navbar-blue .navbar-collapse,
