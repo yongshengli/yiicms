@@ -164,7 +164,10 @@ a.desc:after {
     margin: 0 0 20px;
     border-bottom: 1px solid #eee;
 }
-
+.carousel-indicators li
+,.carousel-indicators .active{
+    width: 30px;
+}
 /** 蓝色主题0099FF*/
 .navbar-blue{
     background-color: #408eba;
