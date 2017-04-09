@@ -28,11 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         <div class="tab-content">
             <?php $form = ActiveForm::begin(); ?>
-
-            <?= $form->field($model, 'themePath')->dropDownList($model->themes) ?>
-
-            <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
-
+            <div class="row">
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'themePath')->dropDownList($model->themes) ?>
+                </div>
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'themeColor')->dropDownList($model->themeColors) ?>
+                </div>
+            </div>
             <div class="form-group">
                 <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
             </div>
