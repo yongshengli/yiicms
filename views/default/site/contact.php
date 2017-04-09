@@ -15,19 +15,7 @@ empty($model) && $model = new Feedback();
 ?>
 <div class="site-contact">
     <div class="row">
-        <div class="col-lg-3">
-            <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
-                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
-            ])?>
-            <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
-            ])?>
-            <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us',
-                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
-            ])?>
-            <?=\app\widgets\ConfigPanel::widget(['configName'=>'donate',
-                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
-            ])?>
-        </div>
+
         <div class="col-lg-9">
 
             <?=empty($page)?'':$page->content?>
@@ -57,7 +45,7 @@ empty($model) && $model = new Feedback();
                 </p>
 
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
 
                         <?php $form = ActiveForm::begin(['id' => 'contact-form','action'=>['/site/contact']]); ?>
                         <div class="row">
@@ -86,6 +74,19 @@ empty($model) && $model = new Feedback();
                 </div>
 
             <?php endif; ?>
+        </div>
+        <div class="col-lg-3">
+            <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PRODUCTS,
+                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
+            ])?>
+            <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
+            ])?>
+            <?=\app\widgets\ConfigPanel::widget(['configName'=>'contact_us',
+                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
+            ])?>
+            <?=\app\widgets\ConfigPanel::widget(['configName'=>'donate',
+                'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
+            ])?>
         </div>
     </div>
 </div>
