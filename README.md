@@ -94,7 +94,7 @@ http://domain.com/backend.html 后台
 YiiCms使用手册
 -------------
 
-http://yiicms.co/news/list_10.html
+http://yiicms.co/news/list/10.html
 
 
 
