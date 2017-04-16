@@ -922,7 +922,10 @@ VALUES
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+/* 分类添加图片和关键字描述文本*/
+ALTER table `category` add  COLUMN  `image` varchar(255) DEFAULT '' AFTER `type`;
+ALTER table `category` add  COLUMN  `description` varchar(255) NOT NULL DEFAULT '' AFTER image;
+ALTER table `category` add  COLUMN  `keywords` varchar(255) NOT NULL DEFAULT '' AFTER description;
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
