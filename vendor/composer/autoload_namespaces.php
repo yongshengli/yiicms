@@ -7,7 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'cebe\\gravatar\\' => array($vendorDir . '/cebe/yii2-gravatar'),
+    'Props\\' => array($vendorDir . '/mrclay/props-dic/src', $vendorDir . '/mrclay/props-dic/test'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'Pimple' => array($vendorDir . '/pimple/pimple/src'),
+    'JShrink' => array($vendorDir . '/tedivm/jshrink/src'),
+    'JSMin\\' => array($vendorDir . '/mrclay/jsmin-php/src'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
     'Codeception\\' => array($vendorDir . '/codeception/specify/src'),

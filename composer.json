@@ -22,7 +22,8 @@
         "mdmsoft/yii2-admin": "~2.0",
         "kartik-v/yii2-widgets": "^3.4",
         "rmrevin/yii2-fontawesome": "~2.9",
-        "sheng/ueditor": "1.3.1"
+        "sheng/ueditor": "1.3.1",
+        "skeeks/yii2-assets-auto-compress": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
