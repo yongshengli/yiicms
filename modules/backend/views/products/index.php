@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     // 'admin_user_id',
                     [
                         'attribute' =>'hits',
-                        'options' => ['style' => 'width:50px']
+                        'options' => ['style' => 'width:70px']
                     ],
                     [
                         'attribute' => 'created_at',
