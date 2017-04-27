@@ -30,6 +30,10 @@ $carouselItems = [];
         h5, .h5 {font-size: 12px}
         .caption{font-size: 12px;}
     }
+    .list-group {
+        padding-left: 0;
+        margin-bottom: 7px;
+    }
 </style>
 <div class="site-index panel">
     <div class="projects-header page-header">
