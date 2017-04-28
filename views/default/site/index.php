@@ -20,7 +20,7 @@ $carouselItems = [];
         .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
         .image-box{border-bottom: 1px solid #ddd;padding: 5px}
         .image-box a{
-            height: 240px;width:240px; text-align: center;vertical-align: middle;display: table-cell;
+            height: 230px;width:230px; text-align: center;vertical-align: middle;display: table-cell;
         }
         .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
     }
