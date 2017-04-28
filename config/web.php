@@ -13,11 +13,12 @@ if(is_file($appPath . '/runtime/config/view.php')){
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+//    'bootstrap' => ['log','assetsAutoCompress'],
+    'bootstrap' => ['log',],
     'components' => [
-//        'assetsAutoCompress' => [
-//            'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-//        ],
+        'assetsAutoCompress' => [
+            'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'Q-TAjtqKlLrK2nQLbeDDHBI00UPsApCB',
