@@ -89,7 +89,9 @@ if(!empty(Yii::$app->params['logo'])){
         ]) ?>
         <?= $content ?>
     </div>
-    <?= \app\widgets\Hook::widget(['configName'=>'gongyi']); ?>
+    <div class="container">
+        <?= \app\widgets\Hook::widget(['configName'=>'gongyi']); ?>
+    </div>
 </div>
 <footer class="footer">
     <div class="container">
