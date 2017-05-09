@@ -53,17 +53,12 @@ class UploadBehavior extends Behavior
         if(empty($this->imageFile)){
             return '';
         }
-        try {
-            if($this->imageFile->hasError){
-                throw new BadRequestHttpException(self::getErrorMsg($this->imageFile->error));
-            }
-            $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
-            if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
-                return $fileName;
-            }
-        } catch (\Exception $e) {
-            $this->owner->addError('imageFile', $e->getMessage());
-            return false;
+        if($this->imageFile->hasError){
+            throw new BadRequestHttpException(self::getErrorMsg($this->imageFile->error));
+        }
+        $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
+        if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
+            return $fileName;
         }
         return '';
     }
@@ -71,6 +66,7 @@ class UploadBehavior extends Behavior
     /**
      * 上传文件
      * @return string
+     * @throws BadRequestHttpException
      */
     public function uploadFile()
     {
@@ -79,18 +75,14 @@ class UploadBehavior extends Behavior
         if(empty($this->file)){
             return '';
         }
-        try {
-            if($this->file->hasError){
-                throw new BadRequestHttpException(self::getErrorMsg($this->file->error));
-            }
-            $fileName = $this->createUploadFilePath() . uniqid('yiicms') . '.' . $this->file->extension;
-            if ($this->file->saveAs(\Yii::getAlias('@webroot') . $fileName)) {
-                return $fileName;
-            }
-        }catch (\Exception $e){
-            $this->owner->addError('file', $e->getMessage());
-            return false;
+        if($this->file->hasError){
+            throw new BadRequestHttpException(self::getErrorMsg($this->file->error));
         }
+        $fileName = $this->createUploadFilePath() . uniqid('yiicms') . '.' . $this->file->extension;
+        if ($this->file->saveAs(\Yii::getAlias('@webroot') . $fileName)) {
+            return $fileName;
+        }
+
         return '';
     }
     /**
