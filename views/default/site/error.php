@@ -23,5 +23,7 @@ $this->title = $name;
     <p>
         Please contact us if you think this is a server error. Thank you.
     </p>
-
+    <p style="text-align: center">
+        <iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/1260376' width='654' height='470' style='display:block;margin: 20px auto;'></iframe>
+    </p>
 </div>
