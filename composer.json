@@ -55,9 +55,9 @@
             "generateCookieValidationKey": [
                 "config/web.php"
             ],
-            "copyFiles": {
-                "config/db.php.default": "config/db.php"
-            }
+            "copyFiles": [
+                {"config/db.php.default": "config/db.php"}
+            ]
         },
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
