@@ -74,11 +74,11 @@ LOCK TABLES `admin_menu` WRITE;
 INSERT INTO `admin_menu` (`id`, `name`, `parent`, `route`, `order`, `data`)
 VALUES
 	(1,'产品管理',NULL,'/backend/products/index',0,X'7B2269636F6E22203A2266612066612D7468227D'),
-	(2,'产品分类',1,'/backend/category/index?type=1',1,NULL),
+	(2,'产品分类',1,'/backend/category/index?type=2',1,NULL),
 	(3,'产品列表',1,'/backend/products/index',0,NULL),
 	(4,'新闻管理',NULL,'/backend/news/index',1,X'7B2269636F6E223A2266612066612D6E65777370617065722D6F227D'),
 	(5,'新闻列表',4,'/backend/news/index',0,NULL),
-	(6,'新闻分类',4,'/backend/category/index?type=2',1,NULL),
+	(6,'新闻分类',4,'/backend/category/index?type=1',1,NULL),
 	(7,'下载管理',NULL,'/backend/downloads/index',2,X'7B2269636F6E223A2266612066612D646F776E6C6F6164227D'),
 	(8,'下载列表',7,'/backend/downloads/index',0,NULL),
 	(9,'下载分类',7,'/backend/category/index?type=3',1,NULL),
