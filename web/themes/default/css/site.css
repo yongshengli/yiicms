@@ -170,7 +170,10 @@ a.desc:after {
 }
 .form-control {
      border-radius: 2px;
- }
+}
+.breadcrumb {
+    border-radius: 2px;
+}
 .page-header {
     padding-bottom: 9px;
     margin: 0 0 20px;
