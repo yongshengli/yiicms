@@ -159,6 +159,18 @@ a.desc:after {
     }
 }
 /* 自定义样式*/
+.panel {
+    border-radius: 2px;
+}
+.thumbnail {
+    border-radius: 2px;
+}
+.input-lg {
+    border-radius: 3px;
+}
+.form-control {
+     border-radius: 2px;
+ }
 .page-header {
     padding-bottom: 9px;
     margin: 0 0 20px;

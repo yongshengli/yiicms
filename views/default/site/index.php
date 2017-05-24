@@ -39,7 +39,7 @@ $carouselItems = [];
     <div class="row">
         <div class="col-lg-9">
             <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                <div class="panel-heading"><h3 class="panel-title">产品展示</h3></div>
+                <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title">产品展示</h3></div>
             </div>
             <div class="row">
                 <?php if (!empty($products)):foreach ($products as $model): ?>
