@@ -152,13 +152,51 @@ a.desc:after {
         margin-right: 10px;
     }
 }
-
+.panel {
+    border-radius: 2px;
+}
+.thumbnail {
+    border-radius: 2px;
+}
+.input-lg {
+    border-radius: 3px;
+}
+.form-control {
+    border-radius: 2px;
+}
+.breadcrumb {
+    border-radius: 2px;
+}
+.panel-heading {
+    padding: 10px 15px 0px;
+}
+.panel-default {
+     border: none;
+}
+.panel-default > .panel-heading{
+    background-color: #fff;
+}
+.list-group {
+    margin-bottom: 0;
+    padding: 0 15px;
+}
+.list-group-item {
+    padding: 10px 0;
+}
+/*.panel-heading{border-bottom: 1px solid}*/
+.panel h1, .h1, h2, .h2, h3, .h3{
+    margin-top: 0;
+}
 .panel-title {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: -1px;
+    padding-bottom: 5px;
     font-size: 18px;
     color: inherit;
     line-height: 30px;
+    position: relative;
+    display: inline-block;
+    border-bottom: 3px solid #ddd;
 }
 .breadcrumb{background-color:#fff}
 .list-group-item-simple {
@@ -199,13 +237,6 @@ a.desc:after {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-.panel-default > .panel-heading{
-    background-color: #fff;
-}
-.panel-heading{border-bottom: 3px solid}
-.panel h1, .h1, h2, .h2, h3, .h3{
-    margin-top: 0;
 }
 /** 蓝色主题0099FF*/
 .navbar-blue{
@@ -441,20 +472,11 @@ a.desc:after {
     }
 }
 /** 其他样式*/
-.panel-title{position: relative}
-.panel-title:after{
-    background-color: #408eba;
-    content:"";
-    width: 100px;height: 3px;
-    position: absolute;
-    top: 40px;
-    left: -15px;
-}
-.panel-blue .panel-title:after{background-color: #408eba;}
-.panel-yellow .panel-title:after{background-color:#f19b2c;}
-.panel-red .panel-title:after{background-color: #db4c3f;}
-.panel-green .panel-title:after{background-color: #18a55d;}
-.panel-purple .panel-title:after{background-color: #605ea6;}
+.panel-blue .panel-title{border-color: #408eba;}
+.panel-yellow .panel-title{border-color:#f19b2c;}
+.panel-red .panel-title{border-color: #db4c3f;}
+.panel-green .panel-title{border-color: #18a55d;}
+.panel-purple .panel-title{border-color: #605ea6;}
 
 .table-simple{
     width:100%
