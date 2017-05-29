@@ -2,6 +2,7 @@
 
 namespace app\modules\backend\controllers;
 use app\modules\backend\components\BackendController;
+use app\modules\backend\models\ContentCount;
 use app\modules\backend\models\AdminUser;
 use app\modules\backend\models\EditPasswordForm;
 use Yii;
@@ -29,7 +30,9 @@ class DefaultController extends BackendController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'contentCountList'=>ContentCount::getCountGroupByType()
+        ]);
     }
 
     /**

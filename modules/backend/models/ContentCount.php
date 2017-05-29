@@ -9,15 +9,18 @@ use app\models\Content;
  * Time: 12:17
  * Email:liyongsheng@meicai.cn
  */
-class ContentCount
+class  ContentCount
 {
     /**
-     *
+     * 获取分类内容数量统计
      */
-    public function getCountGroupByType()
+    static public function getCountGroupByType()
     {
         Content::$currentType = null;
-        $res = Content::find()->groupBy(['type'])->count();
-        print_r($res);
+        $res = Content::find()->select('count(*) as num, type')->groupBy(['type'])->asArray()->all();
+        foreach($res as &$item){
+            $item['type_name']=Content::$types[$item['type']];
+        }
+        return $res;
     }
 }
