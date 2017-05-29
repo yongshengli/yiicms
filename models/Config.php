@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\components\AppActiveRecord;
-
+use Yii;
 /**
  * This is the model class for table "config".
  *
@@ -22,6 +22,37 @@ class Config extends AppActiveRecord
     public static function tableName()
     {
         return 'config';
+    }
+
+    /**
+     * 全部配置包含缓存
+     * @param int $duration
+     * @return mixed
+     */
+    public static function allConfig($duration = 3600)
+    {
+        return Config::getDb()->cache(function () {
+            $res = Config::find()->all();
+            if(!empty($res)){
+                $result = [];
+                foreach($res as &$item){
+                    $result[$item['name']] = $item;
+                }
+                $res = &$result;
+            }
+            return $res;
+        }, $duration);
+    }
+
+    /**
+     * 获取指定配置
+     * @param string $name
+     * @return null
+     */
+    public static function getByName($name)
+    {
+        $config = self::allConfig();
+        return isset($config[$name])?$config[$name]:null;
     }
     /**
      * @inheritdoc

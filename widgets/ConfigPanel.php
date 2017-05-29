@@ -20,7 +20,8 @@ class ConfigPanel extends Panel
         if(empty($this->configName)){
             throw new ErrorException('configName 不能为空');
         }
-        $config = Config::find()->where(['name'=>$this->configName])->one();
+        /** @var Config $config */
+        $config = Config::getByName($this->configName);
         if($config) {
             $this->title = $config->label;
             $this->body = $config->value;

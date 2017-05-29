@@ -66,9 +66,8 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new Feedback();
-        $config = Config::getDb()->cache(function ($db) {
-             return Config::find()->where(['name' => 'contact_us_page_id'])->one();
-        }, 60);
+        /** @var Config $config */
+        $config = Config::getByName('contact_us_page_id');
         if($config) {
             $page = Page::find()->where(['id' => $config->value])->one();
         } else {
@@ -100,9 +99,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        $config =Config::getDb()->cache(function ($db) {
-             return Config::find()->where(['name' => 'about_us_page_id'])->one();
-        }, -1);
+        $config = Config::getByName('about_us_page_id');
         if(empty($config)){
             throw new NotFoundHttpException('页面不存在');
         }

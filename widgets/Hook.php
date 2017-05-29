@@ -36,9 +36,7 @@ class Hook extends Widget
         if(empty($this->configName)){
             throw new ErrorException('configName不能为空');
         }
-        $config = Config::getDb()->cache(function () {
-            return Config::find()->where(['name' => $this->configName])->one();
-        }, $this->duration);
+        $config = Config::getByName($this->configName);
         return empty($config)?'':$config['value'];
     }
 }
