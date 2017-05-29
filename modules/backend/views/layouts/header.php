@@ -21,7 +21,7 @@ use app\widgets\Nav;
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li>
-                    <a href="<?=Url::to(['/backend/default/clear-cache'])?>" role="button" title="clear cache">
+                    <a href="<?=Url::to(['/backend/default/clear-cache'])?>" role="button" title="清理缓存">
                         <span class="fa fa-trash-o"></span>
                     </a>
                 </li>
