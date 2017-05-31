@@ -68,16 +68,13 @@ class Category extends AppActiveRecord
         if($file){
             $this->image = $file;
         }
-
-        $parent = $this->getParent();
-        if($parent instanceof static){
-            if(empty($parent->path)){
-                $this->path = $parent->id;
+        if($this->isAttributeChanged($this->pid)) {
+            $parent = $this->getParent();
+            if ($parent instanceof static) {
+                $this->path = trim(trim($parent->path, '/') . '/' . $parent->id, '/');
             } else {
-                $this->path = trim($parent->path, '/') . '/' . $parent->id;
+                $this->path = '';
             }
-        }else{
-            $this->path = '';
         }
         return true;
     }
