@@ -75,6 +75,15 @@ class Category extends AppActiveRecord
             } else {
                 $this->path = '';
             }
+            if(!empty($this->oldAttributes['path'])) {
+                $oldPath = $this->oldAttributes['path'];
+                $children = Category::find()->where(['REGEXP', 'path', '^' . $oldPath . '(/|$)']);
+                if ($children) {
+                    foreach ($children as $child) {
+                        $child->path = preg_replace('/^' . $oldPath . '(\/|$)(.*)/', $this->path.'$2', $child->path);
+                    }
+                }
+            }
         }
         return true;
     }
