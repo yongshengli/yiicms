@@ -68,6 +68,7 @@ INSTALLATION
 ### Database
 
 Edit the file `config/db.php` with real data, for example:
+可以仿照 config/db.php.default 文件
 
 ```php
 return [
