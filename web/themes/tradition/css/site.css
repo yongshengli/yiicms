@@ -151,6 +151,9 @@ a.desc:after {
         border-top-right-radius: 0;
         margin-right: 10px;
     }
+    .dropdown-menu {
+        min-width: 99px;
+    }
 }
 .panel {
     border-radius: 2px;
