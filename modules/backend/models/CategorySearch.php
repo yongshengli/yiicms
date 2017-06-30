@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Category;
+use yii\data\Sort;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -75,7 +76,14 @@ class CategorySearch extends Category
         $query = Category::find();
 
         $activeDataProvider =  new ActiveDataProvider([
-            'query' =>$query
+            'query' =>$query,
+            'sort'=>new Sort([
+                'attributes'=>[
+                    'id'=>[
+                        'asc'=>['id'=>'SORT_ASC']
+                    ]
+                ]
+            ]),
         ]);
         $this->load($params);
         if (!$this->validate()) {

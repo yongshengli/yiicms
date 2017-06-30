@@ -4,6 +4,7 @@ namespace app\models;
 use app\components\AppActiveRecord;
 use Yii;
 use app\models\Content;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use app\components\behaviors\UploadBehavior;
 
@@ -68,7 +69,7 @@ class Category extends AppActiveRecord
         if($file){
             $this->image = $file;
         }
-        if($this->isAttributeChanged($this->pid)) {
+        if($this->isNewRecord || $this->isAttributeChanged('pid', false)) {
             $parent = $this->getParent();
             if ($parent instanceof static) {
                 $this->path = trim(trim($parent->path, '/') . '/' . $parent->id, '/');
@@ -77,10 +78,12 @@ class Category extends AppActiveRecord
             }
             if(!empty($this->oldAttributes['path'])) {
                 $oldPath = $this->oldAttributes['path'];
-                $children = Category::find()->where(['REGEXP', 'path', '^' . $oldPath . '(/|$)']);
+                $children = Category::find()->where(['REGEXP', 'path', '^' . $oldPath . '(/|$)'])->all();
                 if ($children) {
+                    /** @var Category $child */
                     foreach ($children as $child) {
-                        $child->path = preg_replace('/^' . $oldPath . '(\/|$)(.*)/', $this->path.'$2', $child->path);
+                        $child->path = ltrim(preg_replace('/^' . $oldPath . '(\/|$)(.*)/', $this->path.'/$2', $child->path),'/');
+                        $child->save();
                     }
                 }
             }
