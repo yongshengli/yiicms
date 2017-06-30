@@ -77,20 +77,29 @@ class Category extends AppActiveRecord
                 $this->path = '';
             }
             if(!empty($this->oldAttributes['path'])) {
-                $oldPath = $this->oldAttributes['path'];
-                $children = Category::find()->where(['REGEXP', 'path', '^' . $oldPath . '(/|$)'])->all();
-                if ($children) {
-                    /** @var Category $child */
-                    foreach ($children as $child) {
-                        $child->path = ltrim(preg_replace('/^' . $oldPath . '(\/|$)(.*)/', $this->path.'/$2', $child->path),'/');
-                        $child->save();
-                    }
-                }
+                $this->editAllPath($this->oldAttributes['path'], $this->path);
             }
         }
         return true;
     }
 
+    /**
+     * 批量替换path
+     * @param string $path
+     * @param string $newPath
+     * @return bool
+     */
+    protected function editAllPath($path, $newPath){
+        $children = Category::find()->where(['REGEXP', 'path', '^' . $path . '(/|$)'])->all();
+        if ($children) {
+            /** @var Category $child */
+            foreach ($children as $child) {
+                $child->path = ltrim(preg_replace('/^' . $path . '(\/|$)(.*)/', $newPath.'/$2', $child->path),'/');
+                $child->save();
+            }
+        }
+        return true;
+    }
     /**
      * 获取完整的父类名称
      * @return null|string
