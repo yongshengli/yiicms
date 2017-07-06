@@ -140,7 +140,7 @@ a.desc:after {
         font-size: 16px;
     }
     .dropdown-menu {
-        min-width: 98px;
+        min-width: 108px;
         border-radius: 2px;
         border-top:none;
     }
