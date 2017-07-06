@@ -152,7 +152,7 @@ a.desc:after {
         margin-right: 10px;
     }
     .dropdown-menu {
-        min-width: 99px;
+        min-width: 98px;
     }
 }
 .panel {
