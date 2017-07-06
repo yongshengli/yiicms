@@ -153,6 +153,7 @@ a.desc:after {
     }
     .dropdown-menu {
         min-width: 98px;
+        border-radius: 2px;
     }
 }
 .panel {
