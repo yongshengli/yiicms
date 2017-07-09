@@ -77,7 +77,7 @@ class Category extends AppActiveRecord
                 $this->path = '';
             }
             if(!empty($this->oldAttributes['path'])) {
-                $this->editAllPath($this->oldAttributes['path'], $this->path);
+                $this->editAllPath($this->oldAttributes['path'], $this->path, $this->id);
             }
         }
         return true;
@@ -87,14 +87,15 @@ class Category extends AppActiveRecord
      * 批量替换path
      * @param string $path
      * @param string $newPath
+     * @param int $exceptId
      * @return bool
      */
-    protected function editAllPath($path, $newPath){
-        $children = Category::find()->where(['REGEXP', 'path', '^' . $path . '(/|$)'])->all();
+    protected function editAllPath($path, $newPath, $exceptId){
+        $children = Category::find()->where(['REGEXP', 'path', '^' . $path . '(/|$)'])->andWhere(['!=','id', $exceptId])->all();
         if ($children) {
             /** @var Category $child */
             foreach ($children as $child) {
-                $child->path = ltrim(preg_replace('/^' . $path . '(\/|$)(.*)/', $newPath.'/$2', $child->path),'/');
+                $child->path = trim(preg_replace('#^' . $path . '(\/|$)(.*)#', $newPath.'/$2', $child->path),'/');
                 $child->save();
             }
         }
