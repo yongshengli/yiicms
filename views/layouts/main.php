@@ -73,7 +73,7 @@ if(!empty(Yii::$app->params['logo'])){
         <?php ActiveForm::end(); ?>
         <?php NavBar::end(); ?>
     </div>
-<!--    <div class="container">-->
+    <div class="container" style="margin-top: 15px">
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
             'items' => $carouselItems,
@@ -82,8 +82,8 @@ if(!empty(Yii::$app->params['logo'])){
                 '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>'],
         ])?>
-<!--    </div>-->
-    <div class="container" style="margin-top: 20px">
+    </div>
+    <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

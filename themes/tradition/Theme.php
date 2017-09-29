@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class Theme extends AssetBundle
 {
-    public $sourcePath = '@app/themes/tradition';
+    public $sourcePath = '@app/themes/tradition/assets';
     public $baseUrl = '@web';
     public $css = [
         'css/site.css'

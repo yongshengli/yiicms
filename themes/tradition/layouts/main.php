@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\themes\Theme as AppAsset;
+use app\themes\tradition\Theme as AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
