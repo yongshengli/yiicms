@@ -153,4 +153,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionSearchChildren()
+    {
+        $this->layout = false;
+        return $this->render('search-children');
+    }
+
 }

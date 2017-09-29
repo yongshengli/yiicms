@@ -64,6 +64,7 @@ $config = [
                 'page/<id:\d+>'=>'site/page',
                 '<controller:[\w-]+>/<id:\d+>'=>'<controller>/item',
                 '<controller:[\w-]+>/list/<category-id:\d+>'=>'<controller>/list',
+                '404'=>'site/search-children'
             ],
         ],
         'formatter'=>[
