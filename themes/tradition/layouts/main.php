@@ -7,17 +7,18 @@ use yii\helpers\Html;
 use app\widgets\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\themes\Theme as AppAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Carousel;
 use yii\helpers\Url;
 
-AppAsset::register($this)->css = ['themes/default/css/site.css',];
+AppAsset::register($this);
 $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
+            'options'=>['style'=>'"background:url('.$item['image'].');background-size:cover;'],
             'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%"/></a>',
 //        'caption'=>'<h4>'.$item['title'].'</h4>',
         ];
@@ -54,43 +55,59 @@ if(!empty(Yii::$app->params['logo'])){
 <body  class="skin-blue fixed">
 <?php $this->beginBody() ?>
 <div class="wrap">
-    <div class="main-header">
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <?=Yii::t('app', \app\widgets\Hook::widget(['configName'=>'top_message']))?>
+                    <span class="label label-warning">
+                        <a href="<?=Url::to(['/site/language','language'=>'en-US'])?>">English</a>/<a href="<?=Url::to(['/site/language','language'=>'zh-CN'])?>">中文</a>
+                    </span>
+                </div>
+                <div class="col-lg-3">
+                    <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
+                    <div class="input-group input-group-sm" style="margin-top: -16px">
+                        <input type="text" class="form-control" id="navbar-search-input"
+                               value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
+                               placeholder="<?=Yii::t('app','输入关键字搜索')?>"
+                               name="keyword"
+                        />
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><?=Yii::t('app','搜索')?></button>
+                        </span>
+                    </div><!-- /input-group -->
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
         <?php NavBar::begin([
             'brandLabel' => $brandLabel,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar navbar-inverse navbar-static-top navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
+                'class' => 'navbar  navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
             ],
         ]);
-        echo Nav::widget(json_decode(Yii::$app->params['nav'], true));
+        echo Nav::widget(\app\helpers\CommonHelper::navTranslation(json_decode(Yii::$app->params['nav'], true)));
         ?>
-        <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
-        <input type="text" class="form-control input-lg" id="navbar-search-input"
-               value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
-               placeholder="输入关键字搜索"
-               name="keyword"
-        />
-        <?php ActiveForm::end(); ?>
         <?php NavBar::end(); ?>
     </div>
-<!--    <div class="container">-->
+    <div style="margin-bottom: 20px">
         <?= Carousel::widget([
             'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
             'items' => $carouselItems,
             'controls'=>['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>',
-                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>'],
         ])?>
-<!--    </div>-->
-    <div class="container" style="margin-top: 20px">
+    </div>
+    <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
-    </div>
-    <div class="container">
-        <?= \app\widgets\Hook::widget(['configName'=>'gongyi']); ?>
     </div>
 </div>
 <footer class="footer">
@@ -120,7 +137,6 @@ if(!empty(Yii::$app->params['logo'])){
     </div>
 </footer>
 <?php $this->endBody() ?>
-<?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?>
 </body>
 </html>
 <?php $this->endPage() ?>

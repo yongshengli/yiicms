@@ -19,7 +19,7 @@ class ViewConfig extends Model
      * 主题路径
      * @var string
      */
-    public $themePath ='@app/views/default';
+    public $themePath ='@app/views';
 
     /** @var string  主题颜色 */
     public $themeColor = 'blue';
@@ -55,8 +55,19 @@ class ViewConfig extends Model
         return file_put_contents(Yii::getAlias('@runtime/config/view.php'), $phpCode);
     }
 
+    /**
+     * 组织view配置数组
+     * @return array
+     */
     private function _createConfig()
     {
+        if($this->themePath =='@app/views'){
+            return [
+                'params'=>[
+                    'themeColor' => $this->themeColor
+                ],
+            ];
+        }
         return [
             'theme' => [
                 'pathMap' => [
@@ -68,12 +79,36 @@ class ViewConfig extends Model
             ],
         ];
     }
+
+    /**
+     * 获取全部主题
+     * @return array
+     */
     public function getThemes()
     {
-        return [
-            '@app/views/tradition'=>'传统企业站风格',
-            '@app/views/default'=>'bootStrap风格',
+        $themePathAlias = '@app/themes';
+        $themePath = Yii::getAlias($themePathAlias);
+        $themeDirList = scandir($themePath);
+
+        $themeList = [
+            '@app/views'=>'默认风格'
         ];
+        foreach($themeDirList as $dir){
+            if($dir =='.' || $dir=='..'){
+                continue;
+            }
+            if(!file_exists($themePath.'/'.$dir.'/Theme.php')){
+                continue;
+            };
+            $themeName = $dir;
+            $themeClass = '\\app\\themes\\'.$dir.'\\Theme';
+            if(class_exists($themeClass) && method_exists($themeClass, 'themeName')){
+                $themeName = call_user_func([$themeClass, 'themeName']);
+            }
+            $alias = $themePathAlias.'/'.$dir;
+            $themeList[$alias] = $themeName;
+        }
+        return $themeList;
     }
     public function getThemeColors()
     {
