@@ -131,7 +131,7 @@ if(!empty(Yii::$app->params['logo'])){
                 QQ群:248898849
             </div>
             <div class="col-lg-3">
-                <p>技术支持<a href="http://yiicms.co">YiiCms</a> <?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?></p>
+                <p>技术支持<a href="http://www.zbeijing.com.cn">在北京网络科技</a> <?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?></p>
             </div>
         </div>
     </div>
