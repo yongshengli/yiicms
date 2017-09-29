@@ -24,6 +24,6 @@ $this->title = $name;
         Please contact us if you think this is a server error. Thank you.
     </p>
     <p style="text-align: center">
-        <iframe scrolling='no' frameborder='0' src='<?=\yii\helpers\Url::to(['site/search-children'])?>' width='754' height='570' style='display:block;margin: 20px auto;'></iframe>
+        <iframe scrolling='no' frameborder='0' src='<?=\yii\helpers\Url::to(['site/search-children'])?>' width='100%' height="700px" style='display:block;margin: 20px auto;'></iframe>
     </p>
 </div>

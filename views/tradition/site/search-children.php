@@ -7,4 +7,4 @@
  * Email:liyongsheng@meicai.cn
  */
 ?>
-<script src="http://qzonestyle.gtimg.cn/qzone_v6/lostchild/search_children.js"></script>
+<script src="http://qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"></script>
