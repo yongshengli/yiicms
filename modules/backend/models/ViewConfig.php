@@ -52,7 +52,16 @@ class ViewConfig extends Model
         }
         $phpCode = "<?php \n //please do not modify this file, this file is built by app\\modules\\backend\\models\\baseConfig.php ";
         $phpCode .= "\n return " . var_export($this->_createConfig(), true) . ";\n";
-        return file_put_contents(Yii::getAlias('@runtime/config/view.php'), $phpCode);
+        $res = file_put_contents(Yii::getAlias('@runtime/config/view.php'), $phpCode);
+        $assetsDir = Yii::getAlias('@app/web/assets');
+        foreach(scandir($assetsDir) as $item) {
+            if($item=='.' || $item=='..') {
+                continue;
+            }
+            FileHelper::removeDirectory($assetsDir . '/'.$item);
+        }
+//        FileHelper::createDirectory($assetsDir, 0777);
+        return $res;
     }
 
     /**
