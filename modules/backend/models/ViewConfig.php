@@ -94,7 +94,7 @@ class ViewConfig extends Model
             '@app/views'=>'默认风格'
         ];
         foreach($themeDirList as $dir){
-            if($dir =='.' || $dir=='..' || !is_dir($dir)){
+            if($dir =='.' || $dir=='..' || !is_dir($themePath.'/'.$dir) || $dir=='.git'){
                 continue;
             }
             if(!file_exists($themePath.'/'.$dir.'/Theme.php')){
