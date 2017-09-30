@@ -1,0 +1,3 @@
+[submodule "themes"]
+	path = themes
+	url = git@gitee.com:templi/yiicms-theme.git
