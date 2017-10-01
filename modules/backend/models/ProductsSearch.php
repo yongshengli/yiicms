@@ -13,6 +13,11 @@ use yii\data\ActiveDataProvider;
 class ProductsSearch extends Products
 {
     /**
+     * 自动更新详情
+     * @var bool
+     */
+    public static $autoUpdateDetail = false;
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -91,7 +96,6 @@ class ProductsSearch extends Products
         }else{
             $query->andFilterWhere(['created_at'=>$createAt]);
         }
-
         return $dataProvider;
     }
 }

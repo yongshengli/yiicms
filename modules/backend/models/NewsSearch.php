@@ -12,7 +12,11 @@ use app\models\News;
  */
 class NewsSearch extends News
 {
-//    public $status = 0;
+    /**
+     * 自动更新详情
+     * @var bool
+     */
+    public static $autoUpdateDetail = false;
     /**
      * @inheritdoc
      */

@@ -18,6 +18,11 @@ use yii\data\ActiveDataProvider;
 class DownloadsSearch extends Downloads
 {
     /**
+     * 自动更新详情
+     * @var bool
+     */
+    public static $autoUpdateDetail = false;
+    /**
      * @inheritdoc
      */
     public function rules()
