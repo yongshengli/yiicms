@@ -58,7 +58,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-lg-6">
                         <h4><?=$model->title?></h4>
-                        <div><?=$model->detail->params?></div>
+                        <div>
+                            <div>
+                                <?=$model->detail->params?>
+                            </div>
+                            <div style="margin-top: 15px">
+                                在线咨询:
+                                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?= \app\widgets\Hook::widget(['configName'=>'qq_number'])?\app\widgets\Hook::widget(['configName'=>'qq_number']):'739800600';?>&site=qq&menu=yes">
+                                    <img border="0" src="http://wpa.qq.com/pa?p=2:739800600:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
