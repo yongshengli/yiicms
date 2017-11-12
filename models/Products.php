@@ -42,6 +42,7 @@ class Products extends Content
         if ($this->isNewRecord) {
             return new ContentDetail(['scenario' => ContentDetail::SCENARIO_PRODUCTS]);
         } else {
+            /** @var ContentDetail $model */
             $model = $this->hasOne(ContentDetail::className(), ['content_id' => 'id'])->one();
             $model->scenario = ContentDetail::SCENARIO_PRODUCTS;
             return $model;
