@@ -31,7 +31,7 @@ class Products extends Content
             [['title', 'type', 'status','category_id'], 'required'],
             [['imageFile'], 'file', 'extensions' => 'gif, jpg, png, jpeg','mimeTypes' => 'image/jpeg, image/png',],
             [['type', 'status', 'admin_user_id', 'category_id','created_at', 'updated_at'], 'integer'],
-            [['title', 'image', 'description'], 'string', 'max' => 255],
+            [['title', 'image', 'keywords', 'description'], 'string', 'max' => 255],
         ];
     }
     /**
