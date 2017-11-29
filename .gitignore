@@ -28,6 +28,6 @@ phpunit.phar
 
 tests/_output/*
 tests/_support/_generated
-web/uploads/
-web/assets
+web/uploads/*
+web/assets/*
 config/db.php
