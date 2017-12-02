@@ -25,7 +25,7 @@ class ConfigPanel extends Panel
         if($config) {
             $this->title = $config->label;
             $this->body = $config->value;
-        }else{
+        }elseif(defined('YII_ENV_DEV') && YII_ENV_DEV){
             $this->title = '未知的配置项 "'.$this->configName.'"';
             $this->body = '未知的配置项 "'.$this->configName.'", 请在后台其他配置中添加此配置';
         }
