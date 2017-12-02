@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ ! -f "yiicms.sql" ]; then
+    echo '当前目录下没有找到yiicms.sql文件'
+    exit 1
+fi
+read -p "dbName(默认yiicms):" dbName
+read -p "user(默认root):" user
+read -p "password(默认123456):" password
+read -p "host(默认127.0.0.1):" host
+
+if [ ! -n "$dbName" ]; then
+    dbName='yiicms'
+fi
+if [ ! -n "$user" ]; then
+   user='root'
+fi
+if [ ! -n "$password" ]; then
+    password='123456'
+fi
+if [ ! -n "$host" ]; then
+    host='127.0.0.1'
+fi
+echo "dbName:"$dbName,"user:"$user, "password:"$password, "host:"$host
+MYSQL=`which mysql`
+$MYSQL --user="$user" --password="$password" --host="$host" <<EOF
+  CREATE DATABASE /*!32312 IF NOT EXISTS*/ $dbName /*!40100 DEFAULT CHARACTER SET utf8 */;
+  use $dbName;
+  source yiicms.sql;
+EOF
