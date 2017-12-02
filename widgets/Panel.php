@@ -45,6 +45,9 @@ class Panel extends Widget
 
     public function run()
     {
+        if(!YII_ENV_DEV && empty($this->body)){
+            return;
+        }
         echo Html::beginTag('div', $this->options) . "\n";
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
