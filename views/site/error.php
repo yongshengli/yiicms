@@ -10,9 +10,8 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="site-error">
-
+    <?php if($exception->statusCode!='404'):?>
     <h1><?= Html::encode($this->title) ?></h1>
-
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
     </div>
@@ -23,7 +22,9 @@ $this->title = $name;
     <p>
         Please contact us if you think this is a server error. Thank you.
     </p>
+    <?php else:?>
     <p style="text-align: center">
         <iframe scrolling='no' frameborder='0' src='<?=\yii\helpers\Url::to(['site/search-children'])?>' width='100%' height="700px" style='display:block;margin: 20px auto;'></iframe>
     </p>
+    <?php endif;?>
 </div>
