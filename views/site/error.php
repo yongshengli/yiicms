@@ -10,7 +10,7 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="site-error">
-    <?php if($exception->statusCode!='404'):?>
+    <?php if(!($exception instanceof \yii\web\NotFoundHttpException)):?>
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
