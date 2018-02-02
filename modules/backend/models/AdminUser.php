@@ -89,7 +89,7 @@ class AdminUser extends AppActiveRecord
                 $charMode = 8;
             $strModel |= $charMode;
         }
-        for($i=0; $i<4;$i++){
+        for($i=0; $i<4; $i++){
             if($strModel & 1){
                 $level ++;
             }
