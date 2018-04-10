@@ -2,9 +2,9 @@
     "name": "sheng/yiicms",
     "description": "yiicms 企业站管理系统",
     "keywords": ["cms", "企业网站", "政府网站", "网站"],
-    "homepage": "http://yiicms.co/",
+    "homepage": "http://demo.yiiphp.net/",
     "type": "project",
-    "license": "GPL",
+    "license": "GPL-3.0",
     "support": {
         "issues": "https://github.com/yongshengli/yiicms/issues",
         "forum": "https://github.com/yongshengli/yiicms/forum/",
