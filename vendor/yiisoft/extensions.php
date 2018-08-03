@@ -264,13 +264,22 @@ return array (
       '@kartik/time' => $vendorDir . '/kartik-v/yii2-widget-timepicker',
     ),
   ),
+  'yiisoft/yii2-httpclient' => 
+  array (
+    'name' => 'yiisoft/yii2-httpclient',
+    'version' => '2.0.4.0',
+    'alias' => 
+    array (
+      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient',
+    ),
+  ),
   'skeeks/yii2-assets-auto-compress' => 
   array (
     'name' => 'skeeks/yii2-assets-auto-compress',
-    'version' => '1.2.3.0',
+    'version' => '1.3.1.2',
     'alias' => 
     array (
-      '@skeeks/yii2/assetsAuto' => $vendorDir . '/skeeks/yii2-assets-auto-compress',
+      '@skeeks/yii2/assetsAuto' => $vendorDir . '/skeeks/yii2-assets-auto-compress/src',
     ),
   ),
 );

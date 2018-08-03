@@ -1,6 +1,33 @@
 CHANGELOG
 ==============
 
+1.3.1.2
+-----------------
+ * Fixed local read files
+ 
+1.3.1.1
+-----------------
+ * Fixed webroot setting
+ 
+1.3.1
+-----------------
+ * Fixed: https://github.com/skeeks-semenov/yii2-assets-auto-compress/issues/5
+ * Fixed: https://github.com/skeeks-semenov/yii2-assets-auto-compress/issues/23
+ * Add webroot setting
+ * Local read files
+ 
+1.3.0
+-----------------
+ * Changing the subdirectory with the code in /src
+ * Fixed https://github.com/skeeks-semenov/yii2-assets-auto-compress/issues/40
+ * Using user-agent header
+ * Do not use @web and @webroot (using \Yii::$app->assetManager->baseUrl and \Yii::$app->assetManager->basePath)
+ * Using yiisoft/yii2-httpclient
+ 
+1.2.3.1
+-----------------
+ * http_code 200
+ 
 1.2.3
 -----------------
  * Do not connect the js files when all pjax requests.

@@ -1,10 +1,15 @@
-Automatically compile and merge files js + css + html
+Automatically compile and merge files js + css + html in yii2 project.
 ===================================
 
 This solution enables you to dynamically combine js and css files to optimize the html page.
 This allows you to improve the performance of google page speed.
 
 This tool only works on real sites. On the local projects is not working!
+
+[![Latest Stable Version](https://poser.pugx.org/skeeks/yii2-assets-auto-compress/v/stable.png)](https://packagist.org/packages/skeeks/yii2-assets-auto-compress)
+[![Total Downloads](https://poser.pugx.org/skeeks/yii2-assets-auto-compress/downloads.png)](https://packagist.org/packages/skeeks/yii2-assets-auto-compress)
+[![Reference Status](https://www.versioneye.com/php/skeeks:yii2-assets-auto-compress/reference_badge.svg)](https://www.versioneye.com/php/skeeks:yii2-assets-auto-compress/references)
+[![Dependency Status](https://www.versioneye.com/php/skeeks:yii2-assets-auto-compress/dev-master/badge.png)](https://www.versioneye.com/php/skeeks:yii2-assets-auto-compress/dev-master)
 
 Installation
 ------------
@@ -91,15 +96,24 @@ How to use
 ```
 
 
+Links
+----------
+* [Github](https://github.com/skeeks-semenov/yii2-assets-auto-compress)
+* [Changelog](https://github.com/skeeks-semenov/yii2-assets-auto-compress/blob/master/CHANGELOG.md)
+* [Issues](https://github.com/skeeks-semenov/yii2-assets-auto-compress/issues)
+* [Packagist](https://packagist.org/packages/skeeks/yii2-assets-auto-compress)
+
+
 Demo (view source code)
 ----------
-* http://gallery.world
-* http://skeeks.com/
-* http://select-moto.ru/
-* http://motopraktika.ru/
+* [https://gallery.world](https://gallery.world)
+* [http://skeeks.com/](https://skeeks.com)
+* [http://select-moto.ru/](https://select-moto.ru)
+* [http://motopraktika.ru/](https://motopraktika.ru)
 
 
-##Screenshot
+Screenshot
+------------
 [![SkeekS CMS admin panel](http://marketplace.cms.skeeks.com/uploads/all/b7/5e/8b/b75e8b31bfda1686d950c7b8783b53b5.png)](http://marketplace.cms.skeeks.com/uploads/all/b7/5e/8b/b75e8b31bfda1686d950c7b8783b53b5.png)
 
 ___
@@ -117,7 +131,7 @@ ___
 
 ___
 
-> [![skeeks!](https://gravatar.com/userimage/74431132/13d04d83218593564422770b616e5622.jpg)](http://skeeks.com)  
+> [![skeeks!](https://skeeks.com/img/logo/logo-no-title-80px.png)](https://skeeks.com)  
 <i>SkeekS CMS (Yii2) — fast, simple, effective!</i>  
-[skeeks.com](http://skeeks.com) | [cms.skeeks.com](http://cms.skeeks.com) | [marketplace.cms.skeeks.com](http://marketplace.cms.skeeks.com)
+[skeeks.com](https://skeeks.com) | [cms.skeeks.com](https://cms.skeeks.com)
 

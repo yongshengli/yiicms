@@ -18,6 +18,7 @@ class ComposerStaticInit64fcd2ce1ab75bd3b825b1ef292e1a27
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -131,6 +132,10 @@ class ComposerStaticInit64fcd2ce1ab75bd3b825b1ef292e1a27
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
         ),
+        'yii\\httpclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient',
+        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
@@ -157,7 +162,7 @@ class ComposerStaticInit64fcd2ce1ab75bd3b825b1ef292e1a27
         ),
         'skeeks\\yii2\\assetsAuto\\' => 
         array (
-            0 => __DIR__ . '/..' . '/skeeks/yii2-assets-auto-compress',
+            0 => __DIR__ . '/..' . '/skeeks/yii2-assets-auto-compress/src',
         ),
         'rmrevin\\yii\\fontawesome\\' => 
         array (
@@ -166,8 +171,8 @@ class ComposerStaticInit64fcd2ce1ab75bd3b825b1ef292e1a27
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'mdm\\admin\\' => 
         array (
