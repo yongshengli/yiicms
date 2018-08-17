@@ -8,7 +8,7 @@ class ContactFormCest
 
     public function openContactPage(\FunctionalTester $I)
     {
-        $I->see('Contact', 'h1');        
+        $I->see('关于我们', 'h1');
     }
 
     public function submitEmptyForm(\FunctionalTester $I)

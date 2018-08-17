@@ -2,7 +2,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://127.0.0.1:8080/
+            url: http://dev.qy.com/
             browser: firefox
         - Yii2:
             part: orm

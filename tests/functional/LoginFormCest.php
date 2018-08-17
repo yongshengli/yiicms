@@ -3,7 +3,7 @@ class LoginFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('backend/site/login');
     }
 
     public function openLoginPage(\FunctionalTester $I)
@@ -23,7 +23,7 @@ class LoginFormCest
     // demonstrates `amLoggedInAs` method
     public function internalLoginByInstance(\FunctionalTester $I)
     {
-        $I->amLoggedInAs(\app\models\User::findByUsername('admin'));
+        $I->amLoggedInAs(\app\modules\backend\models\AdminUserIdentity::findByUsername('admin'));
         $I->amOnPage('/');
         $I->see('Logout (admin)');
     }
@@ -39,7 +39,7 @@ class LoginFormCest
     public function loginWithWrongCredentials(\FunctionalTester $I)
     {
         $I->submitForm('#login-form', [
-            'LoginForm[username]' => 'admin',
+            'LoginForm[username]' => 'demo',
             'LoginForm[password]' => 'wrong',
         ]);
         $I->expectTo('see validations errors');
@@ -49,10 +49,10 @@ class LoginFormCest
     public function loginSuccessfully(\FunctionalTester $I)
     {
         $I->submitForm('#login-form', [
-            'LoginForm[username]' => 'admin',
-            'LoginForm[password]' => 'admin',
+            'LoginForm[username]' => 'demo',
+            'LoginForm[password]' => 'demo',
         ]);
-        $I->see('Logout (admin)');
-        $I->dontSeeElement('form#login-form');              
+        $I->see('退出');
+        $I->dontSeeElement('<span class="hidden-xs">admin</span>');
     }
 }

@@ -5,7 +5,7 @@ class LoginCest
 {
     public function ensureThatLoginWorks(AcceptanceTester $I)
     {
-        $I->amOnPage(Url::toRoute('/site/login'));
+        $I->amOnPage(Url::toRoute('backend/site/login'));
         $I->see('Login', 'h1');
 
         $I->amGoingTo('try to login with correct credentials');
