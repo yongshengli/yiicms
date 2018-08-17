@@ -3,12 +3,13 @@ class ContactFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnPage(['site/contact']);
+        $I->amOnPage(['/site/contact']);
     }
 
     public function openContactPage(\FunctionalTester $I)
     {
-        $I->see('关于我们', 'h1');
+//        $I->see('关于我们', 'h1');
+        $I->see('联系我们-YiiCms企业系统');
     }
 
     public function submitEmptyForm(\FunctionalTester $I)
