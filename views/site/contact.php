@@ -18,7 +18,7 @@ empty($model) && $model = new Feedback();
 
         <div class="col-lg-9">
 
-            <?=empty($page)?'':$page->content?>
+            <?=(empty($page) || empty($page->content))?'':$page->content?>
 
             <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 

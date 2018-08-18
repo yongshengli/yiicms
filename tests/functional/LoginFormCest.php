@@ -3,12 +3,12 @@ class LoginFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnRoute('backend/site/login');
+        $I->amOnRoute('/backend/default/login');
     }
 
     public function openLoginPage(\FunctionalTester $I)
     {
-        $I->see('Login', 'h1');
+        $I->see('登录', 'button');
 
     }
 
@@ -16,24 +16,24 @@ class LoginFormCest
     public function internalLoginById(\FunctionalTester $I)
     {
         $I->amLoggedInAs(100);
-        $I->amOnPage('/');
-        $I->see('Logout (admin)');
+        $I->amOnPage('/backend/default/index');
+        $I->see('退出');
     }
 
     // demonstrates `amLoggedInAs` method
     public function internalLoginByInstance(\FunctionalTester $I)
     {
         $I->amLoggedInAs(\app\modules\backend\models\AdminUserIdentity::findByUsername('admin'));
-        $I->amOnPage('/');
-        $I->see('Logout (admin)');
+        $I->amOnPage('/backend/default/index');
+        $I->see('退出');
     }
 
     public function loginWithEmptyCredentials(\FunctionalTester $I)
     {
         $I->submitForm('#login-form', []);
         $I->expectTo('see validations errors');
-        $I->see('Username cannot be blank.');
-        $I->see('Password cannot be blank.');
+        $I->see('用户名不能为空');
+        $I->see('密码不能为空');
     }
 
     public function loginWithWrongCredentials(\FunctionalTester $I)
@@ -53,6 +53,7 @@ class LoginFormCest
             'LoginForm[password]' => 'demo',
         ]);
         $I->see('退出');
-        $I->dontSeeElement('<span class="hidden-xs">admin</span>');
+        $I->see('<span class="hidden-xs">admin</span>');
+//        $I->dontSeeElement('<span class="hidden-xs">admin</span>');
     }
 }

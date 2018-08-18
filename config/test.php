@@ -51,7 +51,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
+        'db' => require(__DIR__ . '/test_db.php'),
         'urlManager' => [
             'showScriptName' => true,
         ],
