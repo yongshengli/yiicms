@@ -56,13 +56,13 @@ class Module extends \yii\base\Module
      */
     protected function rbacConfInit()
     {
-//        Yii::$container->set('mdm\admin\components\Configs',
-//            [
-//                'db' => 'customDb',
-//                'menuTable' => 'admin_menu',
-//                'userTable' => 'admin_user',
-//            ]
-//        );
+        Yii::$container->set('mdm\admin\components\Configs',
+            [
+                'db' => 'customDb',
+                'menuTable' => 'admin_menu',
+                'userTable' => 'admin_user',
+            ]
+        );
     }
     /**
      * 重新设置异常捕获页面
