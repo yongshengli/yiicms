@@ -113,11 +113,11 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
-    h2,.h2{
+    h2,.h2,h3,.h3,h4,.h4{
         font-size:14px
     }
-    h3,.h3{
-        font-size:14px
+    h5,.h5,h6,.h6{
+        font-size:12px
     }
 }
 
