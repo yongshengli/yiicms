@@ -171,6 +171,10 @@ a.desc:after {
         max-height: 24px;
     }
 }
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+    min-height: 260px;
+}
 /* 自定义样式*/
 .panel {
     border-radius: 2px;
