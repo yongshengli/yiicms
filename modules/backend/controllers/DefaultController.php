@@ -9,6 +9,8 @@ use Yii;
 use app\modules\backend\models\LoginForm;
 use yii\filters\VerbFilter;
 use app\helpers\StringHelper;
+use yii\helpers\FileHelper;
+
 /**
  * Default controller for the `backend` module
  */
@@ -82,9 +84,16 @@ class DefaultController extends BackendController
     /**
      * 清理缓存
      * @return \yii\web\Response
+     * @throws \yii\base\ErrorException
      */
     public function actionClearCache()
     {
+        if(defined("ASSETS_DIR")) {
+            $list = FileHelper::findFiles(ASSETS_DIR);
+            foreach($list as $dir){
+                FileHelper::removeDirectory($dir);
+            }
+        }
         if(Yii::$app->cache->flush()==true){
             $this->addFlash('缓存清理成功', 'info');
         }else {
