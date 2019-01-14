@@ -89,9 +89,12 @@ class DefaultController extends BackendController
     public function actionClearCache()
     {
         if(defined("ASSETS_DIR")) {
-            $list = FileHelper::findFiles(ASSETS_DIR);
+            $list = scandir(ASSETS_DIR);
             foreach($list as $dir){
-                FileHelper::removeDirectory($dir);
+                if($dir=='.' || $dir=='..'){
+                    continue;
+                }
+                FileHelper::removeDirectory(ASSETS_DIR.'/'.$dir);
             }
         }
         if(Yii::$app->cache->flush()==true){
