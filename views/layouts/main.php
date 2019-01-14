@@ -96,7 +96,7 @@ if(!empty(Yii::$app->params['logo'])){
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">&copy; YiiCms <?= date('Y') ?> 版权所有 侵权必究</div>
+            <div class="col-lg-12">&copy; <?=Yii::$app->name?> <?= date('Y') ?>版权所有侵权必究</div>
         </div>
         <div class="row">
             <div class="col-lg-3">
