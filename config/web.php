@@ -2,14 +2,15 @@
 use yii\helpers\ArrayHelper;
 $appPath = dirname(__DIR__);
 $params = require(__DIR__ . '/params.php');
+$params = ArrayHelper::merge($params, [
+    'mdm.admin.configs' => [
+        'db' => 'customDb',
+        'menuTable' => 'admin_menu',
+        'userTable' => 'admin_user',
+    ]
+]);
 if(is_file($appPath . '/runtime/config/params.php')){
-    $params = ArrayHelper::merge($params, require($appPath . '/runtime/config/params.php'), [
-        'mdm.admin.configs' => [
-            'db' => 'customDb',
-            'menuTable' => 'admin_menu',
-            'userTable' => 'admin_user',
-        ]
-    ]);
+    $params = ArrayHelper::merge($params, require($appPath . '/runtime/config/params.php'));
 }
 $view = require(__DIR__ . '/view.php');
 if(is_file($appPath . '/runtime/config/view.php')){
