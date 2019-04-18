@@ -1,8 +1,7 @@
 <?php
 use yii\helpers\ArrayHelper;
 $appPath = dirname(__DIR__);
-$params = require(__DIR__ . '/params.php');
-$params = ArrayHelper::merge($params, [
+$params = ArrayHelper::merge(require(__DIR__ . '/params.php'), [
     'mdm.admin.configs' => [
         'db' => 'customDb',
         'menuTable' => 'admin_menu',
