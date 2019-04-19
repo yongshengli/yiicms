@@ -21,6 +21,7 @@ class BackendAsset extends AssetBundle
 //        'backend.css',
     ];
     public $js = [
+        'jquery.slimscroll.js',
         'skin.js',
         'backend.js',
     ];
