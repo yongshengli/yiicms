@@ -214,16 +214,16 @@
    */
   function change_layout(cls) {
     $("body").toggleClass(cls);
-    AdminLTE.layout.fixSidebar();
-    //Fix the problem with right sidebar and layout boxed
-    if (cls == "layout-boxed")
-      AdminLTE.controlSidebar._fix($(".control-sidebar-bg"));
-    if ($('body').hasClass('fixed') && cls == 'fixed') {
-      AdminLTE.pushMenu.expandOnHover();
-      AdminLTE.layout.activate();
-    }
-    AdminLTE.controlSidebar._fix($(".control-sidebar-bg"));
-    AdminLTE.controlSidebar._fix($(".control-sidebar"));
+    // AdminLTE.layout.fixSidebar();
+    // //Fix the problem with right sidebar and layout boxed
+    // if (cls == "layout-boxed")
+    //   AdminLTE.controlSidebar._fix($(".control-sidebar-bg"));
+    // if ($('body').hasClass('fixed') && cls == 'fixed') {
+    //   AdminLTE.pushMenu.expandOnHover();
+    //   AdminLTE.layout.activate();
+    // }
+    // AdminLTE.controlSidebar._fix($(".control-sidebar-bg"));
+    // AdminLTE.controlSidebar._fix($(".control-sidebar"));
   }
 
   /**
@@ -295,10 +295,10 @@
 
     $("[data-controlsidebar]").on('click', function () {
       change_layout($(this).data('controlsidebar'));
-      var slide = !AdminLTE.options.controlSidebarOptions.slide;
-      AdminLTE.options.controlSidebarOptions.slide = slide;
-      if (!slide)
-        $('.control-sidebar').removeClass('control-sidebar-open');
+      // var slide = !AdminLTE.options.controlSidebarOptions.slide;
+      // AdminLTE.options.controlSidebarOptions.slide = slide;
+      // if (!slide)
+      //   $('.control-sidebar').removeClass('control-sidebar-open');
     });
 
     $("[data-sidebarskin='toggle']").on('click', function () {
@@ -314,7 +314,8 @@
 
     $("[data-enable='expandOnHover']").on('click', function () {
       $(this).attr('disabled', true);
-      AdminLTE.pushMenu.expandOnHover();
+      // AdminLTE.pushMenu.expandOnHover();
+      $(document).on('expanded.pushMenu', "expandOnHover")
       if (!$('body').hasClass('sidebar-collapse'))
         $("[data-layout='sidebar-collapse']").click();
     });
