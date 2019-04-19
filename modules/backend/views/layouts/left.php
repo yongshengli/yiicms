@@ -8,9 +8,15 @@ use yii\web\UrlManager;
  */
 $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu){
     $data = empty($menu['data'])?[]:json_decode($menu['data'], true);
-    $icon ='fa fa-circle-o';
+    $icon ='circle-o';
     if(isset($data['icon'])){
-        $icon = $data['icon'];
+        print_r($data['icon']);
+        $iconArr = explode(" ", $data['icon']);
+        if (count($iconArr)>1){
+            $icon = ltrim($iconArr[1], "fa-");
+        }else {
+            $icon = $data['icon'];
+        }
         unset($data['icon']);
     }
     $route = parse_url($menu['route']);
@@ -43,7 +49,7 @@ $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu
         <!-- /.search form -->
         <?= dmstr\widgets\Menu::widget(
             [
-                'options' => ['class' => 'sidebar-menu'],
+                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => $menuItems
             ]
         ) ?>
