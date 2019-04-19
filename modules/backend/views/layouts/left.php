@@ -10,14 +10,12 @@ $menuItems = MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu
     $data = empty($menu['data'])?[]:json_decode($menu['data'], true);
     $icon ='circle-o';
     if(isset($data['icon'])){
-        print_r($data['icon']);
         $iconArr = explode(" ", $data['icon']);
         if (count($iconArr)>1){
             $icon = ltrim($iconArr[1], "fa-");
         }else {
             $icon = $data['icon'];
         }
-        unset($data['icon']);
     }
     $route = parse_url($menu['route']);
     $url = [];
