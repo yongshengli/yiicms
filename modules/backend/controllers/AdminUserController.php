@@ -48,9 +48,12 @@ class AdminUserController extends BackendController
      * Displays a single AdminUser model.
      * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
+        $userRe = $this->findModel($id);
+        $userRe->password_hash = '';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
