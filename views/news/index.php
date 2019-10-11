@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <small><?=date('Y-m-d H:i:s',$model->updated_at)?> <span class="glyphicon glyphicon-eye-open"><?=$model->hits?></span></small>
                 </div>
                 <div class="panel-body">
-                    <?=$model->detail->detail?>
+                    <?= Html::encode($model->detail->detail, false)?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

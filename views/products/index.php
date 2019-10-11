@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="panel-body">
-                    <?=$model->detail->detail?>
+                    <?=Html::encode($model->detail->detail)?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

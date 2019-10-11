@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading"><h3 class="panel-title"><?=$model->title?></h3></div>
                 </div>
                 <div class="panel-body">
-                    <?=$model->detail->detail?>
+                    <?=Html::encode($model->detail->detail)?>
 
                     <a href="<?=$model->detail->file_url?>" class="btn btn-primary">下载</a>
                 </div>
