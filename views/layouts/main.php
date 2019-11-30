@@ -62,7 +62,13 @@ if(!empty(Yii::$app->params['logo'])){
                 'class' => 'navbar navbar-inverse navbar-static-top navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
             ],
         ]);
-        echo Nav::widget(json_decode(Yii::$app->params['nav'], true));
+        echo Nav::widget(
+            array_merge(
+                json_decode(Yii::$app->params['nav'], true),
+                ["options" => [
+                    "class" => "nav navbar-nav"
+                ]]
+            ));
         ?>
         <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
         <input type="text" class="form-control input-lg" id="navbar-search-input"
