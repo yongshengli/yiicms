@@ -10,6 +10,7 @@
 namespace app\widgets;
 use app\models\News;
 use yii\bootstrap\Html;
+use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
@@ -37,7 +38,7 @@ class LastNews extends Panel
         foreach($newsList as $item) {
             $url = Url::to([ArrayHelper::remove($this->itemOptions,'baseUrl', '/news/item'), 'id'=>$item['id']]);
             $html .= Html::beginTag('li', $this->itemOptions);
-            $html .='<a href="'.$url.'">'.$item['title'].'</a>';
+            $html .='<a href="'.$url.'">'.HtmlPurifier::process($item['title']).'</a>';
             if($this->showDate){
                 $html .= '<span class="badge pull-right">'.date('Y-m-d').'</span>';
             }

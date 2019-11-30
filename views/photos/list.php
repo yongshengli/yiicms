@@ -9,11 +9,13 @@
 
 /* @var $this yii\web\View */
 /** @var $dataProvider \yii\data\ActiveDataProvider */
+
+use yii\helpers\HtmlPurifier;
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
 $this->title = '企业相册';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
 ?>
 <style>
     .caption{text-align: left}

@@ -5,8 +5,9 @@
 use yii\helpers\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
+use yii\helpers\HtmlPurifier;
 
-$this->title = $page->title;
+$this->title = HtmlPurifier::process($page->title);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">

@@ -11,6 +11,7 @@
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 use yii\grid\GridView;
 use yii\bootstrap\Html;
+use yii\helpers\HtmlPurifier;
 
 $this->title = '新闻';
 $this->params['breadcrumbs'][] = $this->title;
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'title',
                                 'format'=>'raw',
                                 'value'=>function($item){
-                                    $html = '<h4>'.Html::a($item->title, ['/news/item', 'id'=>$item->id]).'</h4>';
+                                    $html = '<h4>'.Html::a(HtmlPurifier::process($item->title), ['/news/item', 'id'=>$item->id]).'</h4>';
                                     $html .= '<p>'.Html::encode($item->description).'</p>';
                                     return $html;
                                 }

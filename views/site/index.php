@@ -48,13 +48,13 @@ $carouselItems = [];
                         <div class="thumbnail">
                             <div class="image-box">
                                 <a href="<?= Url::to(['/products/item', 'id' => $model->id]) ?>">
-                                    <img alt="<?= $model->title ?>" src="<?=$model->image ?>" class="image">
+                                    <img alt="<?= HtmlPurifier::process($model->title) ?>" src="<?=$model->image ?>" class="image">
                                 </a>
                             </div>
                             <div class="caption">
                                 <h5>
                                     <a href="<?= Url::to(['/products/item', 'id' => $model->id]) ?>"
-                                       title="<?= $model->title ?>">
+                                       title="<?= HtmlPurifier::process($model->title) ?>">
                                         <?= StringHelper::truncateUtf8String($model->title, 13, false) ?>
                                     </a>
                                 </h5>

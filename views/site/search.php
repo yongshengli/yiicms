@@ -11,6 +11,7 @@
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 use yii\grid\GridView;
 use yii\bootstrap\Html;
+use yii\helpers\HtmlPurifier;
 
 $this->title = '搜索-'.$this->params['keyword'];
 $this->params['breadcrumbs'][] = $this->title;
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'title',
                                 'format'=>'raw',
                                 'value'=>function($item){
-                                    $title = '<h4>'.str_ireplace($this->params['keyword'],'<font color="#cc0000">'.$this->params['keyword'].'</font>',$item->title).'</h4>';
+                                    $title = '<h4>'.str_ireplace(HtmlPurifier::process($this->params['keyword']),'<font color="#cc0000">'.HtmlPurifier::process($this->params['keyword']).'</font>',HtmlPurifier::process($item->title)).'</h4>';
                                     if($item->type==\app\models\Content::TYPE_NEWS) {
                                         $html = Html::a($title, ['/news/item', 'id' => $item->id],['target'=>'_blank']);
                                     }elseif($item->type==\app\models\Content::TYPE_PRODUCTS){
