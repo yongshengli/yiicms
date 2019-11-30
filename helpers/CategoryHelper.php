@@ -10,7 +10,7 @@
 namespace app\helpers;
 
 
-use yii\base\Object;
+use yii\base\BaseObject as Object;
 use Yii;
 
 class CategoryHelper extends Object
