@@ -12,6 +12,7 @@
 use yii\bootstrap\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
+use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>'产品', 'url'=>['/products/list']];
@@ -60,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4><?=$model->title?></h4>
                         <div>
                             <div>
-                                <?=$model->detail->params?>
+                                <?=HtmlPurifier::process($model->detail->params)?>
                             </div>
                             <div style="margin-top: 15px">
                                 在线咨询:
@@ -77,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="panel-body">
-                    <?=Html::encode($model->detail->detail)?>
+                    <?=HtmlPurifier::process($model->detail->detail)?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

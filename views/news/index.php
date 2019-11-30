@@ -12,6 +12,7 @@
 use yii\bootstrap\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
+use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>'新闻', 'url'=>['/news/list']];
@@ -26,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <small><?=date('Y-m-d H:i:s',$model->updated_at)?> <span class="glyphicon glyphicon-eye-open"><?=$model->hits?></span></small>
                 </div>
                 <div class="panel-body">
-                    <?= Html::encode($model->detail->detail, false)?>
+                    <?= HtmlPurifier::process($model->detail->detail, false)?>
                 </div>
                 <div class="panel-body">
                     <div class="row">

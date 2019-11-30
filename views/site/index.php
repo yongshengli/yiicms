@@ -5,6 +5,7 @@
 /* @var $adList array */
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
+use yii\helpers\HtmlPurifier;
 use yii\widgets\ListView;
 use yii\bootstrap\Carousel;
 use yii\helpers\Url;
@@ -58,7 +59,7 @@ $carouselItems = [];
                                     </a>
                                 </h5>
                                 <div style="height: 40px;overflow: hidden;">
-                                    <?= $model->description ?>
+                                    <?= HtmlPurifier::process($model->description) ?>
                                 </div>
                             </div>
                         </div>
