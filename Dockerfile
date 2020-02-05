@@ -10,12 +10,11 @@ RUN MAIN_VERSION=$(cat /etc/alpine-release | cut -d '.' -f 0-2) \
         echo "https://mirrors.aliyun.com/alpine/v${MAIN_VERSION}/community"; \
     } >> /etc/apk/repositories && \
     apk add --no-cache nginx && \
-    # apk add --no-cache mysql && \
-    apk add --no-cache mysql-client && \
     mkdir -p /run/nginx && \
+    docker-php-ext-install pdo_mysql gd && \
     rm -f /etc/nginx/conf.d/default.conf && \
     cp -f /var/www/yiicms/config/db.php.default /var/www/yiicms/config/db.php && \
-    sed -i -e "s/'password' => '123456',/'password' => '',/g" /var/www/yiicms/config/db.php && \
+    # sed -i -e "s/'password' => '123456',/'password' => '',/g" /var/www/yiicms/config/db.php && \
     chmod -Rf 777 /var/www/yiicms/runtime && \
     chmod -Rf 777 /var/www/yiicms/web/uploads && \
     chmod -Rf 777 /var/www/yiicms/web/assets && \
