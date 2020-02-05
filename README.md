@@ -80,6 +80,11 @@ return [
 ];
 ```
 
+docker 部署
+----------
+1.下载代码
+2. cd yiicms && docker build -t sheng/yiicms .
+3. docker run -v /project-path/yiicms:/data/var/www/html/yiicms yiicms
 
 
 **NOTES:**
