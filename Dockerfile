@@ -11,12 +11,14 @@ RUN MAIN_VERSION=$(cat /etc/alpine-release | cut -d '.' -f 0-2) \
     } >> /etc/apk/repositories && \
     apk add --no-cache nginx && \
     mkdir -p /run/nginx && \
-    docker-php-ext-install pdo_mysql && \
-    # apk add freetype freetype-dev libpng-dev libjpeg-turbo libjpeg-turbo-dev && \
-    # docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    # docker-php-ext-install -j$(nproc) gd && \
-    apk del reetype-dev libpng-dev libjpeg-turbo-dev && rm /var/cache/apk/* && \
     rm -f /etc/nginx/conf.d/default.conf && \
+    #php mysql-pdo gd2
+    docker-php-ext-install pdo_mysql && \
+    apk add freetype freetype-dev libpng-dev libjpeg-turbo libjpeg-turbo-dev && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install -j$(nproc) gd && \
+    apk del freetype-dev libpng-dev libjpeg-turbo-dev && \
+    rm -f /var/cache/apk/* && \
     cp -f /var/www/yiicms/config/db.php.default /var/www/yiicms/config/db.php && \
     # sed -i -e "s/'password' => '123456',/'password' => '',/g" /var/www/yiicms/config/db.php && \
     chmod -Rf 777 /var/www/yiicms/runtime && \
