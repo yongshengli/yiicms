@@ -87,7 +87,7 @@ docker 部署
 2. cd yiicms && docker build -t sheng/yiicms .
 3. docker-compse up
 <!-- 3. docker run -v /project-path/yiicms:/data/var/www/html/yiicms sheng/yiicms -->
-
+```
 
 **NOTES:**
 ~~~
