@@ -19,8 +19,9 @@ RUN MAIN_VERSION=$(cat /etc/alpine-release | cut -d '.' -f 0-2) \
     docker-php-ext-install -j$(nproc) gd && \
     apk del freetype-dev libpng-dev libjpeg-turbo-dev && \
     rm -f /var/cache/apk/* && \
+    cp -f "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" && \
     cp -f /var/www/yiicms/config/db.php.default /var/www/yiicms/config/db.php && \
-    # sed -i -e "s/'password' => '123456',/'password' => '',/g" /var/www/yiicms/config/db.php && \
+    sed -i -e "s/'username' => 'root',/'username' => 'yiicms',/g" /var/www/yiicms/config/db.php && \
     chmod -Rf 777 /var/www/yiicms/runtime && \
     chmod -Rf 777 /var/www/yiicms/web/uploads && \
     chmod -Rf 777 /var/www/yiicms/web/assets && \
