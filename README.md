@@ -82,6 +82,7 @@ return [
 
 docker 部署
 ----------
+```shell
 1.下载代码
 2. cd yiicms && docker build -t sheng/yiicms .
 3. docker-compse up
