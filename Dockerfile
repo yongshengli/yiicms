@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.1-fpm-alpine
 
 COPY . /var/www/yiicms
 COPY ./nginx.conf /etc/nginx/conf.d/yiicms.conf
@@ -21,6 +21,7 @@ RUN MAIN_VERSION=$(cat /etc/alpine-release | cut -d '.' -f 0-2) \
     rm -f /var/cache/apk/* && \
     cp -f "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" && \
     cp -f /var/www/yiicms/config/db.php.default /var/www/yiicms/config/db.php && \
+    sed -i -e "s/'dsn' => 'mysql:host=localhost;dbname=yiicms',/'dsn' => 'mysql:host=mysql;dbname=yiicms',/g" /var/www/yiicms/config/db.php && \
     sed -i -e "s/'username' => 'root',/'username' => 'yiicms',/g" /var/www/yiicms/config/db.php && \
     chmod -Rf 777 /var/www/yiicms/runtime && \
     chmod -Rf 777 /var/www/yiicms/web/uploads && \

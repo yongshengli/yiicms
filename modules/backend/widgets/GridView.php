@@ -83,8 +83,9 @@ class GridView extends YiiGridView
             }).done(function(res){
                 if(res.code==1){
                     alert(res.data);
+                }else{
+                    alert(\'操作成功\');
                 }
-                alert(\'操作成功\');
                 $(\'#'.$id.'\').yiiGridView(\'applyFilter\');
                 self.disabled = false;
             });
