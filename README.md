@@ -93,8 +93,8 @@ docker 部署
 ~~~
 配置完成后可通过如下地址访问前台/后台
 
-http://domain.com/ 前台
-http://domain.com/backend.html 后台
+http://127.0.0.1/ 前台
+http://127.0.0.1/backend.html 后台
 
 
 ~~~
