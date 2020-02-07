@@ -65,6 +65,11 @@ class Category extends AppActiveRecord
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
+        if (empty($this->language)){
+            if (isset(\yii::$app->language)){
+                $this->language = yii::$app->language;
+            }
+        }
         $file = $this->uploadImgFile();
         if($file){
             $this->image = $file;
