@@ -2,7 +2,11 @@ version: '3.4'
 services:
   mysql:
     image: mysql/mysql-server:5.7
-    expose: 
+    command:
+      - --default_authentication_plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    expose:
       - 3306
     ports:
       - "3306:3306"
