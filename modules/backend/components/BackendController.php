@@ -49,7 +49,7 @@ class BackendController extends Controller
     }
 
     public function goBack($defaultUrl = null){
-        return parent::goBack($this->getReturnUrl($defaultUrl));
+        return Yii::$app->getResponse()->redirect($this->getReturnUrl($defaultUrl));
     }
 
     public function getReturnUrl($defaultUrl = null){
