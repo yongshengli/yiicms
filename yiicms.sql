@@ -1,14 +1,15 @@
--- MySQL dump 10.13  Distrib 5.7.17, for osx10.12 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `yiicms` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `yiicms`;
+-- MySQL dump 10.13  Distrib 8.0.19, for macos10.15 (x86_64)
 --
--- Host: localhost    Database: yiicms
+-- Host: 127.0.0.1    Database: yiicms
 -- ------------------------------------------------------
--- Server version	5.7.17
-USE yiicms;
+-- Server version	8.0.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -22,16 +23,16 @@ USE yiicms;
 
 DROP TABLE IF EXISTS `ad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ad` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL DEFAULT '',
-  `type` tinyint(4) DEFAULT '101' COMMENT '101 轮播图 102 友情链接',
-  `category_id` int(11) DEFAULT '0',
+  `type` tinyint DEFAULT '101' COMMENT '101 轮播图 102 友情链接',
+  `category_id` int DEFAULT '0',
   `image` varchar(255) NOT NULL DEFAULT '',
   `link` varchar(255) NOT NULL DEFAULT '',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` int NOT NULL DEFAULT '0',
+  `updated_at` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `i-type-category` (`type`,`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -53,13 +54,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `admin_menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
-  `parent` int(11) DEFAULT NULL,
+  `parent` int DEFAULT NULL,
   `route` varchar(256) DEFAULT NULL,
-  `order` int(11) DEFAULT NULL,
+  `order` int DEFAULT NULL,
   `data` blob,
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`),
@@ -73,7 +74,7 @@ CREATE TABLE `admin_menu` (
 
 LOCK TABLES `admin_menu` WRITE;
 /*!40000 ALTER TABLE `admin_menu` DISABLE KEYS */;
-INSERT INTO `admin_menu` VALUES (1,'产品管理',NULL,'/backend/products/index',0,'{\"icon\" :\"fa fa-th\"}'),(2,'产品分类',1,'/backend/category/index?type=2',1,NULL),(3,'产品列表',1,'/backend/products/index',0,NULL),(4,'新闻管理',NULL,'/backend/news/index',1,'{\"icon\":\"fa fa-newspaper-o\"}'),(5,'新闻列表',4,'/backend/news/index',0,NULL),(6,'新闻分类',4,'/backend/category/index?type=1',1,NULL),(7,'下载管理',NULL,'/backend/downloads/index',2,'{\"icon\":\"fa fa-download\"}'),(8,'下载列表',7,'/backend/downloads/index',0,NULL),(9,'下载分类',7,'/backend/category/index?type=3',1,NULL),(10,'照片管理',NULL,'/backend/photos/index',4,'{\"icon\":\"fa fa-picture-o\"}'),(11,'相册列表',10,'/backend/photos/index',0,NULL),(12,'相册分类',10,'/backend/category/index?type=4',1,NULL),(13,'用户反馈',NULL,'/backend/feedback/index',5,'{\"icon\":\"fa fa-commenting\"}'),(14,'网站配置',NULL,'/backend/config/index',6,'{\"icon\":\"fa fa-cog\"}'),(15,'基础配置',14,'/backend/config/base-config',1,NULL),(16,'其他配置',14,'/backend/config/index',2,NULL),(17,'轮播图片',14,'/backend/ad/index',3,NULL),(18,'后台配置',NULL,'/backend/rbac/route/index',7,'{\"icon\":\"fa fa-bars\"}'),(19,'管理员列表',18,'/backend/admin-user/index',1,NULL),(20,'权限配置',18,'/backend/rbac/assignment/index',2,NULL),(21,'角色列表',18,'/backend/rbac/role/index',3,NULL),(22,'权限列表',18,'/backend/rbac/permission/index',4,NULL),(23,'规则列表',18,'/backend/rbac/rule/index',5,NULL),(24,'路由列表',18,'/backend/rbac/route/index',5,NULL),(25,'后台菜单',18,'/backend/rbac/menu/index',7,NULL),(26,'开发工具',NULL,'/gii/default/index',8,'{\"icon\":\"fa fa-share\"}'),(27,'gii',26,'/gii/default/index',2,NULL),(28,'debug',26,'/debug/default/index',1,NULL),(29,'模板主题配置',14,'/backend/config/view-config',2,NULL),(30,'页面管理',14,'/backend/page/index',7,NULL),(31,'友情链接',14,'/backend/blogroll/index',8,NULL);
+INSERT INTO `admin_menu` VALUES (1,'产品管理',NULL,'/backend/products/index',0,_binary '{\"icon\" :\"fa fa-th\"}'),(2,'产品分类',1,'/backend/category/index?type=2',1,NULL),(3,'产品列表',1,'/backend/products/index',0,NULL),(4,'新闻管理',NULL,'/backend/news/index',1,_binary '{\"icon\":\"fa fa-newspaper-o\"}'),(5,'新闻列表',4,'/backend/news/index',0,NULL),(6,'新闻分类',4,'/backend/category/index?type=1',1,NULL),(7,'下载管理',NULL,'/backend/downloads/index',2,_binary '{\"icon\":\"fa fa-download\"}'),(8,'下载列表',7,'/backend/downloads/index',0,NULL),(9,'下载分类',7,'/backend/category/index?type=3',1,NULL),(10,'照片管理',NULL,'/backend/photos/index',4,_binary '{\"icon\":\"fa fa-picture-o\"}'),(11,'相册列表',10,'/backend/photos/index',0,NULL),(12,'相册分类',10,'/backend/category/index?type=4',1,NULL),(13,'用户反馈',NULL,'/backend/feedback/index',5,_binary '{\"icon\":\"fa fa-commenting\"}'),(14,'网站配置',NULL,'/backend/config/index',6,_binary '{\"icon\":\"fa fa-cog\"}'),(15,'基础配置',14,'/backend/config/base-config',1,NULL),(16,'其他配置',14,'/backend/config/index',2,NULL),(17,'轮播图片',14,'/backend/ad/index',3,NULL),(18,'后台配置',NULL,'/backend/rbac/route/index',7,_binary '{\"icon\":\"fa fa-bars\"}'),(19,'管理员列表',18,'/backend/admin-user/index',1,NULL),(20,'权限配置',18,'/backend/rbac/assignment/index',2,NULL),(21,'角色列表',18,'/backend/rbac/role/index',3,NULL),(22,'权限列表',18,'/backend/rbac/permission/index',4,NULL),(23,'规则列表',18,'/backend/rbac/rule/index',5,NULL),(24,'路由列表',18,'/backend/rbac/route/index',5,NULL),(25,'后台菜单',18,'/backend/rbac/menu/index',7,NULL),(26,'开发工具',NULL,'/gii/default/index',8,_binary '{\"icon\":\"fa fa-share\"}'),(27,'gii',26,'/gii/default/index',2,NULL),(28,'debug',26,'/debug/default/index',1,NULL),(29,'模板主题配置',14,'/backend/config/view-config',2,NULL),(30,'页面管理',14,'/backend/page/index',7,NULL),(31,'友情链接',14,'/backend/blogroll/index',8,NULL);
 /*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,18 +84,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `admin_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `access_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `auth_key` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password_reset_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status` smallint NOT NULL DEFAULT '10',
+  `access_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `u-username` (`username`),
   UNIQUE KEY `u-email` (`email`),
@@ -118,11 +119,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `auth_assignment` (
-  `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` int(11) DEFAULT NULL,
+  `item_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` int DEFAULT NULL,
   PRIMARY KEY (`item_name`,`user_id`),
   CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -144,15 +145,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `auth_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `auth_item` (
-  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `type` int(11) NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `data` text COLLATE utf8_unicode_ci,
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` int NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `rule_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `created_at` int DEFAULT NULL,
+  `updated_at` int DEFAULT NULL,
   PRIMARY KEY (`name`),
   KEY `rule_name` (`rule_name`),
   KEY `idx-auth_item-type` (`type`),
@@ -176,10 +177,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `auth_item_child`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `auth_item_child` (
-  `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `parent` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `child` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`parent`,`child`),
   KEY `child` (`child`),
   CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -203,12 +204,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `auth_rule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `auth_rule` (
-  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `data` text COLLATE utf8_unicode_ci,
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `data` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `created_at` int DEFAULT NULL,
+  `updated_at` int DEFAULT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -229,21 +230,23 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '分类名',
-  `pid` int(11) NOT NULL DEFAULT '0' COMMENT '父id',
+  `pid` int NOT NULL DEFAULT '0' COMMENT '父id',
   `path` varchar(50) NOT NULL DEFAULT '0' COMMENT '完整的父id 用/分开',
-  `type` tinyint(4) NOT NULL COMMENT '1.news 2 products 3 download 4 photo',
-  `image` varchar(255) DEFAULT '',
+  `type` tinyint NOT NULL COMMENT '1.news 2 products 3 download 4 photo',
+  `image` varchar(255) NOT NULL DEFAULT '',
   `description` varchar(255) NOT NULL DEFAULT '',
   `keywords` varchar(255) NOT NULL DEFAULT '',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
+  `language` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `i-type-pid` (`type`,`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  KEY `i-type-pid` (`type`,`pid`),
+  KEY `i-language` (`language`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +255,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'游学研学',0,'',2,'','','',1481360463,1490457550),(2,'默认分类',0,'',1,'/uploads/products-img/img_58f32726aa3df.png','测试','测试，测试测试',1481367786,1492330278),(3,'新闻分类2',2,'2',1,'','','',1481372394,1499598678),(4,'旅行度假',0,'',2,'','','',1481609361,1490457573),(5,'下载文档',0,'',3,'','','',1482155225,1482155225),(6,'企业环境',0,'',4,'','','',1482559711,1482559711),(7,'商务考察',0,'',2,'','','',1490457590,1490457590),(8,'测试修改path',0,'',1,'','','',1498831600,1498833499),(9,'测试修改path2',3,'',1,'','','',1498832464,1499598673),(10,'修改path3',9,'9',1,'','','',1498832583,1499598673);
+INSERT INTO `category` VALUES (1,'游学研学',0,'',2,'','','',1481360463,1490457550,''),(2,'默认分类',0,'',1,'/uploads/products-img/img_58f32726aa3df.png','测试','测试，测试测试',1481367786,1492330278,''),(3,'新闻分类2',2,'2',1,'','','',1481372394,1499598678,''),(4,'旅行度假',0,'',2,'','','',1481609361,1490457573,''),(5,'下载文档',0,'',3,'','','',1482155225,1482155225,''),(6,'企业环境',0,'',4,'','','',1482559711,1482559711,''),(7,'商务考察',0,'',2,'','','',1490457590,1490457590,''),(8,'测试修改path',0,'',1,'','','',1498831600,1498833499,''),(9,'测试修改path2',3,'',1,'','','',1498832464,1499598673,''),(10,'修改path3',9,'9',1,'','','',1498832583,1499598673,''),(11,'書籍',0,'',2,'','','',1586001312,1586001312,'zh-CN');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,17 +265,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `config`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `config` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '' COMMENT '字段名英文',
-  `label` varchar(50) DEFAULT NULL COMMENT '字段标注',
+  `label` varchar(50) NOT NULL COMMENT '字段标注',
   `value` varchar(3000) NOT NULL DEFAULT '' COMMENT '字段值',
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
+  `language` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `iu-name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  KEY `u-language_name` (`language`,`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +285,7 @@ CREATE TABLE `config` (
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李sss</p><p>QQ: 739800600</p><p>电话: 1304351</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162),(3,'contact_us_page_id','联系我们','1',1481355647,1483169811),(4,'jianjie','企业简介','北京雄鹰国际旅行社是新时代投资管理集团旗下的专业旅游平台,依托集团广泛而强大的资源和团队，雄鹰国旅专注于游学交流，商务考察，专项旅行，帆船体验，机票代理等，致力于通过旅行提高青少年的品格与素养，为旅行者提供专业化，个性化的优质服务testtesttest',1490458199,1490458199),(5,'gongyi','公益广告','<script type=\"text/javascript\"> var yibo_id =40276;</script><script src=\"http://yibo.iyiyun.com/yibo.js?random=309727\" type=\"text/javascript\"></script>',1494309812,1494309845),(6,'top_right_data','头部右侧数据','电话:13240702278,17346512591',1507598988,1507598988);
+INSERT INTO `config` VALUES (2,'contact_us','联系我们','<p>公司: 在北京网络科技</p><p>联系人: 李sss</p><p>QQ: 739800600</p><p>电话: 1304351</p><p>E-mail: 739800600@qq.com</p><p>地址: 北京市丰台区大红门</p>',1481350005,1482902162,'zh-CN'),(3,'contact_us_page_id','联系我们','1',1481355647,1483169811,'zh-CN'),(4,'jianjie','企业简介','北京雄鹰国际旅行社是新时代投资管理集团旗下的专业旅游平台,依托集团广泛而强大的资源和团队，雄鹰国旅专注于游学交流，商务考察，专项旅行，帆船体验，机票代理等，致力于通过旅行提高青少年的品格与素养，为旅行者提供专业化，个性化的优质服务testtesttest',1490458199,1490458199,'zh-CN'),(5,'gongyi','公益广告','<script type=\"text/javascript\"> var yibo_id =40276;</script><script src=\"http://yibo.iyiyun.com/yibo.js?random=309727\" type=\"text/javascript\"></script>',1494309812,1494309845,'zh-CN'),(6,'top_right_data','头部右侧数据','电话:13240702278,17346512591',1507598988,1507598988,'zh-CN'),(10,'contact_us','contact us','dsfsfdsfsdfds',1585993034,1585993034,'en-US');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,23 +295,25 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `content`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `content` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `language` varchar(20) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
-  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型1news,2product3photo',
-  `category_id` int(11) NOT NULL,
+  `type` tinyint NOT NULL DEFAULT '1' COMMENT '类型1news,2product3photo',
+  `category_id` int NOT NULL,
   `image` varchar(255) NOT NULL DEFAULT '' COMMENT '缩略图',
   `description` varchar(255) NOT NULL DEFAULT '',
   `keywords` varchar(255) NOT NULL DEFAULT '',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0不显示1显示',
-  `admin_user_id` int(11) NOT NULL DEFAULT '0',
-  `hits` int(11) NOT NULL DEFAULT '0' COMMENT '浏览数点击数',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
+  `status` tinyint NOT NULL DEFAULT '0' COMMENT '0不显示1显示',
+  `admin_user_id` int NOT NULL DEFAULT '0',
+  `hits` int NOT NULL DEFAULT '0' COMMENT '浏览数点击数',
+  `created_at` int NOT NULL DEFAULT '0',
+  `updated_at` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `i-type-status-title` (`type`,`status`,`title`),
-  KEY `i-update` (`updated_at`)
+  KEY `i-update` (`updated_at`),
+  KEY `i-language` (`language`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -317,7 +323,7 @@ CREATE TABLE `content` (
 
 LOCK TABLES `content` WRITE;
 /*!40000 ALTER TABLE `content` DISABLE KEYS */;
-INSERT INTO `content` VALUES (1,'测试1',1,0,'','测试测试222','',1,0,0,0,1481269292),(7,'新闻2',1,3,'','吃豆腐的房地产','',0,0,0,1481264976,1481379895),(9,'dfdsfadfdsfdsfds',1,0,'','dfsdds','',0,0,0,1481265228,1481265228),(10,'dfsdfds312321的所得税法',1,0,'','的范德萨发的','',0,1,0,1481265362,1481265362),(11,'测试你好',1,0,'','三大市场','',1,1,0,1481265454,1481265454),(13,'sdfdsvds',1,0,'','dsfadsfdsa adfdasfd','',0,1,0,1481265650,1481265650),(14,'dfsdfds312321的所得税法dsfdsf',1,0,'','fdsdsfsdfds','',0,1,0,1481268136,1481268136),(15,'测试测试测试',1,0,'','测试测试222','',0,1,0,1481268506,1481268506),(16,'电风扇的范德萨',1,0,'','东方闪电','',0,1,0,1481268645,1481268645),(17,'ceshi',1,2,'','测试','',1,1,0,1481294417,1482486244),(18,'测试测试',1,0,'','测试3333333','',1,1,1,1481294436,1481294436),(19,'测试测试测试',1,2,'','测试测试','',1,1,14,1481294458,1482120320),(20,'德国代购2016 Marc Jacobs/马克·雅可布 女士撞色皮质直板钱包',2,1,'','<p>德国代购2016 Marc Jacobs/马克·雅可布 女士撞色皮质直板钱包</p>','',1,1,0,1481455753,1482071209),(21,'测试测试',2,1,'/uploads/products-img/img_584d571075916.jpg','测试','',1,1,0,1481463544,1481552670),(22,'测试测试测试',2,1,'/uploads/products-img/img_584d57438ddb0.jpg','测试测试测试','',1,1,0,1481463619,1481463619),(23,'测试产品22222222222222',2,1,'/uploads/products-img/img_584d5d65a0855.jpg','测试产品','',1,1,0,1481465189,1481465189),(24,'飒飒的范德萨范德萨似懂非懂是',2,1,'/uploads/products-img/img_58575c9b83b7b.png','<p>似懂非懂是付的是</p><p><br></p>','',1,1,1,1481465708,1482120751),(25,'美国代购2016 MOTHER 女士磨边牛仔裤',2,1,'/uploads/products-img/img_584eb27571659.jpg','重度磨损和猫须褶皱为这款褪色 MOTHER 牛仔裤带来做旧效果。5 口袋设计。钮扣和拉链门襟。','',1,1,5,1481552501,1481552688),(26,'关于公司考勤制度',3,5,'','<p>关于公司考勤制度</p>','',1,1,0,1482155706,1482157422),(27,'测试',3,5,'','','',0,1,0,1482200020,1482202904),(28,'继承测试',1,2,'','继承测试','gggg',1,1,10,1482291369,1510469205),(29,'产品继承测试',2,1,'/uploads/products-img/img_5859f8c6724c8.jpg','','',1,1,23,1482291398,1482325074),(30,'办公环境',4,6,'','','',1,1,8,1482560413,1482560413),(31,'测试相册',4,6,'','测试','测试',1,1,0,1482654720,1482654720),(32,'cccc',3,5,'','','ssss',0,1,0,1489731591,1494326191),(33,'测试测试',2,1,'/uploads/products-img/img_59119bdcd73a2.jpg','ddddd','fffff',0,1,0,1494325122,1510469150);
+INSERT INTO `content` VALUES (1,'zh-CN','测试1',1,0,'','测试测试222','',1,0,0,0,1481269292),(7,'zh-CN','新闻2',1,3,'','吃豆腐的房地产','',0,0,0,1481264976,1481379895),(9,'zh-CN','dfdsfadfdsfdsfds',1,0,'','dfsdds','',0,0,0,1481265228,1481265228),(10,'zh-CN','dfsdfds312321的所得税法',1,0,'','的范德萨发的','',0,1,0,1481265362,1481265362),(11,'zh-CN','测试你好',1,0,'','三大市场','',1,1,0,1481265454,1481265454),(13,'zh-CN','sdfdsvds',1,0,'','dsfadsfdsa adfdasfd','',0,1,0,1481265650,1481265650),(14,'zh-CN','dfsdfds312321的所得税法dsfdsf',1,0,'','fdsdsfsdfds','',0,1,0,1481268136,1481268136),(15,'zh-CN','测试测试测试',1,0,'','测试测试222','',0,1,0,1481268506,1481268506),(16,'zh-CN','电风扇的范德萨',1,0,'','东方闪电','',0,1,0,1481268645,1481268645),(17,'zh-CN','ceshi',1,2,'','测试','',1,1,0,1481294417,1482486244),(18,'zh-CN','测试测试',1,0,'','测试3333333','',1,1,1,1481294436,1481294436),(19,'zh-CN','测试测试测试',1,2,'','测试测试','',1,1,14,1481294458,1482120320),(20,'zh-CN','德国代购2016 Marc Jacobs/马克·雅可布 女士撞色皮质直板钱包',2,1,'','<p>德国代购2016 Marc Jacobs/马克·雅可布 女士撞色皮质直板钱包</p>','',1,1,0,1481455753,1482071209),(21,'zh-CN','测试测试',2,1,'/uploads/products-img/img_584d571075916.jpg','测试','',1,1,0,1481463544,1481552670),(22,'zh-CN','测试测试测试',2,1,'/uploads/products-img/img_584d57438ddb0.jpg','测试测试测试','',1,1,0,1481463619,1481463619),(23,'zh-CN','测试产品22222222222222',2,1,'/uploads/products-img/img_584d5d65a0855.jpg','测试产品','',1,1,0,1481465189,1481465189),(24,'zh-CN','飒飒的范德萨范德萨似懂非懂是',2,1,'/uploads/products-img/img_58575c9b83b7b.png','<p>似懂非懂是付的是</p><p><br></p>','',1,1,4,1481465708,1482120751),(25,'zh-CN','美国代购2016 MOTHER 女士磨边牛仔裤',2,1,'/uploads/products-img/img_584eb27571659.jpg','重度磨损和猫须褶皱为这款褪色 MOTHER 牛仔裤带来做旧效果。5 口袋设计。钮扣和拉链门襟。','',1,1,6,1481552501,1481552688),(26,'zh-CN','关于公司考勤制度',3,5,'','<p>关于公司考勤制度</p>','',1,1,0,1482155706,1482157422),(27,'zh-CN','测试',3,5,'','','',0,1,0,1482200020,1482202904),(28,'zh-CN','继承测试',1,2,'','继承测试','gggg',1,1,10,1482291369,1510469205),(29,'zh-CN','产品继承测试',2,1,'/uploads/products-img/img_5859f8c6724c8.jpg','','',1,1,23,1482291398,1482325074),(30,'zh-CN','办公环境',4,6,'','','',1,1,8,1482560413,1482560413),(31,'zh-CN','测试相册',4,6,'','测试','测试',1,1,0,1482654720,1482654720),(32,'zh-CN','cccc',3,5,'','','ssss',0,1,0,1489731591,1494326191);
 /*!40000 ALTER TABLE `content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,15 +333,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `content_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `content_detail` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `content_id` int(11) NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `content_id` int NOT NULL,
   `detail` text NOT NULL,
   `params` varchar(1000) NOT NULL DEFAULT '',
   `file_url` varchar(255) NOT NULL DEFAULT '',
-  `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
+  `created_at` int DEFAULT NULL,
+  `updated_at` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `i-content` (`content_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
@@ -357,16 +363,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `feedback` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `subject` varchar(125) NOT NULL DEFAULT '',
   `name` varchar(100) NOT NULL DEFAULT '',
   `phone` varchar(50) NOT NULL DEFAULT '',
   `email` varchar(50) NOT NULL DEFAULT '',
   `body` varchar(255) NOT NULL DEFAULT '',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` int NOT NULL DEFAULT '0',
+  `updated_at` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -387,10 +393,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
+  `apply_time` int DEFAULT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -411,17 +417,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `page`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `page` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '',
   `image` varchar(255) NOT NULL DEFAULT '',
   `description` varchar(255) NOT NULL DEFAULT '',
   `keyword` varchar(100) NOT NULL DEFAULT '',
   `template` varchar(100) NOT NULL DEFAULT '' COMMENT '模板路径',
   `content` text NOT NULL,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
+  `created_at` int NOT NULL,
+  `updated_at` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -435,7 +441,6 @@ LOCK TABLES `page` WRITE;
 INSERT INTO `page` VALUES (1,'关于我们','','关于我们','关于我们','page','<p><iframe class=\"ueditor_baidumap\" src=\"http://dev.qy.com/assets/7a0b751e/dialogs/map/show.html#center=116.404,39.915&zoom=10&width=530&height=340&markers=116.404,39.915&markerStyles=l,A\" frameborder=\"0\" width=\"534\" height=\"344\"></iframe></p>',1483165325,1483170261);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
-
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -446,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-02 15:35:35
+-- Dump completed on 2020-04-04 22:23:02
