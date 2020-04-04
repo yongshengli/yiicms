@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use app\modules\backend\widgets\GridView;
 use app\models\Photos;
 /* @var $this yii\web\View */
@@ -21,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
             <?= GridView::widget([
+                'filterUrl'=>Url::current(),
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [

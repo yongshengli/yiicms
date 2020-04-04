@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use app\modules\backend\widgets\GridView;
 
 /* @var $this yii\web\View */
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="tab-content">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
             <?= GridView::widget([
+                'filterUrl'=>Url::current(),
                 'layout'=>"{summary}\n{items}\n{pager}",
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
