@@ -48,8 +48,11 @@ class CommonHelper
      * @param Category $category
      * @param array $breadcrumbs
      */
-    static public function categoryBreadcrumbs(Category $category, array &$breadcrumbs)
+    static public function categoryBreadcrumbs($category, array &$breadcrumbs)
     {
+        if (empty($category) || !($category instanceof Category)){
+            return ;
+        }
         $type =  Content::type2String($category->type);
         $breadcrumbs[] = [
             'label'=>$category->getTypeText(),
