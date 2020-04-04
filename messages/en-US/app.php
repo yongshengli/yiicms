@@ -32,4 +32,5 @@ return [
     '最新咨询'=>'The last news',
     '最新新闻'=>'The last news',
     '产品详情'=>'The product detail',
+    '友情链接'=>'Blogroll',
 ];

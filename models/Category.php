@@ -250,4 +250,12 @@ class Category extends AppActiveRecord
         $types =  self::getTypes();
         return isset($types[$this->type])?$types[$this->type]:null;
     }
+    
+    public static function find(){
+        $query = parent::find();
+        if (isset(\yii::$app)){
+            $query->andWhere(['language'=>\yii::$app->language]);
+        }
+        return $query;
+    }
 }

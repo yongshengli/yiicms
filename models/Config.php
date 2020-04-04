@@ -80,4 +80,11 @@ class Config extends AppActiveRecord
             'updated_at' => '最后修改',
         ];
     }
+    public static function find(){
+        $query = parent::find();
+        if (isset(\yii::$app)){
+            $query->andWhere(['language'=>\yii::$app->language]);
+        }
+        return $query;
+    }
 }
