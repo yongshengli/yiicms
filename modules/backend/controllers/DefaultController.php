@@ -109,7 +109,7 @@ class DefaultController extends BackendController
     public function actionLanguage($language){
         if (isset(\app\models\Language::$lans[$language])){
             yii::$app->language = $language;
-            return $this->redirect(Url::to('backend'));
+            return $this->redirect(Url::to(['/backend']));
         }
     }
     /**
