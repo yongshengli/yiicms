@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use kartik\form\ActiveForm;
 use app\helpers\CategoryHelper;
 use kartik\file\FileInput;
 
@@ -12,7 +13,7 @@ use kartik\file\FileInput;
 
 <div class="category-form">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(['action'=>Url::current(),'options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="row">
         <div class="col-sm-6">
             <?= $form->field($model, 'pid')->widget(\kartik\select2\Select2::className(),[

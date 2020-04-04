@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
@@ -11,7 +12,7 @@ use kartik\file\FileInput;
 ?>
 <div class="content-form">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(['action'=>Url::current(), 'options' => ['enctype' => 'multipart/form-data']]); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'description')->textarea() ?>
