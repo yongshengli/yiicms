@@ -3,6 +3,7 @@
 namespace app\modules\backend\components;
 use yii\web\Controller;
 use Yii;
+use yii\helpers\Url;
 
 /**
  * Created by PhpStorm.
@@ -40,5 +41,10 @@ class BackendController extends Controller
     public function addFlash($message, $type='danger',$removeAfterAccess=true)
     {
         Yii::$app->session->addFlash($type, $message, $removeAfterAccess);
+    }
+    
+    public function refresh($anchor = '')
+    {
+        return Yii::$app->getResponse()->redirect(Url::current() . $anchor);
     }
 }
