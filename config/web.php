@@ -58,7 +58,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
-            'class'=>'app\components\urlManager',
+            'class'=>'app\components\UrlManager',
             'suffix'=>'.html',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
