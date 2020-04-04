@@ -22,12 +22,12 @@ use app\widgets\Nav;
                 <!-- User Account: style can be found in dropdown.less -->
                 <li>
                     <a href="<?=Url::to(['/backend/default/clear-cache'])?>" role="button" title="清理缓存">
-                        <span class="fa fa-trash-o"></span>
+                        <span class="fa fa-trash-o"></span> 清理缓存
                     </a>
                 </li>
                 <li>
-                    <a href="#" role="button" title="清理缓存"  class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="fa fa-globe"></span>
+                    <a href="#" role="button" title="语言"  class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-globe"></span> <?=\app\models\Language::$lans[yii::$app->language]?>
                     </a>
                     <ul class="dropdown-menu">
                     <li>
@@ -45,7 +45,7 @@ use app\widgets\Nav;
                 </li>
                 <li>
                     <a href="<?=Yii::$app->homeUrl?>" role="button" title="前台首页">
-                        <span class="fa fa-home"></span>
+                        <span class="fa fa-home"></span> 首页
                     </a>
                 </li>
                 <li class="dropdown user user-menu">
