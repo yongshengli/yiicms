@@ -112,14 +112,14 @@ class CategoryController extends BackendController
     {
         $model = $this->findModel($id);
         Content::$currentType =null;
-        $content = Category::find()->where(['id'=>$id])->limit(1)->one();
+        $content = Content::find()->where(['category_id'=>$id])->limit(1)->one();
         if($content){
-            return $this->showFlash('此分类下有内容，不可删除', Yii::$app->getUser()->getReturnUrl());
+            return $this->showFlash('此分类下有内容，不可删除', $this->getReturnUrl());
         }
         if($model->delete()){
-            return $this->showFlash('删除成功','success', Yii::$app->getUser()->getReturnUrl());
+            return $this->showFlash('删除成功','success', $this->getReturnUrl());
         }
-        return $this->showFlash('删除失败','danger', Yii::$app->getUser()->getReturnUrl());
+        return $this->showFlash('删除失败','danger', $this->getReturnUrl());
     }
 
     /**

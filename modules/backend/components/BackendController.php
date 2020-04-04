@@ -42,9 +42,17 @@ class BackendController extends Controller
     {
         Yii::$app->session->addFlash($type, $message, $removeAfterAccess);
     }
-    
+
     public function refresh($anchor = '')
     {
         return Yii::$app->getResponse()->redirect(Url::current() . $anchor);
+    }
+
+    public function goBack($defaultUrl = null){
+        return parent::goBack($this->getReturnUrl($defaultUrl));
+    }
+
+    public function getReturnUrl($defaultUrl = null){
+        return sprintf('/%s%s', \yii::$app->language,Yii::$app->getUser()->getReturnUrl($defaultUrl));
     }
 }

@@ -10,6 +10,7 @@ use app\modules\backend\models\LoginForm;
 use yii\filters\VerbFilter;
 use app\helpers\StringHelper;
 use yii\helpers\FileHelper;
+use yii\helpers\Url;
 
 /**
  * Default controller for the `backend` module
@@ -108,7 +109,7 @@ class DefaultController extends BackendController
     public function actionLanguage($language){
         if (isset(\app\models\Language::$lans[$language])){
             yii::$app->language = $language;
-            return $this->redirect(\yii::$app->getUrlManager()->createUrl('backend'));
+            return $this->redirect(Url::to('backend'));
         }
     }
     /**
