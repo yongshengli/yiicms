@@ -33,4 +33,10 @@ return [
     '最新新闻'=>'The last news',
     '产品详情'=>'The product detail',
     '友情链接'=>'Blogroll',
+
+    '主题' =>'Title',
+    '名字'=>'Name',
+    '电话'=>'Phone',
+    '内容'=>'Content',
+    '验证码'=>'Verification Code'
 ];

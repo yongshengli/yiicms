@@ -13,7 +13,7 @@ use yii\bootstrap\Html;
 use yii\widgets\ListView;
 use yii\data\Pagination;
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'企业相册', 'url'=>['list']];
+$this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','企业相册'), 'url'=>['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>

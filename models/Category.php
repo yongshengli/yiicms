@@ -42,7 +42,7 @@ class Category extends AppActiveRecord
     public function getPossibleParentArr()
     {
         $list = self::find()
-            ->where(['type'=>$this->type])
+            ->andWhere(['type'=>$this->type])
             ->andFilterWhere(['<>', 'id', $this->id])
             ->asArray()
             ->all();
@@ -98,7 +98,7 @@ class Category extends AppActiveRecord
      * @return bool
      */
     protected function editAllPath($path, $newPath){
-        $children = Category::find()->where(['REGEXP', 'path', '^' . $path . '(/|$)'])->all();
+        $children = Category::find()->andWhere(['REGEXP', 'path', '^' . $path . '(/|$)'])->all();
         if ($children) {
             /** @var Category $child */
             foreach ($children as $child) {
@@ -250,11 +250,11 @@ class Category extends AppActiveRecord
         $types =  self::getTypes();
         return isset($types[$this->type])?$types[$this->type]:null;
     }
-    
+
     public static function find(){
         $query = parent::find();
         if (isset(\yii::$app)){
-            $query->andWhere(['language'=>\yii::$app->language]);
+            $query->where(['language'=>\yii::$app->language]);
         }
         return $query;
     }

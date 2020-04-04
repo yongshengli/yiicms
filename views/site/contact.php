@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use app\models\Feedback;
 
-$this->title = '联系我们';
+$this->title = \Yii::t('app','联系我们');
 $this->params['breadcrumbs'][] = $this->title;
 empty($model) && $model = new Feedback();
 ?>

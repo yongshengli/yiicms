@@ -9,7 +9,7 @@
 
 namespace app\widgets;
 
-use app\models\Category as Model;
+use app\models\Category as CModel;
 use app\models\Content;
 use yii\base\ErrorException;
 use yii\bootstrap\Html;
@@ -30,11 +30,13 @@ class Category extends Panel
         if(empty($this->baseUrl)){
             $this->baseUrl = '/'.Content::type2String($this->type).'/list';
         }
-        $newsList = Model::find()
-            ->where(['type'=>$this->type])
+       
+        $query= CModel::find();
+        $newsList = $query->andWhere(['type'=>$this->type])
             ->limit($this->limit)
             ->orderBy('id asc')
             ->all();
+        //echo $query->createCommand()->sql;
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
             $url = Url::to([$this->baseUrl, 'category-id'=>$item['id']]);

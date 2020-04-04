@@ -15,7 +15,7 @@ use app\widgets\ConfigPanel;
 use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'新闻', 'url'=>['/news/list']];
+$this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','新闻'), 'url'=>['/news/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">

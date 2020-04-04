@@ -113,7 +113,7 @@ if(!empty(Yii::$app->params['logo'])){
                 </ul>
             </div>
             <div class="col-lg-3">
-                友情链接
+                <?=Yii::t('app','友情链接')?>
                 <?=\app\widgets\Blogroll::widget()?>
             </div>
             <div class="col-lg-3">

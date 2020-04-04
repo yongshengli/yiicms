@@ -83,7 +83,7 @@ class Config extends AppActiveRecord
     public static function find(){
         $query = parent::find();
         if (isset(\yii::$app)){
-            $query->andWhere(['language'=>\yii::$app->language]);
+            $query->where(['language'=>\yii::$app->language]);
         }
         return $query;
     }

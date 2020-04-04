@@ -14,7 +14,7 @@ use yii\helpers\HtmlPurifier;
 use yii\widgets\ListView;
 use yii\bootstrap\Html;
 
-$this->title = '企业相册';
+$this->title = \Yii::t('app','企业相册');
 $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
 ?>
 <style>

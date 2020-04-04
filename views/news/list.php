@@ -13,7 +13,7 @@ use yii\grid\GridView;
 use yii\bootstrap\Html;
 use yii\helpers\HtmlPurifier;
 
-$this->title = '新闻';
+$this->title = \Yii::t('app','新闻');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">

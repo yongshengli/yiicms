@@ -15,7 +15,7 @@ use app\widgets\ConfigPanel;
 use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'产品', 'url'=>['/products/list']];
+$this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','产品'), 'url'=>['/products/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>

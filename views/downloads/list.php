@@ -12,7 +12,7 @@
 use yii\grid\GridView;
 use yii\bootstrap\Html;
 
-$this->title = '下载';
+$this->title = \Yii::t('app','下载');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
