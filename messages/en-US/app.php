@@ -45,5 +45,6 @@ return [
     '版权所有侵权必究'=>'All rights reserved.',
     '技术支持'=>'Technical Support',
     '产品展示'=>'The latest product',
-    '企业咨询'=>'The latest news'
+    '企业咨询'=>'The latest news',
+    '我们的核心优势'=>'Our core strengths',
 ];
