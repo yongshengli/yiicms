@@ -55,7 +55,7 @@ class CommonHelper
         }
         $type =  Content::type2String($category->type);
         $breadcrumbs[] = [
-            'label'=>$category->getTypeText(),
+            'label'=>Yii::t('app',$category->getTypeText()),
             'url'=>['/'.$type.'/list']
         ];
         $parents = $category->fullParent;
