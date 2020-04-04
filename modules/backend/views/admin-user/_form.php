@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -10,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 <div class="admin-user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['action'=>Url::current()]); ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'readonly'=>!$model->isNewRecord]) ?>
 
