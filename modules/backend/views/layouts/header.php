@@ -26,6 +26,24 @@ use app\widgets\Nav;
                     </a>
                 </li>
                 <li>
+                    <a href="#" role="button" title="清理缓存"  class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-globe"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li>
+                        <ul class="menu">
+                        <?php foreach(\app\models\Language::$lans as  $lan=>$label):?>
+                        <li>
+                            <a href="<?=Url::to(['/backend/default/language', 'language'=>$lan])?>">
+                            <i class="fa fa-flag" aria-hidden="true"></i> <?=$label?>
+                            </a>
+                        </li>
+                        <?php endforeach;?>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="<?=Yii::$app->homeUrl?>" role="button" title="前台首页">
                         <span class="fa fa-home"></span>
                     </a>

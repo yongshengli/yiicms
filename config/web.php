@@ -58,6 +58,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
+            'class'=>'app\components\urlManager',
             'suffix'=>'.html',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -96,6 +97,7 @@ $config = [
     'params' => &$params,
     'language'=>'zh-CN',
     'sourceLanguage'=>'zh-CN',
+    // 'languages'=>['zh-CN', 'en-US'],
     'modules' => [
         'backend' => [
             'class' => 'app\modules\backend\Module',

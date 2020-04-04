@@ -104,6 +104,13 @@ class DefaultController extends BackendController
         }
         return $this->goBack();
     }
+
+    public function actionLanguage($language){
+        if (isset(\app\models\Language::$lans[$language])){
+            yii::$app->language = $language;
+            return $this->redirect(\yii::$app->getUrlManager()->createUrl('backend'));
+        }
+    }
     /**
      * @inheritdoc
      */

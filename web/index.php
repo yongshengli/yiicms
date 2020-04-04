@@ -11,5 +11,15 @@ require(BASE_PATH .'/vendor/autoload.php');
 require(BASE_PATH . '/vendor/yiisoft/yii2/Yii.php');
 $config = require(BASE_PATH . '/config/web.php');
 $app = new yii\web\Application($config);
-$app->language = Yii::$app->session->get('language', 'zh-CN');
+$request = $app->getRequest();
+$url = ltrim($request->getUrl(), "/");
+
+$lan = substr($url, 0, strpos($url, '/'));
+if (isset(app\models\Language::$lans[$lan])){
+    $app->language = $lan;
+    $request->setUrl(substr($url, strpos($url, '/')));
+}else{
+    $app->language = Yii::$app->session->get('language', 'zh-CN');
+}
+
 $app->run();

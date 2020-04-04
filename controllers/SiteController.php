@@ -54,9 +54,10 @@ class SiteController extends Controller
      */
     public function actionLanguage($language)
     {
-        Yii::$app->session->set('language', $language);
-//        $referrer = Yii::$app->request->getReferrer();
-        return $this->redirect(Yii::$app->getHomeUrl());
+        if (isset(\app\models\Language::$lans[$language])){
+            yii::$app->language = $language;
+            return $this->redirect(\yii::$app->getUrlManager()->createUrl("index"));
+        }
     }
     /**
      * Displays contact page.
