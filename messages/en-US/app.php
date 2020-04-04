@@ -43,4 +43,5 @@ return [
     '下一条'=>'Next',
     '在线资讯'=>'Online',
     '版权所有侵权必究'=>'All rights reserved.',
+    '技术支持'=>'Technical Support'
 ];
