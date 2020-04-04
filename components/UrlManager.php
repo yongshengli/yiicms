@@ -1,7 +1,7 @@
 <?php
 namespace app\components;
 
-use yii\Web\UrlManager as BaseUrlManager;
+use yii\web\UrlManager as BaseUrlManager;
 use yii;
 
 class UrlManager extends BaseUrlManager{
