@@ -172,7 +172,7 @@ class Content extends AppActiveRecord
     public static function getCategories()
     {
         if(empty(static::$_categories)){
-            static::$_categories = Category::find()->where(['type'=>static::$currentType])->asArray()->all();
+            static::$_categories = Category::find()->andWhere(['type'=>static::$currentType])->asArray()->all();
         }
         return static::$_categories;
     }
