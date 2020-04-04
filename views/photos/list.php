@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
 
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title">相册</h3></div>
+                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title"><?=\Yii::t('app','相册')?></h3></div>
                 </div>
                 <div>
                     <?= ListView::widget([
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
                 </div>
             </div>
             <div class="col-lg-3">
-                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PHOTOS,'title'=>'相册分类',
+                <?=\app\widgets\Category::widget(['type'=>\app\models\Content::TYPE_PHOTOS,'title'=>\Yii::t('app','相册分类'),
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
                 <?=\app\widgets\LastNews::widget(['options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]

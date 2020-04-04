@@ -38,5 +38,8 @@ return [
     '名字'=>'Name',
     '电话'=>'Phone',
     '内容'=>'Content',
-    '验证码'=>'Verification Code'
+    '验证码'=>'Verification Code',
+    '上一条'=>'Previous',
+    '下一条'=>'Next',
+    '在线资讯'=>'Online',
 ];

@@ -49,10 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="col-lg-9 text-right">
                             <?php if($previous = $model->previous()):?>
-                                上一相册 <?=Html::a($previous->title, ['/photos/item', 'id'=>$previous->id])?>
+                                <?=\Yii::t('app','上一条')?> <?=Html::a($previous->title, ['/photos/item', 'id'=>$previous->id])?>
                             <?php endif;?>
                             <?php if($next = $model->next()):?>
-                                下一相册 <?=Html::a($next->title, ['/photos/item', 'id'=>$next->id])?>
+                                <?=\Yii::t('app','下一条')?> <?=Html::a($next->title, ['/photos/item', 'id'=>$next->id])?>
                             <?php endif;?>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel-body">
                     <?=Html::encode($model->detail->detail)?>
 
-                    <a href="<?=$model->detail->file_url?>" class="btn btn-primary">下载</a>
+                    <a href="<?=$model->detail->file_url?>" class="btn btn-primary"><?=\Yii::t('app','下载')?></a>
                 </div>
                 <div class="panel-body">
                     <div class="row">

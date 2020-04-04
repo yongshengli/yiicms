@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
 
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title">产品中心</h3></div>
+                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title"><?=\Yii::t('app','产品中心')?></h3></div>
                 </div>
                 <div>
                     <?= ListView::widget([
