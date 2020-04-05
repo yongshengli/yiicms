@@ -40,7 +40,7 @@ class LastNews extends Panel
             $html .= Html::beginTag('li', $this->itemOptions);
             $html .='<a href="'.$url.'">'.HtmlPurifier::process($item['title']).'</a>';
             if($this->showDate){
-                $html .= '<span class="badge pull-right">'.date('Y-m-d').'</span>';
+                $html .= '<span class="badge pull-right">'.date('Y-m-d', $item['updated_at']).'</span>';
             }
             $html .= Html::endTag('li');
         }
