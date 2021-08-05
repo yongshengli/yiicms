@@ -13,7 +13,7 @@ use yii\grid\GridView;
 use yii\bootstrap\Html;
 use yii\helpers\HtmlPurifier;
 
-$this->title = '新闻';
+$this->title = \Yii::t('app','新闻');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title">新闻</h3></div>
+                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title"><?=\Yii::t('app','新闻')?></h3></div>
                 </div>
                 <div>
                     <?= GridView::widget([

@@ -54,13 +54,13 @@ class Feedback extends AppActiveRecord
     {
         return [
             'id' => 'ID',
-            'subject' => '主题',
-            'name' => '名字',
-            'phone' => '电话',
+            'subject' => \Yii::t('app','主题'),
+            'name' => \Yii::t('app','名字'),
+            'phone' => \Yii::t('app','电话'),
             'email' => 'Email',
-            'body' => '内容',
+            'body' => \Yii::t('app','内容'),
             'created_at' => '创建时间',
-            'verifyCode' => '验证码',
+            'verifyCode' => \Yii::t('app','验证码'),
         ];
     }
     /**

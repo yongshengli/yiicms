@@ -15,7 +15,7 @@ use app\widgets\ConfigPanel;
 use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label'=>'新闻', 'url'=>['/news/list']];
+$this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','新闻'), 'url'=>['/news/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
@@ -36,10 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="col-lg-9 text-right">
                             <?php if($previous = $model->previous()):?>
-                                上一条 <?=Html::a($previous->title, ['/news/item', 'id'=>$previous->id])?>
+                                <?=\Yii::t('app','上一条')?> <?=Html::a($previous->title, ['/news/item', 'id'=>$previous->id])?>
                             <?php endif;?>
                             <?php if($next = $model->next()):?>
-                                下一条 <?=Html::a($next->title, ['/news/item', 'id'=>$next->id])?>
+                                <?=\Yii::t('app','下一条')?> <?=Html::a($next->title, ['/news/item', 'id'=>$next->id])?>
                             <?php endif;?>
                         </div>
                     </div>

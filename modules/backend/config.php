@@ -17,6 +17,9 @@ return [
 //        'authManager' => [
 //            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
 //        ]
+        'urlManager'=>[
+            'class'=>'app\components\UrlManager',
+        ]
     ],
     'params' => [
         'pageSize' => '20',

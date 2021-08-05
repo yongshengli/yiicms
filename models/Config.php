@@ -43,7 +43,18 @@ class Config extends AppActiveRecord
             return $res;
         }, $duration);
     }
-
+    public function beforeSave($insert){
+        $res = parent::beforeSave($insert);
+        if($res==false){
+            return $res;
+        }
+        if (empty($this->language)){
+            if (isset(\yii::$app->language)){
+                $this->language = yii::$app->language;
+            }
+        }
+        return true;
+    }
     /**
      * 获取指定配置
      * @param string $name
@@ -79,5 +90,12 @@ class Config extends AppActiveRecord
             'created_at' => '创建时间',
             'updated_at' => '最后修改',
         ];
+    }
+    public static function find(){
+        $query = parent::find();
+        if (isset(\yii::$app)){
+            $query->where(['language'=>\yii::$app->language]);
+        }
+        return $query;
     }
 }

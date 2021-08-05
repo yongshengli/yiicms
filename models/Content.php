@@ -172,7 +172,7 @@ class Content extends AppActiveRecord
     public static function getCategories()
     {
         if(empty(static::$_categories)){
-            static::$_categories = Category::find()->where(['type'=>static::$currentType])->asArray()->all();
+            static::$_categories = Category::find()->andWhere(['type'=>static::$currentType])->asArray()->all();
         }
         return static::$_categories;
     }
@@ -212,9 +212,16 @@ class Content extends AppActiveRecord
      * @param bool $runValidation
      * @param null $attributeNames
      * @return boolean whether the saving succeeded (i.e. no validation errors occurred).
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function save($runValidation = true, $attributeNames = null)
     {
+        if (empty($this->language)){
+            if (isset(\yii::$app)){
+                $this->language = \yii::$app->language;
+            }
+        }
         $res = parent::save($runValidation, $attributeNames);
         if($res && static::$autoUpdateDetail) {
             if (empty($this->detail->content_id)) {
@@ -282,6 +289,7 @@ class Content extends AppActiveRecord
     {
         return [
             'id' => 'ID',
+            'language' => '语言',
             'title' => '标题',
             'typeText'=>'类型',
             'category_id'=>'分类',
@@ -315,6 +323,9 @@ class ContentQuery extends ActiveQuery
             $this->andWhere(['type' => self::$type]);
         }else{
             $this->andFilterWhere(['in', 'type', array_keys(Content::$types)]);
+        }
+        if (isset(\yii::$app)){
+            $this->andWhere(['language'=>\yii::$app->language]);
         }
         return $this;
     }

@@ -13,7 +13,7 @@ use yii\grid\GridView;
 use yii\bootstrap\Html;
 use yii\helpers\HtmlPurifier;
 
-$this->title = '搜索-'.$this->params['keyword'];
+$this->title = \Yii::t('app','搜索').'-'.$this->params['keyword'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">

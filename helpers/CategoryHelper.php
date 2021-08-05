@@ -10,10 +10,10 @@
 namespace app\helpers;
 
 
-use yii\base\BaseObject as Object;
+use yii\base\BaseObject;
 use Yii;
 
-class CategoryHelper extends Object
+class CategoryHelper extends BaseObject
 {
     public $categories = [];
 

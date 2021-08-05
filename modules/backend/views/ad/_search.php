@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -11,6 +12,7 @@ use yii\widgets\ActiveForm;
 <div class="adx-search">
 
     <?php $form = ActiveForm::begin([
+        'action'=>Url::current(),
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
