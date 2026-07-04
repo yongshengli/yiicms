@@ -277,21 +277,6 @@ html, body {
     margin: 4px 0;
 }
 
-/* ---------- AdminLTE box 只保留下边线 ---------- */
-.box.box-solid {
-    border-top: none;
-}
-.skin-blue .box.box-solid {
-    border-color: var(--admin-gray-200);
-    border-top: none;
-}
-.box.box-solid > .box-header {
-    border-top: none;
-}
-.box-header.with-border {
-    border-bottom: 1px solid var(--admin-gray-200);
-}
-
 /* ---------- 标签页现代化 ---------- */
 /* 去掉 .nav-tabs-custom 的蓝色顶部边框 */
 .nav-tabs-custom > .nav-tabs > li,
@@ -602,3 +587,18 @@ img {
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover { text-decoration: none; }
 .nav > li > form > button.logout:focus { outline: none; }
+
+/* ---------- AdminLTE box 只保留下边线 ---------- */
+.box.box-solid {
+    border-top: none;
+}
+.skin-blue .box.box-solid {
+    border-color: var(--admin-gray-200);
+    border-top: none;
+}
+.box.box-solid > .box-header {
+    border-top: none;
+}
+.box-header.with-border {
+    border-bottom: 1px solid var(--admin-gray-200);
+}
