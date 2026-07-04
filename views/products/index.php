@@ -18,52 +18,24 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','产品'), 'url'=>['/products/list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<style>
-    @media (min-width:768px) {
-        .img-box {
-            height: 400px;
-            width: 400px;
-            text-align: center;
-            vertical-align: middle;
-            display: table-cell;
-            max-width: 100%
-        }
-        .img-box img {
-            display: inline;
-            max-width: 100%;
-            max-height: 400px;
-        }
-    }
-    @media (max-width:767px){
-        .img-box{
-            text-align: center;
-        }
-        .img-box img{
-            display: inline;
-            max-height: 400px;
-        }
-    }
-</style>
 <div class="site-index">
     <div class="body-content">
         <div class="row">
 
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="img-thumbnail">
-                            <div class="img-box">
-                                <img src="<?=$model->image?>" alt="<?=$model->title?>">
-                            </div>
+                    <div class="col-sm-6">
+                        <div class="img-thumbnail detail-img-box">
+                            <img src="<?=$model->image?>" alt="<?=HtmlPurifier::process($model->title)?>" class="detail-img">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <h4><?=$model->title?></h4>
+                    <div class="col-sm-6">
+                        <h4><?=HtmlPurifier::process($model->title)?></h4>
                         <div>
-                            <div>
+                            <div class="product-params">
                                 <?=HtmlPurifier::process($model->detail->params)?>
                             </div>
-                            <div style="margin-top: 15px">
+                            <div class="contact-qq">
                                 <?=\Yii::t('app','在线咨询')?>:
                                 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?= \app\widgets\Hook::widget(['configName'=>'qq_number'])?\app\widgets\Hook::widget(['configName'=>'qq_number']):'739800600';?>&site=qq&menu=yes">
                                     <img border="0" src="http://wpa.qq.com/pa?p=2:739800600:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
@@ -74,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>" style="margin-top: 20px">
-                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title">产品详情</h3></div>
+                    <div class="panel-heading"><h3 class="panel-title">产品详情</h3></div>
                 </div>
 
                 <div class="panel-body">

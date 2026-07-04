@@ -18,15 +18,15 @@ $carouselItems = [];
 if (isset($this->params['adList'])) {
     foreach ($this->params['adList'] as $item) {
         $carouselItems[] = [
-            'content' => '<a href="' . $item['link'] . '" target="_black"><img src="' . $item['image'] . '" style="width:100%"/></a>',
-//        'caption'=>'<h4>'.$item['title'].'</h4>',
+            'content' => '<a href="' . $item['link'] . '" target="_blank"><img src="' . $item['image'] . '" alt="" style="width:100%"/></a>',
         ];
     }
 }
 $brandLabel = Yii::$app->name;
 if(!empty(Yii::$app->params['logo'])){
-    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'"/>';
+    $brandLabel = '<img src="'.Yii::getAlias(Yii::$app->params['logo']).'" alt="'.Html::encode(Yii::$app->name).'"/>';
 }
+$themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ if(!empty(Yii::$app->params['logo'])){
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) . '-' . Yii::$app->name ?></title>
+    <title><?= Html::encode($this->title) . ' - ' . Yii::$app->name ?></title>
     <?php $this->head() ?>
     <script>
         var _hmt = _hmt || [];
@@ -51,82 +51,128 @@ if(!empty(Yii::$app->params['logo'])){
         })();
     </script>
 </head>
-<body  class="skin-blue fixed">
+<body class="skin-blue">
 <?php $this->beginBody() ?>
+
+<!-- ========== 顶部导航栏 ========== -->
+<div class="main-header">
+    <?php NavBar::begin([
+        'brandLabel' => $brandLabel,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar navbar-static-top navbar-' . $themeColor,
+        ],
+    ]);
+    echo Nav::widget(
+        array_merge(
+            json_decode(Yii::$app->params['nav'], true),
+            ["options" => ["class" => "nav navbar-nav"]]
+        ));
+    ?>
+    <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
+    <input type="text" class="form-control" id="navbar-search-input"
+           value="<?= isset($this->params['keyword']) ? Html::encode($this->params['keyword']) : '' ?>"
+           placeholder="输入关键字搜索"
+           name="keyword"
+    />
+    <?php ActiveForm::end(); ?>
+    <?php NavBar::end(); ?>
+</div>
+
+<!-- ========== 轮播广告区 ========== -->
+<?php if (!empty($carouselItems)): ?>
+<div class="container" style="margin-top: 24px">
+    <?= Carousel::widget([
+        'options' => ['class' => 'carousel slide', 'data-ride' => "carousel", 'data-interval' => '4000'],
+        'items' => $carouselItems,
+        'controls' => [
+            '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span>',
+            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span>'
+        ],
+    ]) ?>
+</div>
+<?php endif; ?>
+
+<!-- ========== 主体内容区 ========== -->
 <div class="wrap">
-    <div class="main-header">
-        <?php NavBar::begin([
-            'brandLabel' => $brandLabel,
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar navbar-inverse navbar-static-top navbar-'. ArrayHelper::getValue($this->params, 'themeColor', 'blue'),
-            ],
-        ]);
-        echo Nav::widget(
-            array_merge(
-                json_decode(Yii::$app->params['nav'], true),
-                ["options" => [
-                    "class" => "nav navbar-nav"
-                ]]
-            ));
-        ?>
-        <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/search'], 'options' => ['class' => 'navbar-form navbar-right', 'role' => "search"]]); ?>
-        <input type="text" class="form-control input-lg" id="navbar-search-input"
-               value="<?= isset($this->params['keyword']) ? $this->params['keyword'] : '' ?>"
-               placeholder="输入关键字搜索"
-               name="keyword"
-        />
-        <?php ActiveForm::end(); ?>
-        <?php NavBar::end(); ?>
-    </div>
     <div class="container" style="margin-top: 15px">
-        <?= Carousel::widget([
-            'options'=>['class'=>'carousel slide', 'data-ride'=>"carousel"],
-            'items' => $carouselItems,
-            'controls'=>['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>',
-                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>'],
-        ])?>
-    </div>
-    <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
     </div>
+
+    <!-- 公益内容区 -->
     <div class="container">
         <?= \app\widgets\Hook::widget(['configName'=>'gongyi']); ?>
     </div>
 </div>
+
+<!-- ========== 页脚 ========== -->
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">&copy; <?=Yii::$app->name?> <?= date('Y') ?>版权所有侵权必究</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3">
+            <div class="col-sm-6 col-md-3">
+                <h5><?= Html::encode(Yii::$app->name) ?></h5>
                 <ul>
-                    <li><a href="<?=Url::to(['/backend'])?>" target="_blank">后台演示</a></li>
-                    <li><a href="http://git.oschina.net/templi/yiicms" target="_blank">源码下载</a></li>
-                    <li><a href="https://github.com/yongshengli/yiicms" target="_blank">github下载</a></li>
+                    <li><a href="<?= Url::to(['/backend']) ?>" target="_blank">后台管理</a></li>
+                    <li><a href="https://github.com/yongshengli/yiicms" target="_blank">GitHub</a></li>
+                    <li><a href="<?= Url::to(['/site/contact']) ?>">联系我们</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3">
-                <?=Yii::t('app','友情链接')?>
-                <?=\app\widgets\Blogroll::widget()?>
+            <div class="col-sm-6 col-md-3">
+                <h5><?= Yii::t('app', '友情链接') ?></h5>
+                <?= \app\widgets\Blogroll::widget() ?>
             </div>
-            <div class="col-lg-3">
-                QQ群:248898849
+            <div class="col-sm-6 col-md-3">
+                <h5>交流社区</h5>
+                <p style="color: var(--gray-300);">QQ群：248898849</p>
             </div>
-            <div class="col-lg-3">
-                <p>技术支持<a href="http://www.zbeijing.com.cn">在北京网络科技</a> <?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?></p>
+            <div class="col-sm-6 col-md-3">
+                <h5>技术支持</h5>
+                <p><a href="http://www.zbeijing.com.cn" target="_blank">在北京网络科技</a></p>
+                <?= \app\widgets\Hook::widget(['configName' => 'tongji']); ?>
+            </div>
+        </div>
+        <div class="footer-divider">
+            <div class="row">
+                <div class="col-md-12 copyright">
+                    &copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?> 版权所有 侵权必究
+                </div>
             </div>
         </div>
     </div>
 </footer>
+
+<!-- 回到顶部按钮 -->
+<button class="back-to-top" id="backToTop" title="回到顶部">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+</button>
+
+<script>
+// 回到顶部按钮
+(function() {
+    var btn = document.getElementById('backToTop');
+    var scrollThreshold = 400;
+
+    function toggle() {
+        if (window.pageYOffset > scrollThreshold) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }
+
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+})();
+</script>
+
 <?php $this->endBody() ?>
-<?= \app\widgets\Hook::widget(['configName'=>'tongji']); ?>
 </body>
 </html>
 <?php $this->endPage() ?>

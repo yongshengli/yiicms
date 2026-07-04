@@ -17,34 +17,13 @@ use yii\bootstrap\Html;
 $this->title = \Yii::t('app','产品');
 $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
 ?>
-<style>
-    .caption{text-align: left}
-    @media screen and (min-width:1200px) {
-        .thumbnail{width:240px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
-        .image-box{border-bottom: 1px solid #ddd;padding: 5px}
-        .image-box a{
-            height: 230px;width:230px; text-align: center;vertical-align: middle;display: table-cell;
-        }
-        .image{max-width:100%;max-height:230px;vertical-align:middle;display: inline}
-    }
-    @media ( min-width:992px ) and ( max-width:1199px ) {
-        .thumbnail{width:200px;text-align: center;margin-left: auto; margin-right: auto;padding: 0}
-        .image-box{border-bottom: 1px solid #ddd;padding: 5px}
-        .image-box a{
-            height: 200px;width:200px; text-align: center;vertical-align: middle;display: table-cell;
-        }
-        .image{max-width:100%;max-height:190px;vertical-align:middle;display: inline}
-        h5, .h5 {font-size: 12px}
-        .caption{font-size: 12px;}
-    }
-</style>
 <div class="site-index">
     <div class="body-content">
         <div class="row">
 
             <div class="col-lg-9">
                 <div class="panel panel-default panel-<?=\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')?>">
-                    <div class="panel-heading" style="border-bottom: none;"><h3 class="panel-title"><?=\Yii::t('app','产品中心')?></h3></div>
+                    <div class="panel-heading"><h3 class="panel-title"><?=\Yii::t('app','产品中心')?></h3></div>
                 </div>
                 <div>
                     <?= ListView::widget([

@@ -1,250 +1,586 @@
-html,
-body {
-    height: 100%;
+/* ============================================================
+   YiiCms 后台管理面板样式 v2.0
+   基于 AdminLTE + Bootstrap 3 增强
+   ============================================================ */
+
+/* ---------- CSS 变量 (后台专用) ---------- */
+:root {
+    --admin-primary:    #1a56db;
+    --admin-primary-lt: #3b82f6;
+    --admin-dark:       #1e293b;
+    --admin-gray-700:   #334155;
+    --admin-gray-500:   #64748b;
+    --admin-gray-200:   #e2e8f0;
+    --admin-gray-100:   #f1f5f9;
+    --admin-gray-50:    #f8fafc;
+    --admin-white:      #ffffff;
+    --admin-success:    #10b981;
+    --admin-warning:    #f59e0b;
+    --admin-danger:     #ef4444;
+    --admin-radius-sm:  6px;
+    --admin-radius-md:  10px;
+    --admin-radius-lg:  16px;
+    --admin-shadow-sm:  0 1px 2px 0 rgba(0,0,0,0.05);
+    --admin-shadow-md:  0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+    --admin-shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+    --admin-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ---------- 全局基础 ---------- */
+html, body {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- 顶部栏现代化 ---------- */
+.topbar {
+    background: var(--admin-gray-50);
+    height: auto;
+    min-height: 32px;
+    line-height: 32px;
+    color: var(--admin-gray-500);
+    border-bottom: 1px solid var(--admin-gray-200);
+    margin-bottom: 24px;
+    padding: 0 16px;
+    font-size: 13px;
+    border-radius: 0 0 var(--admin-radius-sm) var(--admin-radius-sm);
+}
+
+/* ---------- 内容包装区 ---------- */
 .wrap {
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
 }
-
 .wrap > .container {
-    padding: 0 15px 20px;
+    padding: 0 20px 24px;
 }
-.topbar{
-    background-color:#fcfcfc;height: 28px;
-    line-height: 28px;color:#727272;
-    border-bottom:1px solid #ebebeb;
+
+/* ---------- 页脚 ---------- */
+.footer {
+    height: auto;
+    min-height: 60px;
+    background: var(--admin-gray-50);
+    border-top: 1px solid var(--admin-gray-200);
+    padding: 18px 0;
+    font-size: 13px;
+    color: var(--admin-gray-500);
+}
+
+/* ---------- 统计卡片 ---------- */
+.stat-card {
+    background: var(--admin-white);
+    border-radius: var(--admin-radius-md);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--admin-shadow-sm);
+    border: 1px solid var(--admin-gray-200);
+    transition: all var(--admin-transition);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.stat-card:hover {
+    box-shadow: var(--admin-shadow-md);
+    transform: translateY(-2px);
+}
+.stat-card .stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--admin-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+.stat-card .stat-icon.blue   { background: #eff6ff; color: #1a56db; }
+.stat-card .stat-icon.green  { background: #ecfdf5; color: #10b981; }
+.stat-card .stat-icon.orange { background: #fffbeb; color: #f59e0b; }
+.stat-card .stat-icon.red    { background: #fef2f2; color: #ef4444; }
+.stat-card .stat-icon.purple { background: #f5f3ff; color: #8b5cf6; }
+.stat-card .stat-info h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--admin-dark);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+.stat-card .stat-info p {
+    font-size: 13px;
+    color: var(--admin-gray-500);
+    margin: 4px 0 0;
+}
+
+/* ---------- 面板现代化 ---------- */
+.panel {
+    border: 1px solid var(--admin-gray-200);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-sm);
+    margin-bottom: 24px;
+    background: var(--admin-white);
+}
+.panel-heading {
+    border-bottom: 1px solid var(--admin-gray-100);
+    padding: 14px 20px;
+    background: var(--admin-white);
+    border-radius: var(--admin-radius-md) var(--admin-radius-md) 0 0;
+}
+.panel-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--admin-dark);
+}
+.panel-body {
+    padding: 20px;
+}
+.panel-footer {
+    padding: 12px 20px;
+    background: var(--admin-gray-50);
+    border-top: 1px solid var(--admin-gray-100);
+    border-radius: 0 0 var(--admin-radius-md) var(--admin-radius-md);
+}
+
+/* ---------- 表格增强 ---------- */
+.table {
+    margin-bottom: 0;
+}
+.table > thead > tr > th {
+    background: var(--admin-gray-50);
+    border-bottom: 2px solid var(--admin-gray-200);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--admin-gray-700);
+    padding: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.table > tbody > tr > td {
+    padding: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--admin-gray-100);
+    font-size: 14px;
+}
+.table > tbody > tr:hover {
+    background: var(--admin-gray-50);
+}
+.table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+/* ---------- 表单现代化 ---------- */
+.form-control {
+    border-radius: var(--admin-radius-sm);
+    border: 1px solid var(--admin-gray-200);
+    box-shadow: var(--admin-shadow-sm);
+    padding: 8px 14px;
+    font-size: 14px;
+    transition: all var(--admin-transition);
+    height: auto;
+}
+.form-control:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+}
+.help-block {
+    font-size: 12px;
+    color: var(--admin-gray-500);
+    margin-top: 4px;
+}
+
+/* ---------- 按钮现代化 ---------- */
+.btn {
+    border-radius: var(--admin-radius-sm);
+    font-weight: 500;
+    padding: 7px 16px;
+    font-size: 14px;
+    transition: all var(--admin-transition);
+    letter-spacing: 0.2px;
+}
+.btn-primary {
+    background: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #1e40af;
+    border-color: #1e40af;
+}
+.btn-success {
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+}
+.btn-success:hover { background: #059669; border-color: #059669; }
+.btn-warning {
+    background: var(--admin-warning);
+    border-color: var(--admin-warning);
+}
+.btn-warning:hover { background: #d97706; border-color: #d97706; }
+.btn-danger {
+    background: var(--admin-danger);
+    border-color: var(--admin-danger);
+}
+.btn-danger:hover { background: #dc2626; border-color: #dc2626; }
+.btn-sm { padding: 5px 12px; font-size: 13px; }
+.btn-xs { padding: 3px 10px; font-size: 12px; border-radius: 4px; }
+.btn-lg {
+    padding: 11px 24px;
+    font-size: 16px;
+    border-radius: var(--admin-radius-md);
+}
+
+/* ---------- 模态框现代化 ---------- */
+.modal-content {
+    border: none;
+    border-radius: var(--admin-radius-md);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+}
+.modal-header {
+    border-bottom: 1px solid var(--admin-gray-100);
+    padding: 16px 24px;
+    border-radius: var(--admin-radius-md) var(--admin-radius-md) 0 0;
+    background: var(--admin-white);
+}
+.modal-title {
+    font-weight: 600;
+    font-size: 17px;
+}
+.modal-body {
+    padding: 24px;
+}
+.modal-footer {
+    border-top: 1px solid var(--admin-gray-100);
+    padding: 12px 24px;
+}
+
+/* ---------- 下拉菜单 ---------- */
+.dropdown-menu {
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    box-shadow: var(--admin-shadow-lg);
+    padding: 6px 0;
+    min-width: 160px;
+}
+.dropdown-menu > li > a {
+    padding: 8px 20px;
+    font-size: 14px;
+    color: var(--admin-gray-700);
+    transition: all var(--admin-transition);
+}
+.dropdown-menu > li > a:hover {
+    background: var(--admin-gray-50);
+    color: var(--admin-primary);
+}
+.dropdown-menu .divider {
+    margin: 4px 0;
+}
+
+/* ---------- 标签页现代化 ---------- */
+.nav-tabs {
+    border-bottom: 2px solid var(--admin-gray-200);
     margin-bottom: 20px;
 }
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
+.nav-tabs > li > a {
+    border: none;
+    border-radius: 0;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: var(--admin-gray-500);
+    transition: all var(--admin-transition);
+    font-size: 14px;
+}
+.nav-tabs > li > a:hover {
+    background: var(--admin-gray-50);
+    color: var(--admin-gray-700);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    border: none;
+    border-bottom: 2px solid var(--admin-primary);
+    color: var(--admin-primary);
+    background: transparent;
+    font-weight: 600;
 }
 
+/* ---------- 分页 ---------- */
+.pagination > li > a,
+.pagination > li > span {
+    border: 1px solid var(--admin-gray-200);
+    border-radius: var(--admin-radius-sm) !important;
+    margin: 0 2px;
+    padding: 6px 13px;
+    color: var(--admin-gray-700);
+    font-weight: 500;
+    font-size: 13px;
+    transition: all var(--admin-transition);
+}
+.pagination > li > a:hover {
+    background: var(--admin-gray-50);
+    border-color: var(--admin-primary);
+    color: var(--admin-primary);
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover {
+    background: var(--admin-primary);
+    border-color: var(--admin-primary);
+    color: var(--admin-white);
+}
+
+/* ---------- 提示消息 ---------- */
+.alert {
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    font-weight: 500;
+    padding: 12px 20px;
+    font-size: 14px;
+}
+.alert-success { background: #ecfdf5; color: #065f46; border-left: 4px solid var(--admin-success); }
+.alert-danger  { background: #fef2f2; color: #991b1b; border-left: 4px solid var(--admin-danger); }
+.alert-warning { background: #fffbeb; color: #92400e; border-left: 4px solid var(--admin-warning); }
+.alert-info    { background: #eff6ff; color: #1e40af; border-left: 4px solid var(--admin-primary); }
+.error-summary {
+    color: #991b1b;
+    background: #fef2f2;
+    border-left: 4px solid var(--admin-danger);
+    padding: 12px 20px;
+    margin: 0 0 20px 0;
+    border-radius: var(--admin-radius-sm);
+}
+
+/* ---------- 徽章/标签 ---------- */
+.label {
+    border-radius: var(--admin-radius-lg);
+    padding: 3px 10px;
+    font-weight: 500;
+    font-size: 12px;
+}
+.badge {
+    border-radius: var(--admin-radius-lg);
+    padding: 3px 8px;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+/* ---------- GridView 排序图标 ---------- */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 6px;
+}
+a.asc:after  { content: "\e151"; }
+a.desc:after { content: "\e152"; }
+.sort-numerical a.asc:after  { content: "\e153"; }
+.sort-numerical a.desc:after { content: "\e154"; }
+.sort-ordinal a.asc:after   { content: "\e155"; }
+.sort-ordinal a.desc:after  { content: "\e156"; }
+.grid-view th { white-space: nowrap; }
+.hint-block {
+    display: block;
+    margin-top: 6px;
+    color: var(--admin-gray-500);
+    font-size: 13px;
+}
+.not-set {
+    color: var(--admin-danger);
+    font-style: italic;
+}
 .jumbotron {
     text-align: center;
     background-color: transparent;
 }
-
 .jumbotron .btn {
     font-size: 21px;
     padding: 14px 24px;
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+/* ---------- AdminLTE 增强 ---------- */
+
+/* 主侧边栏品牌区 */
+.skin-blue .main-header .logo,
+.skin-blue .main-header .logo:hover {
+    background: #1a56db;
+}
+.skin-blue .main-header .navbar {
+    background: #1a56db;
+}
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: rgba(255,255,255,0.85);
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+    background: rgba(0,0,0,0.05);
+    border-left-color: #1a56db;
+}
+.skin-blue .main-header .navbar .nav > li > a {
+    color: rgba(255,255,255,0.85);
+}
+.skin-blue .main-header .navbar .nav > li > a:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+.skin-blue .main-header .navbar .nav .open > a,
+.skin-blue .main-header .navbar .nav .open > a:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family:'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    padding-left: 5px;
+/* 内容包装 */
+.content-wrapper {
+    background: var(--admin-gray-50);
+}
+.content-header {
+    padding: 20px 20px 0;
+}
+.content-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+.content {
+    padding: 20px;
 }
 
-a.asc:after {
-    content: /*"\e113"*/ "\e151";
+/* 侧边栏菜单 */
+.sidebar-menu > li > a {
+    padding: 12px 15px 12px 20px;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+    transition: all var(--admin-transition);
+}
+.sidebar-menu .treeview-menu > li > a {
+    padding: 8px 5px 8px 25px;
+    font-size: 13px;
 }
 
-a.desc:after {
-    content: /*"\e114"*/ "\e152";
+/* 信息盒子 (info-box) */
+.info-box {
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-sm);
+    border: 1px solid var(--admin-gray-200);
+    transition: all var(--admin-transition);
+    min-height: 90px;
+}
+.info-box:hover {
+    box-shadow: var(--admin-shadow-md);
+    transform: translateY(-2px);
+}
+.info-box-icon {
+    border-radius: var(--admin-radius-md) 0 0 var(--admin-radius-md);
+}
+.info-box-content {
+    padding: 12px 16px;
+}
+.info-box-text {
+    font-size: 13px;
+    color: var(--admin-gray-500);
+    text-transform: none;
+    font-weight: 500;
+}
+.info-box-number {
+    font-size: 24px;
+    font-weight: 700;
 }
 
-.sort-numerical a.asc:after {
-    content: "\e153";
+/* 小盒子 (small-box) */
+.small-box {
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-md);
+    transition: all var(--admin-transition);
+}
+.small-box:hover {
+    box-shadow: var(--admin-shadow-lg);
+    transform: translateY(-3px);
+}
+.small-box .inner h3 {
+    font-size: 34px;
+    font-weight: 700;
+}
+.small-box .inner p {
+    font-size: 14px;
 }
 
-.sort-numerical a.desc:after {
-    content: "\e154";
+/* ---------- 表格操作按钮组 ---------- */
+.table .btn-group-sm > .btn {
+    margin-right: 2px;
 }
 
-.sort-ordinal a.asc:after {
-    content: "\e155";
+/* ---------- 文件输入框 ---------- */
+.file-input .btn-file {
+    border-radius: var(--admin-radius-sm);
 }
 
-.sort-ordinal a.desc:after {
-    content: "\e156";
-}
-
-.grid-view th {
-    white-space: nowrap;
-}
-
-.hint-block {
+/* ---------- 图片预览 ---------- */
+img {
     display: block;
-    margin-top: 5px;
-    color: #999;
+    max-width: 100%;
+    height: auto;
 }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
+/* ---------- 后台登录页增强 ---------- */
+.site-login {
+    max-width: 400px;
+    margin: 80px auto 0;
+    padding: 32px;
+    background: var(--admin-white);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-lg);
+    border: 1px solid var(--admin-gray-200);
+}
+.site-login h1 {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 24px;
+    color: var(--admin-dark);
+}
+.site-login .form-group {
+    margin-bottom: 18px;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
+/* ---------- 搜索过滤区 ---------- */
+.search-form {
+    background: var(--admin-gray-50);
+    padding: 16px 20px;
+    border-radius: var(--admin-radius-md);
+    margin-bottom: 20px;
+    border: 1px solid var(--admin-gray-200);
+}
+.search-form .form-group {
+    margin-bottom: 8px;
+}
+
+/* ---------- 滚动条美化 ---------- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--admin-gray-100); }
+::-webkit-scrollbar-thumb { background: var(--admin-gray-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--admin-gray-500); }
+
+/* ---------- 注销按钮 ---------- */
+.nav > li > form > button.logout {
     padding: 15px;
     border: none;
+    background: none;
 }
-
 @media(max-width:767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
     }
 }
-
 .nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
-}
-
-.nav > li > form > button.logout:focus {
-    outline: none;
-}
-
-/* 自定义样式*/
-.bs-docs-sidebar.affix {
-    position: static
-}
-
-@media (min-width: 768px) {
-    .bs-docs-sidebar {
-        padding-left: 20px
-    }
-}
-
-.bs-docs-sidenav {
-    margin-top: 20px;
-    margin-bottom: 20px
-}
-
-.bs-docs-sidebar .nav > li > a {
-    display: block;
-    padding: 4px 20px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #999
-}
-
-.bs-docs-sidebar .nav > li > a:hover, .bs-docs-sidebar .nav > li > a:focus {
-    padding-left: 19px;
-    color: #563d7c;
-    text-decoration: none;
-    background-color: transparent;
-    border-left: 1px solid #563d7c
-}
-
-.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a {
-    padding-left: 18px;
-    font-weight: 700;
-    color: #563d7c;
-    background-color: transparent;
-    border-left: 2px solid #563d7c
-}
-
-.bs-docs-sidebar .nav .nav {
-    display: none;
-    padding-bottom: 10px
-}
-
-.bs-docs-sidebar .nav .nav > li > a {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 30px;
-    font-size: 12px;
-    font-weight: 400
-}
-
-.bs-docs-sidebar .nav .nav > li > a:hover, .bs-docs-sidebar .nav .nav > li > a:focus {
-    padding-left: 29px
-}
-
-.bs-docs-sidebar .nav .nav > .active > a, .bs-docs-sidebar .nav .nav > .active:hover > a, .bs-docs-sidebar .nav .nav > .active:focus > a {
-    padding-left: 28px;
-    font-weight: 500
-}
-
-.back-to-top, .bs-docs-theme-toggle {
-    display: none;
-    padding: 4px 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #999
-}
-
-.back-to-top:hover, .bs-docs-theme-toggle:hover {
-    color: #563d7c;
-    text-decoration: none
-}
-
-.bs-docs-theme-toggle {
-    margin-top: 0
-}
-
-@media (min-width: 768px) {
-    .back-to-top, .bs-docs-theme-toggle {
-        display: block
-    }
-}
-
-@media (min-width: 992px) {
-    .bs-docs-sidebar .nav > .active > ul {
-        display: block
-    }
-
-    .bs-docs-sidebar.affix, .bs-docs-sidebar.affix-bottom {
-        width: 213px
-    }
-
-    .bs-docs-sidebar.affix {
-        position: fixed;
-        top: 120px
-    }
-
-    .bs-docs-sidebar.affix-bottom {
-        position: absolute
-    }
-
-    .bs-docs-sidebar.affix-bottom .bs-docs-sidenav, .bs-docs-sidebar.affix .bs-docs-sidenav {
-        margin-top: 0;
-        margin-bottom: 0
-    }
-}
-
-@media (min-width: 1200px) {
-    .bs-docs-sidebar.affix-bottom, .bs-docs-sidebar.affix {
-        width: 263px
-    }
-}
-#source-button {
-    position: absolute;
-    top: 0;
-    /*right: 0;*/
-    z-index: 100;
-    font-weight: 700;
-    display: block;
-}
-img{
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
+.nav > li > form > button.logout:hover { text-decoration: none; }
+.nav > li > form > button.logout:focus { outline: none; }
