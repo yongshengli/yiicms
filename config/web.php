@@ -18,12 +18,8 @@ if(is_file($appPath . '/runtime/config/view.php')){
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-//    'bootstrap' => ['log','assetsAutoCompress'],
-    'bootstrap' => ['log',],
+    'bootstrap' => ['log'],
     'components' => [
-        'assetsAutoCompress' => [
-            'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-        ],
         'request' => [
             'cookieValidationKey' => getenv('COOKIE_VALIDATION_KEY') ?: 'Q-TAjtqKlLrK2nQLbeDDHBI00UPsApCB',
         ],
