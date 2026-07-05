@@ -240,7 +240,8 @@ class Content extends AppActiveRecord
         $res = parent::validate($attributeNames, $clearErrors);
         if(static::$autoUpdateDetail){
             $this->detail->content_id = 0; //临时设置
-            return $this->detail->validate($attributeNames, $clearErrors);
+            $detailRes = $this->detail->validate($attributeNames, $clearErrors);
+            return $res && $detailRes;
         }
         return $res;
     }

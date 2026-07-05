@@ -25,8 +25,7 @@ $config = [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
         ],
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'Q-TAjtqKlLrK2nQLbeDDHBI00UPsApCB',
+            'cookieValidationKey' => getenv('COOKIE_VALIDATION_KEY') ?: 'Q-TAjtqKlLrK2nQLbeDDHBI00UPsApCB',
         ],
         'user' => [
             'class'=>'yii\web\User',
@@ -45,7 +44,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => getenv('MAIL_FILE_TRANSPORT') !== 'false',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -110,15 +109,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
 

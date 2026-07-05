@@ -56,7 +56,14 @@ class UploadBehavior extends Behavior
         if($this->imageFile->hasError){
             throw new BadRequestHttpException(self::getErrorMsg($this->imageFile->error));
         }
-        $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $this->imageFile->extension;
+        // MIME 白名单校验，防止伪造扩展名
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $mime = FileHelper::getMimeType($this->imageFile->tempName);
+        if (!in_array($mime, $allowedMimes)) {
+            throw new BadRequestHttpException('不允许的文件类型');
+        }
+        $ext = $this->imageFile->extension ?: 'jpg';
+        $fileName = $this->createUploadFilePath() . uniqid('img_') . '.' . $ext;
         if($this->imageFile->saveAs(\Yii::getAlias('@webroot').$fileName)){
             return $fileName;
         }
@@ -78,7 +85,8 @@ class UploadBehavior extends Behavior
         if($this->file->hasError){
             throw new BadRequestHttpException(self::getErrorMsg($this->file->error));
         }
-        $fileName = $this->createUploadFilePath() . uniqid('yiicms') . '.' . $this->file->extension;
+        $ext = $this->file->extension ?: 'dat';
+        $fileName = $this->createUploadFilePath() . uniqid('yiicms') . '.' . $ext;
         if ($this->file->saveAs(\Yii::getAlias('@webroot') . $fileName)) {
             return $fileName;
         }

@@ -53,7 +53,11 @@ class ContentDeleteAllAction extends Action
             'in', 'id', $ids
         ]);
         try {
-            Content::deleteAll($query->where);
+            // 逐条删除以触发 afterDelete() 清理关联的 ContentDetail
+            $models = Content::findAll($ids);
+            foreach ($models as $model) {
+                $model->delete();
+            }
             return [
                 'code'=>0,
                 'data'=>'操作成功'

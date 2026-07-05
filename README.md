@@ -1,207 +1,198 @@
-YiiCms 企业站管理系统，基于 yii2 basic 开发
-===============================
+# YiiCms 企业站管理系统
 
+基于 **Yii 2.0.55** 开发的开源企业网站内容管理系统。
 
-页面前台样式基于bootStrap 3.0 开发，管理后台样式是 adminLTE，权限部分使用 yii2-admin,大部分都是拿来主义，不想重复造轮...
-第三方包依赖管理使用 composer
-YiiCms gitHub 地址：https://github.com/yongshengli/yiicms/
+前台采用 Bootstrap 3 + 现代化 CSS 变量体系，后台基于 AdminLTE + RBAC 权限管理。
 
-yiicms 主要功能：
-1. 新闻管理
-2. 产品管理
-3. 下载管理
-4. 图片管理
-5. 后台权限rbac
-6. 前台菜单自定义、后台菜单自定义
-7. 多模板多主题
-8. 内容批量操作
-9. 多语言支持
-10. 友情链接
+> GitHub: https://github.com/yongshengli/yiicms/
 
-YiiCms版权
-----------
+---
 
-http://git.oschina.net/templi/yiicms/blob/master/LICENSE.md
+## 主要功能
 
-DIRECTORY STRUCTURE
--------------------
+| 模块 | 说明 |
+|------|------|
+| 新闻管理 | 新闻分类、发布、编辑、删除，支持批量操作 |
+| 产品管理 | 产品分类、图文展示、参数配置 |
+| 图片管理 | 企业相册分类、Pjax 分页浏览 |
+| 下载管理 | 文件下载分类、上传管理 |
+| 单页管理 | 关于我们、联系我们等独立页面 |
+| RBAC 权限 | 基于 mdmsoft/yii2-admin 的角色权限控制 |
+| 菜单自定义 | 前台导航菜单、后台管理菜单均可配置 |
+| 多模板 | 内置 3 套主题（默认/company/tradition） |
+| 多语言 | 中文简体/繁体/英文 |
+| 友情链接 | 首页底部友情链接管理 |
+| 广告管理 | 首页轮播广告管理 |
+| 皮肤切换 | 后台 12 种 AdminLTE 皮肤，支持持久化 |
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      modules/            contains modules  
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
-      yiicms.sql          sql file
-      composer.json       
-    
+---
 
-REQUIREMENTS
-------------
+## 系统要求
 
-The minimum requirement by this project template that your Web server supports PHP 5.5.0.
+- PHP >= 7.4.0
+- MySQL >= 5.7（推荐 8.0）
+- Composer 2.x
+- 需要 `pdo_mysql`、`gd`、`mbstring`、`fileinfo` 等 PHP 扩展
 
+---
 
-INSTALLATION
-------------
+## 快速开始
 
-~~~
-1. php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
-   php composer.phar create-project --prefer-dist --stability=dev sheng/yiicms yiicms
+### 1. 克隆项目
 
-2. import yiicms.sql
-
-3. Database config
-
-4. 配置 ngixn 虚拟机或者apache虚拟机 网站根目录指向 yiicms/web/
-
-5. 不能将yiicms/web作为根目录时，可将yiicms/web 目录下的文件全部移动到 yiicms下，否则跳过此步骤
-
-~~~
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-//demo file config/db.php.default 文件
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yiicms',
-    'username' => 'root',
-    'password' => '123456',
-    'charset' => 'utf8',
-];
+```bash
+git clone https://github.com/yongshengli/yiicms.git
+cd yiicms
 ```
 
-docker 部署
-----------
-```shell
-1.下载代码
-2. cd yiicms && docker build -t sheng/yiicms .
-3. docker-compse up
-<!-- 3. docker run -v /project-path/yiicms:/data/var/www/html/yiicms sheng/yiicms -->
+### 2. 安装依赖
+
+```bash
+composer install --no-plugins
 ```
 
-**NOTES:**
-~~~
-配置完成后可通过如下地址访问前台/后台
+> **注意**：项目使用 [asset-packagist.org](https://asset-packagist.org) 管理前端资源，不再需要 `fxp/composer-asset-plugin`。
 
-http://127.0.0.1/ 前台
-http://127.0.0.1/backend.html 后台
+### 3. 配置数据库
 
-
-~~~
-
-YiiCms使用手册
--------------
-
-http://www.zbeijing.com.cn/news/list/10.html
-
-
-
-
-关于route规则（url美化）配置
------------------------------
-请参考yii2用户指南
-http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls
-
-中文权威指南
-http://www.yiichina.com/doc/guide/2.0/rest-routing
-
-
-
-
-TESTING
--------
-
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
-By default there are 3 test suites:
-
-- `unit`
-- `functional`
-- `acceptance`
-
-Tests can be executed by running
-
-```
-composer exec codecept run
-``` 
-
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
-they perform testing in real browser. 
-
-
-### Running  acceptance tests
-
-To execute acceptance tests do the following:  
-
-1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
-
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
-   version of Codeception
-
-3. Update dependencies with Composer 
-
-    ```
-    composer update  
-    ```
-
-4. Download [Selenium Server](http://www.seleniumhq.org/download/) and launch it:
-
-    ```
-    java -jar ~/selenium-server-standalone-x.xx.x.jar
-    ``` 
-
-5. (Optional) Create `yii2_basic_tests` database and update it by applying migrations if you have them.
-
-   ```
-   tests/bin/yii migrate
-   ```
-
-   The database configuration can be found at `config/test_db.php`.
-
-
-6. Start web server:
-
-    ```
-    tests/bin/yii serve
-    ```
-
-7. Now you can run all available tests
-
-   ```
-   # run all available tests
-   composer exec codecept run
-
-   # run acceptance tests
-   composer exec codecept run acceptance
-
-   # run only unit and functional tests
-   composer exec codecept run unit,functional
-   ```
-
-### Code coverage support
-
-By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
-to collect code coverage. You can run your tests and collect coverage with the following command:
-
-```
-#collect coverage for all tests
-composer exec codecept run -- --coverage-html --coverage-xml
-
-#collect coverage only for unit tests
-composer exec codecept run unit -- --coverage-html --coverage-xml
-
-#collect coverage for unit and functional tests
-composer exec codecept run functional,unit -- --coverage-html --coverage-xml
+```bash
+cp config/db.php.default config/db.php
+# 编辑 config/db.php，填入您的数据库信息
 ```
 
-You can see code coverage output under the `tests/_output` directory.
+或通过环境变量配置（推荐）：
+
+```bash
+export DB_DSN="mysql:host=localhost;dbname=yiicms"
+export DB_USERNAME="your_user"
+export DB_PASSWORD="your_password"
+```
+
+### 4. 导入数据库
+
+```bash
+mysql -u your_user -p yiicms < yiicms.sql
+```
+
+### 5. 启动开发服务器
+
+```bash
+# 前台和后台（开发模式，开启调试工具栏）
+YII_DEBUG=true YII_ENV=dev php -S 0.0.0.0:8888 -t web/ router.php
+
+# 生产模式
+php -S 0.0.0.0:8888 -t web/ router.php
+```
+
+### 6. 访问
+
+| 地址 | 说明 |
+|------|------|
+| `http://localhost:8888/` | 前台首页 |
+| `http://localhost:8888/backend/default/login.html` | 后台登录 |
+
+> 后台默认账号：`admin` / `123456`
+
+---
+
+## 环境变量
+
+生产环境推荐通过环境变量配置敏感信息：
+
+| 变量 | 用途 | 默认值 |
+|------|------|--------|
+| `YII_DEBUG` | 调试模式 | `false`（生产安全） |
+| `YII_ENV` | 运行环境 | `prod` |
+| `DB_DSN` | 数据库 DSN | `mysql:host=localhost;dbname=yiicms` |
+| `DB_USERNAME` | 数据库用户名 | `root` |
+| `DB_PASSWORD` | 数据库密码 | `123456` |
+| `COOKIE_VALIDATION_KEY` | Cookie 加密密钥 | 内置默认值 |
+| `MAIL_FILE_TRANSPORT` | 邮件存文件模式 | `true`（设为 `false` 真实发信） |
+
+---
+
+## Docker 部署
+
+```bash
+docker build -t sheng/yiicms .
+docker-compose up
+```
+
+---
+
+## 目录结构
+
+```
+├── assets/             # 全局静态资源（site.css 等）
+├── commands/           # Yii 命令行控制器
+├── components/         # 自定义组件（UrlManager、UploadBehavior 等）
+├── config/             # 应用配置
+│   ├── web.php         # Web 应用配置
+│   ├── db.php          # 数据库配置（建议环境变量）
+│   └── params.php      # 全局参数（导航菜单、站点名称等）
+├── controllers/        # 前台控制器
+├── helpers/            # 工具类（StringHelper、CategoryHelper）
+├── mail/               # 邮件模板
+├── messages/           # 多语言翻译文件（en-US、zh-TW）
+├── models/             # 数据模型（Content、News、Product 等）
+├── modules/
+│   └── backend/        # 后台管理模块
+│       ├── actions/    # 自定义 Action（批量审核、删除）
+│       ├── assets/     # 后台 CSS/JS（backend.css、skin.js）
+│       ├── controllers/
+│       ├── models/     # AdminUser 等后台模型
+│       └── views/      # 后台视图模板
+├── router.php          # PHP 内置服务器路由脚本
+├── runtime/            # 运行时文件（缓存、日志）
+├── themes/             # 前台主题（默认、company、tradition）
+│   └── */assets/css/   # 主题样式覆盖
+├── views/              # 前台视图
+│   ├── layouts/        # 主布局（导航栏、页脚）
+│   ├── site/           # 首页、搜索、联系我们
+│   ├── news/           # 新闻列表、详情
+│   ├── products/       # 产品列表、详情
+│   ├── photos/         # 相册列表、详情
+│   └── downloads/      # 下载列表、详情
+├── web/                # 网站根目录（入口文件）
+├── widgets/            # 前台小组件（导航、侧边栏、最新新闻）
+├── composer.json
+├── docker-compose.yml
+├── Dockerfile
+└── yiicms.sql          # 数据库初始化脚本
+```
+
+---
+
+## URL 美化
+
+项目默认启用 `.html` 后缀的伪静态 URL：
+
+```
+/                         首页
+/products/list.html       产品列表
+/products/list/2.html     产品分类 2
+/news/list.html           新闻列表
+/news/5.html              新闻详情 id=5
+/photos/list.html         企业相册
+/downloads/list.html      下载中心
+/contact.html             联系我们
+/search.html?keyword=xxx  搜索
+/page/1.html              单页 id=1
+/backend/default/login.html 后台登录
+```
+
+---
+
+## 注意事项
+
+1. **密码安全**：密码使用 bcrypt 哈希（Yii Security 组件），兼容旧 MD5 密码自动升级
+2. **开发模式**：生产环境请关闭 `YII_DEBUG`
+3. **数据库权限**：生产环境请创建专用数据库用户，不要使用 root
+4. **上传安全**：图片上传包含 MIME 类型白名单校验（jpg/png/gif/webp）
+5. **CSS 体系**：前台使用 CSS 变量驱动的现代设计体系（`assets/css/site.css`），支持 5 色主题导航
+
+---
+
+## 许可证
+
+GPL-3.0 - 详见 [LICENSE.md](LICENSE.md)

@@ -31,8 +31,14 @@ class AdminUser extends AppActiveRecord
 
     public function load($data, $formName = null)
     {
-        if(parent::load($data, $formName)) {
-            $this->resetPassword();
+        $oldHash = $this->password_hash;
+        if (parent::load($data, $formName)) {
+            // 仅当密码字段变化时才重新哈希
+            if ($this->password_hash !== $oldHash && !empty($this->password_hash)) {
+                $this->resetPassword();
+            } elseif (empty($this->password_hash)) {
+                $this->password_hash = $oldHash;
+            }
             return true;
         }
         return false;
@@ -40,73 +46,47 @@ class AdminUser extends AppActiveRecord
 
     public function resetPassword()
     {
-        if(empty($this->password_hash)){
-            $this->setAttribute('password_hash', $this->getOldAttribute('password_hash'));
-        }else{
-            $this->setAttribute('password_hash' ,self::createPassword($this->password_hash));
-        }
-    }
-    /**
-     * Validates password
-     *
-     * @param string $password user current password
-     * @param string $postPassword http post password
-     * @return bool if password provided is valid for current user
-     */
-    public static function validatePassword($postPassword, $password)
-    {
-        return self::createPassword($postPassword) === $password;
+        $this->password_hash = self::createPassword($this->password_hash);
     }
 
     /**
-     * @param string $password
-     * @return string
+     * 验证密码，兼容旧的 MD5 哈希和新 bcrypt 哈希
+     */
+    public static function validatePassword($postPassword, $storedHash)
+    {
+        // 先尝试 Yii 安全验证（$2y$ 开头的 bcrypt）
+        if (strpos($storedHash, '$2y$') === 0) {
+            return Yii::$app->security->validatePassword($postPassword, $storedHash);
+        }
+        // 兼容旧的 MD5 密码，验证通过后自动升级
+        if (md5($postPassword) === $storedHash) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 使用 Yii2 安全组件生成 bcrypt 哈希
      */
     public static function createPassword($password)
     {
-        return md5($password);
+        return Yii::$app->security->generatePasswordHash($password);
     }
 
     /**
-     * 获取当前密码强度等级
-     * 从高到低依次为 5, 4, 3, 2, 1, 0
-     * @param string $str
-     * @return int
+     * 检查密码是否为旧式 MD5，若是则升级
      */
-    public static function getPwdLevel($str){
-        $strModel = 0;
-        $level = 0;
-        $pwdLength = strlen($str);
-        for($i=0; $i<$pwdLength; $i++){
-            $charCode = ord($str{$i});
-            if ($charCode >= 48 && $charCode <= 57) //数字
-                $charMode = 1;
-            else if ($charCode >= 65 && $charCode <= 90) //大写
-                $charMode = 2;
-            else if ($charCode >= 97 && $charCode <= 122) //小写
-                $charMode = 4;
-            else
-                $charMode = 8;
-            $strModel |= $charMode;
+    public function upgradePasswordIfNeeded()
+    {
+        if (strpos($this->password_hash, '$2y$') !== 0) {
+            // MD5 旧密码，下次保存时自动升级
+            return true;
         }
-        for($i=0; $i<4; $i++){
-            if($strModel & 1){
-                $level ++;
-            }
-            $strModel >>= 1;
-        }
-        if($pwdLength<6){
-            $level --;
-        }elseif($pwdLength>8){
-            $level ++;
-        }
-        $level = max($level, 0);
-        $level = min($level, 5);
-        return $level;
+        return false;
     }
+
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
-
 
     public function scenarios()
     {
@@ -115,18 +95,14 @@ class AdminUser extends AppActiveRecord
         $scenarios[self::SCENARIO_UPDATE] = ['username', 'email', 'password_hash'];
         return $scenarios;
     }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['username', 'email', 'updated_at'],'required'],
-
-            [['updated_at'], 'required', 'on'=>'update'],
-
-            [['password', 'created_at', 'updated_at'], 'required', 'on'=>'create'],
-
+            [['username', 'email'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'access_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],

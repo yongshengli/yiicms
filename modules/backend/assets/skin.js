@@ -63,7 +63,7 @@
     //Boxed layout
     + "<div class='form-group'>"
     + "<label class='control-sidebar-subheading'>"
-    + "<input type='checkbox' data-layout='layout-boxed'class='pull-right'/> "
+    + "<input type='checkbox' data-layout='layout-boxed' class='pull-right'/> "
     + "Boxed Layout"
     + "</label>"
     + "</div>"
@@ -277,7 +277,7 @@
    */
   function setup() {
     var tmp = get('skin');
-    if (tmp && $.inArray(tmp, my_skins))
+    if (tmp && $.inArray(tmp, my_skins) !== -1)
       change_skin(tmp);
 
     //Add the change skin listener
@@ -315,7 +315,7 @@
     $("[data-enable='expandOnHover']").on('click', function () {
       $(this).attr('disabled', true);
       // AdminLTE.pushMenu.expandOnHover();
-      $(document).on('expanded.pushMenu', "expandOnHover")
+      $(document).on('expanded.pushMenu', function () {});
       if (!$('body').hasClass('sidebar-collapse'))
         $("[data-layout='sidebar-collapse']").click();
     });

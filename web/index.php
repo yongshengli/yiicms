@@ -1,8 +1,8 @@
 <?php
 
-// comment out the following two lines when deployed to production
-define('YII_DEBUG', true);
-define('YII_ENV', 'dev');
+// 通过环境变量控制 DEBUG 模式，默认为生产模式安全
+define('YII_DEBUG', getenv('YII_DEBUG') === 'true');
+define('YII_ENV', getenv('YII_ENV') ?: 'prod');
 define('BASE_PATH', realpath(dirname(__DIR__)));
 
 //define('ASSETS_DIR', __DIR__.'/assets');
