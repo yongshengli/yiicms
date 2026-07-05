@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/7
  * Time: 10:55
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 /* @var $this yii\web\View */
@@ -12,6 +12,7 @@
 use yii\bootstrap\Html;
 use app\widgets\LastNews;
 use app\widgets\ConfigPanel;
+use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label'=>\Yii::t('app','下载'), 'url'=>['/downloads/list']];
@@ -25,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="panel-heading"><h3 class="panel-title"><?=$model->title?></h3></div>
                 </div>
                 <div class="panel-body">
-                    <?=Html::encode($model->detail->detail)?>
+                    <?=HtmlPurifier::process($model->detail->detail, false)?>
 
                     <a href="<?=$model->detail->file_url?>" class="btn btn-primary"><?=\Yii::t('app','下载')?></a>
                 </div>

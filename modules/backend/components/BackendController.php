@@ -10,7 +10,7 @@ use yii\helpers\Url;
  * User: david
  * Date: 2016/12/7
  * Time: 15:11
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class BackendController extends Controller
 {

@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/9
  * Time: 10:17
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\models;
@@ -19,7 +19,7 @@ use Yii;
  */
 class Products extends Content
 {
-    static $currentType = Parent::TYPE_PRODUCTS;
+    static $currentType = parent::TYPE_PRODUCTS;
 
     public $imageFile;
     /**

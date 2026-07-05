@@ -4,7 +4,7 @@
  * User: david
  * Date: 2017/2/8
  * Time: 13:38
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\widgets;
@@ -77,15 +77,15 @@ class Blogroll extends Menu
 
             return strtr($template, [
                 '{url}' => Html::encode(Url::to($item['url'])),
-                '{label}' => $item['label'],
-                '{image}' => $item['image'],
+                '{label}' => Html::encode($item['label']),
+                '{image}' => Html::encode($item['image']),
             ]);
         } else {
             $template = ArrayHelper::getValue($item, 'template', $this->labelTemplate);
 
             return strtr($template, [
-                '{label}' => $item['label'],
-                '{image}' => $item['image'],
+                '{label}' => Html::encode($item['label']),
+                '{image}' => Html::encode($item['image']),
             ]);
         }
     }

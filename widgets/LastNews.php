@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/10
  * Time: 15:03
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\widgets;
@@ -32,6 +32,7 @@ class LastNews extends Panel
         }
         $newsList = News::find()
             ->where(['status'=>News::STATUS_ENABLE])
+            ->andWhere(['language'=>Yii::$app->language])
             ->limit($this->limit)
             ->orderBy('id desc')
             ->all();

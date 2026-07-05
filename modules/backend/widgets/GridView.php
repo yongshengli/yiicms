@@ -13,7 +13,7 @@ use app\modules\backend\grid\DataColumn;
  * User: david
  * Date: 2017/1/5
  * Time: 10:56
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class GridView extends YiiGridView
 {

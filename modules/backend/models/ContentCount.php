@@ -7,7 +7,7 @@ use app\models\Content;
  * User: david
  * Date: 2017/5/29
  * Time: 12:17
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class  ContentCount
 {

@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/9
  * Time: 10:17
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\models;
@@ -21,7 +21,7 @@ use yii\db\ActiveRecord;
  */
 class Downloads extends Content
 {
-    static $currentType = Parent::TYPE_DOWNLOADS;
+    static $currentType = parent::TYPE_DOWNLOADS;
 
     /**
      * @return \app\models\ContentDetail|ActiveRecord

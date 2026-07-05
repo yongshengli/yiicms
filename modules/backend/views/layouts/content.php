@@ -41,9 +41,9 @@ use dmstr\widgets\Alert;
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
+        <b>Version</b> 1.2
     </div>
-    <strong>Copyright &copy; <?php echo date('Y-', strtotime('-1year'));echo date('Y')?> <a href="http://yiicms.co">YiiCms</a>.</strong> All rights
+    <strong>Copyright &copy; <?php echo date('Y')?> <a href="http://www.guoway.net">YiiCms</a>.</strong> All rights
     reserved.
 </footer>
 

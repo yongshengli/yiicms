@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/10
  * Time: 22:48
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\widgets;
@@ -34,6 +34,7 @@ class Category extends Panel
        
         $query= CModel::find();
         $newsList = $query->andWhere(['type'=>$this->type])
+            ->andWhere(['language'=>Yii::$app->language])
             ->limit($this->limit)
             ->orderBy('id asc')
             ->all();
@@ -41,7 +42,7 @@ class Category extends Panel
         $html = Html::beginTag('ul', ['class'=>'list-group']);
         foreach($newsList as $item) {
             $url = Url::to([$this->baseUrl, 'category-id'=>$item['id']]);
-            $html .= '<li class="list-group-item"><a href="'.$url.'">'.$item['name'].'</a></li>';
+            $html .= '<li class="list-group-item"><a href="'.$url.'">'.Html::encode($item['name']).'</a></li>';
         }
         $html .= Html::endTag('ul');
         return $html;

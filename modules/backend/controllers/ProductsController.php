@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/11
  * Time: 18:17
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\modules\backend\controllers;
@@ -13,6 +13,7 @@ use yii\filters\VerbFilter;
 use app\modules\backend\components\BackendController;
 use app\modules\backend\models\ProductsSearch;
 use Yii;
+use app\models\Content;
 use app\models\Products;
 use yii\web\NotFoundHttpException;
 use app\modules\backend\actions\ContentDeleteAllAction;
@@ -39,17 +40,17 @@ class ProductsController extends BackendController
         return array_merge(parent::actions(), [
             'check'=>[
                 'class'=>ContentCheckAction::className(),
-                'type'=>Products::$currentType,
+                'type'=>Content::TYPE_PRODUCTS,
                 'status'=>Products::STATUS_ENABLE
             ],
             'un-check'=>[
                 'class'=>ContentCheckAction::className(),
-                'type'=>Products::$currentType,
+                'type'=>Content::TYPE_PRODUCTS,
                 'status'=>Products::STATUS_DISABLE
             ],
             'delete-all'=>[
                 'class'=>ContentDeleteAllAction::className(),
-                'type'=>Products::$currentType,
+                'type'=>Content::TYPE_PRODUCTS,
             ]
         ]);
     }

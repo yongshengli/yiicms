@@ -6,7 +6,7 @@ use yii\helpers\StringHelper as BaseStringHelper;
  * User: david
  * Date: 2016/12/12
  * Time: 22:37
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class StringHelper extends BaseStringHelper
 {

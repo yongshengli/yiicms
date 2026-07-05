@@ -4,7 +4,7 @@
  * User: david
  * Date: 2017/2/16
  * Time: 16:38
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\modules\backend\assets;

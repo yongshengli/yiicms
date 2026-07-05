@@ -9,7 +9,7 @@ use Yii;
  * User: david
  * Date: 2016/12/10
  * Time: 14:33
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class Panel extends Widget
 {
@@ -45,7 +45,7 @@ class Panel extends Widget
 
     public function run()
     {
-        if(!YII_ENV_DEV && empty($this->body)){
+        if(!$this->showBody && !$this->showHeader){
             return;
         }
         echo Html::beginTag('div', $this->options) . "\n";

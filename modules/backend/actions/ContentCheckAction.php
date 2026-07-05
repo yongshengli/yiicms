@@ -4,7 +4,7 @@
  * User: david
  * Date: 2017/1/5
  * Time: 13:23
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 namespace app\modules\backend\actions;
 
@@ -48,16 +48,19 @@ class ContentCheckAction extends Action
         if(empty($ids)){
             return ['data'=>'id不能为空','code'=>1];
         }
+        $originalType = Content::$currentType;
         Content::$currentType = $this->type;
         $attr = ['status'=>$this->status];
 
         try {
             Content::updateAll($attr, ['and', ['in', 'id', $ids], ['type' => $this->type]]);
+            Content::$currentType = $originalType;
             return [
                 'code'=>0,
                 'data'=>'操作成功'
             ];
         }catch(Exception $e){
+            Content::$currentType = $originalType;
             return [
                 'code'=>1,
                 'data'=>$e->getMessage()

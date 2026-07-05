@@ -45,10 +45,7 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
-        (function(){
-            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?44fe98c387976b344e710998b9ca68bb":"https://jspassport.ssl.qhimg.com/11.0.1.js?44fe98c387976b344e710998b9ca68bb";
-            document.write('<script src="' + src + '" id="sozz"><\/script>');
-        })();
+
     </script>
 </head>
 <body class="skin-blue">
@@ -130,7 +127,7 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
             </div>
             <div class="col-sm-6 col-md-3">
                 <h5>技术支持</h5>
-                <p><a href="http://www.zbeijing.com.cn" target="_blank">在北京网络科技</a></p>
+                <p><a href="http://www.guoway.net" target="_blank">天津果唯网络科技有限公司</a></p>
                 <?= \app\widgets\Hook::widget(['configName' => 'tongji']); ?>
             </div>
         </div>
@@ -171,7 +168,7 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
     toggle();
 })();
 </script>
-
+<?= \app\widgets\Hook::widget(['configName'=>'kefu']); ?>
 <?php $this->endBody() ?>
 </body>
 </html>

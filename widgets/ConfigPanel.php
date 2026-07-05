@@ -3,12 +3,13 @@ namespace app\widgets;
 
 use yii\base\ErrorException;
 use app\models\Config;
+use yii\helpers\Html;
 /**
  * Created by PhpStorm.
  * User: david
  * Date: 2016/12/10
  * Time: 14:16
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class ConfigPanel extends Panel
 {
@@ -23,7 +24,7 @@ class ConfigPanel extends Panel
         /** @var Config $config */
         $config = Config::getByName($this->configName);
         if($config) {
-            $this->title = $config->label;
+            $this->title = Html::encode($config->label);
             $this->body = $config->value;
         }elseif(defined('YII_ENV_DEV') && YII_ENV_DEV){
             $this->title = '未知的配置项 "'.$this->configName.'"';

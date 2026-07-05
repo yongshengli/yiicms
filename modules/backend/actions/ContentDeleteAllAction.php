@@ -4,7 +4,7 @@
  * User: david
  * Date: 2017/1/5
  * Time: 13:49
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\modules\backend\actions;
@@ -44,19 +44,22 @@ class ContentDeleteAllAction extends Action
         if(empty($ids)){
             return ['data'=>'id不能为空','code'=>1];
         }
+        $originalType = Content::$currentType;
         Content::$currentType = $this->type;
 
         try {
             // 逐条删除以触发 afterDelete() 清理关联的 ContentDetail
-            $models = Content::find()->where(['in', 'id', $ids])->all();
+            $models = Content::findAll($ids);
             foreach ($models as $model) {
                 $model->delete();
             }
+            Content::$currentType = $originalType;
             return [
                 'code'=>0,
                 'data'=>'操作成功'
             ];
         }catch(Exception $e){
+            Content::$currentType = $originalType;
             return [
                 'code'=>1,
                 'data'=>$e->getMessage()

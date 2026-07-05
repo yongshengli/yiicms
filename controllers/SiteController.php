@@ -115,10 +115,12 @@ class SiteController extends Controller
     public function actionSearch()
     {
         $keyword = Html::encode(strip_tags(Yii::$app->request->get('keyword')));
+        $originalType = Content::$currentType;
         Content::$currentType = null;
         $query = Content::find()
             ->andFilterWhere(['or',['like', 'title', $keyword],['like', 'description', $keyword]])
             ->andFilterWhere(['status'=>Content::STATUS_ENABLE]);
+        Content::$currentType = $originalType;
 //        echo $query->createCommand()->getRawSql();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

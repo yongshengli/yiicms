@@ -85,7 +85,7 @@ class BlogrollController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showFlash('添加成功','success');
+            return $this->showFlash('修改成功','success');
         } else {
             return $this->render('update', [
                 'model' => $model,

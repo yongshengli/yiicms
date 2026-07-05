@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/19
  * Time: 21:09
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 
 namespace app\modules\backend\controllers;
@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
 use app\modules\backend\components\BackendController;
 use app\modules\backend\models\DownloadsSearch;
 use Yii;
+use app\models\Content;
 use app\models\Downloads;
 use yii\web\NotFoundHttpException;
 use app\modules\backend\actions\ContentDeleteAllAction;
@@ -40,17 +41,17 @@ class DownloadsController extends BackendController
         return array_merge(parent::actions(),[
             'check'=>[
                 'class'=>ContentCheckAction::className(),
-                'type'=>Downloads::$currentType,
+                'type'=>Content::TYPE_DOWNLOADS,
                 'status'=>Downloads::STATUS_ENABLE
             ],
             'un-check'=>[
                 'class'=>ContentCheckAction::className(),
-                'type'=>Downloads::$currentType,
+                'type'=>Content::TYPE_DOWNLOADS,
                 'status'=>Downloads::STATUS_DISABLE
             ],
             'delete-all'=>[
                 'class'=>ContentDeleteAllAction::className(),
-                'type'=>Downloads::$currentType,
+                'type'=>Content::TYPE_DOWNLOADS,
             ]
         ]);
     }

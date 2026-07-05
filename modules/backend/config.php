@@ -4,7 +4,7 @@
  * User: david
  * Date: 2016/12/7
  * Time: 15:00
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 $UEditor = require(__DIR__ . '/config/UEditor.php');
 return [

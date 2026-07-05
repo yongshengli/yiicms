@@ -10,7 +10,7 @@ use kartik\date\DatePicker;
  * User: david
  * Date: 2017/1/16
  * Time: 12:48
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 class DataColumn extends YiiDataColumn
 {

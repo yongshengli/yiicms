@@ -5,7 +5,7 @@
  * User: david
  * Date: 2017/2/13
  * Time: 14:13
- * Email:liyongsheng@meicai.cn
+ * Email:739800600@qq.com
  */
 namespace app\components\behaviors;
 

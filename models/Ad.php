@@ -149,7 +149,7 @@ class AdQuery extends ActiveQuery
      */
     public function where($condition, $params = [])
     {
-        parent::where($condition, $params);
+        parent::andWhere($condition, $params);
         return $this;
     }
 }
