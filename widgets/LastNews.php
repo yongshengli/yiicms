@@ -9,6 +9,7 @@
 
 namespace app\widgets;
 use app\models\News;
+use Yii;
 use yii\bootstrap\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;

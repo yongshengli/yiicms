@@ -11,6 +11,7 @@ namespace app\widgets;
 
 use app\models\Category as CModel;
 use app\models\Content;
+use Yii;
 use yii\base\ErrorException;
 use yii\bootstrap\Html;
 use yii\helpers\Url;

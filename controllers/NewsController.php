@@ -44,7 +44,7 @@ class NewsController extends Controller
         if(empty($id)){
             $this->redirect(['list']);
         }
-        $model = News::find()->with('detail')->where(['status'=>News::STATUS_ENABLE, 'id'=>$id])->one();
+        $model = News::find()->where(['status'=>News::STATUS_ENABLE, 'id'=>$id])->one();
         if(empty($model)){
             throw new NotFoundHttpException('你查看的页面不存在或者已删除');
         }

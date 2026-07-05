@@ -40,7 +40,7 @@ class ProductsController extends Controller
     public function actionItem($id)
     {
 
-        $model = Products::find()->with('detail')->where(['status'=>Products::STATUS_ENABLE, 'id'=>$id])->one();
+        $model = Products::find()->where(['status'=>Products::STATUS_ENABLE, 'id'=>$id])->one();
 
         if(empty($model)){
             throw new NotFoundHttpException('你查看的页面不存在或者已删除');
