@@ -32,6 +32,9 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'assetManager' => [
+            'appendTimestamp' => true,
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

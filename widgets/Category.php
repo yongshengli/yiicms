@@ -48,12 +48,16 @@ class Category extends Panel
 
     public function run()
     {
-        if(empty($this->type)){
-            throw new ErrorException('type不能为空');
+        $cacheKey = __CLASS__ . Yii::$app->language . $this->type;
+        $html = Yii::$app->cache->get($cacheKey);
+        if ($html === false) {
+            ob_start();
+            echo Html::beginTag('div', $this->options) . "\n";
+            echo $this->renderHeader() . "\n";
+            echo $this->renderBodyBegin() . "\n";
+            echo Html::endTag('div');
+            $html = ob_get_clean();
+            Yii::$app->cache->set($cacheKey, $html, 600);
         }
-        echo Html::beginTag('div', $this->options) . "\n";
-        echo $this->renderHeader() . "\n";
-        echo $this->renderBodyBegin() . "\n";
-        echo Html::endTag('div');
-    }
-}
+        echo $html;
+    }}

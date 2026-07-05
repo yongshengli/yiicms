@@ -41,7 +41,7 @@ class PhotosController extends AppController
      */
     public function actionItem($id)
     {
-        $model = Photos::find()->where(['status'=>Photos::STATUS_ENABLE,'id'=>$id])->one();
+        $model = Photos::find()->with('detail')->where(['status'=>Photos::STATUS_ENABLE,'id'=>$id])->one();
         if(empty($model)){
             throw new NotFoundHttpException('你查看的页面不存在或者已删除');
         }

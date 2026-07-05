@@ -43,7 +43,7 @@ class DownloadsController extends AppController
         if(empty($id)){
             $this->redirect(['list']);
         }
-        $model = Downloads::find()->where(['status'=>Downloads::STATUS_ENABLE, 'id'=>$id])->one();
+        $model = Downloads::find()->with('detail')->where(['status'=>Downloads::STATUS_ENABLE, 'id'=>$id])->one();
 
         if(empty($model)){
             throw new NotFoundHttpException('你查看的页面不存在或者已删除');
