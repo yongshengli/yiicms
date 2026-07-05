@@ -34,6 +34,7 @@ class AccessControl extends \mdm\admin\components\AccessControl
                 Yii::$app->session->addFlash('danger', $e->getMessage());
                 Yii::$app->getResponse()->redirect(Yii::$app->getUser()->getReturnUrl());
                 Yii::$app->response->send();
+                return;
             }
         }
     }

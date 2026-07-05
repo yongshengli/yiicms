@@ -41,7 +41,7 @@ class DownloadsController extends AppController
     public function actionItem($id)
     {
         if(empty($id)){
-            $this->redirect(['list']);
+            return $this->redirect(['list']);
         }
         $model = Downloads::find()->where(['status'=>Downloads::STATUS_ENABLE, 'id'=>$id])->one();
 

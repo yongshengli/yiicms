@@ -61,10 +61,6 @@ class Category extends AppActiveRecord
         if($res==false){
             return $res;
         }
-        if (!$this->validate()) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
-            return false;
-        }
         if (empty($this->language)){
             if (isset(\yii::$app->language)){
                 $this->language = yii::$app->language;

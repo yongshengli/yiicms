@@ -42,7 +42,7 @@ class NewsController extends Controller
     public function actionItem($id)
     {
         if(empty($id)){
-            $this->redirect(['list']);
+            return $this->redirect(['list']);
         }
         $model = News::find()->where(['status'=>News::STATUS_ENABLE, 'id'=>$id])->one();
         if(empty($model)){

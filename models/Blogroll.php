@@ -25,9 +25,9 @@ class Blogroll extends Ad
      */
     public function beforeSave($runValidation = true)
     {
-        if ($runValidation && !$this->validate()) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
-            return false;
+        $res = \app\components\AppActiveRecord::beforeSave($runValidation);
+        if($res==false){
+            return $res;
         }
         $file = $this->uploadFile();
         if(!empty($file)) {

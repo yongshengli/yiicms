@@ -222,7 +222,7 @@ class PhotosController extends BackendController
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->showFlash('修改新闻成功','success');
+            return $this->showFlash('修改相册成功','success');
         }
         return $this->render('update', [
             'model' => $model,

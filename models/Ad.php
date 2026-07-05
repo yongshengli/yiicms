@@ -62,10 +62,6 @@ class Ad extends AppActiveRecord
         if($res==false){
             return $res;
         }
-        if (!$this->validate()) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
-            return false;
-        }
         $file = $this->uploadImgFile();
         if(empty($file) && empty($this->image)){
             $this->addError('imageFile','图片不能为空');
@@ -153,7 +149,7 @@ class AdQuery extends ActiveQuery
      */
     public function where($condition, $params = [])
     {
-        parent::andWhere($condition, $params);
+        parent::where($condition, $params);
         return $this;
     }
 }
