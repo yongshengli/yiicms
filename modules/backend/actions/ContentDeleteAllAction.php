@@ -46,15 +46,9 @@ class ContentDeleteAllAction extends Action
         }
         Content::$currentType = $this->type;
 
-        /** @var $query ContentQuery */
-        $query = Content::find();
-
-        $query->andFilterWhere([
-            'in', 'id', $ids
-        ]);
         try {
             // 逐条删除以触发 afterDelete() 清理关联的 ContentDetail
-            $models = Content::findAll($ids);
+            $models = Content::find()->where(['in', 'id', $ids])->all();
             foreach ($models as $model) {
                 $model->delete();
             }

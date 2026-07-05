@@ -104,7 +104,7 @@ class Content extends AppActiveRecord
     public function load($data, $formName = null){
         $res = parent::load($data, $formName);
         if(static::$autoUpdateDetail && $res){
-            return $this->getDetail()->load($data);
+            $this->getDetail()->load($data);
         }
         return $res;
     }
@@ -239,8 +239,10 @@ class Content extends AppActiveRecord
     {
         $res = parent::validate($attributeNames, $clearErrors);
         if(static::$autoUpdateDetail){
-            $this->detail->content_id = 0; //临时设置
+            $oldContentId = $this->detail->content_id;
+            $this->detail->content_id = 0;
             $detailRes = $this->detail->validate($attributeNames, $clearErrors);
+            $this->detail->content_id = $oldContentId;
             return $res && $detailRes;
         }
         return $res;

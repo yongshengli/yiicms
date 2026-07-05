@@ -111,6 +111,7 @@ class DefaultController extends BackendController
             yii::$app->language = $language;
             return $this->redirect(Url::to(['/backend']));
         }
+        return $this->redirect(['index']);
     }
     /**
      * @inheritdoc

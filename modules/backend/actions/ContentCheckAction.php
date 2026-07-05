@@ -51,14 +51,8 @@ class ContentCheckAction extends Action
         Content::$currentType = $this->type;
         $attr = ['status'=>$this->status];
 
-        /** @var $query ContentQuery  */
-        $query = Content::find();
-
-        $query->andFilterWhere([
-            'in', 'id', $ids
-        ]);
         try {
-            Content::updateAll($attr, $query->where);
+            Content::updateAll($attr, ['and', ['in', 'id', $ids], ['type' => $this->type]]);
             return [
                 'code'=>0,
                 'data'=>'操作成功'

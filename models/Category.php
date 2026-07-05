@@ -98,11 +98,12 @@ class Category extends AppActiveRecord
      * @return bool
      */
     protected function editAllPath($path, $newPath){
-        $children = Category::find()->andWhere(['REGEXP', 'path', '^' . $path . '(/|$)'])->all();
+        $escapedPath = preg_quote($path, '#');
+        $children = Category::find()->andWhere(['REGEXP', 'path', '^' . $escapedPath . '(/|$)'])->all();
         if ($children) {
             /** @var Category $child */
             foreach ($children as $child) {
-                $child->path = trim(preg_replace('#^' . $path . '(\/|$)(.*)#', $newPath.'/$2', $child->path),'/');
+                $child->path = trim(preg_replace('#^' . $escapedPath . '(\/|$)(.*)#', $newPath.'/$2', $child->path),'/');
                 $child->save();
             }
         }

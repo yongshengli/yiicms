@@ -58,6 +58,7 @@ class SiteController extends Controller
             yii::$app->language = $language;
             return $this->redirect(\yii::$app->getUrlManager()->createUrl("index"));
         }
+        return $this->redirect(['index']);
     }
     /**
      * Displays contact page.
@@ -74,8 +75,8 @@ class SiteController extends Controller
         } else {
             $page = null;
         }
-        if(!empty($page->keywords)){
-            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keywords],'keywords');
+        if(!empty($page->keyword)){
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keyword],'keywords');
         }
         if(!empty($page->description)){
             $this->view->registerMetaTag(['name'=>'description', 'content'=>$page->description], 'description');
@@ -143,8 +144,8 @@ class SiteController extends Controller
         if(empty($page)){
             throw new NotFoundHttpException('页面不存在');
         }
-        if(!empty($page->keywords)){
-            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keywords],'keywords');
+        if(!empty($page->keyword)){
+            $this->view->registerMetaTag(['name'=>'keywords', 'content'=>$page->keyword],'keywords');
         }
         if(!empty($page->description)){
             $this->view->registerMetaTag(['name'=>'description', 'content'=>$page->description], 'description');

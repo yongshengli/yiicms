@@ -55,10 +55,6 @@ class Products extends Content
         if($res==false){
             return $res;
         }
-        if (!$this->validate()) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
-            return false;
-        }
         $file = $this->uploadImgFile();
         if($file){
             $this->image = $file;

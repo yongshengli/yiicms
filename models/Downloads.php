@@ -55,10 +55,6 @@ class Downloads extends Content
         if($res==false){
             return $res;
         }
-        if (!$this->validate()) {
-            Yii::info('Model not updated due to validation error.', __METHOD__);
-            return false;
-        }
         try {
             $file = $this->uploadFile();
         } catch (\Exception $e) {
