@@ -21,11 +21,7 @@ $this->title = '修改密码';
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
+        'layout' => 'default',
     ]); ?>
 
     <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
@@ -33,9 +29,7 @@ $this->title = '修改密码';
     <?= $form->field($model, 'passwordRepeat')->passwordInput() ?>
 
     <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-        </div>
+        <?= Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
