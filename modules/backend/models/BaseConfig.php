@@ -65,7 +65,12 @@ class BaseConfig extends Model
         if(!is_dir(Yii::getAlias('@runtime/config/'))){
             FileHelper::createDirectory(Yii::getAlias('@runtime/config/'));
         }
-        return file_put_contents(Yii::getAlias('@runtime/config/params.php'), $phpCode);
+        $res = file_put_contents(Yii::getAlias('@runtime/config/params.php'), $phpCode);
+        if (function_exists('opcache_invalidate')) {
+            opcache_invalidate(Yii::getAlias('@runtime/config/params.php'), true);
+        }
+        clearstatcache(true, Yii::getAlias('@runtime/config/params.php'));
+        return $res;
     }
 
     public function rules()

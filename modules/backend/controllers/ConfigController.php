@@ -116,7 +116,8 @@ class ConfigController extends BackendController
     {
         $model = new ViewConfig();
         if($model->load(Yii::$app->request->post()) && $model->save()){
-            return $this->showFlash('操作成功', 'success');
+            Yii::$app->session->setFlash('success', '操作成功');
+            return $this->refresh();
         }
         return $this->render('view-config',[
             'model'=>$model
@@ -129,7 +130,9 @@ class ConfigController extends BackendController
     {
         $model = new BaseConfig();
         if($model->load(Yii::$app->request->post()) && $model->save()){
-            return $this->showFlash('操作成功', 'success');
+            // refresh 产生新的 HTTP 请求，重新加载 params 文件
+            Yii::$app->session->setFlash('success', '操作成功');
+            return $this->refresh();
         }
         return $this->render('base-config',[
             'model'=>$model

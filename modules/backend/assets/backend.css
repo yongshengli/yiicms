@@ -534,7 +534,7 @@ img {
 /* ---------- 后台登录页增强 ---------- */
 .site-login {
     max-width: 400px;
-    margin: 80px auto 0;
+    margin: 40px auto 0;
     padding: 32px;
     background: var(--admin-white);
     border-radius: var(--admin-radius-md);
