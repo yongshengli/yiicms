@@ -2,8 +2,15 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yiicms',
-    'username' => 'root',
-    'password' => '123456',
+    'dsn' => getenv('DB_DSN') ?: 'mysql:host=localhost;dbname=yiicms',
+    'username' => getenv('DB_USERNAME') ?: 'root',
+    'password' => getenv('DB_PASSWORD') ?: '123456',
     'charset' => 'utf8',
+    // 表结构缓存：避免每次请求都 DESCRIBE TABLE
+    'enableSchemaCache' => true,
+    'schemaCacheDuration' => 3600,
+    'schemaCache' => 'cache',
+    // 查询缓存
+    'queryCache' => 'cache',
+    'queryCacheDuration' => 3600,
 ];
