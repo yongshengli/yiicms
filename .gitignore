@@ -31,3 +31,6 @@ tests/_support/_generated
 web/uploads/*
 web/assets/*
 config/db.php
+# 前端 bower 资源 — 提交到 git，避免依赖 asset-packagist 网络
+!/vendor/bower/
+!/vendor/bower-asset

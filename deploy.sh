@@ -34,8 +34,6 @@ fi
 php composer.phar config allow-plugins.yiisoft/yii2-composer true
 php composer.phar config policy.advisories.block false
 php composer.phar update --no-dev --optimize-autoloader -n
-php composer.phar config --unset policy.advisories.block
-
 # ---- 3. bower-asset ----
 echo "[3/5] bower-asset 资源..."
 php composer.phar require \
@@ -46,12 +44,13 @@ php composer.phar require \
     bower-asset/punycode:'^2.2' \
     --no-update -n 2>/dev/null || true
 php composer.phar update --no-dev --optimize-autoloader -n
+php composer.phar config --unset policy.advisories.block
 
 mkdir -p vendor/bower
 ln -sf bower vendor/bower-asset 2>/dev/null || true
 
 # ---- 4. 权限（s:www-data 同组，ug=rwX）----
-echo "[4/5] 设置权限..."
+echo "[3/5] 设置权限..."
 sudo chown -R s:www-data "${PROJECT_DIR}"
 sudo chmod -R ug=rwX,o=rX "${PROJECT_DIR}"
 # runtime / assets / uploads 需要 web 可写
@@ -61,7 +60,7 @@ sudo chmod -R ug=rwX "${PROJECT_DIR}/web/uploads"
 sudo mkdir -p "${PROJECT_DIR}/runtime/cache" "${PROJECT_DIR}/runtime/config"
 
 # ---- 5. 清理 ----
-echo "[5/5] 清理缓存..."
+echo "[4/5] 清理缓存..."
 sudo rm -rf "${PROJECT_DIR}/web/assets/"*
 sudo rm -rf "${PROJECT_DIR}/runtime/cache/"*
 

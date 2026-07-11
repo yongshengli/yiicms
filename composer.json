@@ -28,10 +28,10 @@
         "mdmsoft/yii2-admin": "~2.0",
         "kartik-v/yii2-widgets": "^3.4",
         "rmrevin/yii2-fontawesome": "~2.9",
-        "sheng/ueditor": "1.3.1"
+        "sheng/ueditor": "1.3.1",
+        "yiisoft/yii2-debug": "~2.0.0"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0"
     },
     "config": {
