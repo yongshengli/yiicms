@@ -469,46 +469,68 @@ a:hover, a:focus {
     #navbar-search-input:focus { width: 100%; }
 }
 
-/* ---------- 轮播图现代化 ---------- */
+/* ---------- 现代商业轮播图 ---------- */
 .carousel {
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    margin-bottom: 28px;
+    box-shadow: var(--shadow-xl);
+    margin-bottom: 32px;
+    max-height: 480px;
+}
+/* 底部渐变遮罩 */
+.carousel-inner > .item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 35%;
+    background: linear-gradient(to top, rgba(0,0,0,0.30) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-    min-height: 260px;
+    min-height: 280px;
+    max-height: 480px;
     object-fit: cover;
     border-radius: var(--radius-lg);
 }
+/* 胶囊指示器 */
 .carousel-indicators {
-    bottom: 10px;
+    bottom: 16px;
+    z-index: 2;
 }
 .carousel-indicators li {
-    width: 32px;
-    height: 4px;
-    border-radius: 2px;
-    border: none;
-    margin: 0 4px;
-    background: rgba(255,255,255,0.5);
-    transition: all var(--transition);
+    width: 36px; height: 4px;
+    border-radius: 2px; border: none;
+    margin: 0 5px;
+    background: rgba(255,255,255,0.4);
+    transition: all 0.3s ease;
 }
 .carousel-indicators .active {
-    width: 40px;
-    background: var(--white);
-    margin: 0 4px;
+    width: 48px;
+    background: var(--primary);
+    box-shadow: 0 0 6px rgba(26,86,219,0.4);
+    margin: 0 5px;
 }
+/* 圆形毛玻璃箭头 */
 .carousel-control {
-    width: 8%;
+    width: 44px; height: 44px;
+    top: 50%; margin-top: -22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
     opacity: 0;
-    transition: opacity var(--transition);
+    transition: all 0.3s ease;
 }
-.carousel:hover .carousel-control {
-    opacity: 0.7;
-}
+.carousel-control.left  { left: 14px; }
+.carousel-control.right { right: 14px; }
+.carousel:hover .carousel-control { opacity: 1; }
 .carousel-control:hover {
-    opacity: 1;
+    background: rgba(255,255,255,0.28);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.carousel-control .glyphicon {
+    font-size: 15px; color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 /* ---------- 现代化面板 (Panel) ---------- */
@@ -1056,7 +1078,7 @@ img {
     }
     .carousel-inner > .item > img,
     .carousel-inner > .item > a > img {
-        min-height: 160px;
+        min-height: 180px;
     }
     .back-to-top {
         bottom: 20px;
