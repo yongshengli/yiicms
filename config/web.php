@@ -111,11 +111,13 @@ if (YII_ENV_DEV) {
         'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-        'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
+    if (class_exists('yii\gii\Module')) {
+        $config['bootstrap'][] = 'gii';
+        $config['modules']['gii'] = [
+            'class' => 'yii\gii\Module',
+            'allowedIPs' => ['127.0.0.1', '::1'],
+        ];
+    }
 }
 
 if(isset($params['appName'])){
