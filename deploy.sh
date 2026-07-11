@@ -27,11 +27,10 @@ else
 fi
 
 # ---- 2. 阿里云镜像（国内加速）----
-echo "[2/4] 安装依赖 + 阿里云镜像 镜像..."
+echo "[2/4] 安装 Composer 依赖 镜像..."
 if [ ! -f composer.phar ]; then
     curl -sS https://getcomposer.org/installer | php
 fi
-php composer.phar config repos.packagist composer https://mirrors.aliyun.com/composer/
 php composer.phar config allow-plugins.yiisoft/yii2-composer true
 php composer.phar config policy.advisories.block false
 php composer.phar update --no-dev --optimize-autoloader -n
