@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\ArrayHelper;
+// mdmsoft/yii2-admin alias — composer update 时 extensions.php 可能未注册
+Yii::setAlias('@mdm/admin', dirname(__DIR__) . '/vendor/mdmsoft/yii2-admin');
 $appPath = dirname(__DIR__);
 $params = ArrayHelper::merge(require(__DIR__ . '/params.php'), [
     'mdm.admin.configs' => [
