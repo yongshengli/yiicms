@@ -1,0 +1,38 @@
+name: publish-on-tag
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+      - name: Publish punycode package
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_PUNYCODE}}
+        run: |
+          npm config set registry 'https://wombat-dressing-room.appspot.com/'
+          npm config set '//wombat-dressing-room.appspot.com/:_authToken' '${NPM_TOKEN}'
+          npm publish
+      - name: Publish punycode.js package
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_PUNYCODE_JS}}
+        run: |
+          sed -i 's/"name": "punycode"/"name": "punycode.js"/' package.json
+          npm config set registry 'https://wombat-dressing-room.appspot.com/'
+          npm config set '//wombat-dressing-room.appspot.com/:_authToken' '${NPM_TOKEN}'
+          npm publish
