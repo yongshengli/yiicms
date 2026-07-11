@@ -98,11 +98,6 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
         ]) ?>
         <?= $content ?>
     </div>
-
-    <!-- 公益内容区 -->
-    <div class="container">
-        <?= \app\widgets\Hook::widget(['configName'=>'gongyi']); ?>
-    </div>
 </div>
 
 <!-- ========== 页脚 ========== -->
