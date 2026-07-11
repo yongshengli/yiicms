@@ -45,9 +45,6 @@ $this->params['breadcrumbs'][] = HtmlPurifier::process($this->title);
                 <?=\app\widgets\ConfigPanel::widget(['configName'=>'donate',
                     'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
                 ])?>
-                <?=\app\widgets\ConfigPanel::widget(['configName'=>'gongyishipin',
-                    'options'=>['class'=>'panel panel-default panel-'.\yii\helpers\ArrayHelper::getValue($this->params,'themeColor')]
-                ])?>
             </div>
         </div>
     </div>
