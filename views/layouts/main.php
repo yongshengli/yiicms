@@ -123,19 +123,18 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
             <div class="col-sm-6 col-md-3">
                 <h5>技术支持</h5>
                 <p><a href="http://www.guoway.net" target="_blank">天津果唯网络科技有限公司</a></p>
-                <?= \app\widgets\Hook::widget(['configName' => 'tongji']); ?>
             </div>
         </div>
         <div class="footer-divider">
             <div class="row">
                 <div class="col-md-12 copyright">
-                    &copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?> 版权所有 侵权必究
+                    &copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?> 版权所有 侵权必究  <?= \app\widgets\Hook::widget(['configName' => 'beian']); ?>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
+<?= \app\widgets\Hook::widget(['configName'=>'kefu']); ?>
 <!-- 回到顶部按钮 -->
 <button class="back-to-top" id="backToTop" title="回到顶部">
     <span class="glyphicon glyphicon-chevron-up"></span>
@@ -163,7 +162,6 @@ $themeColor = ArrayHelper::getValue($this->params, 'themeColor', 'blue');
     toggle();
 })();
 </script>
-<?= \app\widgets\Hook::widget(['configName'=>'kefu']); ?>
 <?php $this->endBody() ?>
 </body>
 </html>
